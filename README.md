@@ -1,6 +1,7 @@
 ## Overview
 Go translations of the <a href = "http://algs4.cs.princeton.edu/code/"> Java source code</a>
 for the algorithms and clients in the textbook by Robert Sedgewick and Kevin Wayne.
+
 ## Coding style
 Try to keep the interface and variable name consistent with the original Java source code while writing idiomatic Go code.
 
@@ -9,8 +10,9 @@ See [index.md](index.md)
 
 ## License
 This code is released under GPLv3.
+
 ## Reference 
-- The official Java source code repository.
+- [algs4](https://github.com/kevin-wayne/algs4): The official Java source code repository
 <ul>
 <li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
 <li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
