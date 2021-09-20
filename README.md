@@ -1,6 +1,6 @@
 ## Overview
 Go translations of the <a href = "http://algs4.cs.princeton.edu/code/"> Java source code</a>
-for the algorithms and clients in the textbook by Robert Sedgewick and Kevin Wayne.
+for the algorithms and clients in the textbook Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.
 
 ## Coding style
 Try to keep the interface and variable name consistent with the original Java source code while writing idiomatic Go code.
