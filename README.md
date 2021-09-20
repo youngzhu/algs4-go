@@ -13,12 +13,13 @@ This code is released under GPLv3.
 
 ## Reference 
 - [algs4](https://github.com/kevin-wayne/algs4): The official Java source code repository
+- [https://github.com/shellfly/algo](https://github.com/shellfly/algo): Go implementation
 <ul>
 <li><a href = "https://github.com/garyaiki/Scala-Algorithms">Scala</a> by Gary Struthers
 <li><a href = "https://github.com/nguyenqthai/Algs4Net">.NET</a> by Quoc Thai
 <li><a href = "https://github.com/itu-algorithms/itu.algs4">Python</a> by ITU Copenhagen
 <li><a href = "https://github.com/shellfly/algs4-py">Python</a> by Li Hao
-<li><a href = "https://github.com/shellfly/algo">Go</a> by Li Hao
+<li><a href = "">Go</a> by Li Hao
 </ul>
 
 ## Contribution
