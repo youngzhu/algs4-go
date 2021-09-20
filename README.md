@@ -20,4 +20,4 @@ This code is released under GPLv3.
 </ul>
 
 ## Contribution
-Feel free to pull requests and issue reports. I appreciate the contribution of high-quality test cases, code fixes and coding style improvements.
+Feel free to pull requests and issue reports. Appreciate the contribution of high-quality test cases, code fixes and coding style improvements.
