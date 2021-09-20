@@ -5,69 +5,7 @@ for the algorithms and clients in the textbook by Robert Sedgewick and Kevin Way
 Try to keep the interface and variable name consistent with the original Java source code while writing idiomatic Go code.
 
 ## Index
-* 1 FUNDAMENTALS
-  * [Bag](#)
-  * [Queue](#)
-  * [Stack](#)
-  * [UnionFind](#)
-* 2 SORTING
-  * [Selection](#)
-  * [Insertion](#)
-  * [Shell](#)
-  * [Merge](#)
-  * [Quick](#)
-  * [Quick3Way](#)
-  * [MaxPQ](#)
-  * [TopM](#)
-  * [IndexMinPQ](#)
-  * [Multiway](#)
-  * [Heap](#)
-* 3 SEARCHING
-  * [FrequencyCounter](#)
-  * [SequentialSearchST](#)
-  * [BinarySearchST](#)
-  * [BST](#)
-  * [RedBlackBST](#)
-  * [SeparateChainingHashST](#)
-  * [LinearProbingHashST](#)
-* 4 GRAPHS
-  * Graph
-	* [Graph](#)
-	* [DepthFirstSearch](#)
-	* [DepthFirstPaths](#)
-	* [BreadthFirstPaths](#)
-	* [CC](#)
-	* [Cycle](#)
-	* [SymbolGraph](#)
-	* [DegreesOfSeparation](#)
-  * Digraph
-	* [Digraph](#)
-	* [SymbolDigraph](#)
-	* [DirectedDFS](#)
-	* [DirectedCycle](#)
-	* [DepthFirstOrder](#)
-	* [Topological](#)
-	* [KosarajuSCC](#)
-  * MST
-	* [EdgeWeightedGraph](#)
-	* [LazyPrimMST](#)
-	* [PrimMST](#)
-	* [KruskalMST](#)
-  * Shortest Paths
-	* [EdgeWeightedDigraph](#)
-	* [DijkstraSP](#)
-	* [AcyclicSP](#)
-	* [BellmanFordSP](#)
-* 5 STRING
-  * [LSD](#)
-  * [MSD](#)
-  * [Quick3string](#)
-  * [TrieST](#)
-  * [TST](#)
-  * [KMP](#)
-  * [NFA](#)
-  * [Huffman](#)
-  * [LZW](#)
+See [index.md](index.md)
 
 ## License
 This code is released under GPLv3.
