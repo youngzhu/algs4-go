@@ -10,6 +10,10 @@ func (s Selection) SortInts(x []int) {
 	Sort(sorting.IntCompSlice(x))
 }
 
+func (s Selection) SortFloat64s(x []float64) {
+	Sort(sorting.Float64CompSlice(x))
+}
+
 func Sort(x sorting.Comparable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
