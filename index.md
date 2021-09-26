@@ -5,7 +5,7 @@
   - [ ] [Stack](#)
   - [ ] [UnionFind](#)
 ## 2 SORTING
-  - [Selection](#)
+  - [Selection](sorting/selection)
   - [ ] [Insertion](#)
   - [ ] [Shell](#)
   - [ ] [Merge](#)
