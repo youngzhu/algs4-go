@@ -6,7 +6,11 @@ import (
 
 type Selection struct {}
 
-func (s Selection) Sort(x sorting.Comparable) {
+func (s Selection) SortInts(x []int) {
+	Sort(sorting.IntCompSlice(x))
+}
+
+func Sort(x sorting.Comparable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
 		min := i

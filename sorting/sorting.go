@@ -16,7 +16,9 @@ type Comparable interface {
 }
 
 type Sorter interface {
-	Sort(x Comparable)
+	SortInts(x []int)
+	// SortFloat64s(x []float64)
+	// SortStrings(x []string)
 }
 
 // Reports whether data is sorted
