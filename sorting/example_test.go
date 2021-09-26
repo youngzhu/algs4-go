@@ -33,3 +33,12 @@ func ExampleSelectionFloat64s() {
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
+
+func ExampleSelectionStrings() {
+	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"} 
+	selectionAlg.SortStrings(s)
+	fmt.Println(s)
+
+	// Output: 
+	// [A E E L M O P R S T X]
+}

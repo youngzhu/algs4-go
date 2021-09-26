@@ -18,7 +18,7 @@ type Comparable interface {
 type Sorter interface {
 	SortInts(x []int)
 	SortFloat64s(x []float64)
-	// SortStrings(x []string)
+	SortStrings(x []string)
 }
 
 // Reports whether data is sorted
@@ -43,6 +43,10 @@ type (
 	// sorting in increasing order
 	// with not-a-number (NaN) values ordered before other values
 	Float64CompSlice []float64
+
+	// Attaches the methods of Comparable to []string
+	// sorting in increasing order
+	StringCompSlice []string
 )
 
 // IntCompSlice implements
@@ -76,4 +80,15 @@ func (x Float64CompSlice) Swap(i, j int) {
 // A copy of math.IsNaN to avoid a dependency on the math package
 func isNaN(f float64) bool {
 	return f != f
+}
+
+// StringCompSlice implements
+func (x StringCompSlice) Len() int {
+	return len(x)
+}
+func (x StringCompSlice) Less(i, j int) bool {
+	return x[i] < x[j]
+}
+func (x StringCompSlice) Swap(i, j int) {
+	x[i], x[j] = x[j], x[i]
 }
