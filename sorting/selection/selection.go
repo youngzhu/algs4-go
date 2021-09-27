@@ -4,19 +4,6 @@ import (
 	"github.com/youngzhu/algs4-go/sorting"
 )
 
-type Selection struct {}
-
-// Implements Sorter
-func (s Selection) SortInts(x []int) {
-	Sort(sorting.IntCompSlice(x))
-}
-func (s Selection) SortFloat64s(x []float64) {
-	Sort(sorting.Float64CompSlice(x))
-}
-func (s Selection) SortStrings(x []string) {
-	Sort(sorting.StringCompSlice(x))
-}
-
 // Selection Sort
 // First, find the smallest item int the slice, and swap it with the first entry
 // Then, find the next smallest item and swap it with the second entry
@@ -35,4 +22,17 @@ func Sort(x sorting.Comparable) {
 		}
 		x.Swap(i, min)
 	}
+}
+
+type Selection struct {}
+
+// Implements Sorter
+func (s Selection) SortInts(x []int) {
+	Sort(sorting.IntCompSlice(x))
+}
+func (s Selection) SortFloat64s(x []float64) {
+	Sort(sorting.Float64CompSlice(x))
+}
+func (s Selection) SortStrings(x []string) {
+	Sort(sorting.StringCompSlice(x))
 }
