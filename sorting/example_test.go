@@ -6,6 +6,7 @@ import (
 
 	. "github.com/youngzhu/algs4-go/sorting"
 	"github.com/youngzhu/algs4-go/sorting/selection"
+	"github.com/youngzhu/algs4-go/util"
 )
 
 var (
@@ -41,4 +42,13 @@ func ExampleSelectionStrings() {
 
 	// Output: 
 	// [A E E L M O P R S T X]
+}
+
+func ExampleSelectionFromFile() {
+	s := util.ReadAllStrings("testdata/words3.txt") 
+	selectionAlg.SortStrings(s)
+	fmt.Println(s)
+
+	// Output: 
+	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }

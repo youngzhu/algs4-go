@@ -17,6 +17,13 @@ func (s Selection) SortStrings(x []string) {
 	Sort(sorting.StringCompSlice(x))
 }
 
+// Selection Sort
+// First, find the smallest item int the slice, and swap it with the first entry
+// Then, find the next smallest item and swap it with the second entry
+// Continue in this way until the entire slice is sorted
+
+// This method is called selection sort because it works by repeatedly selecting 
+// the smallest remaining items
 func Sort(x sorting.Comparable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
