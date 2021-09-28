@@ -1,8 +1,4 @@
-package selection
-
-import (
-	"github.com/youngzhu/algs4-go/sorting"
-)
+package sorting
 
 // Selection Sort
 // First, find the smallest item int the slice, and swap it with the first entry
@@ -11,7 +7,7 @@ import (
 
 // This method is called selection sort because it works by repeatedly selecting 
 // the smallest remaining items
-func Sort(x sorting.Comparable) {
+func Sort(x Comparable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
 		min := i
@@ -28,11 +24,11 @@ type Selection struct {}
 
 // Implements Sorter
 func (s Selection) SortInts(x []int) {
-	Sort(sorting.IntCompSlice(x))
+	Sort(IntCompSlice(x))
 }
 func (s Selection) SortFloat64s(x []float64) {
-	Sort(sorting.Float64CompSlice(x))
+	Sort(Float64CompSlice(x))
 }
 func (s Selection) SortStrings(x []string) {
-	Sort(sorting.StringCompSlice(x))
+	Sort(StringCompSlice(x))
 }

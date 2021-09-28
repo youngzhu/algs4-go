@@ -5,12 +5,11 @@ import (
 	"math"
 
 	. "github.com/youngzhu/algs4-go/sorting"
-	"github.com/youngzhu/algs4-go/sorting/selection"
 	"github.com/youngzhu/algs4-go/util"
 )
 
 var (
-	selectionAlg Sorter = selection.Selection{}
+	selectionAlg Sorter = Selection{}
 )
 
 func ExampleSelectionInts() {

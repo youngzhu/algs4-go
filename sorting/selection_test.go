@@ -1,11 +1,10 @@
-package selection_test
+package sorting_test
 
 import (
 	"testing"
 	"math"
 
-	. "github.com/youngzhu/algs4-go/sorting/selection"
-	"github.com/youngzhu/algs4-go/sorting"
+	. "github.com/youngzhu/algs4-go/sorting"
 )
 
 // array
@@ -15,9 +14,9 @@ var strings = [...]string{"", "Hello", "foo", "bar", "foo", "f00", "%*&^*&^&", "
 
 func TestInts(t *testing.T) {
 	data := ints
-	x := sorting.IntCompSlice(data[0:])
+	x := IntCompSlice(data[0:])
 	Sort(x)
-	if ! sorting.IsSorted(x) {
+	if ! IsSorted(x) {
 		t.Errorf("sorting %v", ints)
 		t.Errorf("    got %v", data)
 	}
@@ -25,9 +24,9 @@ func TestInts(t *testing.T) {
 
 func TestFloat64s(t *testing.T) {
 	data := float64s
-	x := sorting.Float64CompSlice(data[0:])
+	x := Float64CompSlice(data[0:])
 	Sort(x)
-	if ! sorting.IsSorted(x) {
+	if ! IsSorted(x) {
 		t.Errorf("sorting %v", float64s)
 		t.Errorf("    got %v", data)
 	}
@@ -35,9 +34,9 @@ func TestFloat64s(t *testing.T) {
 
 func TestStrings(t *testing.T) {
 	data := strings
-	x := sorting.StringCompSlice(data[0:])
+	x := StringCompSlice(data[0:])
 	Sort(x)
-	if ! sorting.IsSorted(x) {
+	if ! IsSorted(x) {
 		t.Errorf("sorting %v", strings)
 		t.Errorf("    got %v", data)
 	}
