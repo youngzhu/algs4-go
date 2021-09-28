@@ -1,14 +1,30 @@
 package sorting
 
+// Insertion Sort
+// The algorithm that people often use to sort bridge hands is to consider 
+// the cards one at a time, inserting each into its peoper place among those 
+// already considered (keeping them sorted).
+// In a computer implementation, we need to make space for the current item by moving
+// larger items one position to the right, before inserting the current item into the
+// vacated position
+func InsertionSort(x Comparable) {
+	n := x.Len()
+	for i := 0; i < n; i++ {
+		for j := i; j > 0 && x.Less(j, j-1); j-- {
+			x.Swap(j, j-1)
+		}
+	}
+}
+
 type Insertion struct {}
 
 // Implements Sorter
-// func (s Selection) SortInts(x []int) {
-// 	Sort(sorting.IntCompSlice(x))
-// }
-// func (s Selection) SortFloat64s(x []float64) {
-// 	Sort(sorting.Float64CompSlice(x))
-// }
-// func (s Selection) SortStrings(x []string) {
-// 	Sort(sorting.StringCompSlice(x))
-// }
+func (s Insertion) SortInts(x []int) {
+	InsertionSort(IntCompSlice(x))
+}
+func (s Insertion) SortFloat64s(x []float64) {
+	InsertionSort(Float64CompSlice(x))
+}
+func (s Insertion) SortStrings(x []string) {
+	InsertionSort(StringCompSlice(x))
+}

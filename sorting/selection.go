@@ -7,7 +7,7 @@ package sorting
 
 // This method is called selection sort because it works by repeatedly selecting 
 // the smallest remaining items
-func Sort(x Comparable) {
+func SelectionSort(x Comparable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
 		min := i
@@ -24,11 +24,11 @@ type Selection struct {}
 
 // Implements Sorter
 func (s Selection) SortInts(x []int) {
-	Sort(IntCompSlice(x))
+	SelectionSort(IntCompSlice(x))
 }
 func (s Selection) SortFloat64s(x []float64) {
-	Sort(Float64CompSlice(x))
+	SelectionSort(Float64CompSlice(x))
 }
 func (s Selection) SortStrings(x []string) {
-	Sort(StringCompSlice(x))
+	SelectionSort(StringCompSlice(x))
 }
