@@ -31,6 +31,9 @@ func IsSorted(data Comparable) bool {
 	}
 	return true
 }
+func IsSortedInts(data []int) bool {
+	return IsSorted(IntCompSlice(data[0:]))
+}
 
 // Convenience types for common cases
 
