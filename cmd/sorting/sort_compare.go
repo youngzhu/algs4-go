@@ -7,6 +7,7 @@ import (
 	"time"
 	"strings"
 	"os"
+	"sort"
 
 	. "github.com/youngzhu/algs4-go/sorting"
 )
@@ -21,9 +22,22 @@ var alg1, alg2 string
 var isSorted bool
 var n, trials int
 
+// Golang buildin sort
+type BuildinSorter struct {}
+func (s BuildinSorter) SortInts(x []int) {
+	sort.Ints(x)
+}
+func (s BuildinSorter) SortFloat64s(x []float64) {
+	sort.Float64s(x)
+}
+func (s BuildinSorter) SortStrings(x []string) {
+	sort.Strings(x)
+}
+
 var algs = map[string] Sorter {
 	"selection": Selection{},
 	"insertion": Insertion{},
+	"buildin": BuildinSorter{},
 }
 
 func init() {
@@ -40,10 +54,24 @@ func init() {
 // DO NOT
 // go run sort_compare.go -a1 insertion -a2 selection -s true -n 1000 -t 100
 
+// TEST RESULT
+// insertion vs selection
 // go run sort_compare.go -a1 insertion -a2 selection -n 100 -t 100 -s true
 // result: insertion is 27.7 times faster than selection
 // go run sort_compare.go -a1 insertion -a2 Selection -n 100 -t 100
 // result: insertion is 42.4 times faster than Selection
+
+// insertion vs buildin
+// go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s true
+// result: buildin is 9.8 times faster than insertion
+// go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100
+// result: buildin is 5.9 times faster than insertion
+
+// Selection vs Buildin
+// go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s true
+// result: Buildin is 452.9 times faster than Selection
+// go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s true
+// result: Buildin is 243.7 times faster than Selection
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
