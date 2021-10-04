@@ -6,9 +6,9 @@
   - [ ] [UnionFind](#)
 ## 2 SORTING
   - [Selection](sorting/selection.go)
-  - [ ] [Insertion](#)
-  - [ ] [Shell](#)
-  - [ ] [Merge](#)
+  - [Insertion](sorting/insertion.go)
+  - [Shell](sorting/shell.go)
+  - [Merge](sorting/merge.go)
   - [ ] [Quick](#)
   - [ ] [Quick3Way](#)
   - [ ] [MaxPQ](#)
