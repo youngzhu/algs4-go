@@ -8,7 +8,7 @@ import (
 
 // go test -v -run="none" -bench="." -benchtime="3s"
 
-var a = [...]int {9, 10, 0, 7, 8, 4, 3, 6, 2, 1, 5, 5}
+var a = [...]int{9, 10, 0, 7, 8, 4, 3, 6, 2, 1, 5, 5, -99}
 
 func BenchmarkSelection(b *testing.B) {
 	soter := Selection{}

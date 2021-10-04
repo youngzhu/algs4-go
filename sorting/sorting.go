@@ -67,6 +67,7 @@ func (x IntCompSlice) Swap(i, j int) {
 func (x Float64CompSlice) Len() int {
 	return len(x)
 }
+
 // Note that floating-point comparison by itself is not a transitive relation:
 // it does not report a consistent ordering for not-a-number (NaN) values.
 // This implementation places NaN values before others, by using:

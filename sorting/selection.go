@@ -5,7 +5,7 @@ package sorting
 // Then, find the next smallest item and swap it with the second entry
 // Continue in this way until the entire slice is sorted
 
-// This method is called selection sort because it works by repeatedly selecting 
+// This method is called selection sort because it works by repeatedly selecting
 // the smallest remaining items
 func SelectionSort(x Comparable) {
 	n := x.Len()
@@ -20,7 +20,7 @@ func SelectionSort(x Comparable) {
 	}
 }
 
-type Selection struct {}
+type Selection struct{}
 
 // Implements Sorter
 func (s Selection) SortInts(x []int) {

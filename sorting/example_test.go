@@ -11,7 +11,7 @@ import (
 var (
 	selectionAlg Sorter = Selection{}
 	insertionAlg Sorter = Insertion{}
-	shellAlg Sorter = Shell{}
+	shellAlg     Sorter = Shell{}
 )
 
 // ints
@@ -47,7 +47,7 @@ func ExampleSelectionFloat64s() {
 	selectionAlg.SortFloat64s(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
@@ -60,7 +60,7 @@ func ExampleInsertionFloat64s() {
 	insertionAlg.SortFloat64s(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
@@ -73,59 +73,59 @@ func ExampleShellFloat64s() {
 	shellAlg.SortFloat64s(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
 
 // strings
 func ExampleSelectionStrings() {
-	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"} 
+	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	selectionAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [A E E L M O P R S T X]
 }
 func ExampleInsertionStrings() {
-	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"} 
+	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	insertionAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [A E E L M O P R S T X]
 }
 func ExampleShellStrings() {
-	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"} 
+	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	shellAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [A E E L M O P R S T X]
 }
 
 // from file
 func ExampleSelectionFromFile() {
-	s := util.ReadAllStrings("testdata/words3.txt") 
+	s := util.ReadAllStrings("testdata/words3.txt")
 	selectionAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
 func ExampleInsertionFromFile() {
-	s := util.ReadAllStrings("testdata/words3.txt") 
+	s := util.ReadAllStrings("testdata/words3.txt")
 	insertionAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
 func ExampleShellFromFile() {
-	s := util.ReadAllStrings("testdata/words3.txt") 
+	s := util.ReadAllStrings("testdata/words3.txt")
 	shellAlg.SortStrings(s)
 	fmt.Println(s)
 
-	// Output: 
+	// Output:
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }

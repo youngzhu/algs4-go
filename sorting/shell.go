@@ -7,7 +7,7 @@ package sorting
 // The idea is to rearrange the array to give it the property that taking every hth entry
 // (starting anywhere) yields a sorted sequence. Such an array is said to be h-sorted.
 // By h-sorting for some large values of h, we can move entries in the array long distances
-// and thus make it easier to h-sort for smaller values of h. Using such a procedure for any 
+// and thus make it easier to h-sort for smaller values of h. Using such a procedure for any
 // increment sequence of values of h that ends in 1 will produce a sorted array: that is shellsort.
 func Shellsort(x Comparable) {
 	n := x.Len()
@@ -36,7 +36,7 @@ func Shellsort(x Comparable) {
 
 }
 
-type Shell struct {}
+type Shell struct{}
 
 // Implements Sorter
 func (s Shell) SortInts(x []int) {

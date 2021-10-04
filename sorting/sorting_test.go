@@ -1,8 +1,8 @@
 package sorting_test
 
 import (
-	"testing"
 	"math"
+	"testing"
 
 	. "github.com/youngzhu/algs4-go/sorting"
 )

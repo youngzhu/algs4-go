@@ -1,8 +1,8 @@
 package sorting
 
 // Insertion Sort
-// The algorithm that people often use to sort bridge hands is to consider 
-// the cards one at a time, inserting each into its peoper place among those 
+// The algorithm that people often use to sort bridge hands is to consider
+// the cards one at a time, inserting each into its peoper place among those
 // already considered (keeping them sorted).
 // In a computer implementation, we need to make space for the current item by moving
 // larger items one position to the right, before inserting the current item into the
@@ -16,7 +16,7 @@ func InsertionSort(x Comparable) {
 	}
 }
 
-type Insertion struct {}
+type Insertion struct{}
 
 // Implements Sorter
 func (s Insertion) SortInts(x []int) {
