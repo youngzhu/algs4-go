@@ -6,8 +6,10 @@ import (
 	. "github.com/youngzhu/algs4-go/sorting"
 )
 
+var intsX2 = [...]int{74, 59, 238, -784, 98, 959, 999, 1000, 6666, 2333, 9999}
+
 func TestMergesortInts(t *testing.T) {
-	data := ints
+	data := intsX2
 	x := IntCompSlice(data[0:])
 	Mergesort(x)
 	if !IsSorted(x) {

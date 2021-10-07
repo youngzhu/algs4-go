@@ -41,6 +41,7 @@ var algs = map[string] Sorter {
 	"shell": Shell{},
 	"merge": Merge{},
 	"mergex1": MergeX1{},
+	"mergex2": MergeX2{},
 }
 
 func init() {
@@ -125,6 +126,12 @@ func init() {
 // got: MergeX1 is 2.31 times faster than Merge
 // go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 
 // got: MergeX1 is 2.82 times faster than Merge
+
+// Merge vs MergeX2
+// go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 -s
+// got: MergeX2 is 114.35 times faster than Merge
+// go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 
+// got: MergeX2 is 54.61 times faster than Merge
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
