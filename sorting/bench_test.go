@@ -42,3 +42,14 @@ func BenchmarkShell(b *testing.B) {
 		soter.SortInts(a[0:])
 	}
 }
+
+func BenchmarkMerge(b *testing.B) {
+	soter := Merge{}
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		soter.SortInts(a[0:])
+	}
+}

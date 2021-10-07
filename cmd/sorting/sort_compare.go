@@ -39,6 +39,7 @@ var algs = map[string] Sorter {
 	"insertion": Insertion{},
 	"buildin": Buildin{},
 	"shell": Shell{},
+	"merge": Merge{},
 }
 
 func init() {
@@ -91,6 +92,32 @@ func init() {
 // got: Buildin is 1.2 times faster than Shell
 // go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 
 // got: Buildin is 1.8 times faster than Shell
+
+// Merge vs Insetion
+// go run sort_compare.go -a1 Merge -a2 Insertion -n 100 -t 100 -s
+// got: Insertion is 4.9 times faster than Merge
+// go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100 -s
+// got: Insertion is 4.3 times faster than Merge
+// go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100
+// got: Insertion is 4.2 times faster than Merge
+
+// Merge vs Selection
+// go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 -s
+// got: Merge is 8.4 times faster than Selection
+// go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 
+// got: Merge is 8.8 times faster than Selection
+
+// Merge vs Shell
+// go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100 -s
+// got: Shell is 42.2 times faster than Merge
+// go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100
+// got: Shell is 17.3 times faster than Merge
+
+// Merge vs Buildin
+// go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100 -s
+// got: Buildin is 44.3 times faster than Merge
+// go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100
+// got: Buildin is 20.1 times faster than Merge
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
