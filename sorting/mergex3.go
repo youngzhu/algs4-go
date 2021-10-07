@@ -8,18 +8,6 @@ import "reflect"
 // We can cut the running time of mergesort substantially with some
 // carefully considered modifications to the implementation.
 
-// 1. Use insertion sort for small subarrays.
-// We can improve most recursive algorithms by handling samll cases
-// differently. Switching to insertion sort for small subarrays will
-// improve the running time of a typical mergesort implementation by
-// 10 to 15 percent.
-
-// 2. Test whether array is already in order.
-// We can reduce the running time to be linear for arrays that 
-// already in order by adding a test to skip call to merge() 
-// if a[mid] is less than or equal to a[mid+1]. With this change,
-// we still do all the recursive calls, but the running time for
-// any sorted subarray is linear.
 
 // 3. Eliminate the copy to the auxiliary array.
 // It is possible to eliminate the time (but not the space) taken
@@ -32,9 +20,7 @@ import "reflect"
 // recursive calls such that the computation switchs the roles of
 // the input array and the auxiliary at each level.
 
-const CUTOFF int = 14 // cutoff to insertion sort
-
-func MergesortX(x Comparable) {
+func MergesortX3(x Comparable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
@@ -47,54 +33,54 @@ func MergesortX(x Comparable) {
 		a := x.(IntCompSlice)
 		aux := make(IntCompSlice, n)
 		copy(aux, a)
-		sortIntsX(aux, a, 0, n-1)
+		sortIntsX3(aux, a, 0, n-1)
 	case "sorting.Float64CompSlice":
 		a := x.(Float64CompSlice)
 		aux := make(Float64CompSlice, n)
 		copy(aux, a)
-		sortFloat64sX(aux, a, 0, n-1)
+		sortFloat64sX3(aux, a, 0, n-1)
 	case "sorting.StringCompSlice":
 		a := x.(StringCompSlice)
 		aux := make(StringCompSlice, n)
 		copy(aux, a)
-		sortStringsX(aux, a, 0, n-1)
+		sortStringsX3(aux, a, 0, n-1)
 	}
 
 }
 
 
-func sortIntsX(src, dst IntCompSlice, lo, hi int) {
+func sortIntsX3(src, dst IntCompSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
 	mid := lo + (hi-lo)/2
-	sortIntsX(dst, src, lo, mid)
-	sortIntsX(dst, src, mid+1, hi)
+	sortIntsX3(dst, src, lo, mid)
+	sortIntsX3(dst, src, mid+1, hi)
 
-	mergeIntsX(src, dst, lo, mid, hi)
+	mergeIntsX3(src, dst, lo, mid, hi)
 }
-func sortFloat64sX(src, dst Float64CompSlice, lo, hi int) {
+func sortFloat64sX3(src, dst Float64CompSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
 	mid := lo + (hi-lo)/2
-	sortFloat64sX(dst, src, lo, mid)
-	sortFloat64sX(dst, src, mid+1, hi)
+	sortFloat64sX3(dst, src, lo, mid)
+	sortFloat64sX3(dst, src, mid+1, hi)
 
-	mergeFloat64sX(src, dst, lo, mid, hi)
+	mergeFloat64sX3(src, dst, lo, mid, hi)
 }
-func sortStringsX(src, dst StringCompSlice, lo, hi int) {
+func sortStringsX3(src, dst StringCompSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
 	mid := lo + (hi-lo)/2
-	sortStringsX(dst, src, lo, mid)
-	sortStringsX(dst, src, mid+1, hi)
+	sortStringsX3(dst, src, lo, mid)
+	sortStringsX3(dst, src, mid+1, hi)
 
-	mergeStringsX(src, dst, lo, mid, hi)
+	mergeStringsX3(src, dst, lo, mid, hi)
 }
 
-func mergeIntsX(src, dst IntCompSlice, lo, mid, hi int) {
+func mergeIntsX3(src, dst IntCompSlice, lo, mid, hi int) {
 
 	i, j := lo, mid+1
 
@@ -114,7 +100,7 @@ func mergeIntsX(src, dst IntCompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeFloat64sX(src, dst Float64CompSlice, lo, mid, hi int) {
+func mergeFloat64sX3(src, dst Float64CompSlice, lo, mid, hi int) {
 
 	i, j := lo, mid+1
 
@@ -134,7 +120,7 @@ func mergeFloat64sX(src, dst Float64CompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeStringsX(src, dst StringCompSlice, lo, mid, hi int) {
+func mergeStringsX3(src, dst StringCompSlice, lo, mid, hi int) {
 
 	i, j := lo, mid+1
 
@@ -155,24 +141,15 @@ func mergeStringsX(src, dst StringCompSlice, lo, mid, hi int) {
 	}
 }
 
-// insertion srot
-func insertionSort(x Comparable, lo, hi int) {
-	for i := lo; i <=hi; i++ {
-		for j := i; j > 0 && x.Less(j, j-1); j-- {
-			x.Swap(j, j-1)
-		}
-	}
-}
-
-type MergeX struct{}
+type MergeX3 struct{}
 
 // Implements Sorter
-func (s MergeX) SortInts(x []int) {
-	MergesortX(IntCompSlice(x))
+func (s MergeX3) SortInts(x []int) {
+	MergesortX3(IntCompSlice(x))
 }
-func (s MergeX) SortFloat64s(x []float64) {
-	MergesortX(Float64CompSlice(x))
+func (s MergeX3) SortFloat64s(x []float64) {
+	MergesortX3(Float64CompSlice(x))
 }
-func (s MergeX) SortStrings(x []string) {
-	MergesortX(StringCompSlice(x))
+func (s MergeX3) SortStrings(x []string) {
+	MergesortX3(StringCompSlice(x))
 }

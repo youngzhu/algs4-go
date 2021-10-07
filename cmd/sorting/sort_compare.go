@@ -136,9 +136,9 @@ func init() {
 
 // Merge vs MergeX3
 // go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 -s
-// got: 
+// got: MergeX3 is 48.5 times faster than Merge
 // go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 
-// got: 
+// got: MergeX3 is 52.9 times faster than Merge
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
