@@ -64,32 +64,62 @@ func MergesortX(x Comparable) {
 
 
 func sortIntsX(src, dst IntCompSlice, lo, hi int) {
-	if hi <= lo {
+	// improvment 1. Use insertion sort for small subarrays.
+	if hi <= lo + CUTOFF {
+		insertionSort(dst, lo, hi)
 		return
 	}
+
 	mid := lo + (hi-lo)/2
 	sortIntsX(dst, src, lo, mid)
 	sortIntsX(dst, src, mid+1, hi)
 
+	// improvement 2: Test whether array is already in order.
+	// x[mid+1]>=x[mid]
+	if !src.Less(mid+1, mid) {
+		copy(dst[lo:hi+1], src[lo:hi+1])
+		return
+	}
+
 	mergeIntsX(src, dst, lo, mid, hi)
 }
 func sortFloat64sX(src, dst Float64CompSlice, lo, hi int) {
-	if hi <= lo {
+	// improvment 1. Use insertion sort for small subarrays.
+	if hi <= lo + CUTOFF {
+		insertionSort(dst, lo, hi)
 		return
 	}
+
 	mid := lo + (hi-lo)/2
 	sortFloat64sX(dst, src, lo, mid)
 	sortFloat64sX(dst, src, mid+1, hi)
 
+	// improvement 2: Test whether array is already in order.
+	// x[mid+1]>=x[mid]
+	if !src.Less(mid+1, mid) {
+		copy(dst[lo:hi+1], src[lo:hi+1])
+		return
+	}
+
 	mergeFloat64sX(src, dst, lo, mid, hi)
 }
 func sortStringsX(src, dst StringCompSlice, lo, hi int) {
-	if hi <= lo {
+	// improvment 1. Use insertion sort for small subarrays.
+	if hi <= lo + CUTOFF {
+		insertionSort(dst, lo, hi)
 		return
 	}
+
 	mid := lo + (hi-lo)/2
 	sortStringsX(dst, src, lo, mid)
 	sortStringsX(dst, src, mid+1, hi)
+
+	// improvement 2: Test whether array is already in order.
+	// x[mid+1]>=x[mid]
+	if !src.Less(mid+1, mid) {
+		copy(dst[lo:hi+1], src[lo:hi+1])
+		return
+	}
 
 	mergeStringsX(src, dst, lo, mid, hi)
 }
