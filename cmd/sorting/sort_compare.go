@@ -40,6 +40,7 @@ var algs = map[string] Sorter {
 	"buildin": Buildin{},
 	"shell": Shell{},
 	"merge": Merge{},
+	"mergex1": MergeX1{},
 }
 
 func init() {
@@ -118,6 +119,12 @@ func init() {
 // got: Buildin is 44.3 times faster than Merge
 // go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100
 // got: Buildin is 20.1 times faster than Merge
+
+// Merge vs MergeX1
+// go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 -s
+// got: MergeX1 is 2.31 times faster than Merge
+// go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 
+// got: MergeX1 is 2.82 times faster than Merge
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
@@ -147,7 +154,7 @@ func main() {
 	}
 
 	fmt.Printf("For %d random floats\n   %s is", n, fasterAlg)
-	fmt.Printf(" %.1f times faster than %s\n", slowerTime/fasterTime, slowerAlg)
+	fmt.Printf(" %.2f times faster than %s\n", slowerTime/fasterTime, slowerAlg)
 }
 
 func timeRandomInput(alg string, n, trials int) int64 {
