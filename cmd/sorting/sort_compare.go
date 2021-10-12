@@ -59,99 +59,99 @@ func init() {
 
 // PUT s THE LAST, OTHERWISE n,t GOT 0
 // DO NOT
-// go run sort_compare.go -a1 insertion -a2 selection -s true -n 1000 -t 100
+// cmd: go run sort_compare.go -a1 insertion -a2 selection -s true -n 1000 -t 100
 
 // TEST RESULT
 // insertion vs selection
-// go run sort_compare.go -a1 insertion -a2 selection -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 insertion -a2 selection -n 100 -t 100 -s true
 // result: insertion is 27.7 times faster than selection
-// go run sort_compare.go -a1 insertion -a2 Selection -n 100 -t 100
+// cmd: go run sort_compare.go -a1 insertion -a2 Selection -n 100 -t 100
 // result: insertion is 42.4 times faster than Selection
 
 // insertion vs buildin
-// go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s true
 // result: buildin is 9.8 times faster than insertion
-// go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100
+// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100
 // result: buildin is 5.9 times faster than insertion
 
 // Selection vs Buildin
-// go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s true
 // result: Buildin is 452.9 times faster than Selection
-// go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100
 // result: Buildin is 243.7 times faster than Selection
 
 // Shell vs Selection
-// go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100 -s true
 // got: Shell is 246.4 times faster than Selection
-// go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100
 // got: Shell is 123.3 times faster than Selection
 
 // Shell vs Insertion
-// go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100 -s true
 // got: Shell is 5.9 times faster than Insertion
-// go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100
 // got: Shell is 3.4 times faster than Insertion
 
 // Shell vs Buildin
-// go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 -s true
 // got: Buildin is 1.2 times faster than Shell
-// go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 
 // got: Buildin is 1.8 times faster than Shell
 
 // Merge vs Insetion
-// go run sort_compare.go -a1 Merge -a2 Insertion -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 Insertion -n 100 -t 100 -s
 // got: Insertion is 4.9 times faster than Merge
-// go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100 -s
 // got: Insertion is 4.3 times faster than Merge
-// go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100
 // got: Insertion is 4.2 times faster than Merge
 
 // Merge vs Selection
-// go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 -s
 // got: Merge is 8.4 times faster than Selection
-// go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 Selection -n 100 -t 100 
 // got: Merge is 8.8 times faster than Selection
 
 // Merge vs Shell
-// go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100 -s
 // got: Shell is 42.2 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100
 // got: Shell is 17.3 times faster than Merge
 
 // Merge vs Buildin
-// go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100 -s
 // got: Buildin is 44.3 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100
+// cmd: go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100
 // got: Buildin is 20.1 times faster than Merge
 
 // Merge vs MergeX1
-// go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 -s
 // got: MergeX1 is 2.31 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 
 // got: MergeX1 is 2.82 times faster than Merge
 
 // Merge vs MergeX2
-// go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 -s
 // got: MergeX2 is 114.35 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX2 -n 100 -t 100 
 // got: MergeX2 is 54.61 times faster than Merge
 
 // Merge vs MergeX3
-// go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 -s
 // got: MergeX3 is 48.5 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX3 -n 100 -t 100 
 // got: MergeX3 is 52.9 times faster than Merge
 
 // Merge vs MergeX
-// go run sort_compare.go -a1 Merge -a2 MergeX -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX -n 100 -t 100 -s
 // got: MergeX is 2.6 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 MergeX -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeX -n 100 -t 100 
 // got: MergeX is 3.5 times faster than Merge
 
 // Merge vs MergeBU
-// go run sort_compare.go -a1 Merge -a2 MergeBU -n 100 -t 100 -s
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeBU -n 100 -t 100 -s
 // got: MergeBU is 54.6 times faster than Merge
-// go run sort_compare.go -a1 Merge -a2 MergeBU -n 100 -t 100 
+// cmd: go run sort_compare.go -a1 Merge -a2 MergeBU -n 100 -t 100 
 // got: MergeBU is 55.9 times faster than Merge
 func main() {
 	flag.Parse() // parse the command line into the defined flags
