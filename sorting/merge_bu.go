@@ -1,7 +1,6 @@
 package sorting
 
 import "reflect"
-// import "log"
 
 // Buttom-up mergesort
 // Even though we are thinking in terms of merging together two large subarrays,
