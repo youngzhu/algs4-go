@@ -64,3 +64,14 @@ func BenchmarkMergeX(b *testing.B) {
 		soter.SortInts(a[0:])
 	}
 }
+
+func BenchmarkMergeBU(b *testing.B) {
+	soter := MergeBU{}
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		soter.SortInts(a[0:])
+	}
+}
