@@ -8,7 +8,7 @@
   - [Selection](sorting/selection.go)
   - [Insertion](sorting/insertion.go)
   - [Shell](sorting/shell.go)
-  - Mergesort
+  - Merge
     - [Merge: Top-down Mergesort](sorting/merge.go)
     - [MergeX: Optimized Mergesort](sorting/mergex.go)
     - [MergeBU: Bottom-up Mergesort](sorting/merge_bu.go)
