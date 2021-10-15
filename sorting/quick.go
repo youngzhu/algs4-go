@@ -38,7 +38,7 @@ import "math/rand"
 func Quicksort(x Comparable) {
 	// for (mostly) ordered items, shuffle is important
 	shuffle(x) 
-	
+
 	quicksort(x, 0, x.Len()-1)
 }
 
@@ -105,3 +105,42 @@ func (s Quick) SortFloat64s(x []float64) {
 func (s Quick) SortStrings(x []string) {
 	Quicksort(StringCompSlice(x))
 }
+
+// Implementation details. There are several subtle issues with respect to
+// implementing quicksort that are reflected in this code and worthy of mention.
+
+// 1. Partitioning inplace.
+// If we use an extra array, partitioning is easy to implement, but not so much
+// easier that it is worth the extra cost of copying the partitioned version
+// back into the original.
+
+// 2. Staying in bounds.
+// If the smallest item or the largest item in the array is the partitioning item,
+// we have to take care that the pointers do not run off the left or right ends
+// of the array, respctively.
+
+// 3. Preserving randomness.
+// The random shuffle put the array in random order. Since it treats all items in
+// the subarrays uniformly, this implemention has the property that its two 
+// subarrays are also in random order. This fact is crucial to the algorithm's
+// predictability. An alternate way to preserve randomness is to choose a random
+// item for partitioning within partition().
+
+// 4. Terminating the loop.
+// Properly testing whether the pointers have crossed is a bit tricker than it
+// might seem at first glance. A common error is to fail to take into account
+// that the array might contain other keys with the same value as the partitioning item.
+
+// 5. Handling items with keys equal to the partitioning item's key.
+// It is best to stop the left scan of items with keys greater than or equal to
+// the partitioning item's key and the right scan for items less than or equal to
+// the partitioning item's key. Even though this policy might seem to create
+// unnecessary exchanges involving items wiht keys equal to the partitioning 
+// item's key, it is crucial to avoiding quadratic running time in certain
+// typical applications.
+
+// 6. Terminating the recursion.
+// A commmon mistake in implementing quicksort involves not ensuring that one
+// item is always put into position, then falling into an infinite recursive
+// loop when the partitioning item happens to be the largest or smallest item
+// in the array.
