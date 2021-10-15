@@ -58,43 +58,39 @@ func init() {
 	rand.Seed(time.Now().Unix())
 }
 
-// PUT s THE LAST, OTHERWISE n,t GOT 0
-// DO NOT
-// cmd: go run sort_compare.go -a1 insertion -a2 selection -s true -n 1000 -t 100
-
 // TEST RESULT
 // insertion vs selection
-// cmd: go run sort_compare.go -a1 insertion -a2 selection -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 insertion -a2 selection -n 100 -t 100 -s 
 // result: insertion is 27.7 times faster than selection
 // cmd: go run sort_compare.go -a1 insertion -a2 Selection -n 100 -t 100
 // result: insertion is 42.4 times faster than Selection
 
 // insertion vs buildin
-// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s 
 // result: buildin is 9.8 times faster than insertion
 // cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100
 // result: buildin is 5.9 times faster than insertion
 
 // Selection vs Buildin
-// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s 
 // result: Buildin is 452.9 times faster than Selection
 // cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100
 // result: Buildin is 243.7 times faster than Selection
 
 // Shell vs Selection
-// cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100 -s 
 // got: Shell is 246.4 times faster than Selection
 // cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100
 // got: Shell is 123.3 times faster than Selection
 
 // Shell vs Insertion
-// cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100 -s 
 // got: Shell is 5.9 times faster than Insertion
 // cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100
 // got: Shell is 3.4 times faster than Insertion
 
 // Shell vs Buildin
-// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 -s true
+// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 -s 
 // got: Buildin is 1.2 times faster than Shell
 // cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 
 // got: Buildin is 1.8 times faster than Shell
