@@ -1,5 +1,7 @@
 package sorting
 
+import "math/rand"
+
 // Quicksort is popular because it is not difficult to implement, works well for
 // a variety of different kinds of input data, and is substantially faster than
 // an other sorting method in typical applications. It is in-place (uses only a
@@ -34,7 +36,16 @@ package sorting
 // a[lo] with the rightmost entry of the left subarray (a[j]) and return its index j.
 
 func Quicksort(x Comparable) {
+	// for (mostly) ordered items, shuffle is important
+	shuffle(x) 
+	
 	quicksort(x, 0, x.Len()-1)
+}
+
+func shuffle(x Comparable) {
+	rand.Shuffle(x.Len(), func (i, j int) {
+		x.Swap(i, j)
+	})
 }
 
 // quicksort the subarray from x[lo] to x[hi]

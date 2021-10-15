@@ -45,6 +45,7 @@ var algs = map[string] Sorter {
 	"mergex3": MergeX3{},
 	"mergex": MergeX{},
 	"mergebu": MergeBU{},
+	"quick": Quick{},
 }
 
 func init() {
@@ -153,6 +154,37 @@ func init() {
 // got: MergeBU is 54.6 times faster than Merge
 // cmd: go run sort_compare.go -a1 Merge -a2 MergeBU -n 100 -t 100 
 // got: MergeBU is 55.9 times faster than Merge
+
+// NOTE: following test result about Quicksort is no shuffle 
+// Quick vs Selection
+// cmd: go run sort_compare.go -a1 Quick -a2 Selection -n 1000 -t 100 -s
+// got: Quick is 1.3 times faster than Selection
+// cmd: go run sort_compare.go -a1 Quick -a2 Selection -n 1000 -t 100
+// got: Quick is 20.6 times faster than Selection
+
+// Quick vs Insertion
+// cmd: go run sort_compare.go -a1 Quick -a2 Insertion -n 1000 -t 100 -s
+// got: Insertion is 337.0 times faster than Quick
+// cmd: go run sort_compare.go -a1 Quick -a2 Insertion -n 1000 -t 100
+// got: Quick is 16.6 times faster than Insertion
+
+// Quick vs Shell
+// cmd: go run sort_compare.go -a1 Quick -a2 Shell -n 1000 -t 100 -s
+// got: Shell is 67.4 times faster than Quick
+// cmd: go run sort_compare.go -a1 Quick -a2 Shell -n 1000 -t 100
+// got: Quick is 1.4 times faster than Shell
+
+// Quick vs Merge
+// cmd: go run sort_compare.go -a1 Quick -a2 Merge -n 1000 -t 100 -s
+// got: Merge is 11.5 times faster than Quick
+// cmd: go run sort_compare.go -a1 Quick -a2 Merge -n 1000 -t 100
+// got: Quick is 1.8 times faster than Merge
+
+// Quick vs Buildin
+// cmd: go run sort_compare.go -a1 Quick -a2 Buildin -n 1000 -t 100 -s
+// got: Buildin is 50.0 times faster than Quick
+// cmd: go run sort_compare.go -a1 Quick -a2 Buildin -n 1000 -t 100
+// got: Quick is 1.2 times faster than Buildin
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 
@@ -187,11 +219,13 @@ func main() {
 
 func timeRandomInput(alg string, n, trials int) int64 {
 	var total int64
-	a := make([]float64, n)
+	
 	for t := 0; t < trials; t++ {
+		a := make([]float64, n)
 		for i := 0; i < n; i++ {
-			a = append(a, rand.Float64())
+			a[i] = rand.Float64()
 		}
+		// fmt.Println("round:", t, "len:", len(a))
 		total += timeElapsed(alg, a)
 	}
 	return total 
@@ -199,11 +233,14 @@ func timeRandomInput(alg string, n, trials int) int64 {
 
 func timeSortedInput(alg string, n, trials int) int64 {
 	var total int64
-	a := make([]float64, n)
+	
 	for t := 0; t < trials; t++ {
+		a := make([]float64, n)
 		for i := 0; i < n; i++ {
-			a = append(a, float64(i))
+			a[i] = float64(i)
 		}
+		
+		// fmt.Println("round:", t, "len:", len(a))
 		total += timeElapsed(alg, a)
 	}
 	return total 
