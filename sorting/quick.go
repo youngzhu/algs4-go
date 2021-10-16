@@ -37,6 +37,7 @@ import "math/rand"
 
 func Quicksort(x Comparable) {
 	// for (mostly) ordered items, shuffle is important
+	// see cmd/sorting/sort_compare.go
 	shuffle(x) 
 
 	quicksort(x, 0, x.Len()-1)
