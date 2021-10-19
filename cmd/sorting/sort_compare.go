@@ -46,6 +46,7 @@ var algs = map[string] Sorter {
 	"mergex": MergeX{},
 	"mergebu": MergeBU{},
 	"quick": Quick{},
+	"quick3way": Quick3way{},
 }
 
 func init() {
@@ -181,6 +182,12 @@ func init() {
 // got: Buildin is 50.0 times faster than Quick
 // cmd: go run sort_compare.go -a1 Quick -a2 Buildin -n 1000 -t 100
 // got: Quick is 1.2 times faster than Buildin
+
+// Quick vs Quick3way
+// cmd: go run sort_compare.go -a1 Quick -a2 Quick3way -n 1000 -t 100 -s
+// got: Quick is 1.4 times faster than Quick3way
+// cmd: go run sort_compare.go -a1 Quick -a2 Quick3way -n 1000 -t 100
+// got: Quick is 2.1 times faster than Quick3way
 func main() {
 	flag.Parse() // parse the command line into the defined flags
 

@@ -86,3 +86,14 @@ func BenchmarkQuick(b *testing.B) {
 		soter.SortInts(a[0:])
 	}
 }
+
+func BenchmarkQuick3way(b *testing.B) {
+	soter := Quick3way{}
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		soter.SortInts(a[0:])
+	}
+}
