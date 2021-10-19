@@ -12,8 +12,9 @@
     - [Merge: Top-down Mergesort](sorting/merge.go)
     - [MergeX: Optimized Mergesort](sorting/mergex.go)
     - [MergeBU: Bottom-up Mergesort](sorting/merge_bu.go)
-  - [ ] [Quick](#)
-  - [ ] [Quick3Way](#)
+  - Quick
+    - [Quick](sorting/quick.go)
+    - [Quick3Way](sorting/quick_3way.go)
   - [ ] [MaxPQ](#)
   - [ ] [TopM](#)
   - [ ] [IndexMinPQ](#)
