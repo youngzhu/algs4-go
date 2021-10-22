@@ -19,7 +19,9 @@ func (pq *MaxPQ) Insert(item Item) {
 }
 
 func (pq *MaxPQ) Delete() Item {
-	// if empty ..
+	if pq.IsEmpty() {
+		panic("The priority queue is empty")
+	}
 
 	root := pq.items[1]
 	swap(pq.items, 1, pq.n)
