@@ -56,6 +56,18 @@ func maxSwim(a []Item, k int) {
 	}
 }
 
+func minSwim(a []Item, k int) {
+	for k > 1 {
+		parent := a[k/2]
+		knode := a[k]
+		if parent.CompareTo(knode) <= 0 {
+			break
+		}
+		swap(a, k/2, k)
+		k = k/2
+	}
+}
+
 // Top-down heapify (sink).
 // If the heap order is violated because a node's key becomes smaller than one
 // or both of that node's children's keys, then we can make progress toward fixing
@@ -84,6 +96,31 @@ func maxSink(a []Item, k, n int) {
 
 		swap(a, k, largerChild)
 		k = largerChild
+	}
+
+}
+
+func minSink(a []Item, k, n int) {
+	for 2*k <= n {
+		child := 2*k
+		smallerChild := child
+		if child < n {
+			anotherChild := 2*k+1
+			node1 := a[child]
+			node2 := a[anotherChild]
+			if node1.CompareTo(node2) > 0 {
+				smallerChild = anotherChild
+			}
+		}
+
+		parentNode := a[k]
+		childNode := a[smallerChild]
+		if parentNode.CompareTo(childNode) <= 0 {
+			break
+		}
+
+		swap(a, k, smallerChild)
+		k = smallerChild
 	}
 
 }

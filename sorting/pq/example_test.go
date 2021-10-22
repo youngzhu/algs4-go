@@ -8,7 +8,6 @@ import (
 
 var a = [...]string{"P", "Q", "E", "-", "X", "A", "M", "-", "P", "L", "E", "-"}
 
-
 func ExampleMaxPQ() {
 	pq := NewMaxPQ()
 
@@ -24,4 +23,21 @@ func ExampleMaxPQ() {
 	fmt.Printf("(%d left on pq)", pq.Size())
 
 	// Output: Q X P (6 left on pq)
+}
+
+func ExampleMinPQ() {
+	pq := NewMinPQ()
+
+	for _, item := range a {
+		if item != "-" {
+			pq.Insert(StringItem(item))
+		} else if !pq.IsEmpty() {
+			fmt.Print(pq.Delete(), " ")
+		}
+		
+	}
+
+	fmt.Printf("(%d left on pq)", pq.Size())
+
+	// Output: E A E (6 left on pq)
 }
