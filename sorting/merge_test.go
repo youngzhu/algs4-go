@@ -10,7 +10,7 @@ var intsX2 = [...]int{74, 59, 238, -784, 98, 959, 999, 1000, 6666, 2333, 9999}
 
 func TestMergesortInts(t *testing.T) {
 	data := intsX2
-	x := IntCompSlice(data[0:])
+	x := IntSortSlice(data[0:])
 	Mergesort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", ints)
@@ -20,7 +20,7 @@ func TestMergesortInts(t *testing.T) {
 
 func TestMergesortFloat64s(t *testing.T) {
 	data := float64s
-	x := Float64CompSlice(data[0:])
+	x := Float64SortSlice(data[0:])
 	Mergesort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", float64s)
@@ -30,7 +30,7 @@ func TestMergesortFloat64s(t *testing.T) {
 
 func TestMergesortStrings(t *testing.T) {
 	data := strings
-	x := StringCompSlice(data[0:])
+	x := StringSortSlice(data[0:])
 	Mergesort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", strings)

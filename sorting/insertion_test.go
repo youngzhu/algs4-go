@@ -8,7 +8,7 @@ import (
 
 func TestInsertionSortInts(t *testing.T) {
 	data := ints
-	x := IntCompSlice(data[0:])
+	x := IntSortSlice(data[0:])
 	InsertionSort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", ints)
@@ -18,7 +18,7 @@ func TestInsertionSortInts(t *testing.T) {
 
 func TestInsertionSortFloat64s(t *testing.T) {
 	data := float64s
-	x := Float64CompSlice(data[0:])
+	x := Float64SortSlice(data[0:])
 	InsertionSort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", float64s)
@@ -28,7 +28,7 @@ func TestInsertionSortFloat64s(t *testing.T) {
 
 func TestInsertionSortStrings(t *testing.T) {
 	data := strings
-	x := StringCompSlice(data[0:])
+	x := StringSortSlice(data[0:])
 	InsertionSort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", strings)

@@ -19,30 +19,30 @@ import "reflect"
 func MergesortX1(x Sortable) {
 	n := x.Len()
 
-	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
-	// t := (reflect.TypeOf(x)).Name() // IntCompSlice
+	t := (reflect.TypeOf(x)).String() // sorting.IntSortSlice
+	// t := (reflect.TypeOf(x)).Name() // IntSortSlice
 	// log.Println(t)
 
 	// convert type
 	switch t {
-	case "sorting.IntCompSlice":
-		a := x.(IntCompSlice)
-		aux := make(IntCompSlice, n)
+	case "sorting.IntSortSlice":
+		a := x.(IntSortSlice)
+		aux := make(IntSortSlice, n)
 		sortIntsX1(a, aux, 0, n-1)
-	case "sorting.Float64CompSlice":
-		a := x.(Float64CompSlice)
-		aux := make(Float64CompSlice, n)
+	case "sorting.Float64SortSlice":
+		a := x.(Float64SortSlice)
+		aux := make(Float64SortSlice, n)
 		sortFloat64sX1(a, aux, 0, n-1)
-	case "sorting.StringCompSlice":
-		a := x.(StringCompSlice)
-		aux := make(StringCompSlice, n)
+	case "sorting.StringSortSlice":
+		a := x.(StringSortSlice)
+		aux := make(StringSortSlice, n)
 		sortStringsX1(a, aux, 0, n-1)
 	}
 
 }
 
 // mergesort x[lo..hi] using auxiliary array aux[lo..hi]
-func sortIntsX1(x, aux IntCompSlice, lo, hi int) {
+func sortIntsX1(x, aux IntSortSlice, lo, hi int) {
 	// improvment 1. Use insertion sort for small subarrays.
 	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
@@ -53,7 +53,7 @@ func sortIntsX1(x, aux IntCompSlice, lo, hi int) {
 	sortIntsX1(x, aux, mid+1, hi)
 	mergeIntsX1(x, aux, lo, mid, hi)
 }
-func sortFloat64sX1(x, aux Float64CompSlice, lo, hi int) {
+func sortFloat64sX1(x, aux Float64SortSlice, lo, hi int) {
 	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
@@ -63,7 +63,7 @@ func sortFloat64sX1(x, aux Float64CompSlice, lo, hi int) {
 	sortFloat64sX1(x, aux, mid+1, hi)
 	mergeFloat64sX1(x, aux, lo, mid, hi)
 }
-func sortStringsX1(x, aux StringCompSlice, lo, hi int) {
+func sortStringsX1(x, aux StringSortSlice, lo, hi int) {
 	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
@@ -75,7 +75,7 @@ func sortStringsX1(x, aux StringCompSlice, lo, hi int) {
 }
 
 // stably merge x[lo..mid] with a[mid+1..hi] using aux[lo..hi]
-func mergeIntsX1(x, aux IntCompSlice, lo, mid, hi int) {
+func mergeIntsX1(x, aux IntSortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -99,7 +99,7 @@ func mergeIntsX1(x, aux IntCompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeFloat64sX1(x, aux Float64CompSlice, lo, mid, hi int) {
+func mergeFloat64sX1(x, aux Float64SortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -123,7 +123,7 @@ func mergeFloat64sX1(x, aux Float64CompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeStringsX1(x, aux StringCompSlice, lo, mid, hi int) {
+func mergeStringsX1(x, aux StringSortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -152,11 +152,11 @@ type MergeX1 struct{}
 
 // Implements Sorter
 func (s MergeX1) SortInts(x []int) {
-	MergesortX1(IntCompSlice(x))
+	MergesortX1(IntSortSlice(x))
 }
 func (s MergeX1) SortFloat64s(x []float64) {
-	MergesortX1(Float64CompSlice(x))
+	MergesortX1(Float64SortSlice(x))
 }
 func (s MergeX1) SortStrings(x []string) {
-	MergesortX1(StringCompSlice(x))
+	MergesortX1(StringSortSlice(x))
 }

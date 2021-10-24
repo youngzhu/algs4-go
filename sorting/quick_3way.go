@@ -67,11 +67,11 @@ type Quick3way struct{}
 
 // Implements Sorter
 func (s Quick3way) SortInts(x []int) {
-	Quicksort3way(IntCompSlice(x))
+	Quicksort3way(IntSortSlice(x))
 }
 func (s Quick3way) SortFloat64s(x []float64) {
-	Quicksort3way(Float64CompSlice(x))
+	Quicksort3way(Float64SortSlice(x))
 }
 func (s Quick3way) SortStrings(x []string) {
-	Quicksort3way(StringCompSlice(x))
+	Quicksort3way(StringSortSlice(x))
 }

@@ -24,11 +24,11 @@ type Selection struct{}
 
 // Implements Sorter
 func (s Selection) SortInts(x []int) {
-	SelectionSort(IntCompSlice(x))
+	SelectionSort(IntSortSlice(x))
 }
 func (s Selection) SortFloat64s(x []float64) {
-	SelectionSort(Float64CompSlice(x))
+	SelectionSort(Float64SortSlice(x))
 }
 func (s Selection) SortStrings(x []string) {
-	SelectionSort(StringCompSlice(x))
+	SelectionSort(StringSortSlice(x))
 }

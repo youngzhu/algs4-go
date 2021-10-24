@@ -40,11 +40,11 @@ type Shell struct{}
 
 // Implements Sorter
 func (s Shell) SortInts(x []int) {
-	Shellsort(IntCompSlice(x))
+	Shellsort(IntSortSlice(x))
 }
 func (s Shell) SortFloat64s(x []float64) {
-	Shellsort(Float64CompSlice(x))
+	Shellsort(Float64SortSlice(x))
 }
 func (s Shell) SortStrings(x []string) {
-	Shellsort(StringCompSlice(x))
+	Shellsort(StringSortSlice(x))
 }

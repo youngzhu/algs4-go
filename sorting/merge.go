@@ -18,30 +18,30 @@ import "reflect"
 func Mergesort(x Sortable) {
 	n := x.Len()
 
-	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
-	// t := (reflect.TypeOf(x)).Name() // IntCompSlice
+	t := (reflect.TypeOf(x)).String() // sorting.IntSortSlice
+	// t := (reflect.TypeOf(x)).Name() // IntSortSlice
 	// log.Println(t)
 
 	// convert type
 	switch t {
-	case "sorting.IntCompSlice":
-		a := x.(IntCompSlice)
-		aux := make(IntCompSlice, n)
+	case "sorting.IntSortSlice":
+		a := x.(IntSortSlice)
+		aux := make(IntSortSlice, n)
 		sortInts(a, aux, 0, n-1)
-	case "sorting.Float64CompSlice":
-		a := x.(Float64CompSlice)
-		aux := make(Float64CompSlice, n)
+	case "sorting.Float64SortSlice":
+		a := x.(Float64SortSlice)
+		aux := make(Float64SortSlice, n)
 		sortFloat64s(a, aux, 0, n-1)
-	case "sorting.StringCompSlice":
-		a := x.(StringCompSlice)
-		aux := make(StringCompSlice, n)
+	case "sorting.StringSortSlice":
+		a := x.(StringSortSlice)
+		aux := make(StringSortSlice, n)
 		sortStrings(a, aux, 0, n-1)
 	}
 
 }
 
 // mergesort x[lo..hi] using auxiliary array aux[lo..hi]
-func sortInts(x, aux IntCompSlice, lo, hi int) {
+func sortInts(x, aux IntSortSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
@@ -50,7 +50,7 @@ func sortInts(x, aux IntCompSlice, lo, hi int) {
 	sortInts(x, aux, mid+1, hi)
 	mergeInts(x, aux, lo, mid, hi)
 }
-func sortFloat64s(x, aux Float64CompSlice, lo, hi int) {
+func sortFloat64s(x, aux Float64SortSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
@@ -59,7 +59,7 @@ func sortFloat64s(x, aux Float64CompSlice, lo, hi int) {
 	sortFloat64s(x, aux, mid+1, hi)
 	mergeFloat64s(x, aux, lo, mid, hi)
 }
-func sortStrings(x, aux StringCompSlice, lo, hi int) {
+func sortStrings(x, aux StringSortSlice, lo, hi int) {
 	if hi <= lo {
 		return
 	}
@@ -77,7 +77,7 @@ func sortStrings(x, aux StringCompSlice, lo, hi int) {
 // to an auxiliary array and then merges back to the original.
 
 // stably merge x[lo..mid] with a[mid+1..hi] using aux[lo..hi]
-func mergeInts(x, aux IntCompSlice, lo, mid, hi int) {
+func mergeInts(x, aux IntSortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -101,7 +101,7 @@ func mergeInts(x, aux IntCompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeFloat64s(x, aux Float64CompSlice, lo, mid, hi int) {
+func mergeFloat64s(x, aux Float64SortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -125,7 +125,7 @@ func mergeFloat64s(x, aux Float64CompSlice, lo, mid, hi int) {
 		}
 	}
 }
-func mergeStrings(x, aux StringCompSlice, lo, mid, hi int) {
+func mergeStrings(x, aux StringSortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
 
@@ -154,11 +154,11 @@ type Merge struct{}
 
 // Implements Sorter
 func (s Merge) SortInts(x []int) {
-	Mergesort(IntCompSlice(x))
+	Mergesort(IntSortSlice(x))
 }
 func (s Merge) SortFloat64s(x []float64) {
-	Mergesort(Float64CompSlice(x))
+	Mergesort(Float64SortSlice(x))
 }
 func (s Merge) SortStrings(x []string) {
-	Mergesort(StringCompSlice(x))
+	Mergesort(StringSortSlice(x))
 }

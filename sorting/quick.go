@@ -98,13 +98,13 @@ type Quick struct{}
 
 // Implements Sorter
 func (s Quick) SortInts(x []int) {
-	Quicksort(IntCompSlice(x))
+	Quicksort(IntSortSlice(x))
 }
 func (s Quick) SortFloat64s(x []float64) {
-	Quicksort(Float64CompSlice(x))
+	Quicksort(Float64SortSlice(x))
 }
 func (s Quick) SortStrings(x []string) {
-	Quicksort(StringCompSlice(x))
+	Quicksort(StringSortSlice(x))
 }
 
 // Implementation details. There are several subtle issues with respect to

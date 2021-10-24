@@ -8,7 +8,7 @@ import (
 
 func TestShellsortInts(t *testing.T) {
 	data := ints
-	x := IntCompSlice(data[0:])
+	x := IntSortSlice(data[0:])
 	Shellsort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", ints)
@@ -18,7 +18,7 @@ func TestShellsortInts(t *testing.T) {
 
 func TestShellsortFloat64s(t *testing.T) {
 	data := float64s
-	x := Float64CompSlice(data[0:])
+	x := Float64SortSlice(data[0:])
 	Shellsort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", float64s)
@@ -28,7 +28,7 @@ func TestShellsortFloat64s(t *testing.T) {
 
 func TestShellsortStrings(t *testing.T) {
 	data := strings
-	x := StringCompSlice(data[0:])
+	x := StringSortSlice(data[0:])
 	Shellsort(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", strings)

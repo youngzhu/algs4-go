@@ -8,7 +8,7 @@ import (
 
 func TestQuicksort3wayInts(t *testing.T) {
 	data := ints
-	x := IntCompSlice(data[0:])
+	x := IntSortSlice(data[0:])
 	Quicksort3way(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", ints)
@@ -18,7 +18,7 @@ func TestQuicksort3wayInts(t *testing.T) {
 
 func TestQuicksort3wayFloat64s(t *testing.T) {
 	data := float64s
-	x := Float64CompSlice(data[0:])
+	x := Float64SortSlice(data[0:])
 	Quicksort3way(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", float64s)
@@ -28,7 +28,7 @@ func TestQuicksort3wayFloat64s(t *testing.T) {
 
 func TestQuicksort3wayStrings(t *testing.T) {
 	data := strings
-	x := StringCompSlice(data[0:])
+	x := StringSortSlice(data[0:])
 	Quicksort3way(x)
 	if !IsSorted(x) {
 		t.Errorf("sorting %v", strings)

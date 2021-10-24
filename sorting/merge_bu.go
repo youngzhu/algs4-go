@@ -15,26 +15,26 @@ import "reflect"
 
 func MergesortBU(x Sortable) {
 
-	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
-	// t := (reflect.TypeOf(x)).Name() // IntCompSlice
+	t := (reflect.TypeOf(x)).String() // sorting.IntSortSlice
+	// t := (reflect.TypeOf(x)).Name() // IntSortSlice
 
 	// convert type
 	switch t {
-	case "sorting.IntCompSlice":
-		a := x.(IntCompSlice)
+	case "sorting.IntSortSlice":
+		a := x.(IntSortSlice)
 		sortIntsBU(a)
-	case "sorting.Float64CompSlice":
-		a := x.(Float64CompSlice)
+	case "sorting.Float64SortSlice":
+		a := x.(Float64SortSlice)
 		sortFloat64sBU(a)
-	case "sorting.StringCompSlice":
-		a := x.(StringCompSlice)
+	case "sorting.StringSortSlice":
+		a := x.(StringSortSlice)
 		sortStringsBU(a)
 	}
 }
 
-func sortIntsBU(x IntCompSlice) {
+func sortIntsBU(x IntSortSlice) {
 	n := x.Len()
-	aux := make(IntCompSlice, n)
+	aux := make(IntSortSlice, n)
 	for len := 1; len < n; len *= 2 {
 		for lo := 0; lo < n-len; lo += len * 2 {
 			mid := lo + len - 1
@@ -44,7 +44,7 @@ func sortIntsBU(x IntCompSlice) {
 	}
 }
 
-func mergeIntsBU(x, aux IntCompSlice, lo, mid, hi int) {
+func mergeIntsBU(x, aux IntSortSlice, lo, mid, hi int) {
 	// copy to aux
 	copy(aux[lo:hi+1], x[lo:hi+1])
 
@@ -67,9 +67,9 @@ func mergeIntsBU(x, aux IntCompSlice, lo, mid, hi int) {
 	}
 }
 
-func sortFloat64sBU(x Float64CompSlice) {
+func sortFloat64sBU(x Float64SortSlice) {
 	n := x.Len()
-	aux := make(Float64CompSlice, n)
+	aux := make(Float64SortSlice, n)
 	for len := 1; len < n; len *= 2 {
 		for lo := 0; lo < n-len; lo += len * 2 {
 			mid := lo + len - 1
@@ -79,7 +79,7 @@ func sortFloat64sBU(x Float64CompSlice) {
 	}
 }
 
-func mergeFloat64sBU(x, aux Float64CompSlice, lo, mid, hi int) {
+func mergeFloat64sBU(x, aux Float64SortSlice, lo, mid, hi int) {
 	// copy to aux
 	copy(aux[lo:hi+1], x[lo:hi+1])
 
@@ -102,9 +102,9 @@ func mergeFloat64sBU(x, aux Float64CompSlice, lo, mid, hi int) {
 	}
 }
 
-func sortStringsBU(x StringCompSlice) {
+func sortStringsBU(x StringSortSlice) {
 	n := x.Len()
-	aux := make(StringCompSlice, n)
+	aux := make(StringSortSlice, n)
 	for len := 1; len < n; len *= 2 {
 		for lo := 0; lo < n-len; lo += len * 2 {
 			mid := lo + len - 1
@@ -114,7 +114,7 @@ func sortStringsBU(x StringCompSlice) {
 	}
 }
 
-func mergeStringsBU(x, aux StringCompSlice, lo, mid, hi int) {
+func mergeStringsBU(x, aux StringSortSlice, lo, mid, hi int) {
 	// copy to aux
 	copy(aux[lo:hi+1], x[lo:hi+1])
 
@@ -148,11 +148,11 @@ type MergeBU struct{}
 
 // Implements Sorter
 func (s MergeBU) SortInts(x []int) {
-	MergesortBU(IntCompSlice(x))
+	MergesortBU(IntSortSlice(x))
 }
 func (s MergeBU) SortFloat64s(x []float64) {
-	MergesortBU(Float64CompSlice(x))
+	MergesortBU(Float64SortSlice(x))
 }
 func (s MergeBU) SortStrings(x []string) {
-	MergesortBU(StringCompSlice(x))
+	MergesortBU(StringSortSlice(x))
 }

@@ -32,7 +32,7 @@ func IsSorted(data Sortable) bool {
 	return true
 }
 func IsSortedInts(data []int) bool {
-	return IsSorted(IntCompSlice(data[0:]))
+	return IsSorted(IntSortSlice(data[0:]))
 }
 
 // Convenience types for common cases
@@ -40,31 +40,31 @@ func IsSortedInts(data []int) bool {
 type (
 	// Attaches the methods of Sortable to []int
 	// sorting in increasing order
-	IntCompSlice []int
+	IntSortSlice []int
 
 	// Implements Sortable for a []folat64
 	// sorting in increasing order
 	// with not-a-number (NaN) values ordered before other values
-	Float64CompSlice []float64
+	Float64SortSlice []float64
 
 	// Attaches the methods of Sortable to []string
 	// sorting in increasing order
-	StringCompSlice []string
+	StringSortSlice []string
 )
 
-// IntCompSlice implements
-func (x IntCompSlice) Len() int {
+// IntSortSlice implements
+func (x IntSortSlice) Len() int {
 	return len(x)
 }
-func (x IntCompSlice) Less(i, j int) bool {
+func (x IntSortSlice) Less(i, j int) bool {
 	return x[i] < x[j]
 }
-func (x IntCompSlice) Swap(i, j int) {
+func (x IntSortSlice) Swap(i, j int) {
 	x[i], x[j] = x[j], x[i]
 }
 
-// Float64CompSlice implements
-func (x Float64CompSlice) Len() int {
+// Float64SortSlice implements
+func (x Float64SortSlice) Len() int {
 	return len(x)
 }
 
@@ -74,10 +74,10 @@ func (x Float64CompSlice) Len() int {
 //
 // x[i] < x[j] || (math.IsNaN(x[i]) && !math.IsNaN(x[j]))
 //
-func (x Float64CompSlice) Less(i, j int) bool {
+func (x Float64SortSlice) Less(i, j int) bool {
 	return x[i] < x[j] || (isNaN(x[i]) && !isNaN(x[j]))
 }
-func (x Float64CompSlice) Swap(i, j int) {
+func (x Float64SortSlice) Swap(i, j int) {
 	x[i], x[j] = x[j], x[i]
 }
 
@@ -86,13 +86,13 @@ func isNaN(f float64) bool {
 	return f != f
 }
 
-// StringCompSlice implements
-func (x StringCompSlice) Len() int {
+// StringSortSlice implements
+func (x StringSortSlice) Len() int {
 	return len(x)
 }
-func (x StringCompSlice) Less(i, j int) bool {
+func (x StringSortSlice) Less(i, j int) bool {
 	return x[i] < x[j]
 }
-func (x StringCompSlice) Swap(i, j int) {
+func (x StringSortSlice) Swap(i, j int) {
 	x[i], x[j] = x[j], x[i]
 }

@@ -20,11 +20,11 @@ type Insertion struct{}
 
 // Implements Sorter
 func (s Insertion) SortInts(x []int) {
-	InsertionSort(IntCompSlice(x))
+	InsertionSort(IntSortSlice(x))
 }
 func (s Insertion) SortFloat64s(x []float64) {
-	InsertionSort(Float64CompSlice(x))
+	InsertionSort(Float64SortSlice(x))
 }
 func (s Insertion) SortStrings(x []string) {
-	InsertionSort(StringCompSlice(x))
+	InsertionSort(StringSortSlice(x))
 }
