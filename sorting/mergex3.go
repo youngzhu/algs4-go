@@ -8,7 +8,6 @@ import "reflect"
 // We can cut the running time of mergesort substantially with some
 // carefully considered modifications to the implementation.
 
-
 // 3. Eliminate the copy to the auxiliary array.
 // It is possible to eliminate the time (but not the space) taken
 // to copy to the auxiliary array used for merging. To do so, we
@@ -20,7 +19,7 @@ import "reflect"
 // recursive calls such that the computation switchs the roles of
 // the input array and the auxiliary at each level.
 
-func MergesortX3(x Comparable) {
+func MergesortX3(x Sortable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
@@ -47,7 +46,6 @@ func MergesortX3(x Comparable) {
 	}
 
 }
-
 
 func sortIntsX3(src, dst IntCompSlice, lo, hi int) {
 	if hi <= lo {

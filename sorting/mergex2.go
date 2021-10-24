@@ -9,14 +9,13 @@ import "reflect"
 // carefully considered modifications to the implementation.
 
 // 2. Test whether array is already in order.
-// We can reduce the running time to be linear for arrays that 
-// already in order by adding a test to skip call to merge() 
+// We can reduce the running time to be linear for arrays that
+// already in order by adding a test to skip call to merge()
 // if a[mid] is less than or equal to a[mid+1]. With this change,
 // we still do all the recursive calls, but the running time for
 // any sorted subarray is linear.
 
-
-func MergesortX2(x Comparable) {
+func MergesortX2(x Sortable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
@@ -55,7 +54,7 @@ func sortIntsX2(x, aux IntCompSlice, lo, hi int) {
 	if !x.Less(mid+1, mid) {
 		return
 	}
-	
+
 	mergeIntsX2(x, aux, lo, mid, hi)
 }
 func sortFloat64sX2(x, aux Float64CompSlice, lo, hi int) {

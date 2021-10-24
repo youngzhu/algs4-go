@@ -7,7 +7,7 @@ package sorting
 
 // This method is called selection sort because it works by repeatedly selecting
 // the smallest remaining items
-func SelectionSort(x Comparable) {
+func SelectionSort(x Sortable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
 		min := i

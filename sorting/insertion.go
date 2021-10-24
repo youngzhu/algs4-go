@@ -7,7 +7,7 @@ package sorting
 // In a computer implementation, we need to make space for the current item by moving
 // larger items one position to the right, before inserting the current item into the
 // vacated position
-func InsertionSort(x Comparable) {
+func InsertionSort(x Sortable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
 		for j := i; j > 0 && x.Less(j, j-1); j-- {

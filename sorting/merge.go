@@ -1,6 +1,7 @@
 package sorting
 
 import "reflect"
+
 // import "log"
 
 // Merging: combining two ordered arrays to make one larger ordered array.
@@ -14,7 +15,7 @@ import "reflect"
 
 // Top-down mergesort. It is one of the best-known examples of utility of the
 // divide-and-conquer paradigm for efficient algorithm design.
-func Mergesort(x Comparable) {
+func Mergesort(x Sortable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice

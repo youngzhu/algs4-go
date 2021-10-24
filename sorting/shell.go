@@ -9,7 +9,7 @@ package sorting
 // By h-sorting for some large values of h, we can move entries in the array long distances
 // and thus make it easier to h-sort for smaller values of h. Using such a procedure for any
 // increment sequence of values of h that ends in 1 will produce a sorted array: that is shellsort.
-func Shellsort(x Comparable) {
+func Shellsort(x Sortable) {
 	n := x.Len()
 
 	// 3h+1 increment sequence: 1, 4, 13, 40, 121...

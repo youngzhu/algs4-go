@@ -1,9 +1,9 @@
 package sorting
 
 // See Go src sort.Interface
-// An implementation of Comparable can be sorted by the routines in this package.
+// An implementation of Sortable can be sorted by the routines in this package.
 // The methods refer to elements of the underlying collection by integer index.
-type Comparable interface {
+type Sortable interface {
 	// The number of elements in the collection
 	Len() int
 
@@ -22,7 +22,7 @@ type Sorter interface {
 }
 
 // Reports whether data is sorted
-func IsSorted(data Comparable) bool {
+func IsSorted(data Sortable) bool {
 	n := data.Len()
 	for i := n - 1; i > 0; i-- {
 		if data.Less(i, i-1) {
@@ -38,16 +38,16 @@ func IsSortedInts(data []int) bool {
 // Convenience types for common cases
 
 type (
-	// Attaches the methods of Comparable to []int
+	// Attaches the methods of Sortable to []int
 	// sorting in increasing order
 	IntCompSlice []int
 
-	// Implements Comparable for a []folat64
+	// Implements Sortable for a []folat64
 	// sorting in increasing order
 	// with not-a-number (NaN) values ordered before other values
 	Float64CompSlice []float64
 
-	// Attaches the methods of Comparable to []string
+	// Attaches the methods of Sortable to []string
 	// sorting in increasing order
 	StringCompSlice []string
 )

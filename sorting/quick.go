@@ -12,7 +12,7 @@ import "math/rand"
 // Quicksort is a divide-and-conquer method for soring. It works by partitioning
 // an array into two parts, then soring the parts independently.
 
-// The crux of the method is the partitioning process, which rearranges the 
+// The crux of the method is the partitioning process, which rearranges the
 // array to make the following three conditions hold:
 // 1. The entry a[j] is in its final place in the array, for some j
 // 2. No entry in a[lo] through a[j-1] is greater than a[j]
@@ -35,22 +35,22 @@ import "math/rand"
 // do to complete the partitioning process is to exchange the partitioning item
 // a[lo] with the rightmost entry of the left subarray (a[j]) and return its index j.
 
-func Quicksort(x Comparable) {
+func Quicksort(x Sortable) {
 	// for (mostly) ordered items, shuffle is important
 	// see cmd/sorting/sort_compare.go
-	shuffle(x) 
+	shuffle(x)
 
 	quicksort(x, 0, x.Len()-1)
 }
 
-func shuffle(x Comparable) {
-	rand.Shuffle(x.Len(), func (i, j int) {
+func shuffle(x Sortable) {
+	rand.Shuffle(x.Len(), func(i, j int) {
 		x.Swap(i, j)
 	})
 }
 
 // quicksort the subarray from x[lo] to x[hi]
-func quicksort(x Comparable, lo, hi int) {
+func quicksort(x Sortable, lo, hi int) {
 	if hi <= lo {
 		return
 	}
@@ -62,7 +62,7 @@ func quicksort(x Comparable, lo, hi int) {
 // partition the subarray x[lo..hi]
 // so that x[lo..j-1] <= x[j] <= x[j+1..hi]
 // and return the index j
-func partition(x Comparable, lo, hi int) int {
+func partition(x Sortable, lo, hi int) int {
 	i, j := lo+1, hi
 
 	for {
@@ -122,7 +122,7 @@ func (s Quick) SortStrings(x []string) {
 
 // 3. Preserving randomness.
 // The random shuffle put the array in random order. Since it treats all items in
-// the subarrays uniformly, this implemention has the property that its two 
+// the subarrays uniformly, this implemention has the property that its two
 // subarrays are also in random order. This fact is crucial to the algorithm's
 // predictability. An alternate way to preserve randomness is to choose a random
 // item for partitioning within partition().
@@ -136,7 +136,7 @@ func (s Quick) SortStrings(x []string) {
 // It is best to stop the left scan of items with keys greater than or equal to
 // the partitioning item's key and the right scan for items less than or equal to
 // the partitioning item's key. Even though this policy might seem to create
-// unnecessary exchanges involving items wiht keys equal to the partitioning 
+// unnecessary exchanges involving items wiht keys equal to the partitioning
 // item's key, it is crucial to avoiding quadratic running time in certain
 // typical applications.
 

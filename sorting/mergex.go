@@ -15,8 +15,8 @@ import "reflect"
 // 10 to 15 percent.
 
 // 2. Test whether array is already in order.
-// We can reduce the running time to be linear for arrays that 
-// already in order by adding a test to skip call to merge() 
+// We can reduce the running time to be linear for arrays that
+// already in order by adding a test to skip call to merge()
 // if a[mid] is less than or equal to a[mid+1]. With this change,
 // we still do all the recursive calls, but the running time for
 // any sorted subarray is linear.
@@ -34,7 +34,7 @@ import "reflect"
 
 const CUTOFF int = 14 // cutoff to insertion sort
 
-func MergesortX(x Comparable) {
+func MergesortX(x Sortable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
@@ -62,10 +62,9 @@ func MergesortX(x Comparable) {
 
 }
 
-
 func sortIntsX(src, dst IntCompSlice, lo, hi int) {
 	// improvment 1. Use insertion sort for small subarrays.
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(dst, lo, hi)
 		return
 	}
@@ -85,7 +84,7 @@ func sortIntsX(src, dst IntCompSlice, lo, hi int) {
 }
 func sortFloat64sX(src, dst Float64CompSlice, lo, hi int) {
 	// improvment 1. Use insertion sort for small subarrays.
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(dst, lo, hi)
 		return
 	}
@@ -105,7 +104,7 @@ func sortFloat64sX(src, dst Float64CompSlice, lo, hi int) {
 }
 func sortStringsX(src, dst StringCompSlice, lo, hi int) {
 	// improvment 1. Use insertion sort for small subarrays.
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(dst, lo, hi)
 		return
 	}
@@ -186,8 +185,8 @@ func mergeStringsX(src, dst StringCompSlice, lo, mid, hi int) {
 }
 
 // insertion srot
-func insertionSort(x Comparable, lo, hi int) {
-	for i := lo; i <=hi; i++ {
+func insertionSort(x Sortable, lo, hi int) {
+	for i := lo; i <= hi; i++ {
 		for j := i; j > 0 && x.Less(j, j-1); j-- {
 			x.Swap(j, j-1)
 		}

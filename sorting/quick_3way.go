@@ -17,19 +17,19 @@ package sorting
 // such that a[gt+1..hi] is greater than v, and a pointer i such that a[lt..i-1]
 // are equal to v, and a[i..gt] are not yet examined.
 
-func Quicksort3way(x Comparable) {
+func Quicksort3way(x Sortable) {
 	// for (mostly) ordered items, shuffle is important
-	shuffle(x) 
+	shuffle(x)
 
 	quicksort3way(x, 0, x.Len()-1)
 }
 
 // quicksort the subarray from x[lo] to x[hi] using 3-way partitioning
-func quicksort3way(x Comparable, lo, hi int) {
+func quicksort3way(x Sortable, lo, hi int) {
 	if hi <= lo {
 		return
 	}
-	
+
 	lt, gt := partition3way(x, lo, hi)
 
 	// x[lo..lt-1] < a[lt..gt] < a[gt+1..hi]
@@ -42,8 +42,8 @@ func quicksort3way(x Comparable, lo, hi int) {
 // a[i] less than v: exchange a[lt] with a[i] and increment both lt and i
 // a[i] greater then v: exchange a[i] with a[gt] and decrement gt
 // a[i] equal to v: increment i
-func partition3way(x Comparable, lo, hi int) (int, int) {
-	i := lo+1
+func partition3way(x Sortable, lo, hi int) (int, int) {
+	i := lo + 1
 	lt, gt := lo, hi
 
 	// x[lt] === x[lo]

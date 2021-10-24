@@ -16,7 +16,7 @@ import "reflect"
 
 // See sort_compare.go
 
-func MergesortX1(x Comparable) {
+func MergesortX1(x Sortable) {
 	n := x.Len()
 
 	t := (reflect.TypeOf(x)).String() // sorting.IntCompSlice
@@ -44,7 +44,7 @@ func MergesortX1(x Comparable) {
 // mergesort x[lo..hi] using auxiliary array aux[lo..hi]
 func sortIntsX1(x, aux IntCompSlice, lo, hi int) {
 	// improvment 1. Use insertion sort for small subarrays.
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
 	}
@@ -54,7 +54,7 @@ func sortIntsX1(x, aux IntCompSlice, lo, hi int) {
 	mergeIntsX1(x, aux, lo, mid, hi)
 }
 func sortFloat64sX1(x, aux Float64CompSlice, lo, hi int) {
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
 	}
@@ -64,7 +64,7 @@ func sortFloat64sX1(x, aux Float64CompSlice, lo, hi int) {
 	mergeFloat64sX1(x, aux, lo, mid, hi)
 }
 func sortStringsX1(x, aux StringCompSlice, lo, hi int) {
-	if hi <= lo + CUTOFF {
+	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
 	}
