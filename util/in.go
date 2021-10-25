@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Read numbers and text from file
+// Reads in data of various types from standard input, files and URLs.
 
 type In struct {
 	scanner *bufio.Scanner
