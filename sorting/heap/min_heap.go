@@ -1,7 +1,5 @@
 package heap
 
-import "log"
-
 type MinHeap struct {
 	maxN  int // maximum number of elements
 	n     int // number of elements
@@ -26,8 +24,8 @@ func (h *MinHeap) Remove() Comparable {
 
 	item := h.GetHighestPriority()
 	h.swap(0, h.n-1)
+	h.n-- // before sink
 	h.Sink(0)
-	h.n--
 
 	return item
 }
@@ -50,14 +48,14 @@ func (h *MinHeap) Sink(p int) {
 	// if swap and further sink is needed
 	if h.less(smallerChild, p) {
 		h.swap(smallerChild, p)
-		h.Sink(p)
+		h.Sink(smallerChild)
 	}
 
 }
 
 func (h *MinHeap) Swim(c int) {
 	parent := h.GetParentIndex(c, h.n)
-	log.Printf("%v, value:%v", parent, h.items[c])
+
 	if parent != -1 && h.less(c, parent) {
 		h.swap(c, parent)
 		h.Swim(parent)
@@ -113,7 +111,7 @@ func (h *MinHeap) swap(i, j int) {
 }
 
 func NewMinHeap() *MinHeap {
-	items := make([]Comparable, DefaultMaxSize)
+	items := make([]Comparable, defaultMaxSize)
 
-	return &MinHeap{DefaultMaxSize, 0, items, NewBinaryHeap()}
+	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeap()}
 }
