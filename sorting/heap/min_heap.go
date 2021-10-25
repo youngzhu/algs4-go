@@ -17,7 +17,7 @@ func (h *MinHeap) Insert(item Comparable) {
 	h.items[lastLeaf+1] = item
 	h.Swim(lastLeaf+1, lastLeaf+1)
 
-	h.n++ // after swim
+	h.n++
 }
 
 func (h *MinHeap) Remove() Comparable {
@@ -30,10 +30,9 @@ func (h *MinHeap) Remove() Comparable {
 	lastLeaf := h.GetLastLeafIndex(h.n)
 
 	h.swap(root, lastLeaf)
-
 	h.Sink(root, lastLeaf-1)
 
-	h.n-- // before sink
+	h.n--
 
 	return item
 }
