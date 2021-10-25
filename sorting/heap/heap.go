@@ -18,7 +18,8 @@ type Heap interface {
 const defaultMaxSize = 40
 
 type (
-	IntItem int
+	IntItem    int
+	StringItem string
 )
 
 func (i IntItem) CompareTo(x Comparable) int {
@@ -26,6 +27,17 @@ func (i IntItem) CompareTo(x Comparable) int {
 	if i < ii {
 		return -1
 	} else if i > ii {
+		return 1
+	} else {
+		return 0
+	}
+}
+
+func (s StringItem) CompareTo(other Comparable) int {
+	ss := other.(StringItem)
+	if s < ss {
+		return -1
+	} else if s > ss {
 		return 1
 	} else {
 		return 0
