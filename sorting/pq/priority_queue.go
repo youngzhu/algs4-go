@@ -21,16 +21,16 @@ type PriorityQueue interface {
 // a unique integer index with each item.
 type IndexPQ interface {
 	// insert item, associate it with k
-	Insert(int k, item Item)
+	Insert(k int, item Item)
 
 	// update the item associated with k to item
-	Update(int k, item Item)
+	Update(k int, item Item)
 
 	// is k associated with any item?
-	Contains(int k) bool
+	Contains(k int) bool
 
 	// remove k and its associated item
-	Delete(int k)
+	Delete(k int)
 
 	// is the priority queue empty?
 	IsEmpty() bool

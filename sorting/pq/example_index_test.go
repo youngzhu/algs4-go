@@ -1,9 +1,9 @@
 package pq_test
 
 import (
-	"fmt"
+	//"fmt"
 
-	"github.com/youngzhu/algs4-go/sorting/pq"
+	// "github.com/youngzhu/algs4-go/sorting/pq"
 )
 
 // Multiway

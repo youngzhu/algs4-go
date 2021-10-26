@@ -1,5 +1,5 @@
 package pq
-
+/*
 // Minimum-oriented indexed PQ implementation using a binary heap.
 type MinIndexPQ struct {
 	maxN int // maximum number of elements on PQ
@@ -87,3 +87,4 @@ func validateIndex(idx, max int) {
 		panic("index >= capacity:" + idx)
 	}
 }
+*/
