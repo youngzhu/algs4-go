@@ -3,7 +3,7 @@ package pq_test
 import (
 	"fmt"
 
-	. "github.com/youngzhu/algs4-go/sorting/pq"
+	"github.com/youngzhu/algs4-go/sorting/pq"
 )
 
 var a = [...]string{"P", "Q", "E", "-", "X", "A", "M", "-", "P", "L", "E", "-"}

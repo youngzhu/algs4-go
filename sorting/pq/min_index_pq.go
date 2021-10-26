@@ -11,7 +11,7 @@ type MinIndexPQ struct {
 
 func NewMinIndexPQ(maxN int) *MinIndexPQ {
 	pq := make([]int, maxN+1)
-	qp := make([]int, maxN, -1)
+	// qp := make([]int, maxN, 1)
 	items := make([]Item, maxN)
 	return &MinIndexPQ{maxN, 0, pq, qp, items}
 }
