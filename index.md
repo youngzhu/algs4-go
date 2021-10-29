@@ -21,8 +21,8 @@
   - [ ] [Multiway](#)
   - [ ] [Heap](#)
 ## 3 SEARCHING
+  - [SequentialSearchST](searching/sequential_search.go)
   - [ ] [FrequencyCounter](#)
-  - [ ] [SequentialSearchST](#)
   - [ ] [BinarySearchST](#)
   - [ ] [BST](#)
   - [ ] [RedBlackBST](#)
