@@ -18,8 +18,8 @@ type SequentialSearchST struct {
 
 // a helper linked list data type
 type node struct {
-	key interface{}
-	value interface{}
+	key STKey
+	value STValue
 	next *node
 }
 
@@ -29,7 +29,7 @@ func NewSequentialSearchST() *SequentialSearchST {
 
 // Returns the value associated with the given key
 // in this symbol table
-func (st *SequentialSearchST) Get(key interface{}) interface{} {
+func (st *SequentialSearchST) Get(key STKey) STValue {
 	if key == nil {
 		panic("argument to Get() is nil")
 	}
@@ -46,7 +46,7 @@ func (st *SequentialSearchST) Get(key interface{}) interface{} {
 // table already contains the specified key.
 // Deletes the specified key (and its associated value) from the
 // symbol table if the specified value is nil
-func (st *SequentialSearchST) Put(key, value interface{}) {
+func (st *SequentialSearchST) Put(key STKey, value STValue) {
 	if key == nil {
 		panic("argument to Put() is nil")
 	}
@@ -68,7 +68,7 @@ func (st *SequentialSearchST) Put(key, value interface{}) {
 
 // Remove the specified key and its associated value from the symbol
 // table (if the key is in the symbol table)
-func (st *SequentialSearchST) Delete(key interface{}) {
+func (st *SequentialSearchST) Delete(key STKey) {
 	if key == nil {
 		panic("argument to Delete() is nil")
 	}
@@ -77,7 +77,7 @@ func (st *SequentialSearchST) Delete(key interface{}) {
 
 // delete key in linked list beginning at node x
 // warning: function call stack too large if table is large
-func (st *SequentialSearchST) deleteNode(x *node, key interface{}) *node {
+func (st *SequentialSearchST) deleteNode(x *node, key STKey) *node {
 	if x == nil {
 		return nil
 	}
@@ -90,10 +90,14 @@ func (st *SequentialSearchST) deleteNode(x *node, key interface{}) *node {
 }
 
 // Return all keys in the symbol table
-func (st *SequentialSearchST) Keys() []interface{} {
-	var keys []interface{}
+func (st *SequentialSearchST) Keys() []STKey {
+	var keys []STKey
 	for x := st.first; x != nil; x = x.next {
 		keys = append(keys, x.key)
 	}
 	return keys
+}
+
+func (st *SequentialSearchST) Contains(key STKey) bool {
+	return st.Get(key) != nil
 }

@@ -11,7 +11,7 @@ var tinyST = []string{"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L"
 func ExampleSequentialSearchST() {
 	st := searching.NewSequentialSearchST()
 	for i, v := range tinyST {
-		st.Put(v, i)
+		st.Put(searching.StringKey(v), i)
 	}
 
 	for _, k := range st.Keys() {
