@@ -2,6 +2,7 @@ package client
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/youngzhu/algs4-go/searching"
 	"github.com/youngzhu/algs4-go/util"
@@ -13,10 +14,12 @@ import (
 // occurs the most frequently.
 
 func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *FrequencyResult {
-
 	// compute frequency counts
 	distinct, words := 0, 0
 	in := util.NewInReadWords(path)
+
+	timer := util.NewStopwatch()
+
 	for !in.IsEmpty() {
 		word := in.ReadString()
 		if len(word) < minLen {
@@ -43,6 +46,8 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 			max = w
 		}
 	}
+
+	log.Printf("elapsed time: %.2f seconds", timer.ElapsedTime())
 
 	return &FrequencyResult{max, st.Get(max), minLen, words, distinct}
 }
