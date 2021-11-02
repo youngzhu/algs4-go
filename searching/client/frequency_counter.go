@@ -55,6 +55,6 @@ type FrequencyResult struct {
 }
 
 func (r FrequencyResult) String() string {
-	const str = "high-frequency word: %v, frequency: %v \nminLen: %d, total words: %d, distinct words: %d"
+	const str = "high-frequency word: %v, frequency: %v, minLen: %d, total words: %d, distinct words: %d"
 	return fmt.Sprintf(str, r.max, r.frequency, r.minLen, r.words, r.distinct)
 }
