@@ -167,3 +167,7 @@ func (st BinarySearchST) Keys() []STKey {
 func (st BinarySearchST) IsEmpty() bool {
 	return st.n == 0
 }
+
+func (st BinarySearchST) Contains(key STKey) bool {
+	return st.Get(key) != nil
+}

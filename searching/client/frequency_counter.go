@@ -12,8 +12,7 @@ import (
 // in a squence of strings, then iterates through the keys to find the one that
 // occurs the most frequently.
 
-func FrequencyCounter(path string, minLen int) *FrequencyResult {
-	st := searching.NewSequentialSearchST()
+func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *FrequencyResult {
 
 	// compute frequency counts
 	distinct, words := 0, 0
