@@ -22,12 +22,13 @@
   - [ ] [Heap](#)
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
-  - [ ] [FrequencyCounter](#)
-  - [ ] [BinarySearchST](#)
+  - [BinarySearchST](searching/binary_search.go)
   - [ ] [BST](#)
   - [ ] [RedBlackBST](#)
   - [ ] [SeparateChainingHashST](#)
   - [ ] [LinearProbingHashST](#)
+  - Client
+    - [FrequencyCounter](searching/client/frequency_counter.go)
 ## 4 GRAPHS
   - [ ] Graph
     - [ ] [Graph](#)
