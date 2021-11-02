@@ -2,59 +2,70 @@ package util
 
 import (
 	"bufio"
-	"os"
-	"io"
-	"strings"
 	"compress/gzip"
+	"io"
+	"net/http"
+	"os"
+	"strings"
 )
 
 // Reads in data of various types from standard input, files and URLs.
 
 type In struct {
-	file *os.File
+	reader  io.Reader
 	scanner *bufio.Scanner
 }
 
 // Factory method
 // default read in lines
-func NewIn(path string) *In {
-	return NewInReadLines(path)
+func NewIn(uri string) *In {
+	return NewInReadLines(uri)
 }
 
-func NewInReadWords(path string) *In {
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
+func NewInReadWords(uri string) *In {
+	r := newReader(uri)
+
+	scanner := bufio.NewScanner(r)
+
+	scanner.Split(bufio.ScanWords)
+
+	return &In{r, scanner}
+}
+
+func NewInReadLines(uri string) *In {
+	r := newReader(uri)
+
+	scanner := bufio.NewScanner(r)
+
+	return &In{r, scanner}
+}
+
+func newReader(uri string) io.Reader {
+	if uri == "" {
+		panic("argument is empty")
 	}
 
-	var scanner *bufio.Scanner
-
-	if strings.HasSuffix(path, ".gz") {
-		gz, err := gzip.NewReader(f)
+	// first try to read file from local file system
+	f, err := os.Open(uri)
+	if err == nil {
+		if strings.HasSuffix(uri, ".gz") {
+			gz, err := gzip.NewReader(f)
+			if err != nil {
+				panic(err)
+			}
+			return gz
+		} else {
+			return f
+		}
+	} else {
+		// URL from web
+		resp, err := http.Get(uri)
 		if err != nil {
 			panic(err)
 		}
-		
-		scanner = bufio.NewScanner(gz)
-	} else {
-		scanner = bufio.NewScanner(f)
+		return resp.Body
 	}
-	
-	
-	scanner.Split(bufio.ScanWords)
 
-	return &In{f, scanner}
-}
-
-func NewInReadLines(path string) *In {
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
-	
-	scanner := bufio.NewScanner(f)
-
-	return &In{f, scanner}
 }
 
 func (in *In) ReadString() string {
@@ -65,14 +76,14 @@ func (in *In) IsEmpty() bool {
 	return !in.scanner.Scan()
 }
 
-func (in *In) ReadAllStrings() ([]string) {
+func (in *In) ReadAllStrings() []string {
 	str := in.readAll()
 
 	return strings.Fields(str)
 }
 
 func (in *In) readAll() string {
-	data, err := io.ReadAll(in.file)
+	data, err := io.ReadAll(in.reader)
 	if err != nil {
 		panic(err)
 	}
