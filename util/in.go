@@ -5,6 +5,7 @@ import (
 	"os"
 	"io"
 	"strings"
+	"compress/gzip"
 )
 
 // Reads in data of various types from standard input, files and URLs.
@@ -25,8 +26,21 @@ func NewInReadWords(path string) *In {
 	if err != nil {
 		panic(err)
 	}
+
+	var scanner *bufio.Scanner
+
+	if strings.HasSuffix(path, ".gz") {
+		gz, err := gzip.NewReader(f)
+		if err != nil {
+			panic(err)
+		}
+		
+		scanner = bufio.NewScanner(gz)
+	} else {
+		scanner = bufio.NewScanner(f)
+	}
 	
-	scanner := bufio.NewScanner(f)
+	
 	scanner.Split(bufio.ScanWords)
 
 	return &In{f, scanner}
