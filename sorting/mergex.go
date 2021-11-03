@@ -195,6 +195,10 @@ func insertionSort(x Sortable, lo, hi int) {
 
 type MergeX struct{}
 
+func NewMergeX() Sorter {
+	return MergeX{}
+}
+
 // Implements Sorter
 func (s MergeX) SortInts(x []int) {
 	MergesortX(IntSortSlice(x))

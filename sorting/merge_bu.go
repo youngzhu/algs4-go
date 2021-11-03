@@ -146,6 +146,10 @@ func min(x, y int) int {
 
 type MergeBU struct{}
 
+func NewMergeBU() Sorter {
+	return MergeBU{}
+}
+
 // Implements Sorter
 func (s MergeBU) SortInts(x []int) {
 	MergesortBU(IntSortSlice(x))

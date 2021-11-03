@@ -150,6 +150,10 @@ func mergeStringsX1(x, aux StringSortSlice, lo, mid, hi int) {
 
 type MergeX1 struct{}
 
+func NewMergeX1() Sorter {
+	return MergeX1{}
+}
+
 // Implements Sorter
 func (s MergeX1) SortInts(x []int) {
 	MergesortX1(IntSortSlice(x))

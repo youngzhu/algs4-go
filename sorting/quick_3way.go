@@ -65,6 +65,10 @@ func partition3way(x Sortable, lo, hi int) (int, int) {
 
 type Quick3way struct{}
 
+func NewQuick3way() Sorter {
+	return Quick3way{}
+}
+
 // Implements Sorter
 func (s Quick3way) SortInts(x []int) {
 	Quicksort3way(IntSortSlice(x))

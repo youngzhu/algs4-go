@@ -18,6 +18,10 @@ func InsertionSort(x Sortable) {
 
 type Insertion struct{}
 
+func NewInsertion() Sorter {
+	return Insertion{}
+}
+
 // Implements Sorter
 func (s Insertion) SortInts(x []int) {
 	InsertionSort(IntSortSlice(x))
