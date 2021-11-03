@@ -4,16 +4,16 @@ type Comparable interface {
 	CompareTo(x Comparable) int
 }
 
-type Heap interface {
-	Insert(x Comparable)
-	Remove() Comparable
-	GetHighestPriority() Comparable
-	Sink(i int)
-	Swim(i int)
-	IsEmpty() bool
-	IsFull() bool
-	Size() int
-}
+// type Heap interface {
+// 	Insert(x Comparable)
+// 	Remove() Comparable
+// 	GetHighestPriority() Comparable
+// 	Sink(i int)
+// 	Swim(i int)
+// 	IsEmpty() bool
+// 	IsFull() bool
+// 	Size() int
+// }
 
 const defaultMaxSize = 40
 
