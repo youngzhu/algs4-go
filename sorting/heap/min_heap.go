@@ -7,6 +7,27 @@ type MinHeap struct {
 	BinaryHeap
 }
 
+// 1-based indexing VS 0-based: almost the same performance
+// see bench_test.go
+func NewMinHeap() *MinHeap {
+	items := make([]Comparable, defaultMaxSize)
+
+	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
+}
+
+// only for test
+func NewMinHeapBased0() *MinHeap {
+	items := make([]Comparable, defaultMaxSize)
+
+	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased0()}
+}
+
+func NewMinHeapBased1() *MinHeap {
+	items := make([]Comparable, defaultMaxSize+1)
+
+	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
+}
+
 func (h *MinHeap) Insert(item Comparable) {
 	if h.IsFull() {
 		panic("heap is full")
@@ -117,28 +138,4 @@ func (h *MinHeap) less(i, j int) bool {
 
 func (h *MinHeap) swap(i, j int) {
 	h.items[i], h.items[j] = h.items[j], h.items[i]
-}
-
-// BenchmarkBased0-8        2050579              1745 ns/op             160 B/op         10 allocs/op
-// BenchmarkBased1-8        2155936              1680 ns/op             160 B/op         10 allocs/op
-// see bench_test.go
-
-// 1-based indexing vs 0-based: almost the same performance
-func NewMinHeap() *MinHeap {
-	items := make([]Comparable, defaultMaxSize)
-
-	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
-}
-
-// only for test
-func NewMinHeapBased0() *MinHeap {
-	items := make([]Comparable, defaultMaxSize)
-
-	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased0()}
-}
-
-func NewMinHeapBased1() *MinHeap {
-	items := make([]Comparable, defaultMaxSize+1)
-
-	return &MinHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
 }
