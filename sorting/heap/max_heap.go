@@ -7,6 +7,12 @@ type MaxHeap struct {
 	BinaryHeap
 }
 
+func NewMaxHeap() *MaxHeap {
+	items := make([]Comparable, defaultMaxSize)
+
+	return &MaxHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
+}
+
 func (h *MaxHeap) Insert(item Comparable) {
 	if h.IsFull() {
 		panic("heap is full")
@@ -117,10 +123,4 @@ func (h *MaxHeap) less(i, j int) bool {
 
 func (h *MaxHeap) swap(i, j int) {
 	h.items[i], h.items[j] = h.items[j], h.items[i]
-}
-
-func NewMaxHeap() *MaxHeap {
-	items := make([]Comparable, defaultMaxSize)
-
-	return &MaxHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
 }
