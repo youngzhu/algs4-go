@@ -19,6 +19,7 @@ func ExampleSequentialSearchST() {
 
 	// fmt.Println()
 
+	// result = client.FrequencyCounter(st, "https://algs4.cs.princeton.edu/31elementary/tale.txt", 8)
 	result = client.FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 
