@@ -7,14 +7,19 @@ import (
 	"github.com/youngzhu/algs4-go/searching/client"
 )
 
+const (
+	tinyTalePath = "testdata/tinyTale.txt"
+	talePath     = "testdata/tale.txt.gz"
+)
+
 func ExampleSequentialSearchST() {
 	st := searching.NewSequentialSearchST()
-	result := client.FrequencyCounter(st, "testdata/tinyTale.txt", 1)
+	result := client.FrequencyCounter(st, tinyTalePath, 1)
 	fmt.Println(result.String())
 
 	// fmt.Println()
 
-	result = client.FrequencyCounter(st, "testdata/tale.txt.gz", 8)
+	result = client.FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 
 	// Output:
@@ -25,12 +30,12 @@ func ExampleSequentialSearchST() {
 
 func ExampleBinarySearchST() {
 	st := searching.NewBinarySearchST()
-	result := client.FrequencyCounter(st, "testdata/tinyTale.txt", 1)
+	result := client.FrequencyCounter(st, tinyTalePath, 1)
 	fmt.Println(result.String())
 
 	// fmt.Println()
 
-	result = client.FrequencyCounter(st, "testdata/tale.txt.gz", 8)
+	result = client.FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 
 	// Output:
