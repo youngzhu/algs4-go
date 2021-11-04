@@ -96,6 +96,10 @@ func partition(x Sortable, lo, hi int) int {
 
 type Quick struct{}
 
+func NewQuick() Sorter {
+	return Quick{}
+}
+
 // Implements Sorter
 func (s Quick) SortInts(x []int) {
 	Quicksort(IntSortSlice(x))

@@ -22,6 +22,10 @@ func SelectionSort(x Sortable) {
 
 type Selection struct{}
 
+func NewSelection() Sorter {
+	return Selection{}
+}
+
 // Implements Sorter
 func (s Selection) SortInts(x []int) {
 	SelectionSort(IntSortSlice(x))

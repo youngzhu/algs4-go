@@ -38,6 +38,10 @@ func Shellsort(x Sortable) {
 
 type Shell struct{}
 
+func NewShell() Sorter {
+	return Shell{}
+}
+
 // Implements Sorter
 func (s Shell) SortInts(x []int) {
 	Shellsort(IntSortSlice(x))
