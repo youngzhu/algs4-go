@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/youngzhu/algs4-go/sorting"
+	"github.com/youngzhu/algs4-go/util"
 )
 
 // Uses the sort() methods int the types named as command-line arguments
@@ -70,7 +71,7 @@ func main() {
 
 	fmt.Println("alg1:", alg1, ",alg2:", alg2, ",n:", n, ",trials:", trials, ", isSorted:", isSorted)
 
-	var time1, time2 int64
+	var time1, time2 float64
 
 	if isSorted {
 		time1 = timeSortedInput(alg1, n, trials)
@@ -97,8 +98,8 @@ func main() {
 	fmt.Printf(" %.1f times faster than %s\n", slowerTime/fasterTime, slowerAlg)
 }
 
-func timeRandomInput(alg string, n, trials int) int64 {
-	var total int64
+func timeRandomInput(alg string, n, trials int) float64 {
+	var total float64
 
 	for t := 0; t < trials; t++ {
 		a := make([]float64, n)
@@ -111,8 +112,8 @@ func timeRandomInput(alg string, n, trials int) int64 {
 	return total
 }
 
-func timeSortedInput(alg string, n, trials int) int64 {
-	var total int64
+func timeSortedInput(alg string, n, trials int) float64 {
+	var total float64
 
 	for t := 0; t < trials; t++ {
 		a := make([]float64, n)
@@ -126,24 +127,19 @@ func timeSortedInput(alg string, n, trials int) int64 {
 	return total
 }
 
-func timeElapsed(alg string, a []float64) int64 {
-	var elapsed int64
-
+func timeElapsed(alg string, a []float64) float64 {
 	lowcase := strings.ToLower(alg)
 
 	sorter, ok := algs[lowcase]
 	if ok {
-		start := time.Now()
+		timer := util.NewStopwatch()
 		sorter.SortFloat64s(a)
-		end := time.Now()
-		elapsed = end.Sub(start).Milliseconds()
+		return timer.ElapsedTime()
 	} else {
 		panic("Invalid algorithm: " + lowcase)
 	}
 
 	// fmt.Println("elapsed: ", elapsed)
-
-	return elapsed
 }
 
 // TEST RESULT
