@@ -1,7 +1,7 @@
 
 ## 1 FUNDAMENTALS
+  - [Queue](fund/queue.go)
   - [ ] [Bag](#)
-  - [ ] [Queue](#)
   - [ ] [Stack](#)
   - [ ] [UnionFind](#)
 ## 2 SORTING
