@@ -7,6 +7,7 @@ package fund
 // at a theater, to cars waiting in line at a toll booth, to tasks waiting to 
 // be serviced by an application on your computer.
 
+// Queue implemented using a linked list
 type Queue struct {
 	first *Node // beginning of queue
 	last *Node // end of queue
