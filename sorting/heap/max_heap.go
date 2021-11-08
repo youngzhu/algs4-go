@@ -13,19 +13,6 @@ func NewMaxHeap() *MaxHeap {
 	return &MaxHeap{defaultMaxSize, 0, items, NewBinaryHeapBased1()}
 }
 
-func (h *MaxHeap) Insert(item Comparable) {
-	if h.IsFull() {
-		panic("heap is full")
-	}
-
-	lastLeaf := h.GetLastLeafIndex(h.n)
-
-	h.items[lastLeaf+1] = item
-	h.Swim(lastLeaf+1, lastLeaf+1)
-
-	h.n++
-}
-
 func (h *MaxHeap) Remove() Comparable {
 	if h.IsEmpty() {
 		panic("heap is empty")

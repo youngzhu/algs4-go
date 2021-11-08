@@ -15,18 +15,9 @@ package pq
 // Proposition
 // The largest key in a heap-ordered binary tree is found at the root.
 
-// We represent complete binary trees sequentially within an array by putting
-// the nodes with level order, with the root at position 1, its children at 
-// positions 2 and 3, their children in positions 4, 5, 6 and 7, and so on.
-
 // Definition
 // A binary heap is a set of nodes with keys arranged in a complete heap-ordered
 // binary tree, represented in level order in an array (not using the first position).
-
-// In a heap, the parent of the node in position k is in position k/2; and, conversely, 
-// the two children of the node in position k are in positions 2k and 2k+1. We
-// can travel up and down by doing simple arithmetic on array indices: to move
-// up the tree from a[k] we set k to k/2; to move down the tree we set k to 2*k or 2*k+1.
 
 // Algorithms on heaps.
 // We represent a heap of size n in private array arr[] of length n+1, with arr[0]
@@ -39,21 +30,18 @@ package pq
 // Buttom-up heapify (swim).
 // If the heap order is violated because a node's key becomes larger than that
 // node's parent key, then we can make progress toward fixing the violation by
-// exchanging the node with its parent. After the exchage, the node is larger 
+// exchanging the node with its parent. After the exchage, the node is larger
 // than both its children (one is the old parent, and the other is smaller than
 // the old parent because it was a child of that node) but the node may still be
 // larger than its parent. We can fix that violation in the same way, and so forth,
 // moving up the heap until we reach a node with a larger key, or the root.
-func maxSwim(a []Item, k int) {
-	for k > 1 {
-		parent := a[k/2]
-		knode := a[k]
-		if parent.CompareTo(knode) >= 0 {
-			break
-		}
-		swap(a, k/2, k)
-		k = k/2
-	}
+
+type BinaryHeap interface {
+	GetLeftChildIndex(p, n int) int
+	GetRightChildIndex(p, n int) int
+	GetParentIndex(c, n int) int
+	GetRootIndex() int
+	GetLastLeafIndex(n int) int
 }
 
 func minSwim(a []Item, k int) {
@@ -64,7 +52,7 @@ func minSwim(a []Item, k int) {
 			break
 		}
 		swap(a, k/2, k)
-		k = k/2
+		k = k / 2
 	}
 }
 
@@ -77,10 +65,10 @@ func minSwim(a []Item, k int) {
 // smaller, or bottom.
 func maxSink(a []Item, k, n int) {
 	for 2*k <= n {
-		child := 2*k
+		child := 2 * k
 		largerChild := child
 		if child < n {
-			anotherChild := 2*k+1
+			anotherChild := 2*k + 1
 			node1 := a[child]
 			node2 := a[anotherChild]
 			if node1.CompareTo(node2) < 0 {
@@ -102,10 +90,10 @@ func maxSink(a []Item, k, n int) {
 
 func minSink(a []Item, k, n int) {
 	for 2*k <= n {
-		child := 2*k
+		child := 2 * k
 		smallerChild := child
 		if child < n {
-			anotherChild := 2*k+1
+			anotherChild := 2*k + 1
 			node1 := a[child]
 			node2 := a[anotherChild]
 			if node1.CompareTo(node2) > 0 {
