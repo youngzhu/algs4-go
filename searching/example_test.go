@@ -54,7 +54,6 @@ func ExampleBinarySearchST() {
 	// X 7
 }
 
-// not complete
 func ExampleBST() {
 	st := searching.NewBST()
 	for i, v := range tinyST {
