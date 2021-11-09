@@ -59,3 +59,17 @@ func (q *Queue) Size() int {
 func (q *Queue) IsEmpty() bool {
 	return q.first == nil
 }
+
+func (q *Queue) Iterator() Iterator {
+	items := make([]interface{}, q.n)
+
+	i := 0
+	cur := q.first
+	for i < q.n {
+		items[i] = cur.item
+		cur = cur.next
+		i++
+	}
+
+	return Iterator(items)
+}
