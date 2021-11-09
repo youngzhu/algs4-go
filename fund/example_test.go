@@ -43,3 +43,23 @@ func ExampleQueue_iterator() {
 	// Output:
 	// to be or not to be
 }
+
+func ExampleStack() {
+	stack := fund.NewStack()
+
+	in := util.NewInReadWords("testdata/tobe.txt")
+
+	for !in.IsEmpty() {
+		item := in.ReadString()
+		if item != "-" {
+			stack.Push(item)
+		} else {
+			fmt.Print(stack.Pop(), " ")
+		}
+	}
+
+	fmt.Print("(", stack.Size(), " left on stack)")
+
+	// Output:
+	// to be not that or be (2 left on stack)
+}
