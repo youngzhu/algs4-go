@@ -71,12 +71,13 @@ const (
 
 func ExampleSequentialSearchST_frequency() {
 	st := searching.NewSequentialSearchST()
+
+	// elapsed time: 0.00 seconds
 	result := FrequencyCounter(st, tinyTalePath, 1)
 	fmt.Println(result.String())
 
-	// fmt.Println()
-
 	// result = FrequencyCounter(st, "https://algs4.cs.princeton.edu/31elementary/tale.txt", 8)
+	// elapsed time: 2.57 seconds
 	result = FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 
@@ -87,11 +88,28 @@ func ExampleSequentialSearchST_frequency() {
 
 func ExampleBinarySearchST_frequency() {
 	st := searching.NewBinarySearchST()
+
+	// elapsed time: 0.00 seconds
 	result := FrequencyCounter(st, tinyTalePath, 1)
 	fmt.Println(result.String())
 
-	// fmt.Println()
+	// elapsed time: 0.16 seconds
+	result = FrequencyCounter(st, talePath, 8)
+	fmt.Println(result.String())
 
+	// Output:
+	// high-frequency word: it, frequency: 10, minLen: 1, total words: 60, distinct words: 20
+	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
+}
+
+func ExampleBST_frequency() {
+	st := searching.NewBST()
+
+	// elapsed time: 0.00 seconds
+	result := FrequencyCounter(st, tinyTalePath, 1)
+	fmt.Println(result.String())
+
+	// elapsed time: 0.11 seconds
 	result = FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 

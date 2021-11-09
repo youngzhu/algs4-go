@@ -263,3 +263,11 @@ func (b *BST) IsEmpty() bool {
 func (b *BST) Size() int {
 	return size(b.root)
 }
+
+// Does this BST contains the given key?
+func (b *BST) Contains(key STKey) bool {
+	if key == nil {
+		panic("argument to Contains() is nil")
+	}
+	return b.Get(key) != nil
+}
