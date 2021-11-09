@@ -1,4 +1,4 @@
-package client
+package searching_test
 
 import (
 	"fmt"
@@ -61,4 +61,41 @@ type FrequencyResult struct {
 func (r FrequencyResult) String() string {
 	const str = "high-frequency word: %v, frequency: %v, minLen: %d, total words: %d, distinct words: %d"
 	return fmt.Sprintf(str, r.max, r.frequency, r.minLen, r.words, r.distinct)
+}
+
+
+const (
+	tinyTalePath = "testdata/tinyTale.txt"
+	talePath     = "testdata/tale.txt.gz"
+)
+
+func ExampleSequentialSearchST_frequency() {
+	st := searching.NewSequentialSearchST()
+	result := FrequencyCounter(st, tinyTalePath, 1)
+	fmt.Println(result.String())
+
+	// fmt.Println()
+
+	// result = FrequencyCounter(st, "https://algs4.cs.princeton.edu/31elementary/tale.txt", 8)
+	result = FrequencyCounter(st, talePath, 8)
+	fmt.Println(result.String())
+
+	// Output:
+	// high-frequency word: of, frequency: 10, minLen: 1, total words: 60, distinct words: 20
+	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
+}
+
+func ExampleBinarySearchST_frequency() {
+	st := searching.NewBinarySearchST()
+	result := FrequencyCounter(st, tinyTalePath, 1)
+	fmt.Println(result.String())
+
+	// fmt.Println()
+
+	result = FrequencyCounter(st, talePath, 8)
+	fmt.Println(result.String())
+
+	// Output:
+	// high-frequency word: it, frequency: 10, minLen: 1, total words: 60, distinct words: 20
+	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
 }

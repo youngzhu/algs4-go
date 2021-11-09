@@ -23,12 +23,12 @@
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
-  - [ ] [BST](#)
+  - [BST: Binary Search Tree](searching/bst.go)
   - [ ] [RedBlackBST](#)
   - [ ] [SeparateChainingHashST](#)
   - [ ] [LinearProbingHashST](#)
   - Client
-    - [FrequencyCounter](searching/client/frequency_counter.go)
+    - [FrequencyCounter](searching/example_frequency_test.go)
 ## 4 GRAPHS
   - [ ] Graph
     - [ ] [Graph](#)
