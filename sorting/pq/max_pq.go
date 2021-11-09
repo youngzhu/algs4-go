@@ -36,17 +36,17 @@ func (pq *MaxPQ) Insert(item Item) {
 func (pq *MaxPQ) swim(child, max int) {
 	parent := pq.GetParentIndex(child, max)
 
-	if parent != -1 && pq.less(parent, child) {
+	if parent != -1 && pq.isHigherPriority(child, parent) {
 		swap(pq.items, parent, child)
 		pq.swim(parent, max)
 	}
 }
 
-// if pq.items[i] < pq.items[j]
-func (pq *MaxPQ) less(i, j int) bool {
+// if pq.items[i] higher than pq.items[j]
+func (pq *MaxPQ) isHigherPriority(i, j int) bool {
 	i1 := pq.items[i]
 	i2 := pq.items[j]
-	return i1.CompareTo(i2) < 0
+	return i1.CompareTo(i2) > 0
 }
 
 func (pq *MaxPQ) Delete() Item {
@@ -54,14 +54,58 @@ func (pq *MaxPQ) Delete() Item {
 		panic("The priority queue is empty")
 	}
 
-	root := pq.items[1]
-	swap(pq.items, 1, pq.n)
+	rootIdx := pq.GetRootIndex()
+	lastLeaf := pq.GetLastLeafIndex(pq.n)
+
+	item := pq.items[rootIdx]
+
+	swap(pq.items, rootIdx, lastLeaf)
+
+	pq.sink(rootIdx, lastLeaf-1)
+
 	pq.n--
-	maxSink(pq.items, 1, pq.n)
+
 	if pq.n > 0 && pq.n == (len(pq.items)-1)/4 {
 		pq.resize(len(pq.items) / 2)
 	}
-	return root
+
+	return item
+}
+
+func (pq *MaxPQ) sink(parent, max int) {
+	higherPriorityChild := pq.getHighPriorityChild(parent, max)
+
+	// if the left and right child do not exist
+	// stop sinking
+	if higherPriorityChild == -1 {
+		return
+	}
+
+	if pq.isHigherPriority(higherPriorityChild, parent) {
+		swap(pq.items, higherPriorityChild, parent)
+		pq.sink(higherPriorityChild, max)
+	}
+
+}
+
+func (pq *MaxPQ) getHighPriorityChild(parent, max int) int {
+	leftChild := pq.GetLeftChildIndex(parent, max)
+	rightChild := pq.GetRightChildIndex(parent, max)
+
+	if leftChild != -1 && rightChild != -1 {
+		if pq.isHigherPriority(leftChild, rightChild) {
+			return leftChild
+		} else {
+			return rightChild
+		}
+	} else if leftChild != -1 {
+		return leftChild
+	} else if rightChild != -1 {
+		return rightChild
+	} else {
+		return -1
+	}
+
 }
 
 func (pq *MaxPQ) IsEmpty() bool {
