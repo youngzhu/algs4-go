@@ -56,16 +56,16 @@ func ExampleBinarySearchST() {
 
 // not complete
 func ExampleBST() {
-	// st := searching.NewBST()
-	// for i, v := range tinyST {
-	// 	st.Put(searching.StringKey(v), i)
-	// }
+	st := searching.NewBST()
+	for i, v := range tinyST {
+		st.Put(searching.StringKey(v), i)
+	}
 
-	// for _, k := range st.Keys() {
-	// 	fmt.Println(k, st.Get(k))
-	// }
+	for _, k := range st.Keys() {
+		fmt.Println(k, st.Get(k))
+	}
 
-	// --Output:
+	// Output:
 	// A 8
 	// C 4
 	// E 12

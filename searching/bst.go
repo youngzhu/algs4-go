@@ -1,5 +1,7 @@
 package searching
 
+import "github.com/youngzhu/algs4-go/fund"
+
 // We examine a symbol-table implementation that combines the flexibility of
 // insertion in linked lists with the efficiency of search in an ordered array.
 // Specifically, using two links per node leads to an efficient symbol-table
@@ -176,4 +178,88 @@ func min(x *Node) *Node {
 	} else {
 		return min(x.left)
 	}
+}
+
+// Returns all keys in the symbol table
+func (b *BST) Keys() []STKey {
+	if b.IsEmpty() {
+		panic("The BST is empty")
+	}
+
+	return b.rangeKeys(b.Min(), b.Max())
+}
+
+// Returns all keys in the symbol table in the given range
+func (b *BST) rangeKeys(lo, hi STKey) []STKey {
+	if lo == nil {
+		panic("first argument to rangeKeys() is nil")
+	}
+	if hi == nil {
+		panic("second argument to rangeKeys() is nil")
+	}
+
+	queue := fund.NewQueue()
+	keys(b.root, queue, lo, hi)
+
+	keySliece := make([]STKey, queue.Size())
+	i := 0
+	for _, v := range queue.Iterator() {
+		keySliece[i] = v.(STKey)
+		i++
+	}
+
+	return keySliece
+}
+
+func keys(x *Node, queue *fund.Queue, lo, hi STKey) {
+	if x == nil {
+		return 
+	}
+
+	cmpLo := lo.CompareTo(x.key)
+	cmpHi := hi.CompareTo(x.key)
+	if cmpLo < 0 {
+		keys(x.left, queue, lo, hi)
+	}
+	if cmpLo <= 0 && cmpHi >= 0 {
+		queue.Enqueue(x.key)
+	}
+	if cmpHi > 0 {
+		keys(x.right, queue, lo, hi)
+	}
+}
+
+// Returns the smallest key in the BST
+func (b *BST) Min() STKey {
+	if b.IsEmpty() {
+		panic("The BST is empty")
+	}
+
+	return min(b.root).key
+}
+
+// Returns the largest key in the BST
+func (b *BST) Max() STKey {
+	if b.IsEmpty() {
+		panic("The BST is empty")
+	}
+	return max(b.root).key
+}
+
+func max(x *Node) *Node {
+	if x.right == nil {
+		return x
+ 	} else {
+		 return max(x.right)
+	 }
+}
+
+// Returns true if this symbol table is empty
+func (b *BST) IsEmpty() bool {
+	return b.Size() == 0
+}
+
+// Returns the nubmer of key-value pairs in this symbol table
+func (b *BST) Size() int {
+	return size(b.root)
 }
