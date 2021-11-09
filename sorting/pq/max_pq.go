@@ -7,12 +7,26 @@ type MaxPQ struct {
 }
 
 // factory method
+// one-based heap has slightly better performance
+// see bench_test.go
 func NewMaxPQN(n int) *MaxPQ {
 	items := make([]Item, n+1)
 	heap := NewBinaryHeapBased1()
 	return &MaxPQ{items, 0, heap}
 }
 func NewMaxPQ() *MaxPQ {
+	items := make([]Item, 1)
+	heap := NewBinaryHeapBased1()
+	return &MaxPQ{items, 0, heap}
+}
+
+// only for benchmark test
+func NewMaxPQ_based0() *MaxPQ {
+	items := make([]Item, 1)
+	heap := NewBinaryHeapBased0()
+	return &MaxPQ{items, 0, heap}
+}
+func NewMaxPQ_based1() *MaxPQ {
 	items := make([]Item, 1)
 	heap := NewBinaryHeapBased1()
 	return &MaxPQ{items, 0, heap}
