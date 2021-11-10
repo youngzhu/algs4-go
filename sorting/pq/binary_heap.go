@@ -44,6 +44,11 @@ type BinaryHeap interface {
 	GetLastLeafIndex(n int) int
 }
 
+// default 1-based indexing
+func NewBinaryHeap() BinaryHeap {
+	return BinaryHeapBased1{}
+}
+
 func minSwim(a []Item, k int) {
 	for k > 1 {
 		parent := a[k/2]
@@ -63,30 +68,6 @@ func minSwim(a []Item, k int) {
 // switch may cause a violation at the child. We fix that violation in the same
 // way, and so forth, moving down the heap until we reach a node with both childre
 // smaller, or bottom.
-func maxSink(a []Item, k, n int) {
-	for 2*k <= n {
-		child := 2 * k
-		largerChild := child
-		if child < n {
-			anotherChild := 2*k + 1
-			node1 := a[child]
-			node2 := a[anotherChild]
-			if node1.CompareTo(node2) < 0 {
-				largerChild = anotherChild
-			}
-		}
-
-		parentNode := a[k]
-		childNode := a[largerChild]
-		if parentNode.CompareTo(childNode) >= 0 {
-			break
-		}
-
-		swap(a, k, largerChild)
-		k = largerChild
-	}
-
-}
 
 func minSink(a []Item, k, n int) {
 	for 2*k <= n {

@@ -99,7 +99,6 @@ func (pq *MaxPQ) sink(parent, max int) {
 		swap(pq.items, higherPriorityChild, parent)
 		pq.sink(higherPriorityChild, max)
 	}
-
 }
 
 func (pq *MaxPQ) getHighPriorityChild(parent, max int) int {

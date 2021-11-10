@@ -4,10 +4,6 @@ package pq
 type BinaryHeapBased0 struct{}
 
 // factory method
-func NewBinaryHeap() BinaryHeap {
-	return BinaryHeapBased0{}
-}
-
 func NewBinaryHeapBased0() BinaryHeapBased0 {
 	return BinaryHeapBased0{}
 }
