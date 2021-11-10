@@ -130,3 +130,9 @@ func (pq *MinPQ) resize(capacity int) {
 	copy(t, pq.items)
 	pq.items = t
 }
+
+func (pq *MinPQ) GetItems() []Item {
+	begin := pq.GetRootIndex()
+	end := pq.GetLastLeafIndex(pq.n)
+	return pq.items[begin : end+1]
+}

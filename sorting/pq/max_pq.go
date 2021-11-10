@@ -134,3 +134,9 @@ func (pq *MaxPQ) resize(capacity int) {
 	copy(t, pq.items)
 	pq.items = t
 }
+
+func (pq *MaxPQ) GetItems() []Item {
+	begin := pq.GetRootIndex()
+	end := pq.GetLastLeafIndex(pq.n)
+	return pq.items[begin : end+1]
+}
