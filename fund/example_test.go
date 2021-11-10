@@ -63,3 +63,21 @@ func ExampleStack() {
 	// Output:
 	// to be not that or be (2 left on stack)
 }
+
+// Read a sequence of integers and print them in reverse order
+func ExampleStack_reverse() {
+	stack := fund.NewStack()
+
+	ints := []int{1, 2, 3, 4, 5}
+
+	for _, v := range ints {
+		stack.Push(v)
+	}
+
+	for _, v := range stack.Iterator() {
+		fmt.Print(v, " ")
+	}
+
+	// Output:
+	// 5 4 3 2 1
+}

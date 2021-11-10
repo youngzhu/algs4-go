@@ -54,3 +54,17 @@ func (s *Stack) IsEmpty() bool {
 func (s *Stack) Size() int {
 	return s.n
 }
+
+func (s *Stack) Iterator() Iterator {
+	items := make([]interface{}, s.n)
+
+	i := 0
+	cur := s.top
+	for i < s.n {
+		items[i] = cur.item
+		cur = cur.next
+		i++
+	}
+
+	return Iterator(items)
+}
