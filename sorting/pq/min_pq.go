@@ -32,12 +32,18 @@ func (pq *MinPQ) Insert(item Item) {
 	pq.swim(lastLeaf, lastLeaf)
 }
 
+// Loop vs Recursive: almost the same
+// see bench_test.go
 func (pq *MinPQ) swim(child, max int) {
-	parent := pq.GetParentIndex(child, max)
+	root := pq.GetRootIndex()
 
-	if parent != -1 && pq.isHigherPriority(child, parent) {
+	for child > root {
+		parent := pq.GetParentIndex(child, max)
+		if pq.isHigherPriority(parent, child) {
+			break
+		}
 		swap(pq.items, parent, child)
-		pq.swim(parent, max)
+		child = parent
 	}
 }
 
@@ -45,7 +51,8 @@ func (pq *MinPQ) swim(child, max int) {
 func (pq *MinPQ) isHigherPriority(i, j int) bool {
 	i1 := pq.items[i]
 	i2 := pq.items[j]
-	return i1.CompareTo(i2) < 0
+	// different from MaxPQ
+	return i1.CompareTo(i2) <= 0
 }
 
 func (pq *MinPQ) Delete() Item {
@@ -72,19 +79,22 @@ func (pq *MinPQ) Delete() Item {
 }
 
 func (pq *MinPQ) sink(parent, max int) {
-	higherPriorityChild := pq.getHighPriorityChild(parent, max)
+	for {
+		higherPriorityChild := pq.getHighPriorityChild(parent, max)
 
-	// if the left and right child do not exist
-	// stop sinking
-	if higherPriorityChild == -1 {
-		return
-	}
+		// if the left and right child do not exist
+		// stop sinking
+		if higherPriorityChild == -1 {
+			break
+		}
 
-	if pq.isHigherPriority(higherPriorityChild, parent) {
+		if pq.isHigherPriority(parent, higherPriorityChild) {
+			break
+		}
+
 		swap(pq.items, higherPriorityChild, parent)
-		pq.sink(higherPriorityChild, max)
+		parent = higherPriorityChild
 	}
-
 }
 
 func (pq *MinPQ) getHighPriorityChild(parent, max int) int {

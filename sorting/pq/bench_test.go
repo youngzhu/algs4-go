@@ -41,3 +41,14 @@ func BenchmarkMaxPQ_based1(b *testing.B) {
 		testHeap(maxPQ)
 	}
 }
+
+func BenchmarkMinPQ(b *testing.B) {
+	maxPQ := pq.NewMaxPQ_based1()
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		testHeap(maxPQ)
+	}
+}

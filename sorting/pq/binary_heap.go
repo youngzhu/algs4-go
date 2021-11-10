@@ -49,18 +49,6 @@ func NewBinaryHeap() BinaryHeap {
 	return BinaryHeapBased1{}
 }
 
-func minSwim(a []Item, k int) {
-	for k > 1 {
-		parent := a[k/2]
-		knode := a[k]
-		if parent.CompareTo(knode) <= 0 {
-			break
-		}
-		swap(a, k/2, k)
-		k = k / 2
-	}
-}
-
 // Top-down heapify (sink).
 // If the heap order is violated because a node's key becomes smaller than one
 // or both of that node's children's keys, then we can make progress toward fixing
