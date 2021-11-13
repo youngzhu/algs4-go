@@ -28,7 +28,7 @@ func ExampleQueue() {
 	// to be or not to be (2 left on queue)
 }
 
-func ExampleQueue_iterator() {
+func ExampleQueue_Iterator() {
 	queue := fund.NewQueue()
 
 	items := []string{"to", "be", "or", "not", "to", "be"}
