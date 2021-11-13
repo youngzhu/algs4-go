@@ -1,8 +1,4 @@
-package heap
-
-import (
-	"github.com/youngzhu/algs4-go/sorting"
-)
+package sorting
 
 // Heapsort.
 // We can use any priority queue to develop a sorting method. We insert all
@@ -32,7 +28,7 @@ import (
 // array position vacated as the heap shrinks.
 
 // sink-based heapsort
-func Heapsort(x sorting.Sortable) {
+func Heapsort(x Sortable) {
 	n := x.Len()
 
 	// heapify phase
@@ -49,7 +45,7 @@ func Heapsort(x sorting.Sortable) {
 	}
 }
 
-func sink(x sorting.Sortable, k, n int) {
+func sink(x Sortable, k, n int) {
 	for 2*k <= n {
 		j := 2 * k
 		if j < n && less(x, j, j+1) {
@@ -65,22 +61,26 @@ func sink(x sorting.Sortable, k, n int) {
 
 // Helper functions for comparisons and swaps.
 // Indices are "off-by-one" to support 1-based indexing.
-func less(x sorting.Sortable, i, j int) bool {
+func less(x Sortable, i, j int) bool {
 	return x.Less(i-1, j-1)
 }
-func swap(x sorting.Sortable, i, j int) {
+func swap(x Sortable, i, j int) {
 	x.Swap(i-1, j-1)
 }
 
 type Heapsorter struct{}
 
+func NewHeap() Sorter {
+	return Heapsorter{}
+}
+
 // Implements Sorter
 func (s Heapsorter) SortInts(x []int) {
-	Heapsort(sorting.IntSortSlice(x))
+	Heapsort(IntSortSlice(x))
 }
 func (s Heapsorter) SortFloat64s(x []float64) {
-	Heapsort(sorting.Float64SortSlice(x))
+	Heapsort(Float64SortSlice(x))
 }
 func (s Heapsorter) SortStrings(x []string) {
-	Heapsort(sorting.StringSortSlice(x))
+	Heapsort(StringSortSlice(x))
 }
