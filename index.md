@@ -16,7 +16,9 @@
     - [Quick](sorting/quick.go)
     - [Quick3Way](sorting/quick_3way.go)
   - [Heap](sorting/heap.go)
-  - [ ] [MaxPQ](#)
+  - Priority Queue
+    - [MaxPQ](sorting/pq/max_pq.go)
+    - [MinPQ](sorting/pq/min_pq.go)
   - [ ] [TopM](#)
   - [ ] [IndexMinPQ](#)
   - [ ] [Multiway](#)
