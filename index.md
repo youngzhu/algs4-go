@@ -2,7 +2,7 @@
 ## 1 FUNDAMENTALS
   - [Queue](fund/queue.go)
   - [Stack](fund/stack.go)
-  - [ ] [Bag](#)
+  - [Bag](fund/bag.go)
   - [ ] [UnionFind](#)
 ## 2 SORTING
   - [Selection](sorting/selection.go)
