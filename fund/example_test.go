@@ -2,6 +2,7 @@ package fund_test
 
 import (
 	"fmt"
+	"math"
 
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/util"
@@ -101,4 +102,39 @@ func ExampleBag() {
 	// Output:
 	// size of bag: 14
 	// is - - - that - - be - to not or be to
+}
+
+// Read a sequence of numbers and computes their mean and standard deviation
+func ExampleBag_stats() {
+	bag := fund.NewBag()
+
+	numbers := []float64{100, 99, 101, 120, 98, 107, 109, 81, 101, 90}
+
+	for _, v := range numbers {
+		bag.Add(v)
+	}
+
+	n := float64(bag.Size())
+
+	// compute sample mean
+	sum := 0.0
+	for _, v := range bag.Iterator() {
+		sum += v.(float64)
+	}
+	mean := sum / n
+	fmt.Printf("Mean: %.2f\n", mean)
+
+	// compute sample standard deviation
+	sum = 0
+	for _, v := range bag.Iterator() {
+		t := v.(float64)
+		sum += (t - mean) * (t - mean)
+	}
+	stdDev := math.Sqrt(sum / (n - 1))
+	fmt.Printf("Std dev: %.2f\n", stdDev)
+
+	// Output:
+	// Mean: 100.60
+	// Std dev: 10.51
+
 }
