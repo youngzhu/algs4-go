@@ -11,7 +11,7 @@ import (
 var a = [...]int{9, 10, 0, 7, 8, 4, 3, 6, 2, 1, 5, 5, -99}
 
 func BenchmarkSelection(b *testing.B) {
-	soter := Selection{}
+	soter := NewSelection()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -22,7 +22,7 @@ func BenchmarkSelection(b *testing.B) {
 }
 
 func BenchmarkInsertion(b *testing.B) {
-	soter := Insertion{}
+	soter := NewInsertion()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -33,7 +33,7 @@ func BenchmarkInsertion(b *testing.B) {
 }
 
 func BenchmarkShell(b *testing.B) {
-	soter := Shell{}
+	soter := NewShell()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -44,7 +44,7 @@ func BenchmarkShell(b *testing.B) {
 }
 
 func BenchmarkMerge(b *testing.B) {
-	soter := Merge{}
+	soter := NewMerge()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -55,7 +55,7 @@ func BenchmarkMerge(b *testing.B) {
 }
 
 func BenchmarkMergeX(b *testing.B) {
-	soter := MergeX{}
+	soter := NewMergeX()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -66,7 +66,7 @@ func BenchmarkMergeX(b *testing.B) {
 }
 
 func BenchmarkMergeBU(b *testing.B) {
-	soter := MergeBU{}
+	soter := NewMergeBU()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -77,7 +77,7 @@ func BenchmarkMergeBU(b *testing.B) {
 }
 
 func BenchmarkQuick(b *testing.B) {
-	soter := Quick{}
+	soter := NewQuick()
 
 	b.ReportAllocs()
 	b.ResetTimer()
@@ -88,7 +88,18 @@ func BenchmarkQuick(b *testing.B) {
 }
 
 func BenchmarkQuick3way(b *testing.B) {
-	soter := Quick3way{}
+	soter := NewQuick3way()
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		soter.SortInts(a[0:])
+	}
+}
+
+func BenchmarkHeap(b *testing.B) {
+	soter := NewHeap()
 
 	b.ReportAllocs()
 	b.ResetTimer()
