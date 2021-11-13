@@ -15,11 +15,11 @@
   - Quick
     - [Quick](sorting/quick.go)
     - [Quick3Way](sorting/quick_3way.go)
+  - [Heap](sorting/heap.go)
   - [ ] [MaxPQ](#)
   - [ ] [TopM](#)
   - [ ] [IndexMinPQ](#)
   - [ ] [Multiway](#)
-  - [ ] [Heap](#)
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
