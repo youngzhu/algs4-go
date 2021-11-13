@@ -39,7 +39,7 @@ func ExampleQueue_iterator() {
 	for _, v := range queue.Iterator() {
 		fmt.Print(v, " ")
 	}
-	
+
 	// Output:
 	// to be or not to be
 }
@@ -80,4 +80,25 @@ func ExampleStack_reverse() {
 
 	// Output:
 	// 5 4 3 2 1
+}
+
+func ExampleBag() {
+	bag := fund.NewBag()
+
+	in := util.NewInReadWords("testdata/tobe.txt")
+
+	for !in.IsEmpty() {
+		item := in.ReadString()
+		bag.Add(item)
+	}
+
+	fmt.Printf("size of bag: %d\n", bag.Size())
+
+	for _, v := range bag.Iterator() {
+		fmt.Print(v, " ")
+	}
+
+	// Output:
+	// size of bag: 14
+	// is - - - that - - be - to not or be to
 }
