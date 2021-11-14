@@ -36,6 +36,14 @@ package pq
 // larger than its parent. We can fix that violation in the same way, and so forth,
 // moving up the heap until we reach a node with a larger key, or the root.
 
+// Top-down heapify (sink).
+// If the heap order is violated because a node's key becomes smaller than one
+// or both of that node's children's keys, then we can make progress toward fixing
+// the violation by exchanging the node with the larger of its two children. This
+// switch may cause a violation at the child. We fix that violation in the same
+// way, and so forth, moving down the heap until we reach a node with both childre
+// smaller, or bottom.
+
 type BinaryHeap interface {
 	GetLeftChildIndex(p, n int) int
 	GetRightChildIndex(p, n int) int
@@ -47,39 +55,6 @@ type BinaryHeap interface {
 // default 1-based indexing
 func NewBinaryHeap() BinaryHeap {
 	return BinaryHeapBased1{}
-}
-
-// Top-down heapify (sink).
-// If the heap order is violated because a node's key becomes smaller than one
-// or both of that node's children's keys, then we can make progress toward fixing
-// the violation by exchanging the node with the larger of its two children. This
-// switch may cause a violation at the child. We fix that violation in the same
-// way, and so forth, moving down the heap until we reach a node with both childre
-// smaller, or bottom.
-
-func minSink(a []Item, k, n int) {
-	for 2*k <= n {
-		child := 2 * k
-		smallerChild := child
-		if child < n {
-			anotherChild := 2*k + 1
-			node1 := a[child]
-			node2 := a[anotherChild]
-			if node1.CompareTo(node2) > 0 {
-				smallerChild = anotherChild
-			}
-		}
-
-		parentNode := a[k]
-		childNode := a[smallerChild]
-		if parentNode.CompareTo(childNode) <= 0 {
-			break
-		}
-
-		swap(a, k, smallerChild)
-		k = smallerChild
-	}
-
 }
 
 func swap(a []Item, i, j int) {
