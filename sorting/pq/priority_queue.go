@@ -13,6 +13,7 @@ type PriorityQueue interface {
 	Delete() Item
 	IsEmpty() bool
 	Size() int
+	GetItems() []Item
 }
 
 // Index priority queue.
