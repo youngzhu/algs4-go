@@ -26,6 +26,18 @@ func ExampleMinPQ_topM() {
 	// vonNeumann  3/26/2002  4121.85
 }
 
+func ExampleMaxPQ_topM() {
+	maxPQ := pq.NewMaxPQN(M)
+	topM(maxPQ, "date")
+
+	// Output:
+	// Turing      6/17/1990   644.08
+	// Turing      2/11/1991  2156.86
+	// Hoare       8/18/1992  4381.21
+	// Hoare       5/10/1993  3229.27
+	// Turing     10/12/1993  3532.36
+}
+
 func topM(priorityQueue pq.PriorityQueue, order string) {
 	in := util.NewInReadLines("testdata/tinyBatch.txt")
 
@@ -37,7 +49,6 @@ func topM(priorityQueue pq.PriorityQueue, order string) {
 		} else {
 			trans = newAmountOrderTrans(line)
 		}
-		// trans := newDateOrderTrans(line)
 
 		priorityQueue.Insert(trans)
 

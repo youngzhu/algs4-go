@@ -19,7 +19,8 @@
   - Priority Queue
     - [MaxPQ](sorting/pq/max_pq.go)
     - [MinPQ](sorting/pq/min_pq.go)
-  - [ ] [TopM](#)
+    - Client
+      - [TopM](sorting/pq/example_topm_test.go)
   - [ ] [IndexMinPQ](#)
   - [ ] [Multiway](#)
 ## 3 SEARCHING
