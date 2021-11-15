@@ -2,7 +2,7 @@
 ## 1 FUNDAMENTALS
   - [Queue](fund/queue.go)
   - [Stack](fund/stack.go)
-  - [ ] [Bag](#)
+  - [Bag](fund/bag.go)
   - [ ] [UnionFind](#)
 ## 2 SORTING
   - [Selection](sorting/selection.go)
@@ -15,11 +15,14 @@
   - Quick
     - [Quick](sorting/quick.go)
     - [Quick3Way](sorting/quick_3way.go)
-  - [ ] [MaxPQ](#)
-  - [ ] [TopM](#)
+  - [Heap](sorting/heap.go)
+  - Priority Queue
+    - [MaxPQ](sorting/pq/max_pq.go)
+    - [MinPQ](sorting/pq/min_pq.go)
+    - Client
+      - [TopM](sorting/pq/example_topm_test.go)
   - [ ] [IndexMinPQ](#)
   - [ ] [Multiway](#)
-  - [ ] [Heap](#)
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)

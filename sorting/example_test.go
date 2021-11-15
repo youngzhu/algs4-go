@@ -9,27 +9,27 @@ import (
 )
 
 var (
-	selectionAlg sorting.Sorter = sorting.Selection{}
-	insertionAlg sorting.Sorter = sorting.Insertion{}
-	shellAlg     sorting.Sorter = sorting.Shell{}
+	selectionAlg = sorting.NewSelection()
+	insertionAlg = sorting.NewInsertion()
+	shellAlg     = sorting.NewShell()
 )
 
 // ints
-func ExampleSelectionInts() {
+func ExampleSelection_ints() {
 	ints := []int{5, 4, 5, 3, 1, 2}
 	selectionAlg.SortInts(ints)
 	fmt.Println(ints)
 	// Output:
 	// [1 2 3 4 5 5]
 }
-func ExampleInsertionInts() {
+func ExampleInsertion_ints() {
 	ints := []int{5, 4, 5, 3, 1, 2}
 	insertionAlg.SortInts(ints)
 	fmt.Println(ints)
 	// Output:
 	// [1 2 3 4 5 5]
 }
-func ExampleShellInts() {
+func ExampleShell_ints() {
 	ints := []int{5, 4, 5, 3, 1, 2}
 	shellAlg.SortInts(ints)
 	fmt.Println(ints)
@@ -38,7 +38,7 @@ func ExampleShellInts() {
 }
 
 // float64s
-func ExampleSelectionFloat64s() {
+func ExampleSelection_float64s() {
 	s := []float64{5.2, -1.3, 0.7, -3.8, 2.6} // unsorted
 	selectionAlg.SortFloat64s(s)
 	fmt.Println(s)
@@ -51,7 +51,7 @@ func ExampleSelectionFloat64s() {
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
-func ExampleInsertionFloat64s() {
+func ExampleInsertion_float64s() {
 	s := []float64{5.2, -1.3, 0.7, -3.8, 2.6} // unsorted
 	insertionAlg.SortFloat64s(s)
 	fmt.Println(s)
@@ -64,7 +64,7 @@ func ExampleInsertionFloat64s() {
 	// [-3.8 -1.3 0.7 2.6 5.2]
 	// [NaN -Inf 0 +Inf]
 }
-func ExampleShellFloat64s() {
+func ExampleShell_float64s() {
 	s := []float64{5.2, -1.3, 0.7, -3.8, 2.6} // unsorted
 	shellAlg.SortFloat64s(s)
 	fmt.Println(s)
@@ -79,7 +79,7 @@ func ExampleShellFloat64s() {
 }
 
 // strings
-func ExampleSelectionStrings() {
+func ExampleSelection_strings() {
 	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	selectionAlg.SortStrings(s)
 	fmt.Println(s)
@@ -87,7 +87,7 @@ func ExampleSelectionStrings() {
 	// Output:
 	// [A E E L M O P R S T X]
 }
-func ExampleInsertionStrings() {
+func ExampleInsertion_strings() {
 	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	insertionAlg.SortStrings(s)
 	fmt.Println(s)
@@ -95,7 +95,7 @@ func ExampleInsertionStrings() {
 	// Output:
 	// [A E E L M O P R S T X]
 }
-func ExampleShellStrings() {
+func ExampleShell_strings() {
 	s := []string{"S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"}
 	shellAlg.SortStrings(s)
 	fmt.Println(s)
@@ -105,7 +105,7 @@ func ExampleShellStrings() {
 }
 
 // from file
-func ExampleSelectionFromFile() {
+func ExampleSelection_fromFile() {
 	in := util.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	selectionAlg.SortStrings(s)
@@ -114,7 +114,7 @@ func ExampleSelectionFromFile() {
 	// Output:
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
-func ExampleInsertionFromFile() {
+func ExampleInsertion_fromFile() {
 	in := util.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	insertionAlg.SortStrings(s)
@@ -123,7 +123,7 @@ func ExampleInsertionFromFile() {
 	// Output:
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
-func ExampleShellFromFile() {
+func ExampleShell_fromFile() {
 	in := util.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	shellAlg.SortStrings(s)

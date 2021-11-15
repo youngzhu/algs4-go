@@ -13,6 +13,7 @@ type PriorityQueue interface {
 	Delete() Item
 	IsEmpty() bool
 	Size() int
+	GetItems() []Item
 }
 
 // Index priority queue.
@@ -37,20 +38,32 @@ type IndexPQ interface {
 
 	// number of items in the priority queue
 	Size() int
-
 }
 
 type Item interface {
-	CompareTo(interface{}) int
+	CompareTo(x Item) int
 }
 
 type StringItem string
 
-func (s StringItem) CompareTo(other interface{}) int {
-	ss := other.(StringItem)
+func (s StringItem) CompareTo(x Item) int {
+	ss := x.(StringItem)
 	if s < ss {
 		return -1
 	} else if s > ss {
+		return 1
+	} else {
+		return 0
+	}
+}
+
+type IntItem int
+
+func (i IntItem) CompareTo(x Item) int {
+	ii := x.(IntItem)
+	if i < ii {
+		return -1
+	} else if i > ii {
 		return 1
 	} else {
 		return 0
