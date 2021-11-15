@@ -54,6 +54,7 @@ var algs = map[string]sorting.Sorter{
 	"mergebu":   sorting.NewMergeBU(),
 	"quick":     sorting.NewQuick(),
 	"quick3way": sorting.NewQuick3way(),
+	"heap": sorting.NewHeap(),
 }
 
 func init() {
@@ -271,3 +272,39 @@ func timeElapsed(alg string, a []float64) float64 {
 // got: Quick is 1.4 times faster than Quick3way
 // cmd: go run sort_compare.go -a1 Quick -a2 Quick3way -n 1000 -t 100
 // got: Quick is 2.1 times faster than Quick3way
+
+// Heap vs Selection
+// cmd: go run sort_compare.go -a1 Heap -a2 Selection -n 1000 -t 100 -s
+// got: Heap is 15.9 times faster than Selection
+// cmd: go run sort_compare.go -a1 Heap -a2 Selection -n 1000 -t 100
+// got: Heap is 14.2 times faster than Selection
+
+// Heap vs Insertion
+// cmd: go run sort_compare.go -a1 Heap -a2 Insertion -n 1000 -t 100 -s
+// got: Insertion is 23.0 times faster than Heap
+// cmd: go run sort_compare.go -a1 Heap -a2 Insertion -n 1000 -t 100
+// got: Heap is 16.5 times faster than Insertion
+
+// Heap vs Shell
+// cmd: go run sort_compare.go -a1 Heap -a2 Shell -n 1000 -t 100 -s
+// got: Shell is 3.4 times faster than Heap
+// cmd: go run sort_compare.go -a1 Heap -a2 Shell -n 1000 -t 100
+// got: Heap is 1.7 times faster than Shell
+
+// Heap vs Merge
+// cmd: go run sort_compare.go -a1 Heap -a2 Merge -n 1000 -t 100 -s
+// got: Heap is 2.2 times faster than Merge
+// cmd: go run sort_compare.go -a1 Heap -a2 Merge -n 1000 -t 100
+// got: Heap is 1.9 times faster than Merge
+
+// Heap vs Quick
+// cmd: go run sort_compare.go -a1 Heap -a2 Quick -n 1000 -t 100 -s
+// got: Heap is 1.2 times faster than Quick
+// cmd: go run sort_compare.go -a1 Heap -a2 Quick -n 1000 -t 100
+// got: Heap is 1.2 times faster than Quick
+
+// Heap vs Buildin
+// cmd: go run sort_compare.go -a1 Heap -a2 Buildin -n 1000 -t 100 -s
+// got: Buildin is 1.8 times faster than Heap
+// cmd: go run sort_compare.go -a1 Heap -a2 Buildin -n 1000 -t 100
+// got: Buildin is 1.0 times faster than Heap
