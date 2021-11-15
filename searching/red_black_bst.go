@@ -422,5 +422,8 @@ func (rb *RedBlackBST) IsEmpty() bool {
 
 // Does this ST contain the given key?
 func (rb *RedBlackBST) Contains(key STKey) bool {
-	return rb.Get(key) == nil
+	if key == nil {
+		panic("argument to Contains() is nil")
+	}
+	return rb.Get(key) != nil
 }

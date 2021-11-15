@@ -47,7 +47,7 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 		}
 	}
 
-	log.Printf("elapsed time: %.2f seconds", timer.ElapsedTime())
+	log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
 
 	return &FrequencyResult{max, st.Get(max), minLen, words, distinct}
 }
@@ -110,6 +110,22 @@ func ExampleBST_frequency() {
 	fmt.Println(result.String())
 
 	// elapsed time: 0.11 seconds
+	result = FrequencyCounter(st, talePath, 8)
+	fmt.Println(result.String())
+
+	// Output:
+	// high-frequency word: it, frequency: 10, minLen: 1, total words: 60, distinct words: 20
+	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
+}
+
+func ExampleRedBlackBST_frequency() {
+	st := searching.NewRedBlackBST()
+
+	// elapsed time: 0.00 seconds
+	result := FrequencyCounter(st, tinyTalePath, 1)
+	fmt.Println(result.String())
+
+	// elapsed time: 0.07 seconds
 	result = FrequencyCounter(st, talePath, 8)
 	fmt.Println(result.String())
 
