@@ -47,7 +47,7 @@ type BST struct {
 // must be `Node`, not `node`
 // otherwise got error: cannot use b.root (type *node) as type *node in argument to get
 type Node struct {
-	key STKey // sorted by key
+	key OrderedSTKey // sorted by key
 	value STValue // associated data
 	left, right *Node // left and right subtrees
 	size int // number of nodes in subtree
@@ -57,16 +57,16 @@ func NewBST() *BST {
 	return &BST{}
 }
 
-func newNode(key STKey, value STValue) *Node {
+func newNode(key OrderedSTKey, value STValue) *Node {
 	return &Node{key: key, value: value, size: 1}
 }
 
 // Returns the value associated with the given key
-func (b *BST) Get(key STKey) STValue {
+func (b *BST) Get(key OrderedSTKey) STValue {
 	return get(b.root, key)
 }
 
-func get(x *Node, key STKey) STValue {
+func get(x *Node, key OrderedSTKey) STValue {
 	if key == nil {
 		panic("calls get() with a nil key")
 	}
@@ -88,7 +88,7 @@ func get(x *Node, key STKey) STValue {
 // 
 // Deletes the specified key (and its associated value) from the symbol table if
 // the specified value is nil
-func (b *BST) Put(key STKey, value STValue) {
+func (b *BST) Put(key OrderedSTKey, value STValue) {
 	if key == nil {
 		panic("calls put() with a nil key")
 	}
@@ -99,7 +99,7 @@ func (b *BST) Put(key STKey, value STValue) {
 	b.root = put(b.root, key, value)
 }
 
-func put(x *Node, key STKey, value STValue) *Node {
+func put(x *Node, key OrderedSTKey, value STValue) *Node {
 	if x == nil {
 		return newNode(key, value)
 	}
@@ -128,14 +128,14 @@ func size(x *Node) int {
 
 // Reomoves the specified key and its associated value from the symbol table
 // (if the key is in this symbol table)
-func (b *BST) Delete(key STKey) {
+func (b *BST) Delete(key OrderedSTKey) {
 	if key == nil {
 		panic("calls Delete() with a nil key")
 	}
 	b.root = delete(b.root, key)
 }
 
-func delete(x *Node, key STKey) *Node {
+func delete(x *Node, key OrderedSTKey) *Node {
 	if x == nil {
 		return nil
 	}
@@ -181,7 +181,7 @@ func min(x *Node) *Node {
 }
 
 // Returns all keys in the symbol table
-func (b *BST) Keys() []STKey {
+func (b *BST) Keys() []OrderedSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -190,7 +190,7 @@ func (b *BST) Keys() []STKey {
 }
 
 // Returns all keys in the symbol table in the given range
-func (b *BST) rangeKeys(lo, hi STKey) []STKey {
+func (b *BST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
 	if lo == nil {
 		panic("first argument to rangeKeys() is nil")
 	}
@@ -201,17 +201,17 @@ func (b *BST) rangeKeys(lo, hi STKey) []STKey {
 	queue := fund.NewQueue()
 	keys(b.root, queue, lo, hi)
 
-	keySliece := make([]STKey, queue.Size())
+	keySliece := make([]OrderedSTKey, queue.Size())
 	i := 0
 	for _, v := range queue.Iterator() {
-		keySliece[i] = v.(STKey)
+		keySliece[i] = v.(OrderedSTKey)
 		i++
 	}
 
 	return keySliece
 }
 
-func keys(x *Node, queue *fund.Queue, lo, hi STKey) {
+func keys(x *Node, queue *fund.Queue, lo, hi OrderedSTKey) {
 	if x == nil {
 		return 
 	}
@@ -230,7 +230,7 @@ func keys(x *Node, queue *fund.Queue, lo, hi STKey) {
 }
 
 // Returns the smallest key in the BST
-func (b *BST) Min() STKey {
+func (b *BST) Min() OrderedSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -239,7 +239,7 @@ func (b *BST) Min() STKey {
 }
 
 // Returns the largest key in the BST
-func (b *BST) Max() STKey {
+func (b *BST) Max() OrderedSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -265,7 +265,7 @@ func (b *BST) Size() int {
 }
 
 // Does this BST contains the given key?
-func (b *BST) Contains(key STKey) bool {
+func (b *BST) Contains(key OrderedSTKey) bool {
 	if key == nil {
 		panic("argument to Contains() is nil")
 	}

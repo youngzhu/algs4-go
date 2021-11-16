@@ -26,7 +26,7 @@ package searching
 const initCapacity = 2
 
 type BinarySearchST struct {
-	keys []STKey
+	keys []OrderedSTKey
 	values []STValue
 	n int
 }
@@ -37,7 +37,7 @@ func NewBinarySearchST() *BinarySearchST {
 
 // Initializes an empty symbol table with the specified initial capacity
 func NewBinarySearchSTN(n int) *BinarySearchST {
-	keys := make([]STKey, n)
+	keys := make([]OrderedSTKey, n)
 	values := make([]STValue, n)
 	return &BinarySearchST{keys, values, 0}
 }
@@ -47,7 +47,7 @@ func (st *BinarySearchST) resize(newCap int) {
 		return
 	}
 
-	newKeys := make([]STKey, newCap)
+	newKeys := make([]OrderedSTKey, newCap)
 	copy(newKeys, st.keys)
 	st.keys = newKeys
 
@@ -58,7 +58,7 @@ func (st *BinarySearchST) resize(newCap int) {
 
 // The heart of the implemention
 // Returns the number of keys strictly less than the given key
-func (st *BinarySearchST) Rank(key STKey) int {
+func (st *BinarySearchST) Rank(key OrderedSTKey) int {
 	if key == nil {
 		panic("argument to Rank() is nil")
 	}
@@ -80,7 +80,7 @@ func (st *BinarySearchST) Rank(key STKey) int {
 }
 
 // Returns the value associated with the given key 
-func (st *BinarySearchST) Get(key STKey) STValue {
+func (st *BinarySearchST) Get(key OrderedSTKey) STValue {
 	if key == nil {
 		panic("argument to Get() is nil")
 	}
@@ -99,7 +99,7 @@ func (st *BinarySearchST) Get(key STKey) STValue {
 // already contains the specified key.
 // Deletes the specified key (and its associated value) from 
 // this symbol table if the specified value is nil
-func (st *BinarySearchST) Put(key STKey, value STValue) {
+func (st *BinarySearchST) Put(key OrderedSTKey, value STValue) {
 	if key == nil {
 		panic("first argument to Put() is nil")
 	}
@@ -131,7 +131,7 @@ func (st *BinarySearchST) Put(key STKey, value STValue) {
 
 // Removes the specified key and associated value
 // (if the key is in the symbol table)
-func (st *BinarySearchST) Delete(key STKey) {
+func (st *BinarySearchST) Delete(key OrderedSTKey) {
 	if key == nil {
 		panic("argument to Delete() is nil")
 	}
@@ -160,7 +160,7 @@ func (st *BinarySearchST) Delete(key STKey) {
 }
 
 // Returns all keys in the symbol table
-func (st BinarySearchST) Keys() []STKey {
+func (st BinarySearchST) Keys() []OrderedSTKey {
 	return st.keys[:st.n]
 }
 
@@ -168,6 +168,6 @@ func (st BinarySearchST) IsEmpty() bool {
 	return st.n == 0
 }
 
-func (st BinarySearchST) Contains(key STKey) bool {
+func (st BinarySearchST) Contains(key OrderedSTKey) bool {
 	return st.Get(key) != nil
 }

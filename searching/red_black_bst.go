@@ -63,7 +63,7 @@ type RedBlackBST struct {
 
 // 
 type RBNode struct {
-	key STKey // key
+	key OrderedSTKey // key
 	value STValue // associated data
 	left, right *RBNode // links to left and right subtrees
 	color bool // color of parent link
@@ -74,12 +74,12 @@ func NewRedBlackBST() *RedBlackBST {
 	return &RedBlackBST{}
 }
 
-func newRBNode(key STKey, value STValue, color bool, size int) *RBNode {
+func newRBNode(key OrderedSTKey, value STValue, color bool, size int) *RBNode {
 	return &RBNode{key: key, value: value, color: color, size: size}
 }
 
 // Returns the value associated with the given key
-func (rb *RedBlackBST) Get(key STKey) STValue {
+func (rb *RedBlackBST) Get(key OrderedSTKey) STValue {
 	if key == nil {
 		panic("argument to Get() is nil")
 	}
@@ -88,7 +88,7 @@ func (rb *RedBlackBST) Get(key STKey) STValue {
 
 // value associated with the given key in subtree rooted at x
 // return nil if no such key
-func getRB(x *RBNode, key STKey) STValue {
+func getRB(x *RBNode, key OrderedSTKey) STValue {
 	for x != nil {
 		cmp := key.CompareTo(x.key)
 
@@ -107,7 +107,7 @@ func getRB(x *RBNode, key STKey) STValue {
 // with the new one if the ST already contains the specified key.
 // Deletes the specified key (and its associated value) from this ST if the 
 // specified value is nil
-func (rb *RedBlackBST) Put(key STKey, value STValue) {
+func (rb *RedBlackBST) Put(key OrderedSTKey, value STValue) {
 	if key == nil {
 		panic("first arg to Put() is nil")
 	}
@@ -120,7 +120,7 @@ func (rb *RedBlackBST) Put(key STKey, value STValue) {
 }
 
 // insert the key-value pair into the subtree rooted at h
-func putRB(h *RBNode, key STKey, value STValue) *RBNode {
+func putRB(h *RBNode, key OrderedSTKey, value STValue) *RBNode {
 	if h == nil {
 		return newRBNode(key, value, RED, 1)
 	}
@@ -152,7 +152,7 @@ func putRB(h *RBNode, key STKey, value STValue) *RBNode {
 
 // Removes the specified key and its associated value from this ST
 // (if the key is in the ST)
-func (rb *RedBlackBST) Delete(key STKey) {
+func (rb *RedBlackBST) Delete(key OrderedSTKey) {
 	if key == nil {
 		panic("arg to Delete() is nil")
 	}
@@ -174,7 +174,7 @@ func (rb *RedBlackBST) Delete(key STKey) {
 }
 
 // delete the key-value with the given key rooted at h
-func deleteRB(h *RBNode, key STKey) *RBNode {
+func deleteRB(h *RBNode, key OrderedSTKey) *RBNode {
 	if key.CompareTo(h.key) < 0 {
 		if !isRed(h.left) && !isRed(h.left.left) {
 			h = moveRedLeft(h)
@@ -204,7 +204,7 @@ func deleteRB(h *RBNode, key STKey) *RBNode {
 }
 
 // Returns the smallest key in the ST
-func (rb *RedBlackBST) Min() STKey {
+func (rb *RedBlackBST) Min() OrderedSTKey {
 	if rb.IsEmpty() {
 		panic("calls Min() with empty ST")
 	}
@@ -222,7 +222,7 @@ func minRB(x *RBNode) *RBNode {
 }
 
 // Retruns the largest key in the ST
-func (rb *RedBlackBST) Max() STKey {
+func (rb *RedBlackBST) Max() OrderedSTKey {
 	if rb.IsEmpty() {
 		panic("calls Max() with empty ST")
 	}
@@ -274,7 +274,7 @@ func deleteMinRB(x *RBNode) *RBNode {
 }
 
 // Return all keys in the ST
-func (rb *RedBlackBST) Keys() []STKey {
+func (rb *RedBlackBST) Keys() []OrderedSTKey {
 	if rb.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -282,7 +282,7 @@ func (rb *RedBlackBST) Keys() []STKey {
 }
 
 // returns all keys in the symbol table in the given range
-func (rb *RedBlackBST) rangeKeys(lo, hi STKey) []STKey {
+func (rb *RedBlackBST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
 	if lo == nil {
 		panic("first argument to rangeKeys() is nil")
 	}
@@ -293,17 +293,17 @@ func (rb *RedBlackBST) rangeKeys(lo, hi STKey) []STKey {
 	queue := fund.NewQueue()
 	keysRB(rb.root, queue, lo, hi)
 
-	keySliece := make([]STKey, queue.Size())
+	keySliece := make([]OrderedSTKey, queue.Size())
 
 	for i := 0; !queue.IsEmpty(); i++ {
-		keySliece[i] = queue.Dequeue().(STKey)
+		keySliece[i] = queue.Dequeue().(OrderedSTKey)
 	}
 
 	return keySliece
 }
 
 // add the keys between lo and hi in the subtree rooted at x to the queue
-func keysRB(x *RBNode, queue *fund.Queue, lo, hi STKey) {
+func keysRB(x *RBNode, queue *fund.Queue, lo, hi OrderedSTKey) {
 	if x == nil {
 		return 
 	}
@@ -421,7 +421,7 @@ func (rb *RedBlackBST) IsEmpty() bool {
 }
 
 // Does this ST contain the given key?
-func (rb *RedBlackBST) Contains(key STKey) bool {
+func (rb *RedBlackBST) Contains(key OrderedSTKey) bool {
 	if key == nil {
 		panic("argument to Contains() is nil")
 	}
