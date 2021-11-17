@@ -27,7 +27,7 @@
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
   - [BST: Binary Search Tree](searching/bst.go)
-  - [ ] [RedBlackBST](#)
+  - [RedBlackBST](searching/red_black_bst.go)
   - [ ] [SeparateChainingHashST](#)
   - [ ] [LinearProbingHashST](#)
   - Client
