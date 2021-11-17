@@ -23,6 +23,7 @@ package searching
 // 2. It should be efficient to compute
 // 3. It should uniformly distribute the keys
 
+// must be a power of 2
 const initHashCapacity = 4
 
 type HashSymbolTable interface {

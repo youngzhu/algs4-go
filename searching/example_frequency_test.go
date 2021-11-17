@@ -227,3 +227,19 @@ func ExampleSeparateChainingHashST_frequency() {
 	// high-frequency word: the, frequency: 10, minLen: 1, total words: 60, distinct words: 20
 	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
 }
+
+func ExampleLinearProbingHashST_frequency() {
+	st := searching.NewLinearProbingHashST()
+
+	// elapsed time: 0.00 seconds
+	result := FrequencyCounterHash(st, tinyTalePath, 1)
+	fmt.Println(result.String())
+
+	// elapsed time: 0.09 seconds
+	result = FrequencyCounterHash(st, talePath, 8)
+	fmt.Println(result.String())
+
+	// Output:
+	// high-frequency word: of, frequency: 10, minLen: 1, total words: 60, distinct words: 20
+	// high-frequency word: business, frequency: 122, minLen: 8, total words: 14350, distinct words: 5128
+}
