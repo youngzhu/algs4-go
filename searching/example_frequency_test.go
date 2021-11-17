@@ -2,7 +2,7 @@ package searching_test
 
 import (
 	"fmt"
-	"log"
+	// "log"
 
 	"github.com/youngzhu/algs4-go/searching"
 	"github.com/youngzhu/algs4-go/util"
@@ -18,7 +18,7 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 	distinct, words := 0, 0
 	in := util.NewInReadWords(path)
 
-	timer := util.NewStopwatch()
+	// timer := util.NewStopwatch()
 
 	for !in.IsEmpty() {
 		word := in.ReadString()
@@ -47,7 +47,7 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 		}
 	}
 
-	log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
+	// log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
 
 	return &FrequencyResult{max, st.Get(max), minLen, words, distinct}
 }
@@ -57,7 +57,7 @@ func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLe
 	distinct, words := 0, 0
 	in := util.NewInReadWords(path)
 
-	timer := util.NewStopwatch()
+	// timer := util.NewStopwatch()
 
 	for !in.IsEmpty() {
 		word := in.ReadString()
@@ -86,7 +86,7 @@ func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLe
 		}
 	}
 
-	log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
+	// log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
 
 	return &FrequencyResult{max, st.Get(max), minLen, words, distinct}
 }
@@ -96,7 +96,7 @@ func FrequencyCounterHash(st searching.HashSymbolTable, path string, minLen int)
 	distinct, words := 0, 0
 	in := util.NewInReadWords(path)
 
-	timer := util.NewStopwatch()
+	// timer := util.NewStopwatch()
 
 	for !in.IsEmpty() {
 		word := in.ReadString()
@@ -125,7 +125,7 @@ func FrequencyCounterHash(st searching.HashSymbolTable, path string, minLen int)
 		}
 	}
 
-	log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
+	// log.Printf("%T, elapsed time: %.2f seconds", st, timer.ElapsedTime())
 
 	return &FrequencyResult{max, st.Get(max), minLen, words, distinct}
 }
