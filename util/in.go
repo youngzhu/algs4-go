@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"strconv"
 )
 
 // Reads in data of various types from standard input, files and URLs.
@@ -70,6 +71,11 @@ func newReader(uri string) io.Reader {
 
 func (in *In) ReadString() string {
 	return in.scanner.Text()
+}
+
+func (in *In) ReadInt() int {
+	i, _ := strconv.Atoi(in.scanner.Text())
+	return i
 }
 
 func (in *In) IsEmpty() bool {

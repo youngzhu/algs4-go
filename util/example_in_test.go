@@ -7,7 +7,7 @@ import (
 	"github.com/youngzhu/algs4-go/util"
 )
 
-func ExampleIn_words() {
+func ExampleIn_ReadString() {
 	in := util.NewInReadWords("testdata/in.txt")
 	for !in.IsEmpty() {
 		fmt.Println(in.ReadString())
@@ -20,7 +20,7 @@ func ExampleIn_words() {
 	// you
 }
 
-func ExampleIn_words_gz() {
+func ExampleIn_ReadString_gz() {
 	in := util.NewInReadWords("testdata/in.txt.gz")
 	for !in.IsEmpty() {
 		fmt.Println(in.ReadString())
@@ -33,7 +33,20 @@ func ExampleIn_words_gz() {
 	// you
 }
 
-func ExampleIn_all() {
+func ExampleIn_ReadInt() {
+	in := util.NewInReadWords("testdata/ints.txt")
+	for !in.IsEmpty() {
+		fmt.Println(in.ReadInt())
+	}
+	// Output:
+	// 12
+	// 3
+	// -1
+	// 5
+	// 6
+}
+
+func ExampleIn_ReadAllStrings() {
 	in := util.NewInReadWords("testdata/in.txt")
 	s := in.ReadAllStrings()
 	fmt.Println(s)
@@ -41,7 +54,7 @@ func ExampleIn_all() {
 	// [hello Gopher wating for you]
 }
 
-func ExampleIn_all_http() {
+func ExampleIn_ReadAllStrings_http() {
 	const url = "https://algs4.cs.princeton.edu/24pq/tiny.txt"
 	in := util.NewInReadWords(url)
 	s := in.ReadAllStrings()
