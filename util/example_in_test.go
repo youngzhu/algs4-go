@@ -46,6 +46,19 @@ func ExampleIn_ReadInt() {
 	// 6
 }
 
+func ExampleIn_ReadInt_part() {
+	in := util.NewInReadWords("testdata/ints.txt")
+	
+	fmt.Println(in.ReadInt())
+	fmt.Println(in.ReadInt())
+	fmt.Println(in.ReadInt())
+	
+	// Output:
+	// 12
+	// 3
+	// -1
+}
+
 func ExampleIn_ReadAllStrings() {
 	in := util.NewInReadWords("testdata/in.txt")
 	s := in.ReadAllStrings()

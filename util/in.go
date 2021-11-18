@@ -15,6 +15,8 @@ import (
 type In struct {
 	reader  io.Reader
 	scanner *bufio.Scanner
+	scanned bool
+	valid bool
 }
 
 // Factory method
@@ -30,7 +32,7 @@ func NewInReadWords(uri string) *In {
 
 	scanner.Split(bufio.ScanWords)
 
-	return &In{r, scanner}
+	return &In{reader: r, scanner: scanner}
 }
 
 func NewInReadLines(uri string) *In {
@@ -38,7 +40,7 @@ func NewInReadLines(uri string) *In {
 
 	scanner := bufio.NewScanner(r)
 
-	return &In{r, scanner}
+	return &In{reader: r, scanner: scanner}
 }
 
 func newReader(uri string) io.Reader {
@@ -70,16 +72,35 @@ func newReader(uri string) io.Reader {
 }
 
 func (in *In) ReadString() string {
+	in.scan()
 	return in.scanner.Text()
 }
 
 func (in *In) ReadInt() int {
-	i, _ := strconv.Atoi(in.scanner.Text())
+	i, _ := strconv.Atoi(in.ReadString())
 	return i
 }
 
 func (in *In) IsEmpty() bool {
-	return !in.scanner.Scan()
+	// return !in.scanner.Scan()
+	// err := in.scanner.Err()
+	return !in.HasNext()
+}
+
+func (in *In) HasNext() bool {
+	if !in.valid {
+		in.valid = true
+		in.scanned = in.scanner.Scan()
+	}
+	return in.scanned
+}
+
+func (in *In) scan() bool {
+	if in.valid {
+		in.valid = false
+		return in.scanned
+	}
+	return in.scanner.Scan()
 }
 
 func (in *In) ReadAllStrings() []string {
