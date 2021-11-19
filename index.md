@@ -33,8 +33,8 @@
   - Client
     - [FrequencyCounter](searching/example_frequency_test.go)
 ## 4 GRAPHS
-  - [ ] Graph
-    - [ ] [Graph](#)
+  - Undirected Graphs
+    - [ ] [Graph](graphs/graph.go)
     - [ ] [DepthFirstSearch](#)
     - [ ] [DepthFirstPaths](#)
     - [ ] [BreadthFirstPaths](#)
@@ -42,7 +42,7 @@
     - [ ] [Cycle](#)
     - [ ] [SymbolGraph](#)
     - [ ] [DegreesOfSeparation](#)
-  - [ ] Digraph
+  - Directed Graphs
     - [ ] [Digraph](#)
     - [ ] [SymbolDigraph](#)
     - [ ] [DirectedDFS](#)
@@ -50,7 +50,7 @@
     - [ ] [DepthFirstOrder](#)
     - [ ] [Topological](#)
     - [ ] [KosarajuSCC](#)
-  - [ ] MST
+  - Minimum Spanning Tree
     - [ ] [EdgeWeightedGraph](#)
     - [ ] [LazyPrimMST](#)
     - [ ] [PrimMST](#)
