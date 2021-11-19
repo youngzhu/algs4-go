@@ -93,3 +93,37 @@ func (g *Graph) validateVertex(v int) {
 		panic("invalidate vertex")
 	}
 }
+
+// Maximum degree
+func (g *Graph) MaxDegree() int {
+	max := 0
+
+	for v := 0; v < g.v; v++ {
+		if g.Degree(v) > max {
+			max = g.Degree(v)
+		}
+	}
+
+	return max
+}
+
+// Average degree
+func (g *Graph) AvgDegree() int {
+	// each edge incident on two vertices
+	return 2*g.e/g.v
+}
+
+// Number of self-loops
+func (g *Graph) NumberOfSelfLoops() int {
+	count := 0
+
+	for v := 0; v < g.v; v++ {
+		for _, w := range g.adj[v].Iterator() {
+			if v == w {
+				count++
+			}
+		}
+	}
+
+	return count/2 // self loop appears in adjacency list twice
+}
