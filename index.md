@@ -34,7 +34,7 @@
     - [FrequencyCounter](searching/example_frequency_test.go)
 ## 4 GRAPHS
   - Undirected Graphs
-    - [ ] [Graph](graphs/graph.go)
+    - [Graph](graphs/graph.go)
     - [ ] [DepthFirstSearch](#)
     - [ ] [DepthFirstPaths](#)
     - [ ] [BreadthFirstPaths](#)
