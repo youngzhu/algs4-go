@@ -28,8 +28,8 @@
   - [BinarySearchST](searching/binary_search.go)
   - [BST: Binary Search Tree](searching/bst.go)
   - [RedBlackBST](searching/red_black_bst.go)
-  - [ ] [SeparateChainingHashST](#)
-  - [ ] [LinearProbingHashST](#)
+  - [SeparateChainingHashST](searching/separate_chaining_hash_st.go)
+  - [LinearProbingHashST](searching/linear_probing_hash_st.go)
   - Client
     - [FrequencyCounter](searching/example_frequency_test.go)
 ## 4 GRAPHS
