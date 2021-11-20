@@ -6,17 +6,17 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
 // Reads in data of various types from standard input, files and URLs.
 
 type In struct {
-	reader  io.Reader
-	scanner *bufio.Scanner
-	scanned bool
-	valid bool
+	reader     io.Reader
+	scanner    *bufio.Scanner
+	hasScanned bool
+	hasNext    bool
 }
 
 // Factory method
@@ -72,7 +72,7 @@ func newReader(uri string) io.Reader {
 }
 
 func (in *In) ReadString() string {
-	in.scan()
+	in.next()
 	return in.scanner.Text()
 }
 
@@ -82,23 +82,21 @@ func (in *In) ReadInt() int {
 }
 
 func (in *In) IsEmpty() bool {
-	// return !in.scanner.Scan()
-	// err := in.scanner.Err()
 	return !in.HasNext()
 }
 
 func (in *In) HasNext() bool {
-	if !in.valid {
-		in.valid = true
-		in.scanned = in.scanner.Scan()
+	if !in.hasScanned {
+		in.hasNext = in.scanner.Scan()
+		in.hasScanned = true
 	}
-	return in.scanned
+	return in.hasNext
 }
 
-func (in *In) scan() bool {
-	if in.valid {
-		in.valid = false
-		return in.scanned
+func (in *In) next() bool {
+	if in.hasScanned {
+		in.hasScanned = false
+		return in.hasNext
 	}
 	return in.scanner.Scan()
 }
