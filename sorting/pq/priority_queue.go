@@ -13,7 +13,6 @@ type PriorityQueue interface {
 	Delete() Item
 	IsEmpty() bool
 	Size() int
-	GetItems() []Item
 }
 
 // Index priority queue.
@@ -30,14 +29,17 @@ type IndexPQ interface {
 	// is k associated with any item?
 	Contains(k int) bool
 
-	// remove k and its associated item
-	Delete(k int)
+	// remove the minimal/maximal item and return its index
+	Delete() int
 
 	// is the priority queue empty?
 	IsEmpty() bool
 
 	// number of items in the priority queue
 	Size() int
+
+	// get the minimal/maximal item
+	HighestPriorityItem() Item
 }
 
 type Item interface {
