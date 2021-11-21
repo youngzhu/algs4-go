@@ -19,10 +19,10 @@
   - Priority Queue
     - [MaxPQ](sorting/pq/max_pq.go)
     - [MinPQ](sorting/pq/min_pq.go)
+    - [IndexMinPQ](sorting/pq/min_index_pq.go)
     - Client
       - [TopM](sorting/pq/example_topm_test.go)
-  - [ ] [IndexMinPQ](#)
-  - [ ] [Multiway](#)
+      - [Multiway](sorting/pq/example_index_pq_test.go)
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
