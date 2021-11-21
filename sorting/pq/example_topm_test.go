@@ -11,7 +11,8 @@ import (
 	"github.com/youngzhu/algs4-go/util"
 )
 
-// A priority queue client that reads transations, and prints out the M largest ones
+// A priority queue client that reads transations,
+// and prints out the M largest ones
 const M = 5
 
 func ExampleMinPQ_topM() {
