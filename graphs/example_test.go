@@ -70,3 +70,41 @@ func ExampleGraph_NumberOfSelfLoops() {
 	// Output:
 	// number of self loops: 0
 }
+
+func ExampleDepthFirstSearch() {
+	if tinyGraph == nil {
+		dataInit()
+	}
+
+	dfs(*tinyGraph, 0)
+
+	fmt.Println()
+
+	dfs(*tinyGraph, 9)
+
+	// literally match. Fail probably because of CRLF
+	// Output:
+	// 0 1 2 3 4 5 6
+	// NOT connected
+	// 9 10 11 12
+	// NOT connected
+	
+}
+
+func dfs(g graphs.Graph, s int) {
+	search := graphs.NewDepthFirstSearch(g, s)
+
+	for v := 0; v < g.V(); v++ {
+		if search.Marked(v) {
+			fmt.Printf("%v ", v)
+		}
+	}
+
+	fmt.Println()
+
+	if search.Count() != g.V() {
+		fmt.Print("NOT connected")
+	} else {
+		fmt.Print("connected")
+	}
+}

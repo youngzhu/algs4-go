@@ -75,6 +75,18 @@ func (g *Graph) Degree(v int) int {
 	return g.adj[v].Size()
 }
 
+func (g *Graph) Adj(v int) []int {
+	g.validateVertex(v)
+
+	adjs := make([]int, g.Degree(v))
+
+	for i, w := range g.adj[v].Iterator() {
+		adjs[i] = w.(int)
+	}
+	
+	return adjs
+}
+
 // Returns a string representation of this graph
 func (g *Graph) String() string {
 	s := fmt.Sprintf("%d vertices, %d edges\n", g.v, g.e)
