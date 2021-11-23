@@ -1,5 +1,5 @@
 ## Overview
-Go translations of the <a href = "http://algs4.cs.princeton.edu/code/"> Java source code</a>
+Golang translations of the <a href = "http://algs4.cs.princeton.edu/code/"> Java source code</a>
 for the algorithms and clients in the textbook Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.
 
 ## Coding style
