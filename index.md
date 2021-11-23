@@ -35,7 +35,7 @@
 ## 4 GRAPHS
   - Undirected Graphs
     - [Graph](graphs/graph.go)
-    - [ ] [DepthFirstSearch](#)
+    - [DepthFirstSearch](graphs/depth_first_search.go)
     - [ ] [DepthFirstPaths](#)
     - [ ] [BreadthFirstPaths](#)
     - [ ] [CC](#)
