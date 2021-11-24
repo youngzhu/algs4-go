@@ -40,23 +40,23 @@ func NewBreadthFirstPaths(g Graph, s int) BreadthFirstPaths {
 	}
 
 	path := BreadthFirstPaths{g, s, marked, edgeTo, distTo}
-	path.bfs(g, s)
+	path.bfs()
 
 	return path
 }
 
 // breadth first search from s
-func (p BreadthFirstPaths) bfs(g Graph, s int) {
+func (p BreadthFirstPaths) bfs() {
 	queue := fund.NewQueue()
 
-	p.marked[s] = true
-	p.distTo[s] = 0
-	queue.Enqueue(fund.Item(s))
+	p.marked[p.source] = true
+	p.distTo[p.source] = 0
+	queue.Enqueue(fund.Item(p.source))
 
 	for !queue.IsEmpty() {
 		v := queue.Dequeue().(int)
 
-		for _, w := range g.Adj(v) {
+		for _, w := range p.graph.Adj(v) {
 			if !p.marked[w] {
 				p.marked[w] = true
 				p.edgeTo[w] = v
