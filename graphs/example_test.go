@@ -142,3 +142,38 @@ func ExampleDepthFirstPaths() {
 	// 0 to 5: 0-2-3-5
 	
 }
+
+
+func ExampleBreadthFirstPaths() {
+	in := util.NewInReadWords("testdata/tinyCG.txt")
+	graph := graphs.NewGraph(in)
+
+	source := 0
+	path := graphs.NewBreadthFirstPaths(*graph, source)
+
+	for v := 0; v < graph.V(); v++ {
+		if path.HasPathTo(v) {
+			fmt.Printf("%d to %d (%d): ", source, v, path.DistTo(v))
+			// fmt.Println(path.PathTo(v))
+			for _, x := range path.PathTo(v) {
+				if x == source {
+					fmt.Print(x)
+				} else {
+					fmt.Printf("-%d", x)
+				}
+			}
+			fmt.Println()
+		} else {
+			fmt.Printf("%d to %d (-): not connected\n", source, v)
+		}
+	}
+
+	// Output: 
+	// 0 to 0 (0): 0
+	// 0 to 1 (1): 0-1
+	// 0 to 2 (1): 0-2
+	// 0 to 3 (2): 0-2-3
+	// 0 to 4 (2): 0-2-4
+	// 0 to 5 (1): 0-5
+	
+}
