@@ -1,10 +1,11 @@
-package main
+package xsum_test
 
 import (
 	"testing"
 	"log"
 	"os"
 
+	. "github.com/youngzhu/algs4-go/fund/xsum"
 	"github.com/youngzhu/algs4-go/util"
 )
 

@@ -1,4 +1,4 @@
-package main
+package xsum
 
 // Counts the number of triples in an array of N integers that sums to 0
 
