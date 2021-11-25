@@ -5,6 +5,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/graphs"
 	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/fund"
 )
 
 var tinyGraph *graphs.Graph
@@ -143,7 +144,6 @@ func ExampleDepthFirstPaths() {
 	
 }
 
-
 func ExampleBreadthFirstPaths() {
 	in := util.NewInReadWords("testdata/tinyCG.txt")
 	graph := graphs.NewGraph(in)
@@ -176,4 +176,41 @@ func ExampleBreadthFirstPaths() {
 	// 0 to 4 (2): 0-2-4
 	// 0 to 5 (1): 0-5
 	
+}
+
+func ExampleConnectedComponents() {
+	if tinyGraph == nil {
+		dataInit()
+	}
+
+	cc := graphs.NewConnectedComponents(*tinyGraph)
+
+	// number of connected components
+	n := cc.Count()
+	fmt.Printf("%d components\n", n)
+
+	// compute list of vertices in each connected component
+	components := make([]*fund.Queue, n)
+	for i := 0; i < n; i++ {
+		components[i] = fund.NewQueue()
+	}
+	for v := 0; v < tinyGraph.V(); v++ {
+		components[cc.Id(v)].Enqueue(fund.Item(v))
+	}
+
+	// print results
+	for i := 0; i < n; i++ {
+		for _, v := range components[i].Iterator() {
+			fmt.Printf("%v ", v)
+		}
+		fmt.Printf("\n")
+	}
+
+	// literally match. Fail probably because of CRLF
+	// Output: 
+	// 3 components
+	// 0 1 2 3 4 5 6
+	// 7 8
+	// 9 10 11 12
+
 }
