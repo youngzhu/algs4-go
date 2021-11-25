@@ -8,11 +8,17 @@ import (
 	"github.com/youngzhu/algs4-go/fund"
 )
 
-var tinyGraph *graphs.Graph
+var (
+	tinyGraph *graphs.Graph
+	tinyCG *graphs.Graph
+)
 
 func dataInit() {
 	in := util.NewInReadWords("testdata/tinyG.txt")
 	tinyGraph = graphs.NewGraph(in)
+
+	in = util.NewInReadWords("testdata/tinyCG.txt")
+	tinyCG = graphs.NewGraph(in)
 }
 
 func ExampleGraph() {
@@ -111,13 +117,15 @@ func dfs(g graphs.Graph, s int) {
 }
 
 func ExampleDepthFirstPaths() {
-	in := util.NewInReadWords("testdata/tinyCG.txt")
-	graph := graphs.NewGraph(in)
+	
+	if tinyCG == nil {
+		dataInit()
+	}
 
 	source := 0
-	path := graphs.NewDepthFirstPaths(*graph, source)
+	path := graphs.NewDepthFirstPaths(*tinyCG, source)
 
-	for v := 0; v < graph.V(); v++ {
+	for v := 0; v < tinyCG.V(); v++ {
 		if path.HasPathTo(v) {
 			fmt.Printf("%d to %d: ", source, v)
 			// fmt.Println(path.PathTo(v))
@@ -145,13 +153,14 @@ func ExampleDepthFirstPaths() {
 }
 
 func ExampleBreadthFirstPaths() {
-	in := util.NewInReadWords("testdata/tinyCG.txt")
-	graph := graphs.NewGraph(in)
+	if tinyCG == nil {
+		dataInit()
+	}
 
 	source := 0
-	path := graphs.NewBreadthFirstPaths(*graph, source)
+	path := graphs.NewBreadthFirstPaths(*tinyCG, source)
 
-	for v := 0; v < graph.V(); v++ {
+	for v := 0; v < tinyCG.V(); v++ {
 		if path.HasPathTo(v) {
 			fmt.Printf("%d to %d (%d): ", source, v, path.DistTo(v))
 			// fmt.Println(path.PathTo(v))
