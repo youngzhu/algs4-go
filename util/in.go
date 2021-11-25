@@ -101,12 +101,6 @@ func (in *In) next() bool {
 	return in.scanner.Scan()
 }
 
-func (in *In) ReadAllStrings() []string {
-	str := in.readAll()
-
-	return strings.Fields(str)
-}
-
 func (in *In) readAll() string {
 	data, err := io.ReadAll(in.reader)
 	if err != nil {
@@ -114,4 +108,22 @@ func (in *In) readAll() string {
 	}
 
 	return string(data)
+}
+
+func (in *In) ReadAllStrings() []string {
+	str := in.readAll()
+
+	return strings.Fields(str)
+}
+
+func (in *In) ReadAllInts() []int {
+	strSlice := in.ReadAllStrings()
+	n := len(strSlice)
+	intSlice := make([]int, n)
+
+	for i := 0; i < n; i++ {
+		intSlice[i], _ = strconv.Atoi(strSlice[i])
+	}
+
+	return intSlice
 }
