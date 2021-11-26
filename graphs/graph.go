@@ -20,7 +20,7 @@ type Graph struct {
 	adj []*fund.Bag // 
 }
 
-// Initialized a graph from the specified input stream.
+// New a graph from the specified input stream.
 // The format is the number of vertices V
 // followed by the number of edges E
 // followed by E pairs of vertices, with each entry separated by whitespace
@@ -48,6 +48,20 @@ func NewGraph(in *util.In) *Graph {
 	}
 
 	return g
+}
+
+// New an empty graph with v vertices and 0 edges
+func NewGraphN(v int) *Graph {
+	if v < 0 {
+		panic("number of verties in a Graph must be non-negative")
+	}
+
+	adj := make([]*fund.Bag, v)
+	for i:=0; i < v; i++ {
+		adj[i] = fund.NewBag()
+	}
+
+	return &Graph{v, 0, adj}
 }
 
 // Returns the number of vertices in this graph
