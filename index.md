@@ -36,12 +36,10 @@
   - Undirected Graphs
     - [Graph](graphs/graph.go)
     - [DepthFirstSearch](graphs/depth_first_search.go)
-    - [ ] [DepthFirstPaths](#)
-    - [ ] [BreadthFirstPaths](#)
-    - [ ] [CC](#)
-    - [ ] [Cycle](#)
-    - [ ] [SymbolGraph](#)
-    - [ ] [DegreesOfSeparation](#)
+    - [DepthFirstPaths](graphs/depth_first_paths.go)
+    - [BreadthFirstPaths](graphs/breadth_first_paths.go)
+    - [ConnectedComponents](graphs/connected_components.go)
+    - [SymbolGraph](graphs/symbol_graph.go)
   - Directed Graphs
     - [ ] [Digraph](#)
     - [ ] [SymbolDigraph](#)
