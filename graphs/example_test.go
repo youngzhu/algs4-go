@@ -227,22 +227,29 @@ func ExampleConnectedComponents() {
 func ExampleSymbolGraph() {
 	sg := graphs.NewSymbolGraph("testdata/routes.txt", " ")
 
-	g := sg.Graph()
-
-	input := "JFK"
-	if sg.Contains(input) {
-		fmt.Println(input)
-		s := sg.Index(input)
-		for _, v := range g.Adj(s) {
-			fmt.Printf("    %v\n", sg.Name(v))
-		}
-	} else {
-		fmt.Printf("input not contain '%v'\n", input)
-	}
+	routes(sg, "JFK")
+	routes(sg, "KFC")
 
 	// Output:
 	// JFK
     //     ORD
     //     ATL
     //     MCO
+	// KFC
+    //     input not contain 'KFC'
+
+}
+
+func routes(sg graphs.SymbolGraph, input string) {
+	fmt.Println(input)
+
+	if sg.Contains(input) {
+		s := sg.Index(input)
+		g := sg.Graph()
+		for _, v := range g.Adj(s) {
+			fmt.Printf("    %v\n", sg.Name(v))
+		}
+	} else {
+		fmt.Printf("    input not contain '%v'\n", input)
+	}
 }
