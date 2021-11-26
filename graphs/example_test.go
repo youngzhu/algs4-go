@@ -224,11 +224,11 @@ func ExampleConnectedComponents() {
 
 }
 
-func ExampleSymbolGraph() {
+func ExampleSymbolGraph_routes() {
 	sg := graphs.NewSymbolGraph("testdata/routes.txt", " ")
 
-	routes(sg, "JFK")
-	routes(sg, "KFC")
+	symbolGraph(sg, "JFK")
+	symbolGraph(sg, "KFC")
 
 	// Output:
 	// JFK
@@ -237,10 +237,17 @@ func ExampleSymbolGraph() {
     //     MCO
 	// KFC
     //     input not contain 'KFC'
+}
+
+func ExampleSymbolGraph_movies() {
+	sg := graphs.NewSymbolGraph("testdata/movies.txt.gz", "/")
+
+	symbolGraph(sg, "Tin Men (1987)")
+	symbolGraph(sg, "让子弹飞")
 
 }
 
-func routes(sg graphs.SymbolGraph, input string) {
+func symbolGraph(sg graphs.SymbolGraph, input string) {
 	fmt.Println(input)
 
 	if sg.Contains(input) {
