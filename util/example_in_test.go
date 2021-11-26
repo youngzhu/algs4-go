@@ -19,6 +19,16 @@ func ExampleIn_ReadString() {
 	// you
 }
 
+func ExampleIn_ReadLine() {
+	in := util.NewIn("testdata/in.txt")
+	for in.HasNext() {
+		fmt.Println(in.ReadLine())
+	}
+	// Output:
+	// hello Gopher
+	// wating for  you
+}
+
 func ExampleIn_ReadString_gz() {
 	in := util.NewInReadWords("testdata/in.txt.gz")
 	for !in.IsEmpty() {

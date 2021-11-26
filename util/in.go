@@ -76,6 +76,11 @@ func (in *In) ReadString() string {
 	return in.scanner.Text()
 }
 
+func (in *In) ReadLine() string {
+	in.next()
+	return in.scanner.Text()
+}
+
 func (in *In) ReadInt() int {
 	i, _ := strconv.Atoi(in.ReadString())
 	return i
