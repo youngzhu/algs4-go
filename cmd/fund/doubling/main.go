@@ -36,6 +36,11 @@ func timeTrial(n int) float64 {
 		a[i] = rand.UniformIntRange(-maxInteger, maxInteger)
 	}
 	timer := util.NewStopwatch()
+
 	xsum.ThreeSumCount(a)
+
+	// xsum.TwoSumCount(a)
+	// xsum.TwoSumCountFast(a)
+
 	return timer.ElapsedTime()
 }
