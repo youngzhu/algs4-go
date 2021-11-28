@@ -1,9 +1,9 @@
 package xsum_test
 
 import (
-	"testing"
 	"log"
 	"os"
+	"testing"
 
 	. "github.com/youngzhu/algs4-go/fund/xsum"
 	"github.com/youngzhu/algs4-go/util"
@@ -44,5 +44,24 @@ func TestThreeSumCount(t *testing.T) {
 			t.Errorf("got: %v; want: %v", got, want)
 		}
 	}
-	
+
+}
+
+func TestTwoSumCount(t *testing.T) {
+	t.Parallel()
+
+	want := []int{1, 2, 3}
+
+	got := []int{
+		TwoSumCount(ints1K),
+		TwoSumCount(ints2K),
+		TwoSumCount(ints4K),
+	}
+
+	for i, v := range want {
+		if got[i] != v {
+			t.Errorf("got: %v; want: %v", got, want)
+		}
+	}
+
 }
