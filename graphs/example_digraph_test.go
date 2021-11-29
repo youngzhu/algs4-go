@@ -105,3 +105,44 @@ func ExampleDepthFirstDirectedPaths() {
 	// 3 to 11: not connected
 	// 3 to 12: not connected
 }
+
+func ExampleBreadthFirstDirectedPaths() {
+	if tinyCG == nil {
+		dataInit()
+	}
+
+	g, source := *tinyDigraph, 3
+	path := graphs.NewBreadthFirstDirectedPaths(g, source)
+
+	for v := 0; v < g.V(); v++ {
+		if path.HasPathTo(v) {
+			fmt.Printf("%d to %d (%d): ", source, v, path.DistTo(v))
+			// fmt.Println(path.PathTo(v))
+			for _, x := range path.PathTo(v) {
+				if x == source {
+					fmt.Print(x)
+				} else {
+					fmt.Printf("->%d", x)
+				}
+			}
+			fmt.Println()
+		} else {
+			fmt.Printf("%d to %d (-): not connected\n", source, v)
+		}
+	}
+
+	// Output: 
+	// 3 to 0 (2): 3->2->0
+	// 3 to 1 (3): 3->2->0->1
+	// 3 to 2 (1): 3->2
+	// 3 to 3 (0): 3
+	// 3 to 4 (2): 3->5->4
+	// 3 to 5 (1): 3->5
+	// 3 to 6 (-): not connected
+	// 3 to 7 (-): not connected
+	// 3 to 8 (-): not connected
+	// 3 to 9 (-): not connected
+	// 3 to 10 (-): not connected
+	// 3 to 11 (-): not connected
+	// 3 to 12 (-): not connected	
+}
