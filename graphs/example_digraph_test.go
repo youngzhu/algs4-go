@@ -36,3 +36,32 @@ func ExampleDigraph() {
 	// 11: 4 12 
 	// 12: 9 
 }
+
+func ExampleDepthFirstSearch_singleSource() {
+	dfs := graphs.NewDirectedDFS(*tinyDigraph, 2)
+
+	// print out vertices reachable from soure
+	for v := 0; v < tinyDigraph.V(); v++ {
+		if dfs.Marked(v) {
+			fmt.Printf("%v ", v)
+		}
+	}
+
+	// Output:
+	// 0 1 2 3 4 5
+}
+
+func ExampleDepthFirstSearch_multipleSource() {
+	sources := []int{1, 2, 6}
+	dfs := graphs.NewDirectedDFSN(*tinyDigraph, sources)
+
+	// print out vertices reachable from soure
+	for v := 0; v < tinyDigraph.V(); v++ {
+		if dfs.Marked(v) {
+			fmt.Printf("%v ", v)
+		}
+	}
+
+	// Output:
+	// 0 1 2 3 4 5 6 8 9 10 11 12
+}
