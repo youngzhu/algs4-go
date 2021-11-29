@@ -41,9 +41,11 @@
     - [ConnectedComponents](graphs/connected_components.go)
     - [SymbolGraph](graphs/symbol_graph.go)
   - Directed Graphs
-    - [ ] [Digraph](#)
+    - [Digraph](graphs/digraph.go)
+    - [DirectedDFS](graphs/directed_dfs.go)
+    - [DepthFirstDirectedPaths](graphs/depth_first_directed_paths.go)
+    - [BreadthFirstDirectedPaths](graphs/breadth_first_directed_paths.go)
     - [ ] [SymbolDigraph](#)
-    - [ ] [DirectedDFS](#)
     - [ ] [DirectedCycle](#)
     - [ ] [DepthFirstOrder](#)
     - [ ] [Topological](#)
