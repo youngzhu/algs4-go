@@ -65,3 +65,43 @@ func ExampleDepthFirstSearch_multipleSource() {
 	// Output:
 	// 0 1 2 3 4 5 6 8 9 10 11 12
 }
+
+
+func ExampleDepthFirstDirectedPaths() {
+
+	source := 3
+	g := *tinyDigraph
+	path := graphs.NewDepthFirstDirectedPaths(g, source)
+
+	for v := 0; v < g.V(); v++ {
+		if path.HasPathTo(v) {
+			fmt.Printf("%d to %d: ", source, v)
+			// fmt.Println(path.PathTo(v))
+			for _, x := range path.PathTo(v) {
+				if x == source {
+					fmt.Print(x)
+				} else {
+					fmt.Printf("-%d", x)
+				}
+			}
+			fmt.Println()
+		} else {
+			fmt.Printf("%d to %d: not connected\n", source, v)
+		}
+	}
+
+	// Output: 
+	// 3 to 0: 3-5-4-2-0
+	// 3 to 1: 3-5-4-2-0-1
+	// 3 to 2: 3-5-4-2
+	// 3 to 3: 3
+	// 3 to 4: 3-5-4
+	// 3 to 5: 3-5
+	// 3 to 6: not connected
+	// 3 to 7: not connected
+	// 3 to 8: not connected
+	// 3 to 9: not connected
+	// 3 to 10: not connected
+	// 3 to 11: not connected
+	// 3 to 12: not connected
+}
