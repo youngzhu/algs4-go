@@ -24,27 +24,27 @@ var alg1, alg2 string
 var isSorted bool
 var n, trials int
 
-// Golang buildin sort
-type Buildin struct{}
+// Golang built-in sort
+type Builtin struct{}
 
-func newBuildin() sorting.Sorter {
-	return Buildin{}
+func newBuiltin() sorting.Sorter {
+	return Builtin{}
 }
 
-func (s Buildin) SortInts(x []int) {
+func (s Builtin) SortInts(x []int) {
 	sort.Ints(x)
 }
-func (s Buildin) SortFloat64s(x []float64) {
+func (s Builtin) SortFloat64s(x []float64) {
 	sort.Float64s(x)
 }
-func (s Buildin) SortStrings(x []string) {
+func (s Builtin) SortStrings(x []string) {
 	sort.Strings(x)
 }
 
 var algs = map[string]sorting.Sorter{
 	"selection": sorting.NewSelection(),
 	"insertion": sorting.NewInsertion(),
-	"buildin":   newBuildin(),
+	"builtin":   newBuiltin(),
 	"shell":     sorting.NewShell(),
 	"merge":     sorting.NewMerge(),
 	"mergex1":   sorting.NewMergeX1(),
@@ -54,7 +54,7 @@ var algs = map[string]sorting.Sorter{
 	"mergebu":   sorting.NewMergeBU(),
 	"quick":     sorting.NewQuick(),
 	"quick3way": sorting.NewQuick3way(),
-	"heap": sorting.NewHeap(),
+	"heap":      sorting.NewHeap(),
 }
 
 func init() {
@@ -150,17 +150,17 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 insertion -a2 Selection -n 100 -t 100
 // result: insertion is 42.4 times faster than Selection
 
-// insertion vs buildin
-// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100 -s
-// result: buildin is 9.8 times faster than insertion
-// cmd: go run sort_compare.go -a1 insertion -a2 buildin -n 100 -t 100
-// result: buildin is 5.9 times faster than insertion
+// insertion vs builtin
+// cmd: go run sort_compare.go -a1 insertion -a2 builtin -n 100 -t 100 -s
+// result: builtin is 9.8 times faster than insertion
+// cmd: go run sort_compare.go -a1 insertion -a2 builtin -n 100 -t 100
+// result: builtin is 5.9 times faster than insertion
 
-// Selection vs Buildin
-// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100 -s
-// result: Buildin is 452.9 times faster than Selection
-// cmd: go run sort_compare.go -a1 Selection -a2 Buildin -n 100 -t 100
-// result: Buildin is 243.7 times faster than Selection
+// Selection vs Builtin
+// cmd: go run sort_compare.go -a1 Selection -a2 Builtin -n 100 -t 100 -s
+// result: Builtin is 452.9 times faster than Selection
+// cmd: go run sort_compare.go -a1 Selection -a2 Builtin -n 100 -t 100
+// result: Builtin is 243.7 times faster than Selection
 
 // Shell vs Selection
 // cmd: go run sort_compare.go -a1 Shell -a2 Selection -n 100 -t 100 -s
@@ -174,11 +174,11 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 Shell -a2 Insertion -n 100 -t 100
 // got: Shell is 3.4 times faster than Insertion
 
-// Shell vs Buildin
-// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100 -s
-// got: Buildin is 1.2 times faster than Shell
-// cmd: go run sort_compare.go -a1 Shell -a2 Buildin -n 100 -t 100
-// got: Buildin is 1.8 times faster than Shell
+// Shell vs Builtin
+// cmd: go run sort_compare.go -a1 Shell -a2 Builtin -n 100 -t 100 -s
+// got: Builtin is 1.2 times faster than Shell
+// cmd: go run sort_compare.go -a1 Shell -a2 Builtin -n 100 -t 100
+// got: Builtin is 1.8 times faster than Shell
 
 // Merge vs Insetion
 // cmd: go run sort_compare.go -a1 Merge -a2 Insertion -n 100 -t 100 -s
@@ -200,11 +200,11 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 Merge -a2 Shell -n 100 -t 100
 // got: Shell is 17.3 times faster than Merge
 
-// Merge vs Buildin
-// cmd: go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100 -s
-// got: Buildin is 44.3 times faster than Merge
-// cmd: go run sort_compare.go -a1 Merge -a2 Buildin -n 100 -t 100
-// got: Buildin is 20.1 times faster than Merge
+// Merge vs Builtin
+// cmd: go run sort_compare.go -a1 Merge -a2 Builtin -n 100 -t 100 -s
+// got: Builtin is 44.3 times faster than Merge
+// cmd: go run sort_compare.go -a1 Merge -a2 Builtin -n 100 -t 100
+// got: Builtin is 20.1 times faster than Merge
 
 // Merge vs MergeX1
 // cmd: go run sort_compare.go -a1 Merge -a2 MergeX1 -n 100 -t 100 -s
@@ -261,11 +261,11 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 Quick -a2 Merge -n 1000 -t 100
 // got: Quick is 1.8 times faster than Merge
 
-// Quick vs Buildin
-// cmd: go run sort_compare.go -a1 Quick -a2 Buildin -n 1000 -t 100 -s
-// got: Buildin is 50.0 times faster than Quick
-// cmd: go run sort_compare.go -a1 Quick -a2 Buildin -n 1000 -t 100
-// got: Quick is 1.2 times faster than Buildin
+// Quick vs Builtin
+// cmd: go run sort_compare.go -a1 Quick -a2 Builtin -n 1000 -t 100 -s
+// got: Builtin is 50.0 times faster than Quick
+// cmd: go run sort_compare.go -a1 Quick -a2 Builtin -n 1000 -t 100
+// got: Quick is 1.2 times faster than Builtin
 
 // Quick vs Quick3way
 // cmd: go run sort_compare.go -a1 Quick -a2 Quick3way -n 1000 -t 100 -s
@@ -303,8 +303,8 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 Heap -a2 Quick -n 1000 -t 100
 // got: Heap is 1.2 times faster than Quick
 
-// Heap vs Buildin
-// cmd: go run sort_compare.go -a1 Heap -a2 Buildin -n 1000 -t 100 -s
-// got: Buildin is 1.8 times faster than Heap
-// cmd: go run sort_compare.go -a1 Heap -a2 Buildin -n 1000 -t 100
-// got: Buildin is 1.0 times faster than Heap
+// Heap vs Builtin
+// cmd: go run sort_compare.go -a1 Heap -a2 Builtin -n 1000 -t 100 -s
+// got: Builtin is 1.8 times faster than Heap
+// cmd: go run sort_compare.go -a1 Heap -a2 Builtin -n 1000 -t 100
+// got: Builtin is 1.0 times faster than Heap

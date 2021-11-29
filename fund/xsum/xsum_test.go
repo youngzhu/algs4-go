@@ -1,9 +1,9 @@
 package xsum_test
 
 import (
-	"testing"
 	"log"
 	"os"
+	"testing"
 
 	. "github.com/youngzhu/algs4-go/fund/xsum"
 	"github.com/youngzhu/algs4-go/util"
@@ -29,7 +29,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestThreeSumCount(t *testing.T) {
-	t.Parallel()
+	// t.Parallel()
 
 	want := []int{70, 528, 4039}
 
@@ -44,5 +44,66 @@ func TestThreeSumCount(t *testing.T) {
 			t.Errorf("got: %v; want: %v", got, want)
 		}
 	}
-	
 }
+
+func TestThreeSumCountFast(t *testing.T) {
+	// t.Parallel()
+
+	want := []int{70, 528, 4039}
+
+	got := []int{
+		ThreeSumCountFast(ints1K),
+		ThreeSumCountFast(ints2K),
+		ThreeSumCountFast(ints4K),
+	}
+
+	for i, v := range want {
+		if got[i] != v {
+			t.Errorf("got: %v; want: %v", got, want)
+		}
+	}
+}
+
+func TestTwoSumCount(t *testing.T) {
+	// t.Parallel()
+
+	want := []int{1, 2, 3}
+
+	got := []int{
+		TwoSumCount(ints1K),
+		TwoSumCount(ints2K),
+		TwoSumCount(ints4K),
+	}
+
+	for i, v := range want {
+		if got[i] != v {
+			t.Errorf("got: %v; want: %v", got, want)
+		}
+	}
+
+}
+
+func TestTwoSumCountFast(t *testing.T) {
+	// t.Parallel()
+
+	want := []int{1, 2, 3}
+
+	got := []int{
+		TwoSumCountFast(ints1K),
+		TwoSumCountFast(ints2K),
+		TwoSumCountFast(ints4K),
+	}
+
+	for i, v := range want {
+		if got[i] != v {
+			t.Errorf("got: %v; want: %v", got, want)
+		}
+	}
+
+}
+
+// go test -v
+// TestThreeSumCount (12.18s)
+// TestThreeSumCountFast (0.40s)
+// TestTwoSumCount (0.01s)
+// TestTwoSumCountFast (0.00s)

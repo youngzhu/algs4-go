@@ -1,24 +1,28 @@
 package main
 
 import (
-	"fmt"
+	"flag"
 
-	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund/xsum"
+	"github.com/youngzhu/algs4-go/util"
 )
 
-var rand util.Random
+var (
+	rand  util.Random
+	ratio = flag.Bool("r", false, "doubling ratio test")
+)
 
 func init() {
 	rand = *util.NewRandom()
 }
 
 func main() {
-	prev := timeTrial(125)
-	for n := 250; true; n += n {
-		time := timeTrial(n)
-		fmt.Printf("%7d %7.1f %5.1f\n", n, time, time/prev)
-		prev = time
+	flag.Parse()
+
+	if *ratio {
+		doublingRatio()
+	} else {
+		doublingTest()
 	}
 }
 
@@ -32,6 +36,11 @@ func timeTrial(n int) float64 {
 		a[i] = rand.UniformIntRange(-maxInteger, maxInteger)
 	}
 	timer := util.NewStopwatch()
+
 	xsum.ThreeSumCount(a)
+
+	// xsum.TwoSumCount(a)
+	// xsum.TwoSumCountFast(a)
+
 	return timer.ElapsedTime()
 }

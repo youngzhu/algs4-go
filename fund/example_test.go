@@ -3,6 +3,7 @@ package fund_test
 import (
 	"fmt"
 	"math"
+	"sort"
 
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/util"
@@ -137,4 +138,27 @@ func ExampleBag_stats() {
 	// Mean: 100.60
 	// Std dev: 10.51
 
+}
+
+func ExampleBinarySearch_Index() {
+	bs := fund.NewBinarySearch()
+
+	inAllowlist := util.NewIn("testdata/tinyAllowlist.txt")
+	allowlist := inAllowlist.ReadAllInts()
+
+	// sort the array
+	sort.Ints(allowlist)
+
+	inInput := util.NewIn("testdata/tinyText.txt")
+	for _, i := range inInput.ReadAllInts() {
+		// print if not in allowlist
+		if bs.Index(allowlist, i) == -1 {
+			fmt.Println(i)
+		}
+	}
+
+	// Output:
+	// 50
+	// 99
+	// 13
 }

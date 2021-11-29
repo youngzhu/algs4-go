@@ -1,22 +1,27 @@
 package xsum
 
-// Counts the number of triples in an array of N integers that sums to 0
+import (
+	"github.com/youngzhu/algs4-go/fund"
+	"github.com/youngzhu/algs4-go/sorting"
+)
 
-// Returns the number of triples (i, j, k) with i<j<k
-// such that a[i]+a[j]+a[k]==0
-func ThreeSumCount(a []int) int {
-	n := len(a)
-	count := 0
+var (
+	sorter sorting.Sorter = sorting.Quick{}
 
-	for i := 0; i < n; i++ {
-		for j := i + 1; j < n; j++ {
-			for k := j + 1; k < n; k++ {
-				if a[i]+a[j]+a[k] == 0 {
-					count++
-				}
-			}
+	// fast way
+	binarySearch = fund.NewBinarySearch()
+)
+
+// returns true if the sorted array a[]
+// contains any duplicated integers
+func containsDuplicates(a []int) bool {
+	for i := 1; i < len(a); i++ {
+		if a[i] == a[i-1] {
+			return true
 		}
 	}
 
-	return count
+	return false
 }
+
+//
