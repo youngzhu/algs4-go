@@ -107,9 +107,6 @@ func ExampleDepthFirstDirectedPaths() {
 }
 
 func ExampleBreadthFirstDirectedPaths() {
-	if tinyCG == nil {
-		dataInit()
-	}
 
 	g, source := *tinyDigraph, 3
 	path := graphs.NewBreadthFirstDirectedPaths(g, source)
@@ -145,4 +142,38 @@ func ExampleBreadthFirstDirectedPaths() {
 	// 3 to 10 (-): not connected
 	// 3 to 11 (-): not connected
 	// 3 to 12 (-): not connected	
+}
+
+func findDirectedCycle(g graphs.Digraph) {
+	dc := graphs.NewDirectedCycle(g)
+
+	if dc.HasCycle() {
+		fmt.Print("Directed cycle: ")
+		for _, v := range dc.Cycle() {
+			fmt.Printf("%d ", v)
+		}
+		fmt.Println()
+	} else {
+		fmt.Println("No directed cycle")
+	}
+}
+
+func ExampleDirectedCycle() {
+	
+	findDirectedCycle(*tinyDigraph)
+
+	// Output:
+	// Directed cycle: 3 5 4 3 
+}
+
+// DAG: Directed Acyclic Graph
+// a digraph with no directed cycles
+func ExampleDirectedCycle_dag() {
+	in := util.NewInReadWords("testdata/tinyDAG.txt")
+	dag := graphs.NewDigraph(in)
+
+	findDirectedCycle(*dag)
+
+	// Output:
+	// No directed cycle
 }
