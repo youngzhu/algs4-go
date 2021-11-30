@@ -14,3 +14,14 @@ func ExampleLSDSort() {
 
 	fmt.Println(a)
 }
+
+func ExampleLSDSortInts() {
+	ints := []int{1, 22, 55, 3, 2, 44, 0}
+	strings.LSDSortInts(ints[:])
+
+	fmt.Println(ints)
+
+	// --
+	// Output:
+	//
+}
