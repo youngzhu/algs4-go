@@ -45,9 +45,9 @@
     - [DirectedDFS](graphs/directed_dfs.go)
     - [DepthFirstDirectedPaths](graphs/depth_first_directed_paths.go)
     - [BreadthFirstDirectedPaths](graphs/breadth_first_directed_paths.go)
-    - [ ] [SymbolDigraph](#)
-    - [ ] [DirectedCycle](#)
-    - [ ] [DepthFirstOrder](#)
+    - [SymbolDigraph](graphs/symbol_graph.go)
+    - [DirectedCycle](graphs/directed_cycle.go)
+    - [DepthFirstOrder](graphs/depth_first_order.go)
     - [ ] [Topological](#)
     - [ ] [KosarajuSCC](#)
   - Minimum Spanning Tree
