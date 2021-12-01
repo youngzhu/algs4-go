@@ -51,3 +51,29 @@ func ExampleMSDSort() {
 	// the
 	// the
 }
+
+func ExampleQuicksort() {
+	in := util.NewInReadWords("testdata/shells.txt")
+	a := in.ReadAllStrings()
+	strings.Quicksort(a)
+
+	for _, s := range a {
+		fmt.Println(s)
+	}
+
+	// Output:
+	// are
+	// by
+	// sea
+	// seashells
+	// seashells
+	// sells
+	// sells
+	// she
+	// she
+	// shells
+	// shore
+	// surely
+	// the
+	// the
+}
