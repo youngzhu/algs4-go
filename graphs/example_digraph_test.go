@@ -9,11 +9,15 @@ import (
 
 var (
 	tinyDigraph *graphs.Digraph
+	tinyDAG graphs.Digraph
 )
 
 func init() {
 	in := util.NewInReadWords("testdata/tinyDG.txt")
 	tinyDigraph = graphs.NewDigraph(in)
+
+	in = util.NewInReadWords("testdata/tinyDAG.txt")
+	tinyDAG = *graphs.NewDigraph(in)
 }
 
 func ExampleDigraph() {
@@ -169,11 +173,61 @@ func ExampleDirectedCycle() {
 // DAG: Directed Acyclic Graph
 // a digraph with no directed cycles
 func ExampleDirectedCycle_dag() {
-	in := util.NewInReadWords("testdata/tinyDAG.txt")
-	dag := graphs.NewDigraph(in)
 
-	findDirectedCycle(*dag)
+	findDirectedCycle(tinyDAG)
 
 	// Output:
 	// No directed cycle
+}
+
+func ExampleDepthFirstOrder() {
+
+	dfo := graphs.NewDepthFirstOrder(tinyDAG)
+
+	fmt.Printf("%-4s %-4s %-4s\n", "v", "pre", "post")
+	fmt.Println("----------------")
+
+	for v := 0; v < tinyDAG.V(); v++ {
+		fmt.Printf("%-4d %-4d %-4d\n", v, dfo.Pre(v), dfo.Post(v))
+	}
+
+	fmt.Print("Preorder: ")
+	for _, v := range dfo.Preorder() {
+		fmt.Printf("%d ", v)
+	}
+	fmt.Println()
+
+	fmt.Print("Postorder: ")
+	for _, v := range dfo.Postorder() {
+		fmt.Printf("%d ", v)
+	}
+	fmt.Println()
+
+	fmt.Print("Reverse Postorder: ")
+	for _, v := range dfo.ReversePostorder() {
+		fmt.Printf("%d ", v)
+	}
+	fmt.Println()
+
+	// literally match. Fail probably because of CRLF
+	// Output:
+	// v    pre  post
+	// ----------------
+	// 0    0    8
+	// 1    3    2
+	// 2    9    10
+	// 3    10   9
+	// 4    2    0
+	// 5    1    1
+	// 6    4    7
+	// 7    11   11
+	// 8    12   12
+	// 9    5    6
+	// 10   8    5
+	// 11   6    4
+	// 12   7    3
+	// Preorder: 0 5 4 1 6 9 11 12 10 2 3 7 8
+	// Postorder: 4 5 1 12 11 10 9 6 0 3 2 7 8
+	// Reverse Postorder: 8 7 2 3 0 6 9 10 11 12 1 5 4
+
 }
