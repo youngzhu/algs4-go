@@ -61,8 +61,8 @@
     - [ ] [AcyclicSP](#)
     - [ ] [BellmanFordSP](#)
 ## 5 STRING
-  - [ ] [LSD](#)
-  - [ ] [MSD](#)
+  - [LSD](strings/lsd.go)
+  - [MSD](strings/msd.go)
   - [ ] [Quick3string](#)
   - [ ] [TrieST](#)
   - [ ] [TST](#)
