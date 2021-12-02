@@ -1,7 +1,7 @@
 package strings
 
 const (
-	R      = 256 // extended ADCII alphabet size
+	R      = 256 // extended ASCII alphabet size
 	cutoff = 15  // cutoff to insertion sort
 )
 
