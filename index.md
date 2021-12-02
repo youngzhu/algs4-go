@@ -48,7 +48,8 @@
     - [SymbolDigraph](graphs/symbol_graph.go)
     - [DirectedCycle](graphs/directed_cycle.go)
     - [DepthFirstOrder](graphs/depth_first_order.go)
-    - [ ] [Topological](#)
+    - [SymbolDiraph](graphs/symbol_digraph.go)
+    - [Topological](graphs/topological.go)
     - [ ] [KosarajuSCC](#)
   - Minimum Spanning Tree
     - [ ] [EdgeWeightedGraph](#)
