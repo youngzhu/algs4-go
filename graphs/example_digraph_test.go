@@ -231,3 +231,48 @@ func ExampleDepthFirstOrder() {
 	// Reverse Postorder: 8 7 2 3 0 6 9 10 11 12 1 5 4
 
 }
+
+func ExampleSymbolDigraph() {
+	sg := graphs.NewSymbolDigraph("testdata/routes.txt", " ")
+
+	symbolDigraph(sg, "JFK")
+	symbolDigraph(sg, "ATL")
+	symbolDigraph(sg, "LAX")
+
+	// Output:
+	// JFK
+	//     ORD
+	//     ATL
+	//     MCO
+	// ATL
+	//     MCO
+	//     HOU
+	// LAX
+}
+
+func symbolDigraph(sg graphs.SymbolDigraph, input string) {
+	fmt.Println(input)
+
+	s := sg.Index(input)
+	g := sg.Digraph()
+	for _, v := range g.Adj(s) {
+		fmt.Printf("    %v\n", sg.Name(v))
+	}
+
+}
+
+func ExampleTopological() {
+
+	// sg := graphs.NewSymbolDigraph("testdata/jobs.txt", "/")
+	// topologial := graphs.NewTopological(sg.Digraph())
+
+	// for _, v := range topologial.Order() {
+	// 	fmt.Println(sg.Name(v))
+	// }
+
+	// literally match. Fail probably because of CRLF
+
+	// Output:
+	// 
+
+}
