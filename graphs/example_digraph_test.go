@@ -263,16 +263,26 @@ func symbolDigraph(sg graphs.SymbolDigraph, input string) {
 
 func ExampleTopological() {
 
-	// sg := graphs.NewSymbolDigraph("testdata/jobs.txt", "/")
-	// topologial := graphs.NewTopological(sg.Digraph())
+	sg := graphs.NewSymbolDigraph("testdata/jobs.txt", "/")
+	topologial := graphs.NewTopological(sg.Digraph())
 
-	// for _, v := range topologial.Order() {
-	// 	fmt.Println(sg.Name(v))
-	// }
-
-	// literally match. Fail probably because of CRLF
+	for _, v := range topologial.Order() {
+		fmt.Println(sg.Name(v))
+	}
 
 	// Output:
-	// 
+	// Calculus
+	// Linear Algebra
+	// Introduction to CS
+	// Advanced Programming
+	// Algorithms
+	// Theoretical CS
+	// Artificial Intelligence
+	// Robotics
+	// Machine Learning
+	// Neural Networks
+	// Databases
+	// Scientific Computing
+	// Computational Biology
 
 }
