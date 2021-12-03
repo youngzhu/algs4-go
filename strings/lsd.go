@@ -23,7 +23,6 @@ func LSDSort(a []string) {
 	}
 
 	n := len(a)
-	R := 256 // extend ASCII alphabet size
 
 	aux := make([]string, n)
 
