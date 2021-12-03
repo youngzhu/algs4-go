@@ -5,6 +5,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/graphs"
 	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/fund"
 )
 
 var (
@@ -284,5 +285,45 @@ func ExampleTopological() {
 	// Databases
 	// Scientific Computing
 	// Computational Biology
+
+}
+
+func ExampleKosarajuSharirSCC() {
+
+	g := *tinyDigraph
+	scc := graphs.NewKosarajuSharirSCC(g)
+
+	// number of connected components
+	n := scc.Count()
+	fmt.Printf("components: %d\n", n)
+
+	// compute list of vertices in each connected component
+	components := make([]*fund.Queue, n)
+	for i := 0; i < n; i++ {
+		components[i] = fund.NewQueue()
+	}
+	for v := 0; v < g.V(); v++ {
+		components[scc.Id(v)].Enqueue(fund.Item(v))
+	}
+
+	// print results
+	for i := 0; i < n; i++ {
+		fmt.Printf("id-%d:", i)
+		for _, v := range components[i].Iterator() {
+			fmt.Printf(" %v", v)
+		}
+		fmt.Println()
+	}
+	fmt.Println()
+
+	// literally match. Fail probably because of CRLF
+
+	// Output: 
+	// components: 5
+	// id-0: 1
+	// id-1: 0 2 3 4 5
+	// id-2: 9 10 11 12
+	// id-3: 6 8
+	// id-4: 7
 
 }
