@@ -288,9 +288,8 @@ func ExampleTopological() {
 
 }
 
-func ExampleKosarajuSharirSCC() {
 
-	g := *tinyDigraph
+func sccExample(g graphs.Digraph) {
 	scc := graphs.NewKosarajuSharirSCC(g)
 
 	// number of connected components
@@ -314,10 +313,13 @@ func ExampleKosarajuSharirSCC() {
 		}
 		fmt.Println()
 	}
-	fmt.Println()
+}
 
-	// literally match. Fail probably because of CRLF
+func ExampleKosarajuSharirSCC_tinyDG() {
 
+	g := *tinyDigraph
+	sccExample(g)
+	
 	// Output: 
 	// components: 5
 	// id-0: 1
@@ -325,5 +327,26 @@ func ExampleKosarajuSharirSCC() {
 	// id-2: 9 10 11 12
 	// id-3: 6 8
 	// id-4: 7
+
+}
+
+func ExampleKosarajuSharirSCC_mediumDG() {
+	in := util.NewInReadWords("testdata/mediumDG.txt")
+	g := graphs.NewDigraph(in)
+
+	sccExample(*g)
+	
+	// Output: 
+	// components: 10
+	// id-0: 21
+	// id-1: 2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49
+	// id-2: 14
+	// id-3: 3 4 17 20 24 27 36
+	// id-4: 41
+	// id-5: 7
+	// id-6: 45
+	// id-7: 1
+	// id-8: 0
+	// id-9: 10
 
 }
