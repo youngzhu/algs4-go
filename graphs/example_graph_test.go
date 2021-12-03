@@ -209,18 +209,18 @@ func ExampleConnectedComponents() {
 
 	// print results
 	for i := 0; i < n; i++ {
+		// fmt.Printf("id-%d:", i)
 		for _, v := range components[i].Iterator() {
-			fmt.Printf("%v ", v)
+			fmt.Printf(" %v", v)
 		}
 		fmt.Printf("\n")
 	}
 
-	// literally match. Fail probably because of CRLF
 	// Output: 
 	// 3 components
-	// 0 1 2 3 4 5 6
-	// 7 8
-	// 9 10 11 12
+	//  0 1 2 3 4 5 6
+	//  7 8
+	//  9 10 11 12
 
 }
 
