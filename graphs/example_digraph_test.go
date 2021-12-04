@@ -5,6 +5,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/graphs"
 	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/fund"
 )
 
 var (
@@ -284,5 +285,68 @@ func ExampleTopological() {
 	// Databases
 	// Scientific Computing
 	// Computational Biology
+
+}
+
+
+func sccExample(g graphs.Digraph) {
+	scc := graphs.NewKosarajuSharirSCC(g)
+
+	// number of connected components
+	n := scc.Count()
+	fmt.Printf("components: %d\n", n)
+
+	// compute list of vertices in each connected component
+	components := make([]*fund.Queue, n)
+	for i := 0; i < n; i++ {
+		components[i] = fund.NewQueue()
+	}
+	for v := 0; v < g.V(); v++ {
+		components[scc.Id(v)].Enqueue(fund.Item(v))
+	}
+
+	// print results
+	for i := 0; i < n; i++ {
+		fmt.Printf("id-%d:", i)
+		for _, v := range components[i].Iterator() {
+			fmt.Printf(" %v", v)
+		}
+		fmt.Println()
+	}
+}
+
+func ExampleKosarajuSharirSCC_tinyDG() {
+
+	g := *tinyDigraph
+	sccExample(g)
+	
+	// Output: 
+	// components: 5
+	// id-0: 1
+	// id-1: 0 2 3 4 5
+	// id-2: 9 10 11 12
+	// id-3: 6 8
+	// id-4: 7
+
+}
+
+func ExampleKosarajuSharirSCC_mediumDG() {
+	in := util.NewInReadWords("testdata/mediumDG.txt")
+	g := graphs.NewDigraph(in)
+
+	sccExample(*g)
+	
+	// Output: 
+	// components: 10
+	// id-0: 21
+	// id-1: 2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49
+	// id-2: 14
+	// id-3: 3 4 17 20 24 27 36
+	// id-4: 41
+	// id-5: 7
+	// id-6: 45
+	// id-7: 1
+	// id-8: 0
+	// id-9: 10
 
 }

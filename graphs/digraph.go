@@ -101,7 +101,7 @@ func (g *Digraph) Adj(v int) []int {
 }
 
 // Returns the reverse of the digraph
-func (g *Digraph) Reverse() *Digraph {
+func (g *Digraph) Reverse() Digraph {
 	reverse := NewDigraphN(g.V())
 
 	for v := 0; v < g.V(); v++ {
@@ -110,7 +110,7 @@ func (g *Digraph) Reverse() *Digraph {
 		}
 	}
 
-	return reverse
+	return *reverse
 }
 
 // Returns a string representation of this graph
