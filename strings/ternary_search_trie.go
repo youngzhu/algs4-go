@@ -1,8 +1,6 @@
 package strings
 
 import (
-	"log"
-
 	"github.com/youngzhu/algs4-go/fund"
 )
 
@@ -152,7 +150,6 @@ func (t *TernarySearchTrie) collectThatMatch(x *tstNode, prefix, pattern string,
 	}
 	if c == '.' || c == x.char {
 		if i == len(pattern)-1 && x.value != nil {
-			log.Println(queue)
 			queue.Enqueue(prefix + string(x.char))
 		}
 		if i < len(pattern)-1 {
