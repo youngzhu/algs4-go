@@ -77,3 +77,94 @@ func ExampleQuicksort() {
 	// the
 	// the
 }
+
+var trieST *strings.TrieST
+
+func initTrieST() {
+	// build ST from file
+	trieST = strings.NewTrieST()
+
+	in := util.NewInReadWords("testdata/shellsST.txt")
+	a := in.ReadAllStrings()
+
+	for i, s := range a {
+		trieST.Put(s, i)
+	}
+}
+
+func ExampleTrieST_Keys() {
+	if trieST == nil {
+		initTrieST()
+	}
+
+	fmt.Println("keys(\"\"):")
+	for _, v := range trieST.Keys() {
+		fmt.Printf("%s %d\n", v, trieST.Get(v))
+	}
+
+	// Output:
+	// keys(""):
+	// by 4
+	// sea 6
+	// sells 1
+	// she 0
+	// shells 3
+	// shore 7
+	// the 5
+}
+
+func ExampleTrieST_LongestPrefixOf() {
+	if trieST == nil {
+		initTrieST()
+	}
+
+	prefix := "shellsort"
+	fmt.Printf("LongestPrefixOf(\"%s\"):\n", prefix)
+	fmt.Println(trieST.LongestPrefixOf(prefix))
+	fmt.Println()
+
+	prefix = "quicksort"
+	fmt.Printf("LongestPrefixOf(\"%s\"):\n", prefix)
+	fmt.Println(trieST.LongestPrefixOf(prefix))
+	fmt.Println()
+
+	// Output:
+	// LongestPrefixOf("shellsort"):
+	// shells
+	//
+	// LongestPrefixOf("quicksort"):
+	//
+	//
+}
+
+func ExampleTrieST_KeysWithPrefix() {
+	if trieST == nil {
+		initTrieST()
+	}
+
+	prefix := "shor"
+	fmt.Printf("KeysWithPrefix(\"%s\"):\n", prefix)
+	for _, s := range trieST.KeysWithPrefix(prefix) {
+		fmt.Println(s)
+	}
+
+	// Output:
+	// KeysWithPrefix("shor"):
+	// shore
+}
+
+func ExampleTrieST_KeysThatMatch() {
+	if trieST == nil {
+		initTrieST()
+	}
+
+	pattern := "shor"
+	fmt.Printf("KeysThatMatch(\"%s\"):\n", pattern)
+	for _, s := range trieST.KeysThatMatch(pattern) {
+		fmt.Println(s)
+	}
+
+	// Output:
+	// KeysThatMatch("shor"):
+	//
+}
