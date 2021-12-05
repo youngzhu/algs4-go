@@ -163,10 +163,19 @@ func ExampleTrieST_KeysThatMatch() {
 	for _, s := range trieST.KeysThatMatch(pattern) {
 		fmt.Println(s)
 	}
+	fmt.Println()
+
+	pattern = ".he.l."
+	fmt.Printf("KeysThatMatch(\"%s\"):\n", pattern)
+	for _, s := range trieST.KeysThatMatch(pattern) {
+		fmt.Println(s)
+	}
 
 	// Output:
 	// KeysThatMatch("shor"):
 	//
+	// KeysThatMatch(".he.l."):
+	// shells
 }
 
 func ExampleTernarySearchTrie() {

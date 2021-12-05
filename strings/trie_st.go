@@ -144,8 +144,8 @@ func collectPattern(x *node, prefix, pattern string, queue *fund.Queue) {
 	c := pattern[d]
 	if c == '.' {
 		for ch := 0; ch < R; ch++ {
-			prefix += string(rune(ch))
-			collectPattern(x.next[ch], prefix, pattern, queue)
+			newPrefix := prefix + string(rune(ch))
+			collectPattern(x.next[ch], newPrefix, pattern, queue)
 		}
 	} else {
 		prefix += string(c)
