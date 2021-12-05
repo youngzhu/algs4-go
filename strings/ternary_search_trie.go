@@ -67,10 +67,12 @@ func (t *TernarySearchTrie) put(x *tstNode, key string, value interface{}, d int
 		x.left = t.put(x.left, key, value, d)
 	} else if c > x.char {
 		x.right = t.put(x.right, key, value, d)
-	} else if d < len(key)-1 {
-		x.mid = t.put(x.mid, key, value, d+1)
 	} else {
-		x.value = value
+		if d < len(key)-1 {
+			x.mid = t.put(x.mid, key, value, d+1)
+		} else {
+			x.value = value
+		}
 	}
 	return x
 }
