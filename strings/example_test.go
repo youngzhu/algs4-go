@@ -168,3 +168,57 @@ func ExampleTrieST_KeysThatMatch() {
 	// KeysThatMatch("shor"):
 	//
 }
+
+func ExampleTernarySearchTrie() {
+	tst := strings.NewTernarySearchTrie()
+
+	in := util.NewInReadWords("testdata/shellsST.txt")
+	a := in.ReadAllStrings()
+
+	for i, s := range a {
+		tst.Put(s, i)
+	}
+
+	fmt.Println("Keys:")
+	for _, v := range tst.Keys() {
+		fmt.Printf("%s %d\n", v, tst.Get(v))
+	}
+	fmt.Println()
+
+	prefix := "shellsort"
+	fmt.Printf("LongestPrefixOf(\"%s\"):\n", prefix)
+	fmt.Println(tst.LongestPrefixOf(prefix))
+	fmt.Println()
+
+	prefix = "shor"
+	fmt.Printf("KeysWithPrefix(\"%s\"):\n", prefix)
+	for _, s := range tst.KeysWithPrefix(prefix) {
+		fmt.Println(s)
+	}
+	fmt.Println()
+
+	pattern := ".he.l."
+	fmt.Printf("KeysThatMatch(\"%s\"):\n", pattern)
+	for _, s := range tst.KeysThatMatch(pattern) {
+		fmt.Println(s)
+	}
+
+	// Output:
+	// Keys:
+	// by 4
+	// sea 6
+	// sells 1
+	// she 0
+	// shells 3
+	// shore 7
+	// the 5
+	//
+	// LongestPrefixOf("shellsort"):
+	// shells
+	//
+	// KeysWithPrefix("shor"):
+	// shore
+	//
+	// KeysThatMatch(".he.l."):
+	// shells
+}
