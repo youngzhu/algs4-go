@@ -50,7 +50,7 @@
     - [DepthFirstOrder](graphs/depth_first_order.go)
     - [SymbolDiraph](graphs/symbol_digraph.go)
     - [Topological](graphs/topological.go)
-    - [ ] [KosarajuSCC](#)
+    - [KosarajuSharirSCC](graphs/kosaraju_sharir_scc.go)
   - Minimum Spanning Tree
     - [ ] [EdgeWeightedGraph](#)
     - [ ] [LazyPrimMST](#)
