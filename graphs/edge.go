@@ -1,4 +1,4 @@
-packge graphs
+package graphs
 
 type Edge struct {
 	v, w int
@@ -23,7 +23,7 @@ func (e Edge) Either() int {
 // Returns the endpoint of this edge that is different from the given vertex
 func (e Edge) Other(vertex int) int {
 	if vertex == e.v {
-		return v.w
+		return e.w
 	} else if vertex == e.w {
 		return e.v
 	} else {
