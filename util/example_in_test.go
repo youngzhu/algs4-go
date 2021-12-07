@@ -68,6 +68,20 @@ func ExampleIn_ReadInt_part() {
 	// -1
 }
 
+func ExampleIn_ReadFloat() {
+	in := util.NewInReadWords("testdata/floats.txt")
+	for !in.IsEmpty() {
+		fmt.Printf("%.6f\n", in.ReadFloat())
+	}
+
+	// Output:
+	// 0.000000
+	// 0.100000
+	// 99.990000
+	// 100.000000
+	// 0.000009
+}
+
 func ExampleIn_ReadAllStrings() {
 	in := util.NewInReadWords("testdata/in.txt")
 	s := in.ReadAllStrings()

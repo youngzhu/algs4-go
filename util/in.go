@@ -86,6 +86,11 @@ func (in *In) ReadInt() int {
 	return i
 }
 
+func (in *In) ReadFloat() float64 {
+	f, _ := strconv.ParseFloat(in.ReadString(), 64)
+	return f
+}
+
 func (in *In) IsEmpty() bool {
 	return !in.HasNext()
 }
