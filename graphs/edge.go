@@ -1,5 +1,7 @@
 package graphs
 
+import "fmt"
+
 type Edge struct {
 	v, w int
 	weight float64
@@ -33,4 +35,9 @@ func (e Edge) Other(vertex int) int {
 
 func (e Edge) Weight() float64 {
 	return e.weight
+}
+
+// Returns a string representation of this edge
+func (e Edge) String() string {
+	return fmt.Sprintf("%d-%d %.5f", e.v, e.w, e.weight)
 }
