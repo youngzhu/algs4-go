@@ -8,12 +8,15 @@ import (
 )
 
 var (
-	tinyEWG *graphs.EdgeWeightedGraph
+	tinyEWG, mediumEWG *graphs.EdgeWeightedGraph
 )
 
 func init() {
 	in := util.NewInReadWords("testdata/tinyEWG.txt")
 	tinyEWG = graphs.NewEdgeWeightedGraphIn(in)
+
+	in = util.NewInReadWords("testdata/mediumEWG.txt.gz")
+	mediumEWG = graphs.NewEdgeWeightedGraphIn(in)
 }
 
 func ExampleEdgeWeightedGraph() {
@@ -32,7 +35,7 @@ func ExampleEdgeWeightedGraph() {
 	// 7: 2-7 0.34000 1-7 0.19000 0-7 0.16000 5-7 0.28000 4-7 0.37000
 }
 
-func ExampleLazyPrimMST() {
+func ExampleLazyPrimMST_tinyEWG() {
 	mst := graphs.NewLazyPrimMST(*tinyEWG)
 
 	for _, e := range mst.Edges() {
@@ -50,4 +53,15 @@ func ExampleLazyPrimMST() {
 	// 4-5 0.35000
 	// 6-2 0.40000
 	// 1.81000
+}
+
+
+func ExampleLazyPrimMST_mediumEWG() {
+	mst := graphs.NewLazyPrimMST(*mediumEWG)
+
+	for _, e := range mst.Edges() {
+		fmt.Println(e)
+	}
+
+	fmt.Printf("%.5f\n", mst.Weight())
 }
