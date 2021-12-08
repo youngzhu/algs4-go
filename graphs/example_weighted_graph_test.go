@@ -7,11 +7,18 @@ import (
 	"github.com/youngzhu/algs4-go/util"
 )
 
-func ExampleEdgeWeightedGraph() {
-	in := util.NewInReadWords("testdata/tinyEWG.txt")
-	g := graphs.NewEdgeWeightedGraphIn(in)
+var (
+	tinyEWG *graphs.EdgeWeightedGraph
+)
 
-	fmt.Print(g)
+func init() {
+	in := util.NewInReadWords("testdata/tinyEWG.txt")
+	tinyEWG = graphs.NewEdgeWeightedGraphIn(in)
+}
+
+func ExampleEdgeWeightedGraph() {
+
+	fmt.Print(tinyEWG)
 
 	// Output:
 	// vertices:8, edges:16
@@ -23,4 +30,24 @@ func ExampleEdgeWeightedGraph() {
 	// 5: 1-5 0.32000 5-7 0.28000 4-5 0.35000
 	// 6: 6-4 0.93000 6-0 0.58000 3-6 0.52000 6-2 0.40000
 	// 7: 2-7 0.34000 1-7 0.19000 0-7 0.16000 5-7 0.28000 4-7 0.37000
+}
+
+func ExampleLazyPrimMST() {
+	mst := graphs.NewLazyPrimMST(*tinyEWG)
+
+	for _, e := range mst.Edges() {
+		fmt.Println(e)
+	}
+
+	fmt.Printf("%.5f\n", mst.Weight())
+
+	// Output:
+	// 0-7 0.16000
+	// 1-7 0.19000
+	// 0-2 0.26000
+	// 2-3 0.17000
+	// 5-7 0.28000
+	// 4-5 0.35000
+	// 6-2 0.40000
+	// 1.81000
 }

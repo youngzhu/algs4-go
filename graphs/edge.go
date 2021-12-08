@@ -1,6 +1,10 @@
 package graphs
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/youngzhu/algs4-go/sorting/pq"
+)
 
 type Edge struct {
 	v, w int
@@ -40,4 +44,16 @@ func (e Edge) Weight() float64 {
 // Returns a string representation of this edge
 func (e Edge) String() string {
 	return fmt.Sprintf("%d-%d %.5f", e.v, e.w, e.weight)
+}
+
+// implement pq.Item
+func (e Edge) CompareTo(x pq.Item) int {
+	ee := x.(Edge)
+	if e.weight < ee.weight {
+		return -1
+	} else if e.weight > ee.weight {
+		return 1
+	} else {
+		return 0
+	}
 }
