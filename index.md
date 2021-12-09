@@ -52,8 +52,8 @@
     - [Topological](graphs/topological.go)
     - [KosarajuSharirSCC](graphs/kosaraju_sharir_scc.go)
   - Minimum Spanning Tree
-    - [ ] [EdgeWeightedGraph](#)
-    - [ ] [LazyPrimMST](#)
+    - [EdgeWeightedGraph](graphs/edge_weighted_graph.go)
+    - [LazyPrimMST](graphs/lazy_prim_mst.go)
     - [ ] [PrimMST](#)
     - [ ] [KruskalMST](#)
   - [ ] Shortest Paths
