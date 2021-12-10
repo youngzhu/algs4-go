@@ -15,8 +15,6 @@ import (
 // leaves such edges on the priority queue, deferring the ineligibility test to
 // when we remove them.
 
-const floatingPointEpsilon = 1E-12
-
 // It relies on MinPQ
 type LazyPrimMST struct {
 	graph EdgeWeightedGraph
@@ -50,7 +48,7 @@ func (lp *LazyPrimMST) prim(s int) {
 
 	// better to stop when mst has V-1 edges smallest edge on pq
 	for !lp.epq.IsEmpty() {
-		e := lp.epq.Delete().(Edge)
+		e := lp.epq.Delete().(*Edge)
 		// two endpoints
 		v := e.Either()
 		w := e.Other(v)
@@ -79,7 +77,7 @@ func (lp *LazyPrimMST) prim(s int) {
 func (lp *LazyPrimMST) scan(v int) {
 	lp.marked[v] = true
 	for _, edge := range lp.graph.Adj(v) {
-		e := edge.(Edge)
+		e := edge.(*Edge)
 		if !lp.marked[e.Other(v)] {
 			lp.epq.Insert(e)
 		}
