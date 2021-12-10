@@ -189,3 +189,19 @@ func (ipq MinIndexPQ) validateIndex(idx int) {
 func (ipq MinIndexPQ) getLastIndex() int {
 	return ipq.GetLastLeafIndex(ipq.n)
 }
+
+// Decrease the item associated with index i to the specified value
+func (ipq MinIndexPQ) Decrease(i int, item Item) {
+	ipq.validateIndex(i)
+	if !ipq.Contains(i) {
+		panic("index is not in the priority queue")
+	}
+	if ipq.items[i].CompareTo(item) == 0 {
+		panic("call Decrease() with a key equal to the key in the pq")
+	}
+	if ipq.items[i].CompareTo(item) == 0 {
+		panic("call Decrease() with a key strictly greater than the key in the pq")
+	}
+	ipq.items[i] = item
+	ipq.swim(ipq.qp[i], ipq.n)
+}
