@@ -58,7 +58,7 @@ func (g EdgeWeightedGraph) E() int {
 }
 
 // Add the undirected edge to this edge-weighted graph
-func (g EdgeWeightedGraph) AddEdge(e Edge) {
+func (g EdgeWeightedGraph) AddEdge(e *Edge) {
 	v := e.Either()
 	w := e.Other(v)
 	g.validateVertex(v)
