@@ -55,7 +55,6 @@ func ExampleLazyPrimMST_tinyEWG() {
 	// 1.81000
 }
 
-
 func ExampleLazyPrimMST_mediumEWG() {
 	mst := graphs.NewLazyPrimMST(*mediumEWG)
 
@@ -64,4 +63,24 @@ func ExampleLazyPrimMST_mediumEWG() {
 	}
 
 	fmt.Printf("%.5f\n", mst.Weight())
+}
+
+func ExamplePrimMST_tinyEWG() {
+	mst := graphs.NewPrimMST(*tinyEWG)
+
+	for _, e := range mst.Edges() {
+		fmt.Println(e)
+	}
+
+	fmt.Printf("%.5f\n", mst.Weight())
+
+	// Output:
+	// 1-7 0.19000
+	// 0-2 0.26000
+	// 2-3 0.17000
+	// 4-5 0.35000
+	// 5-7 0.28000
+	// 6-2 0.40000
+	// 0-7 0.16000
+	// 1.81000
 }
