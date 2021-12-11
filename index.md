@@ -3,7 +3,7 @@
   - [Queue](fund/queue.go)
   - [Stack](fund/stack.go)
   - [Bag](fund/bag.go)
-  - Union-Find
+  - Case Study: Union-Find
     - [UF](fund/uf/uf.go)
     - [QuickFindUF](fund/uf/quick_find_uf.go)
 ## 2 SORTING
