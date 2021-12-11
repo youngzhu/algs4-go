@@ -3,26 +3,26 @@
   - [Queue](fund/queue.go)
   - [Stack](fund/stack.go)
   - [Bag](fund/bag.go)
-  - Case Study: Union-Find
+  - **Case Study: Union-Find**
     - [UF](fund/uf/uf.go)
     - [QuickFindUF](fund/uf/quick_find_uf.go)
 ## 2 SORTING
   - [Selection](sorting/selection.go)
   - [Insertion](sorting/insertion.go)
   - [Shell](sorting/shell.go)
-  - Merge
+  - **Merge**
     - [Merge: Top-down Mergesort](sorting/merge.go)
     - [MergeX: Optimized Mergesort](sorting/mergex.go)
     - [MergeBU: Bottom-up Mergesort](sorting/merge_bu.go)
-  - Quick
+  - **Quick**
     - [Quick](sorting/quick.go)
     - [Quick3Way](sorting/quick_3way.go)
   - [Heap](sorting/heap.go)
-  - Priority Queue
+  - **Priority Queue**
     - [MaxPQ](sorting/pq/max_pq.go)
     - [MinPQ](sorting/pq/min_pq.go)
     - [IndexMinPQ](sorting/pq/min_index_pq.go)
-    - Client
+    - **Client**
       - [TopM](sorting/pq/example_topm_test.go)
       - [Multiway](sorting/pq/example_index_pq_test.go)
 ## 3 SEARCHING
@@ -32,17 +32,17 @@
   - [RedBlackBST](searching/red_black_bst.go)
   - [SeparateChainingHashST](searching/separate_chaining_hash_st.go)
   - [LinearProbingHashST](searching/linear_probing_hash_st.go)
-  - Client
+  - **Client**
     - [FrequencyCounter](searching/example_frequency_test.go)
 ## 4 GRAPHS
-  - Undirected Graphs
+  - **Undirected Graphs**
     - [Graph](graphs/graph.go)
     - [DepthFirstSearch](graphs/depth_first_search.go)
     - [DepthFirstPaths](graphs/depth_first_paths.go)
     - [BreadthFirstPaths](graphs/breadth_first_paths.go)
     - [ConnectedComponents](graphs/connected_components.go)
     - [SymbolGraph](graphs/symbol_graph.go)
-  - Directed Graphs
+  - **Directed Graphs**
     - [Digraph](graphs/digraph.go)
     - [DirectedDFS](graphs/directed_dfs.go)
     - [DepthFirstDirectedPaths](graphs/depth_first_directed_paths.go)
@@ -53,12 +53,12 @@
     - [SymbolDiraph](graphs/symbol_digraph.go)
     - [Topological](graphs/topological.go)
     - [KosarajuSharirSCC](graphs/kosaraju_sharir_scc.go)
-  - Minimum Spanning Tree
+  - **Minimum Spanning Tree**
     - [EdgeWeightedGraph](graphs/edge_weighted_graph.go)
     - [LazyPrimMST](graphs/lazy_prim_mst.go)
     - [ ] [PrimMST](#)
     - [ ] [KruskalMST](#)
-  - [ ] Shortest Paths
+  - **Shortest Paths**
     - [ ] [EdgeWeightedDigraph](#)
     - [ ] [DijkstraSP](#)
     - [ ] [AcyclicSP](#)
