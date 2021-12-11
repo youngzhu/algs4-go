@@ -5,7 +5,7 @@ for the algorithms and clients in the textbook Algorithms, 4th Edition by Robert
 ## Coding style
 Try to keep the interface and variable name consistent with the original Java source code while writing idiomatic Go code.
 
-**Note:** Most clients are in `example_xxx_test.go`.
+**Note:** Most clients are in _example_xxx_test.go_.
 
 ## Index
 See [index.md](index.md)
