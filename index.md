@@ -4,8 +4,10 @@
   - [Stack](fund/stack.go)
   - [Bag](fund/bag.go)
   - **Case Study: Union-Find**
-    - [UF](fund/uf/uf.go)
     - [QuickFindUF](fund/uf/quick_find_uf.go)
+    - [QuickUnionUF](fund/uf/quick_union_uf.go)
+    - [WeightedQuickUnionUF](fund/uf/weighted_quick_union_uf.go)
+    - [UF (Weighted quick-union with path compression)](fund/uf/uf.go)
 ## 2 SORTING
   - [Selection](sorting/selection.go)
   - [Insertion](sorting/insertion.go)
