@@ -1,6 +1,11 @@
 package uf
 
 // Weighted quick-union by rank with path compression by halving.
+// There are a number of easy ways to improve the weighted quick-union algorithm
+// futher. Ideally, we would like every node to link directedly to the root of
+// its tree, but we do not want to pay the price of changing a large number of
+// links. We can approach the ideal simply by making all the nodes that we do
+// examine directly link to the root.
 type UF struct {
 	parent []int  // parent[i]: parent of i
 	rank   []byte // rank[i]: rank of subtree rooted at i (never more than 31)
