@@ -86,7 +86,7 @@ func (g EdgeWeightedGraph) Edges() fund.Iterator {
 	for v := 0; v < g.V(); v++ {
 		selfLoops := 0
 		for _, edge := range g.Adj(v) {
-			e := edge.(Edge)
+			e := edge.(*Edge)
 			if e.Other(v) > v {
 				bag.Add(e)
 			} else if (e.Other(v) == v) {
