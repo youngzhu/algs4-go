@@ -35,7 +35,7 @@ func dataInit() {
 	testdata = &testCase{n, pairs}
 }
 
-func testUF(unionFind UnionFind, pairs []pair) {
+func benchUF(unionFind UnionFind, pairs []pair) {
 	for _, pq := range pairs {
 		if unionFind.Find(pq.p) == unionFind.Find(pq.q) {
 			continue
@@ -56,7 +56,7 @@ func BenchmarkUF(b *testing.B) {
 	unionFind := NewUF(testdata.n)
 
 	for i := 0; i < b.N; i++ {
-		testUF(unionFind, testdata.pairs)
+		benchUF(unionFind, testdata.pairs)
 	}
 }
 
@@ -71,7 +71,7 @@ func BenchmarkQuickFindUF(b *testing.B) {
 	unionFind := NewQuickFindUF(testdata.n)
 
 	for i := 0; i < b.N; i++ {
-		testUF(unionFind, testdata.pairs)
+		benchUF(unionFind, testdata.pairs)
 	}
 }
 
@@ -86,7 +86,7 @@ func BenchmarkQuickUnionUF(b *testing.B) {
 	unionFind := NewQuickUnionUF(testdata.n)
 
 	for i := 0; i < b.N; i++ {
-		testUF(unionFind, testdata.pairs)
+		benchUF(unionFind, testdata.pairs)
 	}
 }
 
@@ -101,7 +101,7 @@ func BenchmarkWeightedQuickUnionUF(b *testing.B) {
 	unionFind := NewWeightedQuickUnionUF(testdata.n)
 
 	for i := 0; i < b.N; i++ {
-		testUF(unionFind, testdata.pairs)
+		benchUF(unionFind, testdata.pairs)
 	}
 }
 
@@ -118,7 +118,7 @@ func BenchmarkUFParallel(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		unionFind := NewUF(testdata.n)
 		for pb.Next() {
-			testUF(unionFind, testdata.pairs)
+			benchUF(unionFind, testdata.pairs)
 		}
 	})
 }
@@ -134,7 +134,7 @@ func BenchmarkQuickFindUFParallel(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		unionFind := NewQuickFindUF(testdata.n)
 		for pb.Next() {
-			testUF(unionFind, testdata.pairs)
+			benchUF(unionFind, testdata.pairs)
 		}
 	})
 }
@@ -150,7 +150,7 @@ func BenchmarkQuickUnionUFParallel(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		unionFind := NewQuickUnionUF(testdata.n)
 		for pb.Next() {
-			testUF(unionFind, testdata.pairs)
+			benchUF(unionFind, testdata.pairs)
 		}
 	})
 }
@@ -166,7 +166,7 @@ func BenchmarkWeightedQuickUnionUFParallel(b *testing.B) {
 	b.RunParallel(func(pb *testing.PB) {
 		unionFind := NewWeightedQuickUnionUF(testdata.n)
 		for pb.Next() {
-			testUF(unionFind, testdata.pairs)
+			benchUF(unionFind, testdata.pairs)
 		}
 	})
 }
