@@ -61,7 +61,7 @@
     - [PrimMST](graphs/mst/prim_mst.go)
     - [KruskalMST](graphs/mst/kruskal_mst.go)
   - **Shortest Paths (SP)**
-    - [ ] [EdgeWeightedDigraph](#)
+    - [EdgeWeightedDigraph](graphs/sp/edge_weighted_digraph.go)
     - [ ] [DijkstraSP](#)
     - [ ] [AcyclicSP](#)
     - [ ] [BellmanFordSP](#)
