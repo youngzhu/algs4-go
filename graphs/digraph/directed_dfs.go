@@ -1,4 +1,4 @@
-package graphs
+package digraph
 
 type DirectedDFS struct {
 	marked []bool // marked[v]: true if v is reachable from source (s)

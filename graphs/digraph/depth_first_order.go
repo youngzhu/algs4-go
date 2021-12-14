@@ -1,4 +1,4 @@
-package graphs
+package digraph
 
 import "github.com/youngzhu/algs4-go/fund"
 

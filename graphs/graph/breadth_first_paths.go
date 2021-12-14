@@ -1,6 +1,9 @@
 package graph
 
-import "github.com/youngzhu/algs4-go/fund"
+import (
+	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/fund"
+)
 
 // Breadth-first search.
 // Depth-first search finds some path from a source vertex s to a target vertex v.
@@ -15,8 +18,6 @@ import "github.com/youngzhu/algs4-go/fund"
 // on the queue, then perform the following steps until the queue is empty:
 // 1. Remove the next vertex v from the queue
 // 2. Put onto the queue all unmarked vertices that are adjacent to v and mark them
-
-const infinity = 10000
 
 type BreadthFirstPaths struct {
 	graph Graph
@@ -36,7 +37,7 @@ func NewBreadthFirstPaths(g Graph, s int) BreadthFirstPaths {
 	distTo := make([]int, g.V())
 
 	for v := 0; v < g.V(); v++ {
-		distTo[v] = infinity
+		distTo[v] = graphs.InfinityDistance
 	}
 
 	path := BreadthFirstPaths{g, s, marked, edgeTo, distTo}

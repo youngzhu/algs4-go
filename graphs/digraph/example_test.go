@@ -1,24 +1,24 @@
-package graphs_test
+package digraph_test
 
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/graphs/digraph"
 	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund"
 )
 
 var (
-	tinyDigraph *graphs.Digraph
-	tinyDAG graphs.Digraph
+	tinyDigraph *digraph.Digraph
+	tinyDAG digraph.Digraph
 )
 
 func init() {
 	in := util.NewInReadWords("testdata/tinyDG.txt")
-	tinyDigraph = graphs.NewDigraph(in)
+	tinyDigraph = digraph.NewDigraph(in)
 
 	in = util.NewInReadWords("testdata/tinyDAG.txt")
-	tinyDAG = *graphs.NewDigraph(in)
+	tinyDAG = *digraph.NewDigraph(in)
 }
 
 func ExampleDigraph() {
@@ -43,7 +43,7 @@ func ExampleDigraph() {
 }
 
 func ExampleDepthFirstSearch_singleSource() {
-	dfs := graphs.NewDirectedDFS(*tinyDigraph, 2)
+	dfs := digraph.NewDirectedDFS(*tinyDigraph, 2)
 
 	// print out vertices reachable from soure
 	for v := 0; v < tinyDigraph.V(); v++ {
@@ -58,7 +58,7 @@ func ExampleDepthFirstSearch_singleSource() {
 
 func ExampleDepthFirstSearch_multipleSource() {
 	sources := []int{1, 2, 6}
-	dfs := graphs.NewDirectedDFSN(*tinyDigraph, sources)
+	dfs := digraph.NewDirectedDFSN(*tinyDigraph, sources)
 
 	// print out vertices reachable from soure
 	for v := 0; v < tinyDigraph.V(); v++ {
@@ -76,7 +76,7 @@ func ExampleDepthFirstDirectedPaths() {
 
 	source := 3
 	g := *tinyDigraph
-	path := graphs.NewDepthFirstDirectedPaths(g, source)
+	path := digraph.NewDepthFirstDirectedPaths(g, source)
 
 	for v := 0; v < g.V(); v++ {
 		if path.HasPathTo(v) {
@@ -114,7 +114,7 @@ func ExampleDepthFirstDirectedPaths() {
 func ExampleBreadthFirstDirectedPaths() {
 
 	g, source := *tinyDigraph, 3
-	path := graphs.NewBreadthFirstDirectedPaths(g, source)
+	path := digraph.NewBreadthFirstDirectedPaths(g, source)
 
 	for v := 0; v < g.V(); v++ {
 		if path.HasPathTo(v) {
@@ -149,8 +149,8 @@ func ExampleBreadthFirstDirectedPaths() {
 	// 3 to 12 (-): not connected	
 }
 
-func findDirectedCycle(g graphs.Digraph) {
-	dc := graphs.NewDirectedCycle(g)
+func findDirectedCycle(g digraph.Digraph) {
+	dc := digraph.NewDirectedCycle(g)
 
 	if dc.HasCycle() {
 		fmt.Print("Directed cycle: ")
@@ -183,7 +183,7 @@ func ExampleDirectedCycle_dag() {
 
 func ExampleDepthFirstOrder() {
 
-	dfo := graphs.NewDepthFirstOrder(tinyDAG)
+	dfo := digraph.NewDepthFirstOrder(tinyDAG)
 
 	fmt.Printf("%-4s %-4s %-4s\n", "v", "pre", "post")
 	fmt.Println("----------------")
@@ -234,7 +234,7 @@ func ExampleDepthFirstOrder() {
 }
 
 func ExampleSymbolDigraph() {
-	sg := graphs.NewSymbolDigraph("testdata/routes.txt", " ")
+	sg := digraph.NewSymbolDigraph("testdata/routes.txt", " ")
 
 	symbolDigraph(sg, "JFK")
 	symbolDigraph(sg, "ATL")
@@ -251,7 +251,7 @@ func ExampleSymbolDigraph() {
 	// LAX
 }
 
-func symbolDigraph(sg graphs.SymbolDigraph, input string) {
+func symbolDigraph(sg digraph.SymbolDigraph, input string) {
 	fmt.Println(input)
 
 	s := sg.Index(input)
@@ -264,8 +264,8 @@ func symbolDigraph(sg graphs.SymbolDigraph, input string) {
 
 func ExampleTopological() {
 
-	sg := graphs.NewSymbolDigraph("testdata/jobs.txt", "/")
-	topologial := graphs.NewTopological(sg.Digraph())
+	sg := digraph.NewSymbolDigraph("testdata/jobs.txt", "/")
+	topologial := digraph.NewTopological(sg.Digraph())
 
 	for _, v := range topologial.Order() {
 		fmt.Println(sg.Name(v))
@@ -289,8 +289,8 @@ func ExampleTopological() {
 }
 
 
-func sccExample(g graphs.Digraph) {
-	scc := graphs.NewKosarajuSharirSCC(g)
+func sccExample(g digraph.Digraph) {
+	scc := digraph.NewKosarajuSharirSCC(g)
 
 	// number of connected components
 	n := scc.Count()
@@ -332,7 +332,7 @@ func ExampleKosarajuSharirSCC_tinyDG() {
 
 func ExampleKosarajuSharirSCC_mediumDG() {
 	in := util.NewInReadWords("testdata/mediumDG.txt")
-	g := graphs.NewDigraph(in)
+	g := digraph.NewDigraph(in)
 
 	sccExample(*g)
 	

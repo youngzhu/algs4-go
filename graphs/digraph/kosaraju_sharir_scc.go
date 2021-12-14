@@ -1,4 +1,4 @@
-package graphs
+package digraph
 
 // Strong connectivity is an equivalence relation on the set of vertices:
 // Reflexive: Every vertex v is strongly connected to itself

@@ -1,4 +1,4 @@
-package graphs
+package digraph
 
 // Topological sort.
 // Given a digraph, put the vertices in order such that all its directed edges

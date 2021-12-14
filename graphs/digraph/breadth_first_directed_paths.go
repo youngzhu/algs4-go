@@ -1,6 +1,9 @@
-package graphs
+package digraph
 
-import "github.com/youngzhu/algs4-go/fund"
+import (
+	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/fund"
+)
 
 type BreadthFirstDirectedPaths struct {
 	graph Digraph
@@ -20,7 +23,7 @@ func NewBreadthFirstDirectedPaths(g Digraph, s int) BreadthFirstDirectedPaths {
 	distTo := make([]int, g.V())
 
 	for v := 0; v < g.V(); v++ {
-		distTo[v] = infinity
+		distTo[v] = graphs.InfinityDistance
 	}
 
 	path := BreadthFirstDirectedPaths{g, s, marked, edgeTo, distTo}

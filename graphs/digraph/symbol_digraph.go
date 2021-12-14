@@ -1,4 +1,4 @@
-package graphs
+package digraph
 
 import (
 	"strings"
