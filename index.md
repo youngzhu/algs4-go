@@ -44,7 +44,7 @@
     - [BreadthFirstPaths](graphs/graph/breadth_first_paths.go)
     - [ConnectedComponents](graphs/graph/connected_components.go)
     - [SymbolGraph](graphs/graph/symbol_graph.go)
-  - **Directed Graphs**
+  - **Directed Graphs (Digraph)**
     - [Digraph](graphs/digraph/digraph.go)
     - [DirectedDFS](graphs/digraph/directed_dfs.go)
     - [DepthFirstDirectedPaths](graphs/digraph/depth_first_directed_paths.go)
@@ -55,12 +55,12 @@
     - [SymbolDiraph](graphs/digraph/symbol_digraph.go)
     - [Topological](graphs/digraph/topological.go)
     - [KosarajuSharirSCC](graphs/digraph/kosaraju_sharir_scc.go)
-  - **Minimum Spanning Tree**
+  - **Minimum Spanning Tree (MST)**
     - [EdgeWeightedGraph](graphs/mst/edge_weighted_graph.go)
     - [LazyPrimMST](graphs/mst/lazy_prim_mst.go)
     - [PrimMST](graphs/mst/prim_mst.go)
     - [KruskalMST](graphs/mst/kruskal_mst.go)
-  - **Shortest Paths**
+  - **Shortest Paths (SP)**
     - [ ] [EdgeWeightedDigraph](#)
     - [ ] [DijkstraSP](#)
     - [ ] [AcyclicSP](#)
