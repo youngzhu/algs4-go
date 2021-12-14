@@ -1,4 +1,4 @@
-package graphs
+package graph
 
 import "github.com/youngzhu/algs4-go/fund"
 

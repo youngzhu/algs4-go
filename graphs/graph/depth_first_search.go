@@ -1,4 +1,4 @@
-package graphs
+package graph
 
 // Depth-first search is a classic recursive method for systematically examining
 // each of the vertices and edges in a graph.

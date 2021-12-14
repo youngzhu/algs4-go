@@ -1,24 +1,24 @@
-package graphs_test
+package graph_test
 
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/graphs/graph"
 	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund"
 )
 
 var (
-	tinyGraph *graphs.Graph
-	tinyCG *graphs.Graph
+	tinyGraph *graph.Graph
+	tinyCG *graph.Graph
 )
 
 func dataInit() {
 	in := util.NewInReadWords("testdata/tinyG.txt")
-	tinyGraph = graphs.NewGraph(in)
+	tinyGraph = graph.NewGraph(in)
 
 	in = util.NewInReadWords("testdata/tinyCG.txt")
-	tinyCG = graphs.NewGraph(in)
+	tinyCG = graph.NewGraph(in)
 }
 
 func ExampleGraph() {
@@ -98,8 +98,8 @@ func ExampleDepthFirstSearch() {
 	
 }
 
-func dfs(g graphs.Graph, s int) {
-	search := graphs.NewDepthFirstSearch(g, s)
+func dfs(g graph.Graph, s int) {
+	search := graph.NewDepthFirstSearch(g, s)
 
 	for v := 0; v < g.V(); v++ {
 		if search.Marked(v) {
@@ -123,7 +123,7 @@ func ExampleDepthFirstPaths() {
 	}
 
 	source := 0
-	path := graphs.NewDepthFirstPaths(*tinyCG, source)
+	path := graph.NewDepthFirstPaths(*tinyCG, source)
 
 	for v := 0; v < tinyCG.V(); v++ {
 		if path.HasPathTo(v) {
@@ -158,7 +158,7 @@ func ExampleBreadthFirstPaths() {
 	}
 
 	source := 0
-	path := graphs.NewBreadthFirstPaths(*tinyCG, source)
+	path := graph.NewBreadthFirstPaths(*tinyCG, source)
 
 	for v := 0; v < tinyCG.V(); v++ {
 		if path.HasPathTo(v) {
@@ -192,7 +192,7 @@ func ExampleConnectedComponents() {
 		dataInit()
 	}
 
-	cc := graphs.NewConnectedComponents(*tinyGraph)
+	cc := graph.NewConnectedComponents(*tinyGraph)
 
 	// number of connected components
 	n := cc.Count()
@@ -225,7 +225,7 @@ func ExampleConnectedComponents() {
 }
 
 func ExampleSymbolGraph_routes() {
-	sg := graphs.NewSymbolGraph("testdata/routes.txt", " ")
+	sg := graph.NewSymbolGraph("testdata/routes.txt", " ")
 
 	symbolGraph(sg, "JFK")
 	symbolGraph(sg, "KFC")
@@ -240,14 +240,14 @@ func ExampleSymbolGraph_routes() {
 }
 
 func ExampleSymbolGraph_movies() {
-	sg := graphs.NewSymbolGraph("testdata/movies.txt.gz", "/")
+	sg := graph.NewSymbolGraph("testdata/movies.txt.gz", "/")
 
 	symbolGraph(sg, "Tin Men (1987)")
 	symbolGraph(sg, "让子弹飞")
 
 }
 
-func symbolGraph(sg graphs.SymbolGraph, input string) {
+func symbolGraph(sg graph.SymbolGraph, input string) {
 	fmt.Println(input)
 
 	if sg.Contains(input) {

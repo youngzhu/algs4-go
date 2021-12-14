@@ -1,4 +1,4 @@
-package graphs
+package mst
 
 import (
 	"github.com/youngzhu/algs4-go/fund"

@@ -1,4 +1,4 @@
-package graphs
+package mst
 
 // Proposition.
 // Prim's algorithm computes the MST of any connected edge-weighted graph. 

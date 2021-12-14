@@ -1,4 +1,4 @@
-package graphs
+package graph
 
 // Another client of DFS, find the connected components of a graph.
 type ConnectedComponents struct {

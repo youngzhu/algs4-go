@@ -1,4 +1,4 @@
-package graphs
+package graph
 
 import (
 	"fmt"

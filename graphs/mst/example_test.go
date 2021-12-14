@@ -1,22 +1,22 @@
-package graphs_test
+package mst_test
 
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/graphs/mst"
 	"github.com/youngzhu/algs4-go/util"
 )
 
 var (
-	tinyEWG, mediumEWG *graphs.EdgeWeightedGraph
+	tinyEWG, mediumEWG *mst.EdgeWeightedGraph
 )
 
 func init() {
 	in := util.NewInReadWords("testdata/tinyEWG.txt")
-	tinyEWG = graphs.NewEdgeWeightedGraphIn(in)
+	tinyEWG = mst.NewEdgeWeightedGraphIn(in)
 
 	in = util.NewInReadWords("testdata/mediumEWG.txt.gz")
-	mediumEWG = graphs.NewEdgeWeightedGraphIn(in)
+	mediumEWG = mst.NewEdgeWeightedGraphIn(in)
 }
 
 func ExampleEdgeWeightedGraph() {
@@ -36,7 +36,7 @@ func ExampleEdgeWeightedGraph() {
 }
 
 func ExampleLazyPrimMST_tinyEWG() {
-	mst := graphs.NewLazyPrimMST(*tinyEWG)
+	mst := mst.NewLazyPrimMST(*tinyEWG)
 
 	for _, e := range mst.Edges() {
 		fmt.Println(e)
@@ -56,7 +56,7 @@ func ExampleLazyPrimMST_tinyEWG() {
 }
 
 func ExampleLazyPrimMST_mediumEWG() {
-	mst := graphs.NewLazyPrimMST(*mediumEWG)
+	mst := mst.NewLazyPrimMST(*mediumEWG)
 
 	for _, e := range mst.Edges() {
 		fmt.Println(e)
@@ -66,7 +66,7 @@ func ExampleLazyPrimMST_mediumEWG() {
 }
 
 func ExamplePrimMST_tinyEWG() {
-	mst := graphs.NewPrimMST(*tinyEWG)
+	mst := mst.NewPrimMST(*tinyEWG)
 
 	for _, e := range mst.Edges() {
 		fmt.Println(e)
@@ -86,7 +86,7 @@ func ExamplePrimMST_tinyEWG() {
 }
 
 func ExampleKruskalMST() {
-	mst := graphs.NewKruskalMST(*tinyEWG)
+	mst := mst.NewKruskalMST(*tinyEWG)
 
 	for _, e := range mst.Edges() {
 		fmt.Println(e)
