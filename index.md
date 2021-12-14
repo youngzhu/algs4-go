@@ -30,7 +30,7 @@
 ## 3 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
-  - [BST: Binary Search Tree](searching/bst.go)
+  - [Binary Search Tree (BST)](searching/bst.go)
   - [RedBlackBST](searching/red_black_bst.go)
   - [SeparateChainingHashST](searching/separate_chaining_hash_st.go)
   - [LinearProbingHashST](searching/linear_probing_hash_st.go)
