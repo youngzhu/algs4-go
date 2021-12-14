@@ -32,7 +32,8 @@ func NewEdgeWeightedGraphIn(in *util.In) *EdgeWeightedGraph {
 		panic("Number of edges must be non-negative")
 	}
 
-	g := &EdgeWeightedGraph{vertices, edges, adj}
+	// AddEdge() will update g.edges
+	g := &EdgeWeightedGraph{vertices, 0, adj}
 
 	var v, w int
 	for i := 0; i < edges; i++ {
@@ -48,17 +49,17 @@ func NewEdgeWeightedGraphIn(in *util.In) *EdgeWeightedGraph {
 }
 
 // Returns the number of vertices in this edge-weighted graph
-func (g EdgeWeightedGraph) V() int {
+func (g *EdgeWeightedGraph) V() int {
 	return g.vertices
 }
 
 // Returns the number of edges in this edge-weighted graph
-func (g EdgeWeightedGraph) E() int {
+func (g *EdgeWeightedGraph) E() int {
 	return g.edges
 }
 
 // Add the undirected edge to this edge-weighted graph
-func (g EdgeWeightedGraph) AddEdge(e *Edge) {
+func (g *EdgeWeightedGraph) AddEdge(e *Edge) {
 	v := e.Either()
 	w := e.Other(v)
 	g.validateVertex(v)
@@ -69,19 +70,19 @@ func (g EdgeWeightedGraph) AddEdge(e *Edge) {
 }
 
 // Returns the edges incident on vertex v
-func (g EdgeWeightedGraph) Adj(v int) fund.Iterator {
+func (g *EdgeWeightedGraph) Adj(v int) fund.Iterator {
 	g.validateVertex(v)
 	return g.adj[v].Iterator()
 }
 
 // Returns the degree of vertex v
-func (g EdgeWeightedGraph) Degree(v int) int {
+func (g *EdgeWeightedGraph) Degree(v int) int {
 	g.validateVertex(v)
 	return g.adj[v].Size()
 }
 
 // Returns all edges in this edge-weighted graph
-func (g EdgeWeightedGraph) Edges() fund.Iterator {
+func (g *EdgeWeightedGraph) Edges() fund.Iterator {
 	bag := fund.NewBag()
 	for v := 0; v < g.V(); v++ {
 		selfLoops := 0
@@ -103,7 +104,7 @@ func (g EdgeWeightedGraph) Edges() fund.Iterator {
 }
 
 // Returns a string representation of this edge-weighted graph
-func (g EdgeWeightedGraph) String() string {
+func (g *EdgeWeightedGraph) String() string {
 	s := fmt.Sprintf("vertices:%d, edges:%d\n", g.V(), g.E())
 	for v := 0; v < g.V(); v++ {
 		s += fmt.Sprintf("%d:", v)
@@ -116,7 +117,7 @@ func (g EdgeWeightedGraph) String() string {
 	return s
 }
 
-func (g EdgeWeightedGraph) validateVertex(v int) {
+func (g *EdgeWeightedGraph) validateVertex(v int) {
 	if v < 0 || v >= g.V() {
 		panic("invalidate vertex")
 	}
