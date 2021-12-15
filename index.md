@@ -68,9 +68,9 @@
 ## 5 STRING
   - [LSD](strings/lsd.go)
   - [MSD](strings/msd.go)
-  - [ ] [Quick3string](#)
-  - [ ] [TrieST](#)
-  - [ ] [TST](#)
+  - [Quick3string](strings/quick_3way.go)
+  - [TrieST](strings/trie_st.go)
+  - [TST](strings/ternary_search_trie.go)
   - [ ] [KMP](#)
   - [ ] [NFA](#)
   - [ ] [Huffman](#)
