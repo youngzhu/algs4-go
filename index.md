@@ -70,7 +70,7 @@
   - [MSD](strings/msd.go)
   - [Quick3string](strings/quick_3way.go)
   - [TrieST](strings/trie_st.go)
-  - [TST](strings/ternary_search_trie.go)
+  - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
   - [ ] [KMP](#)
   - [ ] [NFA](#)
   - [ ] [Huffman](#)
