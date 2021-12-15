@@ -32,12 +32,8 @@ func ExampleEdgeWeightedDigraph() {
 	// 7: 7->3  0.39 7->5  0.28
 }
 
-func ExampleDijkstraSP() {
-
-	s := 0
-	dsp := sp.NewDijkstraSP(*tinyEWD, s)
-
-	// print shortest path
+func printDijkstraSP(dsp sp.DijkstraSP) {
+	s := dsp.Source()
 	for v := 0; v < tinyEWD.V(); v++ {
 		if dsp.HasPathTo(v) {
 			fmt.Printf("%d to %d (%.2f)", s, v, dsp.DistTo(v))
@@ -49,7 +45,14 @@ func ExampleDijkstraSP() {
 			fmt.Printf("%d to %d no path\n", s, v)
 		}
 	}
+}
 
+func ExampleDijkstraSP() {
+	s := 0
+	dsp := sp.NewDijkstraSP(*tinyEWD, s)
+
+	printDijkstraSP(*dsp)
+	
 	// Output:
 	// 0 to 0 (0.00)
 	// 0 to 1 (1.05) 0->4  0.38 4->5  0.35 5->1  0.32

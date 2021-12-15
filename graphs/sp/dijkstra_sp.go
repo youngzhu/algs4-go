@@ -16,6 +16,7 @@ import (
 
 type DijkstraSP struct {
 	graph EdgeWeightedDigraph
+	source int
 	distTo []graphs.Distance // distTo[v]: distance of shortest s->v path
 	edgeTo []*DirectedEdge // edgeTo[v]: last edge on shortest s->v path
 	ipq *pq.MinIndexPQ // priority queue of vertices
@@ -43,7 +44,7 @@ func NewDijkstraSP(g EdgeWeightedDigraph, s int) *DijkstraSP {
 	ipq := pq.NewMinIndexPQ(n)
 	ipq.Insert(s, distTo[s])
 
-	sp := &DijkstraSP{g, distTo, edgeTo, ipq}
+	sp := &DijkstraSP{g, s, distTo, edgeTo, ipq}
 
 	// relax vertices in order of distance from s
 	for !sp.ipq.IsEmpty() {
@@ -97,4 +98,8 @@ func (sp *DijkstraSP) PathTo(v int) fund.Iterator {
 	}
 
 	return stack.Iterator()
+}
+
+func (sp *DijkstraSP) Source() int {
+	return sp.source
 }
