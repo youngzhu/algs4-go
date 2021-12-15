@@ -75,6 +75,7 @@
     - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
   - **Substring Search**
     - [Brute](strings/brute.go)
+    - [Rabin-Karp](strings/rabin_karp.go)
   - **Regular Expressions**
   - **Data Compression**
   - [ ] [KMP](#)
