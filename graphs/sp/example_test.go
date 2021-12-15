@@ -42,7 +42,7 @@ func printDijkstraSP(dsp sp.DijkstraSP) {
 			}
 			fmt.Println()
 		} else {
-			fmt.Printf("%d to %d no path\n", s, v)
+			fmt.Printf("%d to %d        no path\n", s, v)
 		}
 	}
 }
@@ -62,5 +62,24 @@ func ExampleDijkstraSP() {
 	// 0 to 5 (0.73) 0->4  0.38 4->5  0.35
 	// 0 to 6 (1.51) 0->2  0.26 2->7  0.34 7->3  0.39 3->6  0.52
 	// 0 to 7 (0.60) 0->2  0.26 2->7  0.34
+}
 
+func ExampleDijkstraSP_noPath() {
+	in := util.NewInReadWords("testdata/nopath.txt")
+	nopath := sp.NewEdgeWeightedDigraphIn(in)
+
+	s := 7
+	dsp := sp.NewDijkstraSP(*nopath, s)
+
+	printDijkstraSP(*dsp)
+	
+	// Output:
+	// 7 to 0        no path
+	// 7 to 1 (0.60) 7->5  0.28 5->1  0.32
+	// 7 to 2 (1.31) 7->3  0.39 3->6  0.52 6->2  0.40
+	// 7 to 3 (0.39) 7->3  0.39
+	// 7 to 4 (0.63) 7->5  0.28 5->4  0.35
+	// 7 to 5 (0.28) 7->5  0.28
+	// 7 to 6 (0.91) 7->3  0.39 3->6  0.52
+	// 7 to 7 (0.00)
 }
