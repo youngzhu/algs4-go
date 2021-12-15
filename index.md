@@ -66,11 +66,17 @@
     - [ ] [AcyclicSP](#)
     - [ ] [BellmanFordSP](#)
 ## 5 STRING
-  - [LSD](strings/lsd.go)
-  - [MSD](strings/msd.go)
-  - [Quick3string](strings/quick_3way.go)
-  - [TrieST](strings/trie_st.go)
-  - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
+  - **String Sorts**
+    - [LSD](strings/lsd.go)
+    - [MSD](strings/msd.go)
+    - [Quick3string](strings/quick_3way.go)
+  - **Tries**
+    - [TrieST](strings/trie_st.go)
+    - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
+  - **Substring Search**
+    - [Brute](strings/brute.go)
+  - **Regular Expressions**
+  - **Data Compression**
   - [ ] [KMP](#)
   - [ ] [NFA](#)
   - [ ] [Huffman](#)
