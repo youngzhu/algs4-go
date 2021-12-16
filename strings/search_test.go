@@ -38,3 +38,15 @@ func TestBruteSearch2(t *testing.T) {
 		}
 	}
 }
+
+func TestRabinKarp(t *testing.T) {
+	for _, tc := range testCases {
+		rk := NewRabinKarp(tc.pattern)
+		got := rk.Search(tc.text)
+		want := tc.index
+
+		if got != want {
+			t.Errorf("BruteSearch1(%q, %q) got %d, want %d", tc.pattern, tc.text, got, want)
+		}
+	}
+}
