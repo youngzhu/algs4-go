@@ -2,6 +2,7 @@ package sp
 
 import (
 	"github.com/youngzhu/algs4-go/graphs"
+	"github.com/youngzhu/algs4-go/graphs/digraph"
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/sorting/pq"
 )
@@ -15,16 +16,16 @@ import (
 // Assumes all weights are non-negative.
 
 type DijkstraSP struct {
-	graph EdgeWeightedDigraph
+	graph digraph.EdgeWeightedDigraph
 	source int
 	distTo []graphs.Distance // distTo[v]: distance of shortest s->v path
-	edgeTo []*DirectedEdge // edgeTo[v]: last edge on shortest s->v path
+	edgeTo []*digraph.DirectedEdge // edgeTo[v]: last edge on shortest s->v path
 	ipq *pq.MinIndexPQ // priority queue of vertices
 }
 
-func NewDijkstraSP(g EdgeWeightedDigraph, s int) *DijkstraSP {
+func NewDijkstraSP(g digraph.EdgeWeightedDigraph, s int) *DijkstraSP {
 	for _, edge := range g.Edges() {
-		e := edge.(*DirectedEdge)
+		e := edge.(*digraph.DirectedEdge)
 		if e.Weight() < 0 {
 			panic("negative weight")
 		}
@@ -32,25 +33,25 @@ func NewDijkstraSP(g EdgeWeightedDigraph, s int) *DijkstraSP {
 
 	n := g.V()
 	distTo := make([]graphs.Distance, n)
-	edgeTo := make([]*DirectedEdge, n)
+	edgeTo := make([]*digraph.DirectedEdge, n)
+	ipq := pq.NewMinIndexPQ(n)
 
-	g.validateVertex(s)
+	sp := &DijkstraSP{g, s, distTo, edgeTo, ipq}
+
+	sp.validateVertex(s)
 
 	for i := 0; i < n; i++ {
 		distTo[i] = graphs.DistanceInfinity
 	}
 	distTo[s] = graphs.DistanceZero
-
-	ipq := pq.NewMinIndexPQ(n)
-	ipq.Insert(s, distTo[s])
-
-	sp := &DijkstraSP{g, s, distTo, edgeTo, ipq}
+	
+	sp.ipq.Insert(s, distTo[s])
 
 	// relax vertices in order of distance from s
 	for !sp.ipq.IsEmpty() {
 		v := sp.ipq.Delete()
 		for _, edge := range g.Adj(v) {
-			e := edge.(*DirectedEdge)
+			e := edge.(*digraph.DirectedEdge)
 			sp.relax(e)
 		}
 	}
@@ -59,7 +60,7 @@ func NewDijkstraSP(g EdgeWeightedDigraph, s int) *DijkstraSP {
 }
 
 // relax edge e and update pq if changed
-func (sp *DijkstraSP) relax(e *DirectedEdge) {
+func (sp *DijkstraSP) relax(e *digraph.DirectedEdge) {
 	v, w := e.From(), e.To()
 	distance := graphs.Distance(e.Weight())
 	if sp.distTo[w] > sp.distTo[v] + distance {
@@ -76,19 +77,19 @@ func (sp *DijkstraSP) relax(e *DirectedEdge) {
 
 // Returns the length of a shortest path from the source vertex s to vertex v
 func (sp DijkstraSP) DistTo(v int) float64 {
-	sp.graph.validateVertex(v)
+	sp.validateVertex(v)
 	return float64(sp.distTo[v])
 }
 
 // Rtrurn true if there is a path from the source vertex to vertx v
 func (sp DijkstraSP) HasPathTo(v int) bool {
-	sp.graph.validateVertex(v)
+	sp.validateVertex(v)
 	return sp.distTo[v] < graphs.DistanceInfinity
 }
 
 // Returns a shortest path from the source vertex to vertex v
 func (sp DijkstraSP) PathTo(v int) fund.Iterator {
-	sp.graph.validateVertex(v)
+	sp.validateVertex(v)
 	stack := fund.NewStack()
 
 	if sp.HasPathTo(v) {
@@ -102,4 +103,10 @@ func (sp DijkstraSP) PathTo(v int) fund.Iterator {
 
 func (sp *DijkstraSP) Source() int {
 	return sp.source
+}
+
+func (t *DijkstraSP) validateVertex(v int) {
+	if v < 0 || v >= len(t.distTo) {
+		panic("invalidate vertex")
+	}
 }

@@ -43,6 +43,30 @@ func NewDepthFirstOrder(g IDigraph) DepthFirstOrder {
 	return *dfo
 }
 
+func NewDepthFirstOrderWeighted(g EdgeWeightedDigraph) DepthFirstOrder {
+	n := g.V()
+	marked := make([]bool, n)
+	pre := make([]int, n)
+	post := make([]int, n)
+	preorder := fund.NewQueue()
+	postorder := fund.NewQueue()
+
+	dfo := &DepthFirstOrder{
+		marked: marked, 
+		pre: pre, 
+		post: post, 
+		preorder: preorder, 
+		postorder: postorder}
+
+	for v := 0; v < n; v++ {
+		if !dfo.marked[v] {
+			dfo.dfsWeighted(g, v)
+		}
+	}
+
+	return *dfo
+}
+
 func (dfo *DepthFirstOrder) dfs(g IDigraph, v int) {
 	dfo.marked[v] = true
 	dfo.pre[v] = dfo.preCounter
@@ -53,6 +77,24 @@ func (dfo *DepthFirstOrder) dfs(g IDigraph, v int) {
 		w := it.(int)
 		if !dfo.marked[w] {
 			dfo.dfs(g, w)
+		}
+	}
+
+	dfo.postorder.Enqueue(v)
+	dfo.post[v] = dfo.postCounter
+	dfo.postCounter++
+}
+
+func (dfo *DepthFirstOrder) dfsWeighted(g EdgeWeightedDigraph, v int) {
+	dfo.marked[v] = true
+	dfo.pre[v] = dfo.preCounter
+	dfo.preCounter++
+	dfo.preorder.Enqueue(v)
+
+	for _, it := range g.Adj(v) {
+		w := it.(int)
+		if !dfo.marked[w] {
+			dfo.dfsWeighted(g, w)
 		}
 	}
 

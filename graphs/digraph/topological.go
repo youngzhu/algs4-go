@@ -40,6 +40,31 @@ func NewTopological(g IDigraph) Topological {
 	return t
 }
 
+func NewTopologicalWeighted(g EdgeWeightedDigraph) Topological {
+	t := Topological{}
+
+	finder := NewDirectedCycleWeighted(g)
+	if !finder.HasCycle() {
+		dfo := NewDepthFirstOrderWeighted(g)
+		order := dfo.ReversePostorder()
+		rank := make([]int, g.V())
+
+		for i, v := range order {
+			rank[v.(int)] = i
+		}
+
+		orderInt := make([]int, len(order))
+		for i, v := range order {
+			orderInt[i] = v.(int)
+		}
+
+		t.order = orderInt
+		t.rank = rank
+	}
+
+	return t
+}
+
 // Returns a topological order if the digraph has a topologial order
 func (t Topological) Order() []int {
 	return t.order
