@@ -8,7 +8,7 @@ import (
 // source vertex s
 type Paths interface {
 	// Is there a path from s to v
-	HasPathTo(v int) 
+	HasPathTo(v int) bool
 	// Path from s to v
 	PathTo(v int) fund.Iterator
 }

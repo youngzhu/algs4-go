@@ -75,19 +75,19 @@ func (sp *DijkstraSP) relax(e *DirectedEdge) {
 }
 
 // Returns the length of a shortest path from the source vertex s to vertex v
-func (sp *DijkstraSP) DistTo(v int) float64 {
+func (sp DijkstraSP) DistTo(v int) float64 {
 	sp.graph.validateVertex(v)
 	return float64(sp.distTo[v])
 }
 
 // Rtrurn true if there is a path from the source vertex to vertx v
-func (sp *DijkstraSP) HasPathTo(v int) bool {
+func (sp DijkstraSP) HasPathTo(v int) bool {
 	sp.graph.validateVertex(v)
 	return sp.distTo[v] < graphs.DistanceInfinity
 }
 
 // Returns a shortest path from the source vertex to vertex v
-func (sp *DijkstraSP) PathTo(v int) fund.Iterator {
+func (sp DijkstraSP) PathTo(v int) fund.Iterator {
 	sp.graph.validateVertex(v)
 	stack := fund.NewStack()
 
