@@ -7,24 +7,23 @@ import "github.com/youngzhu/algs4-go/fund"
 // Solves this problem using depth-first search
 
 type DirectedCycle struct {
-	graph Digraph
 	marked []bool // marked[v]: has vertex v been marked?
 	edgeTo []int // edgeTo[v]: previous vertex on path to v
 	onStack []bool // onStack[v]: is vertex on the stack?
 	cycle *fund.Stack // directed cycle (or nil if no such cycle)
 }
 
-func NewDirectedCycle(g Digraph) *DirectedCycle {
+func NewDirectedCycle(g IDigraph) *DirectedCycle {
 	marked := make([]bool, g.V())
 	edgeTo := make([]int, g.V())
 	onStack := make([]bool, g.V())
-	dc := &DirectedCycle{g, marked, edgeTo, onStack, nil}
+	dc := &DirectedCycle{marked, edgeTo, onStack, nil}
 
 	// log.Println(dc.graph.String())
 
 	for v := 0; v < g.V(); v++ {
 		if !dc.marked[v] && dc.cycle == nil {
-			dc.dfs(v)
+			dc.dfs(g, v)
 		}
 	}
 
@@ -33,19 +32,19 @@ func NewDirectedCycle(g Digraph) *DirectedCycle {
 
 // run DFS and find a directed cycle 
 // must use pointer (*), otherwise dc.cycle wouldn't change
-func (dc *DirectedCycle) dfs(v int) {
+func (dc *DirectedCycle) dfs(g IDigraph, v int) {
 	dc.onStack[v] = true
 	dc.marked[v] = true
 
-	
-	for _, w := range dc.graph.Adj(v) {
+	for _, it := range g.Adj(v) {
+		w := it.(int)
 		// short circuit if directed cycle found
 		// log.Printf("cycle: %v", dc.cycle!= nil)
 		if dc.cycle != nil {
 			return
 		} else if !dc.marked[w] { // found new vertex, so recur
 			dc.edgeTo[w] = v
-			dc.dfs(w)
+			dc.dfs(g, w)
 		} else if dc.onStack[w] { // trace back directed cycle
 			cycle := fund.NewStack()
 			for x := v; x != w; x = dc.edgeTo[x] {

@@ -11,6 +11,12 @@ import (
 // pair of vertices. 
 
 // Undirected graph
+type IGraph interface {
+	V() int
+	E() int
+	AddEdge(v, w int)
+	Adj(v int) fund.Iterator
+}
 
 // A graph, implemented using an array of set.
 // Parallel edges and self-loops allowed

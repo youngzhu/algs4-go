@@ -43,7 +43,8 @@ func NewKosarajuSharirSCC(g Digraph) KosarajuSharirSCC {
 func (scc *KosarajuSharirSCC) dfs(v int) {
 	scc.marked[v] = true
 	scc.id[v] = scc.count
-	for _, w := range scc.digraph.Adj(v) {
+	for _, it := range scc.digraph.Adj(v) {
+		w := it.(int)
 		if !scc.marked[w] {
 			scc.dfs(w)
 		}

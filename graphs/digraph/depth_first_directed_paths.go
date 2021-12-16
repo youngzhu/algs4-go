@@ -26,7 +26,8 @@ func NewDepthFirstDirectedPaths(g Digraph, s int) DepthFirstDirectedPaths {
 func (p DepthFirstDirectedPaths) dfs(g Digraph, v int) {
 	p.marked[v] = true
 
-	for _, w := range g.Adj(v) {
+	for _, it := range g.Adj(v) {
+		w := it.(int)
 		if !p.marked[w] {
 			p.edgeTo[w] = v
 			p.dfs(g, w)

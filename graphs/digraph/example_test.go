@@ -9,8 +9,7 @@ import (
 )
 
 var (
-	tinyDigraph *digraph.Digraph
-	tinyDAG digraph.Digraph
+	tinyDigraph, tinyDAG *digraph.Digraph
 )
 
 func init() {
@@ -18,7 +17,7 @@ func init() {
 	tinyDigraph = digraph.NewDigraph(in)
 
 	in = util.NewInReadWords("testdata/tinyDAG.txt")
-	tinyDAG = *digraph.NewDigraph(in)
+	tinyDAG = digraph.NewDigraph(in)
 }
 
 func ExampleDigraph() {
@@ -149,7 +148,7 @@ func ExampleBreadthFirstDirectedPaths() {
 	// 3 to 12 (-): not connected	
 }
 
-func findDirectedCycle(g digraph.Digraph) {
+func findDirectedCycle(g digraph.IDigraph) {
 	dc := digraph.NewDirectedCycle(g)
 
 	if dc.HasCycle() {
@@ -165,7 +164,7 @@ func findDirectedCycle(g digraph.Digraph) {
 
 func ExampleDirectedCycle() {
 	
-	findDirectedCycle(*tinyDigraph)
+	findDirectedCycle(tinyDigraph)
 
 	// Output:
 	// Directed cycle: 3 5 4 3 
@@ -256,7 +255,8 @@ func symbolDigraph(sg digraph.SymbolDigraph, input string) {
 
 	s := sg.Index(input)
 	g := sg.Digraph()
-	for _, v := range g.Adj(s) {
+	for _, it := range g.Adj(s) {
+		v := it.(int)
 		fmt.Printf("    %v\n", sg.Name(v))
 	}
 

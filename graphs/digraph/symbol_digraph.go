@@ -10,7 +10,7 @@ import (
 type SymbolDigraph struct {
 	st searching.RedBlackBST // string -> index
 	keys []string // index -> string
-	digraph Digraph // the underlying digraph
+	digraph *Digraph // the underlying digraph
 }
 
 // New a Symbol Digraph from a file using the specified delimiter.
@@ -56,7 +56,7 @@ func NewSymbolDigraph(filepath, delimiter string) SymbolDigraph {
 		}
 	}
 
-	return SymbolDigraph{*st, keys, *digraph}
+	return SymbolDigraph{*st, keys, digraph}
 }
 
 // Does the digraph contain the vertex named s
@@ -78,6 +78,6 @@ func (sg SymbolDigraph) Name(v int) string {
 }
 
 // Returns the digraph associated with the symbol digraph
-func (sg SymbolDigraph) Digraph() Digraph {
+func (sg SymbolDigraph) Digraph() *Digraph {
 	return sg.digraph
 }

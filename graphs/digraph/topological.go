@@ -11,13 +11,12 @@ package digraph
 // With depth-first search, we can topologically sort a DAG in time proportional to V+E.
 
 type Topological struct {
-	digraph Digraph
 	order []int // topological order
 	rank []int // rank[v]: rank of vertex v in order
 }
 
-func NewTopological(g Digraph) Topological {
-	t := Topological{digraph: g}
+func NewTopological(g IDigraph) Topological {
+	t := Topological{}
 
 	finder := NewDirectedCycle(g)
 	if !finder.HasCycle() {
@@ -60,9 +59,15 @@ func (t Topological) IsDAG() bool {
 // The rank of vertex v in the topological order
 // return -1, if the digraph is not a DAG
 func (t Topological) Rank(v int) int {
-	t.digraph.validateVertex(v)
+	t.validateVertex(v)
 	if t.HasOrder() {
 		return t.rank[v]
 	}
 	return -1
+}
+
+func (t Topological) validateVertex(v int) {
+	if v < 0 || v >= len(t.rank) {
+		panic("invalidate vertex")
+	}
 }

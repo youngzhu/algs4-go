@@ -10,7 +10,6 @@ import "github.com/youngzhu/algs4-go/fund"
 // 3. Reverse postorder: Put the vertex on a stack after the recursive calls
 
 type DepthFirstOrder struct {
-	digraph Digraph
 	marked []bool // marked[v]: has v marked
 	pre []int // pre[v]: preorder number of v
 	post []int // post[v]: postorder number of v
@@ -20,7 +19,7 @@ type DepthFirstOrder struct {
 	postCounter int // counter for postorder numbering
 }
 
-func NewDepthFirstOrder(g Digraph) DepthFirstOrder {
+func NewDepthFirstOrder(g IDigraph) DepthFirstOrder {
 	n := g.V()
 	marked := make([]bool, n)
 	pre := make([]int, n)
@@ -28,7 +27,7 @@ func NewDepthFirstOrder(g Digraph) DepthFirstOrder {
 	preorder := fund.NewQueue()
 	postorder := fund.NewQueue()
 
-	dfo := &DepthFirstOrder{digraph: g, 
+	dfo := &DepthFirstOrder{
 		marked: marked, 
 		pre: pre, 
 		post: post, 
@@ -37,22 +36,23 @@ func NewDepthFirstOrder(g Digraph) DepthFirstOrder {
 
 	for v := 0; v < n; v++ {
 		if !dfo.marked[v] {
-			dfo.dfs(v)
+			dfo.dfs(g, v)
 		}
 	}
 
 	return *dfo
 }
 
-func (dfo *DepthFirstOrder) dfs(v int) {
+func (dfo *DepthFirstOrder) dfs(g IDigraph, v int) {
 	dfo.marked[v] = true
 	dfo.pre[v] = dfo.preCounter
 	dfo.preCounter++
 	dfo.preorder.Enqueue(v)
 
-	for _, w := range dfo.digraph.Adj(v) {
+	for _, it := range g.Adj(v) {
+		w := it.(int)
 		if !dfo.marked[w] {
-			dfo.dfs(w)
+			dfo.dfs(g, w)
 		}
 	}
 
@@ -63,13 +63,13 @@ func (dfo *DepthFirstOrder) dfs(v int) {
 
 // Returns the preorder number of vertex v
 func (dfo DepthFirstOrder) Pre(v int) int {
-	dfo.digraph.validateVertex(v)
+	dfo.validateVertex(v)
 	return dfo.pre[v]
 }
 
 // Returns the postorder number of vertex v
 func (dfo DepthFirstOrder) Post(v int) int {
-	dfo.digraph.validateVertex(v)
+	dfo.validateVertex(v)
 	return dfo.post[v]
 }
 
@@ -90,4 +90,10 @@ func (dfo DepthFirstOrder) ReversePostorder() fund.Iterator {
 		reverse.Push(v)
 	}
 	return reverse.Iterator()
+}
+
+func (t DepthFirstOrder) validateVertex(v int) {
+	if v < 0 || v >= len(t.marked) {
+		panic("invalidate vertex")
+	}
 }
