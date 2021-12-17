@@ -35,7 +35,8 @@ func (d DirectedDFS) dfs(g Digraph, s int) {
 	d.count++
 	d.marked[s] = true
 
-	for _, w := range g.Adj(s) {
+	for _, it := range g.Adj(s) {
+		w := it.(int)
 		if !d.marked[w] {
 			d.dfs(g, w)
 		}

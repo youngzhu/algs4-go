@@ -43,7 +43,8 @@ func (p BreadthFirstDirectedPaths) bfs() {
 	for !queue.IsEmpty() {
 		v := queue.Dequeue().(int)
 
-		for _, w := range p.graph.Adj(v) {
+		for _, it := range p.graph.Adj(v) {
+			w := it.(int)
 			if !p.marked[w] {
 				p.marked[w] = true
 				p.edgeTo[w] = v

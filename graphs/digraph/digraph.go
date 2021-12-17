@@ -3,6 +3,7 @@ package digraph
 import (
 	"fmt"
 
+	"github.com/youngzhu/algs4-go/graphs/graph"
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/util"
 )
@@ -11,6 +12,9 @@ import (
 // edges that each connects an ordered pair of vertices. We say that a directed
 // edge points from the first vertex in the pair and points to the second vertex in
 // the pair. We use the names 0 through V-1 for the vertices in a V-vertex graph.
+type IDigraph interface {
+	graph.IGraph
+}
 
 // Use the adjacency-lists representation, where maintain a vertex-indexed array 
 // of lists of the vertices connected by an edge to each vertex.
@@ -88,29 +92,23 @@ func (g *Digraph) Indegree(v int) int {
 	return g.indegree[v]
 }
 
-func (g *Digraph) Adj(v int) []int {
+func (g *Digraph) Adj(v int) fund.Iterator {
 	g.validateVertex(v)
-
-	adjs := make([]int, g.adj[v].Size())
-
-	for i, w := range g.adj[v].Iterator() {
-		adjs[i] = w.(int)
-	}
-	
-	return adjs
+	return g.adj[v].Iterator()
 }
 
 // Returns the reverse of the digraph
-func (g *Digraph) Reverse() Digraph {
+func (g *Digraph) Reverse() *Digraph {
 	reverse := NewDigraphN(g.V())
 
 	for v := 0; v < g.V(); v++ {
-		for _, w := range g.Adj(v) {
+		for _, it := range g.Adj(v) {
+			w := it.(int)
 			reverse.AddEdge(w, v)
 		}
 	}
 
-	return *reverse
+	return reverse
 }
 
 // Returns a string representation of this graph

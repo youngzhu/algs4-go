@@ -9,8 +9,7 @@ import (
 )
 
 var (
-	tinyDigraph *digraph.Digraph
-	tinyDAG digraph.Digraph
+	tinyDigraph, tinyDAG *digraph.Digraph
 )
 
 func init() {
@@ -18,7 +17,7 @@ func init() {
 	tinyDigraph = digraph.NewDigraph(in)
 
 	in = util.NewInReadWords("testdata/tinyDAG.txt")
-	tinyDAG = *digraph.NewDigraph(in)
+	tinyDAG = digraph.NewDigraph(in)
 }
 
 func ExampleDigraph() {
@@ -149,7 +148,7 @@ func ExampleBreadthFirstDirectedPaths() {
 	// 3 to 12 (-): not connected	
 }
 
-func findDirectedCycle(g digraph.Digraph) {
+func findDirectedCycle(g digraph.IDigraph) {
 	dc := digraph.NewDirectedCycle(g)
 
 	if dc.HasCycle() {
@@ -165,7 +164,7 @@ func findDirectedCycle(g digraph.Digraph) {
 
 func ExampleDirectedCycle() {
 	
-	findDirectedCycle(*tinyDigraph)
+	findDirectedCycle(tinyDigraph)
 
 	// Output:
 	// Directed cycle: 3 5 4 3 
@@ -256,7 +255,8 @@ func symbolDigraph(sg digraph.SymbolDigraph, input string) {
 
 	s := sg.Index(input)
 	g := sg.Digraph()
-	for _, v := range g.Adj(s) {
+	for _, it := range g.Adj(s) {
+		v := it.(int)
 		fmt.Printf("    %v\n", sg.Name(v))
 	}
 
@@ -348,5 +348,22 @@ func ExampleKosarajuSharirSCC_mediumDG() {
 	// id-7: 1
 	// id-8: 0
 	// id-9: 10
+}
 
+func ExampleEdgeWeightedDigraph() {
+	in := util.NewInReadWords("testdata/tinyEWD.txt")
+	tinyEWD := digraph.NewEdgeWeightedDigraphIn(in)
+
+	fmt.Print(tinyEWD)
+
+	// Output:
+	// vertices:8, edges:15
+	// 0: 0->2  0.26 0->4  0.38
+	// 1: 1->3  0.29
+	// 2: 2->7  0.34
+	// 3: 3->6  0.52
+	// 4: 4->7  0.37 4->5  0.35
+	// 5: 5->1  0.32 5->7  0.28 5->4  0.35
+	// 6: 6->4  0.93 6->0  0.58 6->2  0.40
+	// 7: 7->3  0.39 7->5  0.28
 }

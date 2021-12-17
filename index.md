@@ -55,15 +55,16 @@
     - [SymbolDiraph](graphs/digraph/symbol_digraph.go)
     - [Topological](graphs/digraph/topological.go)
     - [KosarajuSharirSCC](graphs/digraph/kosaraju_sharir_scc.go)
+    - [EdgeWeightedDigraph](graphs/digraph/edge_weighted_digraph.go)
   - **Minimum Spanning Tree (MST)**
     - [EdgeWeightedGraph](graphs/mst/edge_weighted_graph.go)
     - [LazyPrimMST](graphs/mst/lazy_prim_mst.go)
     - [PrimMST](graphs/mst/prim_mst.go)
     - [KruskalMST](graphs/mst/kruskal_mst.go)
   - **Shortest Paths (SP)**
-    - [EdgeWeightedDigraph](graphs/sp/edge_weighted_digraph.go)
-    - [ ] [DijkstraSP](#)
-    - [ ] [AcyclicSP](#)
+    - [DijkstraSP](graphs/sp/dijkstra_sp.go)
+    - [AcyclicSP](graphs/sp/acyclic_sp.go)
+    - [AcyclicLP](graphs/sp/acyclic_lp.go)
     - [ ] [BellmanFordSP](#)
 ## 5 STRING
   - **String Sorts**
