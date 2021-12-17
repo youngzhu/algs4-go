@@ -15,6 +15,20 @@ type EdgeWeightedDigraph struct {
 	indegree []int // indegree[v]: indegree of vertex v
 }
 
+// New an empty edge-weighted graph with n vertices and 0 edges
+func NewEdgeWeightedDigraphN(n int) *EdgeWeightedDigraph {
+	if n < 0 {
+		panic("number of vertices must be non-negative")
+	}
+
+	indegree := make([]int, n)
+	adj := make([]*fund.Bag, n)
+	for v := 0; v < n; v++ {
+		adj[v] = fund.NewBag()
+	}
+
+	return &EdgeWeightedDigraph{vertices: n, adj: adj, indegree: indegree}
+}
 
 func NewEdgeWeightedDigraphIn(in *util.In) *EdgeWeightedDigraph {
 	if in == nil {
