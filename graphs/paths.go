@@ -28,6 +28,7 @@ func (d Distance) CompareTo(x pq.Item) int {
 
 const (
 	DistanceInfinity = 10000.0
+	DistanceNegativeInfinity = -10000.0
 
 	// the same
 	// DistanceZero = Distance(0.0)
