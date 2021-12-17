@@ -80,7 +80,8 @@ func (dc *DirectedCycle) dfsWeighted(g EdgeWeightedDigraph, v int) {
 	dc.marked[v] = true
 
 	for _, it := range g.Adj(v) {
-		w := it.(int)
+		e := it.(*DirectedEdge)
+		w := e.To()
 		// short circuit if directed cycle found
 		// log.Printf("cycle: %v", dc.cycle!= nil)
 		if dc.cycle != nil {

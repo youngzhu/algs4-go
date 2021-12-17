@@ -68,19 +68,22 @@ func ExampleDijkstraSP_noPath() {
 	// 7 to 7 (0.00)
 }
 
-// func ExampleAcyclicSP() {
-// 	s := 5
-// 	dsp := sp.NewAcyclicSP(*tinyEWD, s)
+func ExampleAcyclicSP() {
+	in := util.NewInReadWords("testdata/tinyEWDAG.txt")
+	tinyEWDAG := digraph.NewEdgeWeightedDigraphIn(in)
 
-// 	printShortestPath(*dsp)
+	s := 5
+	dsp := sp.NewAcyclicSP(*tinyEWDAG, s)
+
+	printShortestPath(dsp, *tinyEWDAG, s)
 	
-// 	// Output:
-// 	// 0 to 0 (0.00)
-// 	// 0 to 1 (1.05) 0->4  0.38 4->5  0.35 5->1  0.32
-// 	// 0 to 2 (0.26) 0->2  0.26
-// 	// 0 to 3 (0.99) 0->2  0.26 2->7  0.34 7->3  0.39
-// 	// 0 to 4 (0.38) 0->4  0.38
-// 	// 0 to 5 (0.73) 0->4  0.38 4->5  0.35
-// 	// 0 to 6 (1.51) 0->2  0.26 2->7  0.34 7->3  0.39 3->6  0.52
-// 	// 0 to 7 (0.60) 0->2  0.26 2->7  0.34
-// }
+	// Output:
+	// 5 to 0 (0.73) 5->4  0.35 4->0  0.38
+	// 5 to 1 (0.32) 5->1  0.32
+	// 5 to 2 (0.62) 5->7  0.28 7->2  0.34
+	// 5 to 3 (0.61) 5->1  0.32 1->3  0.29
+	// 5 to 4 (0.35) 5->4  0.35
+	// 5 to 5 (0.00)
+	// 5 to 6 (1.13) 5->1  0.32 1->3  0.29 3->6  0.52
+	// 5 to 7 (0.28) 5->7  0.28
+}

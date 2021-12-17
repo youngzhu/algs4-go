@@ -92,7 +92,8 @@ func (dfo *DepthFirstOrder) dfsWeighted(g EdgeWeightedDigraph, v int) {
 	dfo.preorder.Enqueue(v)
 
 	for _, it := range g.Adj(v) {
-		w := it.(int)
+		e := it.(*DirectedEdge)
+		w := e.To()
 		if !dfo.marked[w] {
 			dfo.dfsWeighted(g, w)
 		}
