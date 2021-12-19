@@ -75,11 +75,11 @@
     - [TrieST](strings/trie_st.go)
     - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
   - **Substring Search**
-    - [Brute](strings/brute.go)
-    - [Rabin-Karp](strings/rabin_karp.go)
+    - [BruteForce](strings/brute_force.go)
+    - [Rabin-Karp algorithm](strings/rabin_karp.go)
+    - [Knuth-Morris-Pratt algorithm](strings/kmp.go)
   - **Regular Expressions**
   - **Data Compression**
-  - [ ] [KMP](#)
   - [ ] [NFA](#)
   - [ ] [Huffman](#)
   - [ ] [LZW](#)
