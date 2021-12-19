@@ -17,9 +17,9 @@ var testCases = []struct {
 	{"abacad", "abacadabrabracabracadabrabrabracad", 0},
 }
 
-func TestBruteSearch1(t *testing.T) {
+func TestBruteForceSearch1(t *testing.T) {
 	for _, tc := range testCases {
-		got := BruteSearch1(tc.pattern, tc.text)
+		got := BruteForceSearch1(tc.pattern, tc.text)
 		want := tc.index
 
 		if got != want {
@@ -28,9 +28,9 @@ func TestBruteSearch1(t *testing.T) {
 	}
 }
 
-func TestBruteSearch2(t *testing.T) {
+func TestBruteForceSearch2(t *testing.T) {
 	for _, tc := range testCases {
-		got := BruteSearch2(tc.pattern, tc.text)
+		got := BruteForceSearch2(tc.pattern, tc.text)
 		want := tc.index
 
 		if got != want {

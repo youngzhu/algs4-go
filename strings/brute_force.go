@@ -2,7 +2,7 @@ package strings
 
 // Brute force string search.
 // Return offset of first match or -1 if no match
-func BruteSearch1(pattern, text string) int {
+func BruteForceSearch1(pattern, text string) int {
 	m, n := len(pattern), len(text)
 
 	for i := 0; i <= n-m; i++ {
@@ -20,7 +20,7 @@ func BruteSearch1(pattern, text string) int {
 	return -1 // not found
 }
 
-func BruteSearch2(pattern, text string) int {
+func BruteForceSearch2(pattern, text string) int {
 	m, n := len(pattern), len(text)
 
 	i, j := 0, 0
