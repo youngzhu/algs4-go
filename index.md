@@ -79,6 +79,7 @@
     - [BruteForce](strings/brute_force.go)
     - [Rabin-Karp algorithm](strings/rabin_karp.go)
     - [Knuth-Morris-Pratt algorithm](strings/kmp.go)
+    - [Boyer-Moore algorithm](strings/boyer_moore.go)
   - **Regular Expressions**
   - **Data Compression**
   - [ ] [NFA](#)
