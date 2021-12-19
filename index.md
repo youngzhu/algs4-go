@@ -64,7 +64,8 @@
   - **Shortest Paths (SP)**
     - [DijkstraSP](graphs/sp/dijkstra_sp.go)
     - [AcyclicSP](graphs/sp/acyclic_sp.go)
-    - [AcyclicLP](graphs/sp/acyclic_lp.go)
+    - [Acyclic Longest Paths](graphs/sp/acyclic_lp.go)
+    - [Critical Path Method](graphs/sp/cpm.go)
     - [ ] [BellmanFordSP](#)
 ## 5 STRING
   - **String Sorts**
