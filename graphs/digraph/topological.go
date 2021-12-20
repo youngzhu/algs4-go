@@ -43,7 +43,7 @@ func NewTopological(g IDigraph) Topological {
 func NewTopologicalWeighted(g EdgeWeightedDigraph) Topological {
 	t := Topological{}
 
-	finder := NewDirectedCycleWeighted(g)
+	finder := NewEdgeWeightedDirectedCycle(g)
 	if !finder.HasCycle() {
 		dfo := NewDepthFirstOrderWeighted(g)
 		order := dfo.ReversePostorder()
