@@ -130,6 +130,7 @@ func printBellmanFordSP(bf sp.BellmanFordSP, g digraph.EdgeWeightedDigraph, s in
 		for _, e := range bf.NegativeCycle() {
 			fmt.Println(e)
 		}
+		return
 	}
 
 	printShortestPath(bf, g, s)
@@ -153,4 +154,18 @@ func ExampleBellmanFordSP() {
 	// 0 to 5 (0.61) 0->2  0.26 2->7  0.34 7->3  0.39 3->6  0.52 6->4 -1.25 4->5  0.35
 	// 0 to 6 (1.51) 0->2  0.26 2->7  0.34 7->3  0.39 3->6  0.52
 	// 0 to 7 (0.60) 0->2  0.26 2->7  0.34
+}
+
+func ExampleBellmanFordSP_negativeCycle() {
+	in := util.NewInReadWords("testdata/tinyEWDnc.txt")
+	tinyEWDnc := digraph.NewEdgeWeightedDigraphIn(in)
+
+	s := 0
+	bf := sp.NewBellmanFordSP(*tinyEWDnc, s)
+
+	printBellmanFordSP(*bf, *tinyEWDnc, s)
+	
+	// Output:
+	// 4->5  0.35
+	// 5->4 -0.66
 }

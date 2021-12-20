@@ -100,7 +100,7 @@ func (bf *BellmanFordSP) findNegativeCycle() {
 		}
 	}
 
-	finder := digraph.NewDirectedCycleWeighted(*spt)
+	finder := digraph.NewEdgeWeightedDirectedCycle(*spt)
 	bf.cycle = finder.Cycle()
 }
 
