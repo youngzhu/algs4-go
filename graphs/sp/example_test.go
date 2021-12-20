@@ -124,13 +124,7 @@ func ExampleCPM() {
 	// Finish time:   173.0
 }
 
-func ExampleBellmanFordSP() {
-	in := util.NewInReadWords("testdata/tinyEWDn.txt")
-	tinyEWDn := digraph.NewEdgeWeightedDigraphIn(in)
-
-	s := 0
-	bf := sp.NewBellmanFordSP(*tinyEWDn, s)
-
+func printBellmanFordSP(bf sp.BellmanFordSP, g digraph.EdgeWeightedDigraph, s int) {
 	// print negative cycle
 	if bf.HasNegativeCycle() {
 		for _, e := range bf.NegativeCycle() {
@@ -138,7 +132,17 @@ func ExampleBellmanFordSP() {
 		}
 	}
 
-	printShortestPath(*bf, *tinyEWDn, s)
+	printShortestPath(bf, g, s)
+}
+
+func ExampleBellmanFordSP() {
+	in := util.NewInReadWords("testdata/tinyEWDn.txt")
+	tinyEWDn := digraph.NewEdgeWeightedDigraphIn(in)
+
+	s := 0
+	bf := sp.NewBellmanFordSP(*tinyEWDn, s)
+
+	printBellmanFordSP(*bf, *tinyEWDn, s)
 	
 	// Output:
 	// 0 to 0 (0.00)
