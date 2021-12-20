@@ -105,16 +105,14 @@ func (dc *DirectedCycle) dfsWeighted(g EdgeWeightedDigraph, v int) {
 }
 
 // Does the digraph have a directed cycle?
-func (dc DirectedCycle) HasCycle() bool {
+func (dc *DirectedCycle) HasCycle() bool {
 	return dc.cycle != nil 
 }
 
-func (dc DirectedCycle) Cycle() []int {
-	cycle := make([]int, dc.cycle.Size())
-
-	for i, v := range dc.cycle.Iterator() {
-		cycle[i] = v.(int)
+func (dc *DirectedCycle) Cycle() fund.Iterator {
+	if dc.HasCycle() {
+		return dc.cycle.Iterator()
 	}
-
-	return cycle
+	
+	return nil
 }
