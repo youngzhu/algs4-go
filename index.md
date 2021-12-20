@@ -56,6 +56,7 @@
     - [Topological](graphs/digraph/topological.go)
     - [KosarajuSharirSCC](graphs/digraph/kosaraju_sharir_scc.go)
     - [EdgeWeightedDigraph](graphs/digraph/edge_weighted_digraph.go)
+    - [EdgeWeightedDirectedCycle](graphs/digraph/edge_weighted_directed_cycle.go)
   - **Minimum Spanning Tree (MST)**
     - [EdgeWeightedGraph](graphs/mst/edge_weighted_graph.go)
     - [LazyPrimMST](graphs/mst/lazy_prim_mst.go)
