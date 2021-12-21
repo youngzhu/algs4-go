@@ -7,10 +7,10 @@ import "github.com/youngzhu/algs4-go/fund"
 // Solves this problem using depth-first search
 
 type EdgeWeightedDirectedCycle struct {
-	marked []bool // marked[v]: has vertex v been marked?
-	edgeTo []*DirectedEdge // edgeTo[v]: previous vertex on path to v
-	onStack []bool // onStack[v]: is vertex on the stack?
-	cycle *fund.Stack // directed cycle (or nil if no such cycle)
+	marked  []bool          // marked[v]: has vertex v been marked?
+	edgeTo  []*DirectedEdge // edgeTo[v]: previous vertex on path to v
+	onStack []bool          // onStack[v]: is vertex on the stack?
+	cycle   *fund.Stack     // directed cycle (or nil if no such cycle)
 }
 
 func NewEdgeWeightedDirectedCycle(g EdgeWeightedDigraph) *EdgeWeightedDirectedCycle {
@@ -65,13 +65,13 @@ func (dc *EdgeWeightedDirectedCycle) dfs(g EdgeWeightedDigraph, v int) {
 
 // Does the digraph have a directed cycle?
 func (dc *EdgeWeightedDirectedCycle) HasCycle() bool {
-	return dc.cycle != nil 
+	return dc.cycle != nil
 }
 
 func (dc *EdgeWeightedDirectedCycle) Cycle() fund.Iterator {
 	if dc.HasCycle() {
 		return dc.cycle.Iterator()
 	}
-	
+
 	return nil
 }
