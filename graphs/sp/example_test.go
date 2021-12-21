@@ -3,8 +3,8 @@ package sp_test
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs/sp"
 	"github.com/youngzhu/algs4-go/graphs/digraph"
+	"github.com/youngzhu/algs4-go/graphs/sp"
 	"github.com/youngzhu/algs4-go/util"
 )
 
@@ -39,7 +39,7 @@ func ExampleDijkstraSP() {
 	dsp := sp.NewDijkstraSP(*tinyEWD, s)
 
 	printShortestPath(*dsp, *tinyEWD, s)
-	
+
 	// Output:
 	// 0 to 0 (0.00)
 	// 0 to 1 (1.05) 0->4  0.38 4->5  0.35 5->1  0.32
@@ -59,7 +59,7 @@ func ExampleDijkstraSP_noPath() {
 	dsp := sp.NewDijkstraSP(*nopath, s)
 
 	printShortestPath(*dsp, *nopath, s)
-	
+
 	// Output:
 	// 7 to 0        no path
 	// 7 to 1 (0.60) 7->5  0.28 5->1  0.32
@@ -76,7 +76,7 @@ func ExampleAcyclicSP() {
 	dsp := sp.NewAcyclicSP(*tinyEWDAG, s)
 
 	printShortestPath(dsp, *tinyEWDAG, s)
-	
+
 	// Output:
 	// 5 to 0 (0.73) 5->4  0.35 4->0  0.38
 	// 5 to 1 (0.32) 5->1  0.32
@@ -93,7 +93,7 @@ func ExampleAcyclicLP() {
 	alp := sp.NewAcyclicLP(*tinyEWDAG, s)
 
 	printShortestPath(alp, *tinyEWDAG, s)
-	
+
 	// Output:
 	// 5 to 0 (2.44) 5->1  0.32 1->3  0.29 3->6  0.52 6->4  0.93 4->0  0.38
 	// 5 to 1 (0.32) 5->1  0.32
@@ -107,7 +107,7 @@ func ExampleAcyclicLP() {
 
 func ExampleCPM() {
 	sp.CPM("testdata/jobsPC.txt")
-	
+
 	// Output:
 	// job    start   finish
 	// --------------------
@@ -144,7 +144,7 @@ func ExampleBellmanFordSP() {
 	bf := sp.NewBellmanFordSP(*tinyEWDn, s)
 
 	printBellmanFordSP(*bf, *tinyEWDn, s)
-	
+
 	// Output:
 	// 0 to 0 (0.00)
 	// 0 to 1 (0.93) 0->2  0.26 2->7  0.34 7->3  0.39 3->6  0.52 6->4 -1.25 4->5  0.35 5->1  0.32
@@ -164,7 +164,7 @@ func ExampleBellmanFordSP_negativeCycle() {
 	bf := sp.NewBellmanFordSP(*tinyEWDnc, s)
 
 	printBellmanFordSP(*bf, *tinyEWDnc, s)
-	
+
 	// Output:
 	// 4->5  0.35
 	// 5->4 -0.66
@@ -172,8 +172,9 @@ func ExampleBellmanFordSP_negativeCycle() {
 
 func ExampleArbitrage() {
 	sp.Arbitrage("testdata/rates.txt")
-	
+
 	// Output:
-	// 4->5  0.35
-	// 5->4 -0.66
+	// 1000.00000 USD =  741.00000 EUR
+	//  741.00000 EUR = 1012.20600 CAD
+	// 1012.20600 CAD = 1007.14497 USD
 }

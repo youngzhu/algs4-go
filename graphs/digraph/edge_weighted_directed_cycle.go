@@ -28,7 +28,7 @@ func NewEdgeWeightedDirectedCycle(g EdgeWeightedDigraph) *EdgeWeightedDirectedCy
 	return dc
 }
 
-// run DFS and find a directed cycle 
+// run DFS and find a directed cycle
 // must use pointer (*), otherwise dc.cycle wouldn't change
 func (dc *EdgeWeightedDirectedCycle) dfs(g EdgeWeightedDigraph, v int) {
 	dc.onStack[v] = true
@@ -52,7 +52,7 @@ func (dc *EdgeWeightedDirectedCycle) dfs(g EdgeWeightedDigraph, v int) {
 			x := e
 			for x.From() != w {
 				cycle.Push(x)
-				x = dc.edgeTo[e.From()]
+				x = dc.edgeTo[x.From()]
 			}
 			cycle.Push(x)
 			// log.Println(w)
