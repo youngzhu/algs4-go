@@ -169,3 +169,11 @@ func ExampleBellmanFordSP_negativeCycle() {
 	// 4->5  0.35
 	// 5->4 -0.66
 }
+
+func ExampleArbitrage() {
+	sp.Arbitrage("testdata/rates.txt")
+	
+	// Output:
+	// 4->5  0.35
+	// 5->4 -0.66
+}
