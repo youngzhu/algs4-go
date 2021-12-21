@@ -35,13 +35,14 @@ func (dc *EdgeWeightedDirectedCycle) dfs(g EdgeWeightedDigraph, v int) {
 	dc.marked[v] = true
 
 	for _, it := range g.Adj(v) {
-		e := it.(*DirectedEdge)
-		w := e.To()
 		// short circuit if directed cycle found
 		if dc.cycle != nil {
 			return
-		} 
-		
+		}
+
+		e := it.(*DirectedEdge)
+		w := e.To()
+
 		if !dc.marked[w] { // found new vertex, so recur
 			dc.edgeTo[w] = e
 			dc.dfs(g, w)
