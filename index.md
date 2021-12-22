@@ -83,7 +83,7 @@
     - [Knuth-Morris-Pratt algorithm](strings/kmp.go)
     - [Boyer-Moore algorithm](strings/boyer_moore.go)
   - **Regular Expressions**
+    - [NFA](strings/regexp/nfa.go)
   - **Data Compression**
-  - [ ] [NFA](#)
   - [ ] [Huffman](#)
   - [ ] [LZW](#)
