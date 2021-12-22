@@ -69,6 +69,7 @@
     - [BellmanFordSP](graphs/sp/bellman_ford_sp.go)
     - **Client**
       - [AcyclicLP Client: Critical Path Method](graphs/sp/cpm.go)
+      - [Arbitrage detection](graphs/sp/arbitrage.go)
 ## 5 STRING
   - **String Sorts**
     - [LSD](strings/lsd.go)
