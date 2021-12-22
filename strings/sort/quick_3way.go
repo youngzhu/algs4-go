@@ -1,4 +1,4 @@
-package strings
+package sort
 
 // Sorting an array of strings using 3-way radix quicksort.
 func Quicksort(a []string) {

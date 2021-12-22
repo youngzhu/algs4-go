@@ -1,9 +1,6 @@
-package strings
+package sort
 
-const (
-	R      = 256 // extended ASCII alphabet size
-	cutoff = 15  // cutoff to insertion sort
-)
+const cutoff = 15  // cutoff to insertion sort
 
 // insertion sort a[lo..hi], starting at dth character
 func insertion(a []string, lo, hi, d int) {

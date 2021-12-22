@@ -1,4 +1,6 @@
-package strings
+package sort
+
+import "github.com/youngzhu/algs4-go/strings"
 
 // Sort an array of strings using MSD radix sort
 
@@ -18,14 +20,14 @@ func sort(a, aux []string, lo, hi, d int) {
 	}
 
 	// compute frequency counts
-	count := make([]int, R+2)
+	count := make([]int, strings.R+2)
 	for i := lo; i <= hi; i++ {
 		c := a[i][d]
 		count[c+2]++
 	}
 
 	// transform counts to indicies
-	for r := 0; r < R; r++ {
+	for r := 0; r < strings.R; r++ {
 		count[r+1] += count[r]
 	}
 
@@ -42,7 +44,7 @@ func sort(a, aux []string, lo, hi, d int) {
 	}
 
 	// recursively sort for each character (excludes sentinel -1)
-	for r := 0; r < R; r++ {
+	for r := 0; r < strings.R; r++ {
 		sort(a, aux, lo+count[r], lo+count[r+1]-1, d+1)
 	}
 }

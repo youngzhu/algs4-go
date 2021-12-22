@@ -1,6 +1,6 @@
-package strings
+package sort
 
-import "log"
+import "github.com/youngzhu/algs4-go/strings"
 
 // Least-Significant-Digit First (LSD) radix sort for fixed length strings.
 // It includes a method for sorting 32-bit integers, treating each integer as
@@ -29,13 +29,13 @@ func LSDSort(a []string) {
 	// sort by key-indexed counting on dth character
 	for d := w - 1; d >= 0; d-- {
 		//compute frequency counts
-		count := make([]int, R+1)
+		count := make([]int, strings.R+1)
 		for i := 0; i < n; i++ {
 			count[a[i][d]+1]++
 		}
 
 		// compute cumulates
-		for r := 0; r < R; r++ {
+		for r := 0; r < strings.R; r++ {
 			count[r+1] += count[r]
 		}
 
@@ -61,8 +61,6 @@ func LSDSortInts(a []int) {
 	R := 1 << bitsPerByte   // each bytes is between 0 and 255
 	mask := R - 1           // 0xFF
 	w := bits / bitsPerByte // each int is 4 byte
-
-	log.Println(w)
 
 	n := len(a)
 	aux := make([]int, n)
