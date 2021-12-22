@@ -72,9 +72,9 @@
       - [Arbitrage detection](graphs/sp/arbitrage.go)
 ## 5 STRING
   - **String Sorts**
-    - [LSD](strings/lsd.go)
-    - [MSD](strings/msd.go)
-    - [Quick3string](strings/quick_3way.go)
+    - [LSD](strings/sort/lsd.go)
+    - [MSD](strings/sort/msd.go)
+    - [Quick3string](strings/sort/quick_3way.go)
   - **Tries**
     - [TrieST](strings/trie_st.go)
     - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
