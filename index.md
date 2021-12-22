@@ -79,10 +79,10 @@
     - [TrieST](strings/trie_st.go)
     - [Ternary Search Trie (TST)](strings/ternary_search_trie.go)
   - **Substring Search**
-    - [BruteForce](strings/brute_force.go)
-    - [Rabin-Karp algorithm](strings/rabin_karp.go)
-    - [Knuth-Morris-Pratt algorithm](strings/kmp.go)
-    - [Boyer-Moore algorithm](strings/boyer_moore.go)
+    - [BruteForce](strings/search/brute_force.go)
+    - [Rabin-Karp algorithm](strings/search/rabin_karp.go)
+    - [Knuth-Morris-Pratt algorithm](strings/search/kmp.go)
+    - [Boyer-Moore algorithm](strings/search/boyer_moore.go)
   - **Regular Expressions**
     - [NFA](strings/regexp/nfa.go)
   - **Data Compression**

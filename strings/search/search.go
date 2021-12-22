@@ -1,4 +1,4 @@
-package strings
+package search
 
 // Substring Search.
 

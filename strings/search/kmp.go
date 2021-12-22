@@ -1,4 +1,4 @@
-package strings
+package search
 
 // Knuth-Morris-Pratt algorithm.
 type KMP struct {

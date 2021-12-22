@@ -1,9 +1,9 @@
-package strings_test
+package search_test
 
 import (
 	"testing"
 
-	. "github.com/youngzhu/algs4-go/strings"
+	. "github.com/youngzhu/algs4-go/strings/search"
 )
 
 // go test -v -run="none" -bench="." -benchtime="3s"

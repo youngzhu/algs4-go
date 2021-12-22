@@ -1,4 +1,4 @@
-package strings
+package search
 
 // The bad-character rule part of the Boyer-Moore algorithm.
 // It does not implement the strong good suffix rule.

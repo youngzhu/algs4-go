@@ -1,4 +1,4 @@
-package strings
+package search
 
 // Brute force string search.
 // Return offset of first match or -1 if no match

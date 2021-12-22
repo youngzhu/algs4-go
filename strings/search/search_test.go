@@ -1,9 +1,9 @@
-package strings_test
+package search_test
 
 import (
 	"testing"
 
-	. "github.com/youngzhu/algs4-go/strings"
+	. "github.com/youngzhu/algs4-go/strings/search"
 )
 
 var testCases = []struct {
