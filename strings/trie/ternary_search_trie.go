@@ -1,4 +1,4 @@
-package strings
+package trie
 
 import (
 	"github.com/youngzhu/algs4-go/fund"

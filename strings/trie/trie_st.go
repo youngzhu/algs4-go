@@ -1,6 +1,7 @@
-package strings
+package trie
 
 import (
+	"github.com/youngzhu/algs4-go/strings"
 	"github.com/youngzhu/algs4-go/fund"
 )
 
@@ -19,7 +20,7 @@ type TrieST struct {
 }
 
 func newNode() *node {
-	next := make([]*node, R)
+	next := make([]*node, strings.R)
 	return &node{next: next}
 }
 
@@ -107,7 +108,7 @@ func collect(x *node, prefix string, queue *fund.Queue) {
 	}
 
 	prefixLen := len(prefix)
-	for c := 0; c < R; c++ {
+	for c := 0; c < strings.R; c++ {
 		prefix += string(rune(c))
 		collect(x.next[c], prefix, queue)
 		prefix = prefix[:prefixLen]
@@ -143,7 +144,7 @@ func collectPattern(x *node, prefix, pattern string, queue *fund.Queue) {
 
 	c := pattern[d]
 	if c == '.' {
-		for ch := 0; ch < R; ch++ {
+		for ch := 0; ch < strings.R; ch++ {
 			newPrefix := prefix + string(rune(ch))
 			collectPattern(x.next[ch], newPrefix, pattern, queue)
 		}
@@ -201,7 +202,7 @@ func (t *TrieST) deleteNode(x *node, key string, d int) *node {
 	if x.value != nil {
 		return x
 	}
-	for c := 0; c < R; c++ {
+	for c := 0; c < strings.R; c++ {
 		if x.next[c] != nil {
 			return x
 		}
