@@ -1,5 +1,7 @@
 package fund
 
+import "strings"
+
 // FIFO Queue.
 // A FIFO queue is a collection that is based on the first-in-first-out (FIFO)
 // policy. The pilicy of doing task in the same order that they arrive is one
@@ -72,4 +74,14 @@ func (q *Queue) Iterator() Iterator {
 	}
 
 	return Iterator(items)
+}
+
+func (q *Queue) String() string {
+	var ss []string
+
+	for _, v := range q.Iterator() {
+		ss = append(ss, v.(string))
+	}
+
+	return "[" + strings.Join(ss, ", ") + "]"
 }

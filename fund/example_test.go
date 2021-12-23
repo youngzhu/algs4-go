@@ -46,6 +46,21 @@ func ExampleQueue_Iterator() {
 	// to be or not to be
 }
 
+func ExampleQueue_String() {
+	queue := fund.NewQueue()
+
+	items := []string{"to", "be", "or", "not", "to", "be"}
+
+	for _, v := range items {
+		queue.Enqueue(v)
+	}
+
+	fmt.Print(queue)
+
+	// Output:
+	// [to, be, or, not, to, be]
+}
+
 func ExampleStack() {
 	stack := fund.NewStack()
 
