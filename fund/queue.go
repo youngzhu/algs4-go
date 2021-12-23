@@ -1,6 +1,9 @@
 package fund
 
-import "strings"
+import (
+	"strings"
+	"fmt"
+)
 
 // FIFO Queue.
 // A FIFO queue is a collection that is based on the first-in-first-out (FIFO)
@@ -80,7 +83,7 @@ func (q *Queue) String() string {
 	var ss []string
 
 	for _, v := range q.Iterator() {
-		ss = append(ss, v.(string))
+		ss = append(ss, fmt.Sprint(v))
 	}
 
 	return "[" + strings.Join(ss, ", ") + "]"

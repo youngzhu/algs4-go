@@ -49,7 +49,7 @@ func ExampleQueue_Iterator() {
 func ExampleQueue_String() {
 	queue := fund.NewQueue()
 
-	items := []string{"to", "be", "or", "not", "to", "be"}
+	items := []int{1, 2, 3, 4, 5}
 
 	for _, v := range items {
 		queue.Enqueue(v)
@@ -58,7 +58,7 @@ func ExampleQueue_String() {
 	fmt.Print(queue)
 
 	// Output:
-	// [to, be, or, not, to, be]
+	// [1, 2, 3, 4, 5]
 }
 
 func ExampleStack() {
