@@ -85,6 +85,4 @@
     - [Boyer-Moore algorithm](strings/search/boyer_moore.go)
   - **Regular Expressions**
     - [NFA](strings/regexp/nfa.go)
-  - **Data Compression**
-  - [ ] [Huffman](#)
-  - [ ] [LZW](#)
+
