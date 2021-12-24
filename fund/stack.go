@@ -1,5 +1,10 @@
 package fund
 
+import (
+	"strings"
+	"fmt"
+)
+
 // Pushdown stack.
 // A pushdown stack is a collection that is based on the last-in-first-out (LIFO)
 // policy. When you click a hyperlink, your browser displays the new page (and
@@ -67,4 +72,14 @@ func (s *Stack) Iterator() Iterator {
 	}
 
 	return Iterator(items)
+}
+
+func (s *Stack) String() string {
+	var ss []string
+
+	for _, v := range s.Iterator() {
+		ss = append(ss, fmt.Sprint(v))
+	}
+
+	return "[" + strings.Join(ss, ", ") + "]"
 }
