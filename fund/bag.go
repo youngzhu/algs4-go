@@ -40,3 +40,13 @@ func (b *Bag) IsEmpty() bool {
 func (b *Bag) Size() int {
 	return b.n
 }
+
+func (b *Bag) String() string {
+	var ss []string
+
+	for _, v := range b.Iterator() {
+		ss = append(ss, fmt.Sprint(v))
+	}
+
+	return "[" + strings.Join(ss, ", ") + "]"
+}
