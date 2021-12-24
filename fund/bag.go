@@ -1,5 +1,10 @@
 package fund
 
+import (
+	"strings"
+	"fmt"
+)
+
 // Bags.
 // A bag is a collection where removing items is not supported -- its purpose
 // is to provide clients with the ability to collect items and than to iterate
