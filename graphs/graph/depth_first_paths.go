@@ -2,16 +2,16 @@ package graph
 
 import "github.com/youngzhu/algs4-go/fund"
 
-// We remember the edge v-w that takes us to each vertex w for the first time 
+// We remember the edge v-w that takes us to each vertex w for the first time
 // by setting edge[w] to v. In other words, v-w is the last edge on the known
 // path from s to w. The result of the search is a tree rooted at the source;
 // edgeTo[] is a parent-link representation of that tree.
 
 type DepthFirstPaths struct {
-	graph Graph
-	source int // source vertex
+	graph  Graph
+	source int    // source vertex
 	marked []bool // marked[v]: is there an s-v path?
-	edgeTo []int // edgeTo[v]: last edge on s-v path
+	edgeTo []int  // edgeTo[v]: last edge on s-v path
 }
 
 // Computes a path between the source vertex (s) and every other vertex in graph g
@@ -31,7 +31,8 @@ func NewDepthFirstPaths(g Graph, s int) DepthFirstPaths {
 func (p DepthFirstPaths) dfs(g Graph, v int) {
 	p.marked[v] = true
 
-	for _, w := range g.Adj(v) {
+	for _, ww := range g.Adj(v) {
+		w := ww.(int)
 		if !p.marked[w] {
 			p.edgeTo[w] = v
 			p.dfs(g, w)

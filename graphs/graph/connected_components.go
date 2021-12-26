@@ -2,11 +2,11 @@ package graph
 
 // Another client of DFS, find the connected components of a graph.
 type ConnectedComponents struct {
-	graph Graph
+	graph  Graph
 	marked []bool // makred[v]: has vertex v been marked?
-	id []int // id[v]: id of connected component containing v
-	size []int // size[id]: number of vertices in given component
-	count int // number of connected components
+	id     []int  // id[v]: id of connected component containing v
+	size   []int  // size[id]: number of vertices in given component
+	count  int    // number of connected components
 }
 
 func NewConnectedComponents(g Graph) ConnectedComponents {
@@ -30,7 +30,8 @@ func (cc ConnectedComponents) dfs(v int) {
 	cc.marked[v] = true
 	cc.id[v] = cc.count
 	cc.size[cc.count]++
-	for _, w := range cc.graph.Adj(v) {
+	for _, ww := range cc.graph.Adj(v) {
+		w := ww.(int)
 		if !cc.marked[w] {
 			cc.dfs(w)
 		}

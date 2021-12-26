@@ -7,10 +7,10 @@ import (
 	"github.com/youngzhu/algs4-go/util"
 )
 
-// A graph is a set of vertices and a collection of edges that each connect a 
-// pair of vertices. 
+// A graph is a set of vertices and a collection of edges that each connect a
+// pair of vertices.
 
-// Undirected graph
+// IGraph Undirected graph
 type IGraph interface {
 	V() int
 	E() int
@@ -18,14 +18,16 @@ type IGraph interface {
 	Adj(v int) fund.Iterator
 }
 
-// A graph, implemented using an array of set.
+// Graph
+// implemented using an array of set.
 // Parallel edges and self-loops allowed
 type Graph struct {
-	v int // number of vertices
-	e int // number of edges
-	adj []*fund.Bag // 
+	v   int         // number of vertices
+	e   int         // number of edges
+	adj []*fund.Bag //
 }
 
+// NewGraph
 // New a graph from the specified input stream.
 // The format is the number of vertices V
 // followed by the number of edges E
@@ -37,7 +39,7 @@ func NewGraph(in *util.In) *Graph {
 	}
 
 	adj := make([]*fund.Bag, v)
-	for i:=0; i < v; i++ {
+	for i := 0; i < v; i++ {
 		adj[i] = fund.NewBag()
 	}
 
@@ -47,7 +49,7 @@ func NewGraph(in *util.In) *Graph {
 	if e < 0 {
 		panic("number of edges in a Graph must be non-negative")
 	}
-	for i:=0; i < e; i++ {
+	for i := 0; i < e; i++ {
 		v1 := in.ReadInt()
 		v2 := in.ReadInt()
 		g.AddEdge(v1, v2)
@@ -56,25 +58,56 @@ func NewGraph(in *util.In) *Graph {
 	return g
 }
 
+// NewGraphN
 // New an empty graph with v vertices and 0 edges
 func NewGraphN(v int) *Graph {
 	if v < 0 {
-		panic("number of verties in a Graph must be non-negative")
+		panic("number of vertices in a Graph must be non-negative")
 	}
 
 	adj := make([]*fund.Bag, v)
-	for i:=0; i < v; i++ {
+	for i := 0; i < v; i++ {
 		adj[i] = fund.NewBag()
 	}
 
 	return &Graph{v, 0, adj}
 }
 
+// NewGraphCopy
+// new a graph that is a deep copy of g
+func NewGraphCopy(g Graph) *Graph {
+	v, e := g.V(), g.E()
+	if v < 0 {
+		panic("number of vertices in a Graph must be non-negative")
+	}
+
+	adj := make([]*fund.Bag, v)
+	for i := 0; i < v; i++ {
+		adj[i] = fund.NewBag()
+	}
+
+	for i := 0; i < v; i++ {
+		// reverse so that adjacency list is in same order
+		// as original
+		reverse := fund.NewStack()
+		for _, w := range g.Adj(v) {
+			reverse.Push(w)
+		}
+		for !reverse.IsEmpty() {
+			adj[v].Add(reverse.Pop())
+		}
+	}
+
+	return &Graph{v, e, adj}
+}
+
+// V
 // Returns the number of vertices in this graph
 func (g *Graph) V() int {
 	return g.v
 }
 
+// E
 // Returns the number of edges in this graph
 func (g *Graph) E() int {
 	return g.e
@@ -95,16 +128,10 @@ func (g *Graph) Degree(v int) int {
 	return g.adj[v].Size()
 }
 
-func (g *Graph) Adj(v int) []int {
+func (g *Graph) Adj(v int) fund.Iterator {
 	g.validateVertex(v)
 
-	adjs := make([]int, g.Degree(v))
-
-	for i, w := range g.adj[v].Iterator() {
-		adjs[i] = w.(int)
-	}
-	
-	return adjs
+	return g.adj[v].Iterator()
 }
 
 // Returns a string representation of this graph
@@ -142,7 +169,7 @@ func (g *Graph) MaxDegree() int {
 // Average degree
 func (g *Graph) AvgDegree() int {
 	// each edge incident on two vertices
-	return 2*g.e/g.v
+	return 2 * g.e / g.v
 }
 
 // Number of self-loops
@@ -157,5 +184,5 @@ func (g *Graph) NumberOfSelfLoops() int {
 		}
 	}
 
-	return count/2 // self loop appears in adjacency list twice
+	return count / 2 // self loop appears in adjacency list twice
 }

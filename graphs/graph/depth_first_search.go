@@ -9,7 +9,7 @@ package graph
 
 type DepthFirstSearch struct {
 	marked []bool // marked[v]: is there an s-v path?
-	count int // number of vertices connected to s
+	count  int    // number of vertices connected to s
 }
 
 // Computes the vertices in graph (g) that are connected to
@@ -29,7 +29,8 @@ func (d DepthFirstSearch) dfs(g Graph, s int) {
 	d.count++
 	d.marked[s] = true
 
-	for _, w := range g.Adj(s) {
+	for _, ww := range g.Adj(s) {
+		w := ww.(int)
 		if !d.marked[w] {
 			d.dfs(g, w)
 		}

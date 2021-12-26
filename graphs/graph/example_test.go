@@ -3,14 +3,14 @@ package graph_test
 import (
 	"fmt"
 
+	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/graphs/graph"
 	"github.com/youngzhu/algs4-go/util"
-	"github.com/youngzhu/algs4-go/fund"
 )
 
 var (
 	tinyGraph *graph.Graph
-	tinyCG *graph.Graph
+	tinyCG    *graph.Graph
 )
 
 func dataInit() {
@@ -95,7 +95,7 @@ func ExampleDepthFirstSearch() {
 	// NOT connected
 	// 9 10 11 12
 	// NOT connected
-	
+
 }
 
 func dfs(g graph.Graph, s int) {
@@ -117,7 +117,7 @@ func dfs(g graph.Graph, s int) {
 }
 
 func ExampleDepthFirstPaths() {
-	
+
 	if tinyCG == nil {
 		dataInit()
 	}
@@ -142,14 +142,14 @@ func ExampleDepthFirstPaths() {
 		}
 	}
 
-	// Output: 
+	// Output:
 	// 0 to 0: 0
 	// 0 to 1: 0-2-1
 	// 0 to 2: 0-2
 	// 0 to 3: 0-2-3
 	// 0 to 4: 0-2-3-4
 	// 0 to 5: 0-2-3-5
-	
+
 }
 
 func ExampleBreadthFirstPaths() {
@@ -177,14 +177,14 @@ func ExampleBreadthFirstPaths() {
 		}
 	}
 
-	// Output: 
+	// Output:
 	// 0 to 0 (0): 0
 	// 0 to 1 (1): 0-1
 	// 0 to 2 (1): 0-2
 	// 0 to 3 (2): 0-2-3
 	// 0 to 4 (2): 0-2-4
 	// 0 to 5 (1): 0-5
-	
+
 }
 
 func ExampleConnectedComponents() {
@@ -216,7 +216,7 @@ func ExampleConnectedComponents() {
 		fmt.Printf("\n")
 	}
 
-	// Output: 
+	// Output:
 	// 3 components
 	//  0 1 2 3 4 5 6
 	//  7 8
@@ -232,11 +232,11 @@ func ExampleSymbolGraph_routes() {
 
 	// Output:
 	// JFK
-    //     ORD
-    //     ATL
-    //     MCO
+	//     ORD
+	//     ATL
+	//     MCO
 	// KFC
-    //     input not contain 'KFC'
+	//     input not contain 'KFC'
 }
 
 func ExampleSymbolGraph_movies() {
@@ -254,7 +254,7 @@ func symbolGraph(sg graph.SymbolGraph, input string) {
 		s := sg.Index(input)
 		g := sg.Graph()
 		for _, v := range g.Adj(s) {
-			fmt.Printf("    %v\n", sg.Name(v))
+			fmt.Printf("    %v\n", sg.Name(v.(int)))
 		}
 	} else {
 		fmt.Printf("    input not contain '%v'\n", input)
