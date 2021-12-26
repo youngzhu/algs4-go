@@ -188,3 +188,15 @@ func (g *Graph) NumberOfSelfLoops() int {
 
 	return count / 2 // self loop appears in adjacency list twice
 }
+
+// exercise 4.1.4
+
+// HasEdge ...
+func (g *Graph) HasEdge(v, w int) bool {
+	for _, ww := range g.Adj(v) {
+		if ww == w {
+			return true
+		}
+	}
+	return false
+}

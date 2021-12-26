@@ -103,6 +103,26 @@ func ExampleGraph_NumberOfSelfLoops() {
 	// number of self loops: 0
 }
 
+func ExampleGraph_HasEdge() {
+	if tinyGraph == nil {
+		dataInit()
+	}
+
+	v, w := 0, 6
+	fmt.Printf("has edge %d-%d: %v\n", v, w, tinyGraph.HasEdge(v, w))
+
+	v, w = 6, 0
+	fmt.Printf("has edge %d-%d: %v\n", v, w, tinyGraph.HasEdge(v, w))
+
+	v, w = 0, 7
+	fmt.Printf("has edge %d-%d: %v\n", v, w, tinyGraph.HasEdge(v, w))
+
+	// Output:
+	// has edge 0-6: true
+	// has edge 6-0: true
+	// has edge 0-7: false
+}
+
 func ExampleDepthFirstSearch() {
 	if tinyGraph == nil {
 		dataInit()
