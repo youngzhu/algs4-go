@@ -73,6 +73,8 @@ func NewGraphN(v int) *Graph {
 	return &Graph{v, 0, adj}
 }
 
+// exercise 4.1.3
+
 // NewGraphCopy
 // new a graph that is a deep copy of g
 func NewGraphCopy(g Graph) *Graph {
@@ -90,11 +92,11 @@ func NewGraphCopy(g Graph) *Graph {
 		// reverse so that adjacency list is in same order
 		// as original
 		reverse := fund.NewStack()
-		for _, w := range g.Adj(v) {
+		for _, w := range g.Adj(i) {
 			reverse.Push(w)
 		}
 		for !reverse.IsEmpty() {
-			adj[v].Add(reverse.Pop())
+			adj[i].Add(reverse.Pop())
 		}
 	}
 
