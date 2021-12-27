@@ -70,7 +70,7 @@
     - **Client**
       - [AcyclicLP Client: Critical Path Method](graphs/sp/cpm.go)
       - [Arbitrage detection](graphs/sp/arbitrage.go)
-## 5 STRING
+## 5 STRINGS
   - **String Sorts**
     - [LSD](strings/sort/lsd.go)
     - [MSD](strings/sort/msd.go)
