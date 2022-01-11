@@ -106,3 +106,16 @@ func ExampleIn_ReadAllStrings_http() {
 	// Output:
 	// [S O R T E X A M P L E]
 }
+
+func ExampleIn_ReadAllLines() {
+	in := util.NewIn("testdata/in.txt")
+	lines := in.ReadAllLines()
+
+	for _, line := range lines {
+		fmt.Println(line)
+	}
+
+	// Output:
+	// hello Gopher
+	// wating for  you
+}

@@ -120,6 +120,16 @@ func (in *In) readAll() string {
 	return string(data)
 }
 
+func (in *In) ReadAllLines() []string {
+	ss := make([]string, 0)
+
+	for in.HasNext() {
+		ss = append(ss, in.ReadString())
+	}
+
+	return ss
+}
+
 func (in *In) ReadAllStrings() []string {
 	str := in.readAll()
 
