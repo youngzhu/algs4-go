@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"errors"
 )
 
 // Reads in data of various types from standard input, files and URLs.
@@ -21,12 +22,26 @@ type In struct {
 
 // Factory method
 // default read in lines
+func NewInWithError(uri string) (*In, error) {
+	r, err := newReader(uri)
+	if err != nil {
+		return nil, err
+	}
+
+	scanner := bufio.NewScanner(r)
+
+	return &In{reader: r, scanner: scanner}, nil
+}
+
 func NewIn(uri string) *In {
 	return NewInReadLines(uri)
 }
 
 func NewInReadWords(uri string) *In {
-	r := newReader(uri)
+	r, err := newReader(uri)
+	if err != nil {
+		panic(err)
+	}
 
 	scanner := bufio.NewScanner(r)
 
@@ -35,17 +50,20 @@ func NewInReadWords(uri string) *In {
 	return &In{reader: r, scanner: scanner}
 }
 
-func NewInReadLines(uri string) *In {
-	r := newReader(uri)
+func NewInReadLines(uri string) (*In) {
+	r, err := newReader(uri)
+	if err != nil {
+		panic(err)
+	}
 
 	scanner := bufio.NewScanner(r)
 
 	return &In{reader: r, scanner: scanner}
 }
 
-func newReader(uri string) io.Reader {
+func newReader(uri string) (io.Reader, error) {
 	if uri == "" {
-		panic("argument is empty")
+		return nil, errors.New("argument is empty")
 	}
 
 	// first try to read file from local file system
@@ -56,17 +74,17 @@ func newReader(uri string) io.Reader {
 			if err != nil {
 				panic(err)
 			}
-			return gz
+			return gz, nil
 		} else {
-			return f
+			return f, nil
 		}
 	} else {
 		// URL from web
 		resp, err := http.Get(uri)
 		if err != nil {
-			panic(err)
+			return nil, err
 		}
-		return resp.Body
+		return resp.Body, nil
 	}
 
 }
