@@ -111,7 +111,7 @@ func (in *In) next() bool {
 	return in.scanner.Scan()
 }
 
-func (in *In) readAll() string {
+func (in *In) ReadAll() string {
 	data, err := io.ReadAll(in.reader)
 	if err != nil {
 		panic(err)
