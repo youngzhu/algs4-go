@@ -136,3 +136,12 @@ func ExampleIn_ReadAllLines() {
 	// hello Gopher
 	// wating for  you
 }
+
+func ExampleIn_error() {
+	_, err := util.NewInWithError("")
+
+	fmt.Println(err == util.ErrEmpty)
+
+	// Output:
+	// true
+}

@@ -13,6 +13,8 @@ import (
 
 // Reads in data of various types from standard input, files and URLs.
 
+var ErrEmpty = errors.New("argument is empty")
+
 type In struct {
 	reader     io.Reader
 	scanner    *bufio.Scanner
@@ -63,7 +65,7 @@ func NewInReadLines(uri string) (*In) {
 
 func newReader(uri string) (io.Reader, error) {
 	if uri == "" {
-		return nil, errors.New("argument is empty")
+		return nil, ErrEmpty
 	}
 
 	// first try to read file from local file system
