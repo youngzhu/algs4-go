@@ -131,7 +131,7 @@ func (in *In) ReadAllLines() []string {
 }
 
 func (in *In) ReadAllStrings() []string {
-	str := in.readAll()
+	str := in.ReadAll()
 
 	return strings.Fields(str)
 }
