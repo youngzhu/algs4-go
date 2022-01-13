@@ -107,6 +107,23 @@ func ExampleIn_ReadAllStrings_http() {
 	// [S O R T E X A M P L E]
 }
 
+func ExampleIn_ReadAll_http() {
+	const url = "https://algs4.cs.princeton.edu/21elementary/words3.txt"
+	in := util.NewIn(url)
+	s := in.ReadAll()
+	fmt.Println(s)
+
+	// Output:
+	
+	// bed bug dad yes zoo 
+	// now for tip ilk dim 
+	// tag jot sob nob sky 
+	// hut men egg few jay 
+	// owl joy rap gig wee 
+	// was wad fee tap tar 
+	// dug jam all bad yet
+}
+
 func ExampleIn_ReadAllLines() {
 	in := util.NewIn("testdata/in.txt")
 	lines := in.ReadAllLines()
