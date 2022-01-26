@@ -44,3 +44,16 @@ func ExampleSuffixArray() {
 	//10 9   0   10  RA!
 	//11 2   2   11  RACADABRA!
 }
+
+// Longest Repeated Substring
+func ExampleLongestRepeatedSubstring() {
+	lrs := suffix.LongestRepeatedSubstring("aaaaaaaa")
+	fmt.Println(lrs)
+
+	lrs = suffix.LongestRepeatedSubstring("abcdefg")
+	fmt.Println(lrs)
+
+	// Output:
+	// aaaaaaa
+	//
+}
