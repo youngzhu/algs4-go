@@ -14,8 +14,7 @@ func LongestRepeatedSubstring(text string) (lrs string) {
 	return "\"" + lrs + "\""
 }
 
-// LongestCommonSubstring
-// Returns the longest common string of the two specified strings
+// LongestCommonSubstring returns the longest common string of the two specified strings
 func LongestCommonSubstring(s, t string) (lcs string) {
 	suffix1 := NewSuffixArray(s)
 	suffix2 := NewSuffixArray(t)
@@ -23,7 +22,7 @@ func LongestCommonSubstring(s, t string) (lcs string) {
 	// find the longest common substring by "merging" sorted suffixes
 	lcs = ""
 	i, j := 0, 0
-	for i < len(s) && j < len(t) {
+	for i < suffix1.Length() && j < suffix2.Length() {
 		p := suffix1.Index(i)
 		q := suffix2.Index(j)
 		x := lcpFrom(s, t, p, q)
@@ -37,7 +36,7 @@ func LongestCommonSubstring(s, t string) (lcs string) {
 		}
 	}
 
-	return
+	return "\"" + lcs + "\""
 }
 
 // return the longest common prefix of suffix s[p...] and suffix t[q...]

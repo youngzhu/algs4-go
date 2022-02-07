@@ -1,8 +1,8 @@
 package suffix
 
 import (
+	"fmt"
 	"github.com/youngzhu/algs4-go/strings/sort"
-	"regexp"
 )
 
 // Suffix sorting: given a string, sort the suffixes of that string in ascending order.
@@ -13,14 +13,7 @@ type SuffixArray struct {
 	n        int
 }
 
-func NewSuffixArray(text string) SuffixArray {
-	// not work
-	//txt := strings.ReplaceAll(text, "\\s+", " ")
-
-	space := regexp.MustCompile("\\s+")
-	txt := string(space.ReplaceAll([]byte(text), []byte(" ")))
-	//log.Println(txt)
-
+func NewSuffixArray(txt string) SuffixArray {
 	n := len(txt)
 	suffixes := make([]string, n)
 	for i := 0; i < n; i++ {
@@ -41,7 +34,7 @@ func (sa SuffixArray) Length() int {
 // Returns the index into the original string of the ith smallest suffix.
 func (sa SuffixArray) Index(i int) int {
 	if i < 0 || i >= sa.n {
-		panic("Illegal index")
+		panic(`Illegal index: ` + fmt.Sprint(i))
 	}
 	return sa.n - len(sa.suffixes[i])
 }

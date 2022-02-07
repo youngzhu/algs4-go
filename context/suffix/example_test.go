@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/youngzhu/algs4-go/context/suffix"
 	"github.com/youngzhu/algs4-go/util"
+	"regexp"
 )
 
 func ExampleSuffixArray() {
@@ -57,15 +58,29 @@ func ExampleLongestRepeatedSubstring() {
 	// "aaaaaaa"
 	// ""
 }
+
+var space = regexp.MustCompile("\\s+")
+
+func whitespace(s string) string {
+	// not work
+	//txt := strings.ReplaceAll(text, "\\s+", " ")
+
+	//space := regexp.MustCompile("\\s+")
+	t := string(space.ReplaceAll([]byte(s), []byte(" ")))
+
+	return t
+}
 func ExampleLongestRepeatedSubstring_file() {
 	in := util.NewIn("testdata/tinyTale.txt")
 	text := in.ReadAll()
-	lrs := suffix.LongestRepeatedSubstring(text)
+	s := whitespace(text)
+	lrs := suffix.LongestRepeatedSubstring(s)
 	fmt.Println(lrs)
 
 	in = util.NewIn("testdata/mobydick.txt.gz")
 	text = in.ReadAll()
-	lrs = suffix.LongestRepeatedSubstring(text)
+	t := whitespace(text)
+	lrs = suffix.LongestRepeatedSubstring(t)
 	fmt.Println(lrs)
 
 	// Output:
@@ -73,7 +88,17 @@ func ExampleLongestRepeatedSubstring_file() {
 	// ",- Such a funny, sporty, gamy, jesty, joky, hoky-poky lad, is the Ocean, oh! Th"
 }
 
-//func ExampleLongestCommonSubstring() {
-//	in := util.NewIn("testdata/abra.txt")
-//	text := in.ReadAll()
-//}
+func ExampleLongestCommonSubstring() {
+	in1 := util.NewIn("testdata/tale.txt.gz")
+	text1 := in1.ReadAll()
+
+	in2 := util.NewIn("testdata/mobydick.txt.gz")
+	text2 := in2.ReadAll()
+
+	s, t := whitespace(text1), whitespace(text2)
+	lcs := suffix.LongestCommonSubstring(s, t)
+	fmt.Println(lcs)
+
+	// Output:
+	// " seemed on the point of being "
+}
