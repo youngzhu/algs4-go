@@ -54,6 +54,26 @@ func ExampleLongestRepeatedSubstring() {
 	fmt.Println(lrs)
 
 	// Output:
-	// aaaaaaa
-	//
+	// "aaaaaaa"
+	// ""
 }
+func ExampleLongestRepeatedSubstring_file() {
+	in := util.NewIn("testdata/tinyTale.txt")
+	text := in.ReadAll()
+	lrs := suffix.LongestRepeatedSubstring(text)
+	fmt.Println(lrs)
+
+	in = util.NewIn("testdata/mobydick.txt.gz")
+	text = in.ReadAll()
+	lrs = suffix.LongestRepeatedSubstring(text)
+	fmt.Println(lrs)
+
+	// Output:
+	// "st of times it was the "
+	// ",- Such a funny, sporty, gamy, jesty, joky, hoky-poky lad, is the Ocean, oh! Th"
+}
+
+//func ExampleLongestCommonSubstring() {
+//	in := util.NewIn("testdata/abra.txt")
+//	text := in.ReadAll()
+//}

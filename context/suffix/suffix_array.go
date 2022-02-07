@@ -1,6 +1,9 @@
 package suffix
 
-import "github.com/youngzhu/algs4-go/strings/sort"
+import (
+	"github.com/youngzhu/algs4-go/strings/sort"
+	"regexp"
+)
 
 // Suffix sorting: given a string, sort the suffixes of that string in ascending order.
 // Resulting sorted list is called a suffix array.
@@ -11,10 +14,17 @@ type SuffixArray struct {
 }
 
 func NewSuffixArray(text string) SuffixArray {
-	n := len(text)
+	// not work
+	//txt := strings.ReplaceAll(text, "\\s+", " ")
+
+	space := regexp.MustCompile("\\s+")
+	txt := string(space.ReplaceAll([]byte(text), []byte(" ")))
+	//log.Println(txt)
+
+	n := len(txt)
 	suffixes := make([]string, n)
 	for i := 0; i < n; i++ {
-		suffixes[i] = text[i:]
+		suffixes[i] = txt[i:]
 	}
 	sort.Quicksort(suffixes)
 
@@ -36,8 +46,7 @@ func (sa SuffixArray) Index(i int) int {
 	return sa.n - len(sa.suffixes[i])
 }
 
-// LCP
-// Returns the length of the longest common prefix of the ith smallest suffix
+// LCP returns the length of the longest common prefix of the ith smallest suffix
 // and the i-1 th smallest suffix.
 func (sa SuffixArray) LCP(i int) int {
 	if i < 1 || i >= sa.n {
@@ -55,13 +64,6 @@ func lcp(s, t string) int {
 		}
 	}
 	return n
-}
-
-func min(i, j int) int {
-	if i < j {
-		return i
-	}
-	return j
 }
 
 // Select
