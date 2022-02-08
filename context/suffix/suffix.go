@@ -1,5 +1,14 @@
 package suffix
 
+// SuffixArrayInterface suffix array API
+type SuffixArrayInterface interface {
+	Length() int
+	Select(i int) string
+	Index(i int) int
+	LCP(i int) int
+	Rank(key string) int
+}
+
 func LongestRepeatedSubstring(text string) (lrs string) {
 	sa := NewSuffixArray(text)
 	lrs = ""

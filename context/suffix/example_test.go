@@ -11,22 +11,9 @@ func ExampleSuffixArray() {
 	in := util.NewIn("testdata/abra.txt")
 	text := in.ReadAll()
 
-	fmt.Println("----------------------------")
-	fmt.Println("i  idx lcp rnk ith")
-	fmt.Println("----------------------------")
-
 	sa := suffix.NewSuffixArray(text)
-	for i := 0; i < sa.Length(); i++ {
-		idx := sa.Index(i)
-		ith := sa.Select(i)
-		rank := sa.Rank(ith)
-		if i == 0 {
-			fmt.Printf("%-3d%-3d %-3s %-3d %s\n", i, idx, "-", rank, ith)
-		} else {
-			lcp := sa.LCP(i)
-			fmt.Printf("%-3d%-3d %-3d %-3d %s\n", i, idx, lcp, rank, ith)
-		}
-	}
+
+	testSuffixArray(sa)
 
 	// Output:
 	//----------------------------
@@ -44,6 +31,24 @@ func ExampleSuffixArray() {
 	//9  6   0   9   DABRA!
 	//10 9   0   10  RA!
 	//11 2   2   11  RACADABRA!
+}
+
+func testSuffixArray(sa suffix.SuffixArrayInterface) {
+	fmt.Println("----------------------------")
+	fmt.Println("i  idx lcp rnk ith")
+	fmt.Println("----------------------------")
+
+	for i := 0; i < sa.Length(); i++ {
+		idx := sa.Index(i)
+		ith := sa.Select(i)
+		rank := sa.Rank(ith)
+		if i == 0 {
+			fmt.Printf("%-3d%-3d %-3s %-3d %s\n", i, idx, "-", rank, ith)
+		} else {
+			lcp := sa.LCP(i)
+			fmt.Printf("%-3d%-3d %-3d %-3d %s\n", i, idx, lcp, rank, ith)
+		}
+	}
 }
 
 // Longest Repeated Substring
@@ -107,22 +112,8 @@ func ExampleSuffixArrayX() {
 	in := util.NewIn("testdata/abra.txt")
 	text := in.ReadAll()
 
-	fmt.Println("----------------------------")
-	fmt.Println("i  idx lcp rnk ith")
-	fmt.Println("----------------------------")
-
 	sa := suffix.NewSuffixArrayX(text)
-	for i := 0; i < sa.Length(); i++ {
-		idx := sa.Index(i)
-		ith := sa.Select(i)
-		rank := sa.Rank(ith)
-		if i == 0 {
-			fmt.Printf("%-3d%-3d %-3s %-3d %s\n", i, idx, "-", rank, ith)
-		} else {
-			lcp := sa.LCP(i)
-			fmt.Printf("%-3d%-3d %-3d %-3d %s\n", i, idx, lcp, rank, ith)
-		}
-	}
+	testSuffixArray(sa)
 
 	// Output:
 	//----------------------------
