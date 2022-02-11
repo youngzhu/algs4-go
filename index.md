@@ -85,7 +85,7 @@
     - [Boyer-Moore algorithm](strings/search/boyer_moore.go)
   - **Regular Expressions**
     - [NFA](strings/regexp/nfa.go)
-## 6 Context
+## 6 CONTEXT
   - **Suffix Arrays**
     - [SuffixArray](context/suffix/suffix_array.go)
     - [SuffixArrayX](context/suffix/suffix_array_x.go)
