@@ -36,7 +36,7 @@ func Heapsort(x Sortable) {
 		sink(x, k, n)
 	}
 
-	// sortdown phase
+	// sort-down phase
 	i := n
 	for i > 1 {
 		swap(x, 1, i)
