@@ -10,8 +10,8 @@ package sorting
 // representation of the priority queue and use swim() and sink() directly.
 // Doing so allows us to sort an array without needing any extra space, by
 // maintaining the heap within the array to be sorted. Heapsort breaks into two
-// phases: heap construction, where we reorganzie the original array into a
-// heap, and the sortdown, where we pull the items out of the heap in
+// phases: heap construction, where we recognize the original array into a
+// heap, and the sort-down, where we pull the items out of the heap in
 // decreasing order to build the sorted result.
 //
 // Heap construction. We can accomplish this task in time proportional to NlgN,
@@ -23,11 +23,11 @@ package sorting
 // sink() works on such subheaps, as well. If the two children of a node are
 // heaps, then calling sink() on that node makes the subtree rooted there a heap.
 //
-// Sortdown. Most of the work during heapsort is done during the second phase,
+// Sort-down. Most of the work during heapsort is done during the second phase,
 // where we remove the largest remaining items from the heap and put it into the
 // array position vacated as the heap shrinks.
 
-// sink-based heapsort
+// Heapsort sink-based heapsort
 func Heapsort(x Sortable) {
 	n := x.Len()
 
@@ -75,6 +75,7 @@ func NewHeap() Sorter {
 }
 
 // Implements Sorter
+
 func (s Heapsorter) SortInts(x []int) {
 	Heapsort(IntSortSlice(x))
 }
