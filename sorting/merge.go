@@ -13,6 +13,7 @@ import "reflect"
 // no matter what the input. Its prime disadvantage is that it uses extra space
 // proportional to N.
 
+// Mergesort
 // Top-down mergesort. It is one of the best-known examples of utility of the
 // divide-and-conquer paradigm for efficient algorithm design.
 func Mergesort(x Sortable) {
