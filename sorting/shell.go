@@ -1,8 +1,7 @@
 package sorting
 
-// Shellsort
 // Shellsort is simple extension of insertion sort that gains speed by allowing exchanges
-// of entries that are far apart, to produce partially sorted arrays that can be efficientlly
+// of entries that are far apart, to produce partially sorted arrays that can be efficiently
 // sorted, eventually by insertion sort.
 // The idea is to rearrange the array to give it the property that taking every hth entry
 // (starting anywhere) yields a sorted sequence. Such an array is said to be h-sorted.
