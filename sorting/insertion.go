@@ -1,6 +1,6 @@
 package sorting
 
-// Insertion Sort
+// InsertionSort
 // The algorithm that people often use to sort bridge hands is to consider
 // the cards one at a time, inserting each into its peoper place among those
 // already considered (keeping them sorted).
@@ -9,7 +9,7 @@ package sorting
 // vacated position
 func InsertionSort(x Sortable) {
 	n := x.Len()
-	for i := 0; i < n; i++ {
+	for i := 1; i < n; i++ {
 		for j := i; j > 0 && x.Less(j, j-1); j-- {
 			x.Swap(j, j-1)
 		}
@@ -22,7 +22,6 @@ func NewInsertion() Sorter {
 	return Insertion{}
 }
 
-// Implements Sorter
 func (s Insertion) SortInts(x []int) {
 	InsertionSort(IntSortSlice(x))
 }
