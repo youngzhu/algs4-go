@@ -2,15 +2,15 @@ package sorting
 
 import "reflect"
 
-// Buttom-up mergesort
+// Bottom-up mergesort
 // Even though we are thinking in terms of merging together two large subarrays,
 // the fact is that most merges are merging together tiny subarrays. Another
 // way to implement mergesort is to organize so that wo do all the merges of
 // tiny arrays on one pass, then do a second pass to merge those arrays in pairs,
 // and so forth, continuing util we do a merge that encompasses the whole array.
-// This method requires enen less code than the standard recursive implementation.
+// This method requires less code than the standard recursive implementation.
 // We start by doing a pass of 1-by-1 merges (considering individual items as
-// subarrays of size 1), then a pass of 2-bu-2 merges (merge subarrays of size 2
+// subarrays of size 1), then a pass of 2-by-2 merges (merge subarrays of size 2
 // to make subarrays of size 4), then 4-by-4 merges, and so forth.
 
 func MergesortBU(x Sortable) {

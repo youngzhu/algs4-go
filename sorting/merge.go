@@ -71,13 +71,13 @@ func sortStrings(x, aux StringSortSlice, lo, hi int) {
 }
 
 // Abstract in-place merge
-// The method puts the results of merging the subarrays a[lo..mid] with a[mid+1..hi]
-// into a single ordered array, leaving the result in a[lo..hi]. While it would be
-// desirable to implement this mothod without using a signfifcant amount of extra
+// The method puts the results of merging the subarrays a[lo...mid] with a[mid+1...hi]
+// into a single ordered array, leaving the result in a[lo...hi]. While it would be
+// desirable to implement this method without using a significant amount of extra
 // space, such solutions are remarkably complicated. Instead, merge() copies everything
 // to an auxiliary array and then merges back to the original.
 
-// stably merge x[lo..mid] with a[mid+1..hi] using aux[lo..hi]
+// stably merge x[lo...mid] with x[mid+1...hi] using aux[lo...hi]
 func mergeInts(x, aux IntSortSlice, lo, mid, hi int) {
 	// copy to aux[]
 	copy(aux, x)
