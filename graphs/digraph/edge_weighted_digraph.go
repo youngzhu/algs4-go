@@ -3,16 +3,16 @@ package digraph
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // An edge-weighted digraph, implemented using adjacency lists.
 type EdgeWeightedDigraph struct {
-	vertices int // number of vertices in this digraph
-	edges int // number of edges in this digraph
-	adj []*fund.Bag // adj[v]: adjaceny list for vertex v
-	indegree []int // indegree[v]: indegree of vertex v
+	vertices int         // number of vertices in this digraph
+	edges    int         // number of edges in this digraph
+	adj      []*fund.Bag // adj[v]: adjaceny list for vertex v
+	indegree []int       // indegree[v]: indegree of vertex v
 }
 
 // New an empty edge-weighted graph with n vertices and 0 edges
@@ -30,7 +30,7 @@ func NewEdgeWeightedDigraphN(n int) *EdgeWeightedDigraph {
 	return &EdgeWeightedDigraph{vertices: n, adj: adj, indegree: indegree}
 }
 
-func NewEdgeWeightedDigraphIn(in *util.In) *EdgeWeightedDigraph {
+func NewEdgeWeightedDigraphIn(in *testutil.In) *EdgeWeightedDigraph {
 	if in == nil {
 		panic("argument is nil")
 	}

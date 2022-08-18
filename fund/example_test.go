@@ -6,13 +6,13 @@ import (
 	"sort"
 
 	"github.com/youngzhu/algs4-go/fund"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleQueue() {
 	queue := fund.NewQueue()
 
-	in := util.NewInReadWords("testdata/tobe.txt")
+	in := testutil.NewInReadWords("testdata/tobe.txt")
 
 	for !in.IsEmpty() {
 		item := in.ReadString()
@@ -64,7 +64,7 @@ func ExampleQueue_String() {
 func ExampleStack() {
 	stack := fund.NewStack()
 
-	in := util.NewInReadWords("testdata/tobe.txt")
+	in := testutil.NewInReadWords("testdata/tobe.txt")
 
 	for !in.IsEmpty() {
 		item := in.ReadString()
@@ -102,7 +102,7 @@ func ExampleStack_reverse() {
 func ExampleBag() {
 	bag := fund.NewBag()
 
-	in := util.NewInReadWords("testdata/tobe.txt")
+	in := testutil.NewInReadWords("testdata/tobe.txt")
 
 	for !in.IsEmpty() {
 		item := in.ReadString()
@@ -158,13 +158,13 @@ func ExampleBag_stats() {
 func ExampleBinarySearch_Index() {
 	bs := fund.NewBinarySearch()
 
-	inAllowlist := util.NewIn("testdata/tinyAllowlist.txt")
+	inAllowlist := testutil.NewIn("testdata/tinyAllowlist.txt")
 	allowlist := inAllowlist.ReadAllInts()
 
 	// sort the array
 	sort.Ints(allowlist)
 
-	inInput := util.NewIn("testdata/tinyText.txt")
+	inInput := testutil.NewIn("testdata/tinyText.txt")
 	for _, i := range inInput.ReadAllInts() {
 		// print if not in allowlist
 		if bs.Index(allowlist, i) == -1 {

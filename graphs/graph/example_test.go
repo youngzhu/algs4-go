@@ -5,7 +5,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/graphs/graph"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
@@ -14,10 +14,10 @@ var (
 )
 
 func dataInit() {
-	in := util.NewInReadWords("testdata/tinyG.txt")
+	in := testutil.NewInReadWords("testdata/tinyG.txt")
 	tinyGraph = graph.NewGraph(in)
 
-	in = util.NewInReadWords("testdata/tinyCG.txt")
+	in = testutil.NewInReadWords("testdata/tinyCG.txt")
 	tinyCG = graph.NewGraph(in)
 }
 

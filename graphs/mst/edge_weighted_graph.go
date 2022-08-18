@@ -3,17 +3,17 @@ package mst
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 type EdgeWeightedGraph struct {
 	vertices int // number of vertices
-	edges int // number of edges
-	adj []*fund.Bag
+	edges    int // number of edges
+	adj      []*fund.Bag
 }
 
-func NewEdgeWeightedGraphIn(in *util.In) *EdgeWeightedGraph {
+func NewEdgeWeightedGraphIn(in *testutil.In) *EdgeWeightedGraph {
 	if in == nil {
 		panic("argument is nil")
 	}
@@ -90,9 +90,9 @@ func (g *EdgeWeightedGraph) Edges() fund.Iterator {
 			e := edge.(*Edge)
 			if e.Other(v) > v {
 				bag.Add(e)
-			} else if (e.Other(v) == v) {
+			} else if e.Other(v) == v {
 				// add only one copy of each slef loop (self loops will be consecutive)
-				if selfLoops % 2 == 0 {
+				if selfLoops%2 == 0 {
 					bag.Add(e)
 				}
 				selfLoops++

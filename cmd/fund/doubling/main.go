@@ -4,16 +4,16 @@ import (
 	"flag"
 
 	"github.com/youngzhu/algs4-go/fund/xsum"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
-	rand  util.Random
+	rand  testutil.Random
 	ratio = flag.Bool("r", false, "doubling ratio test")
 )
 
 func init() {
-	rand = *util.NewRandom()
+	rand = *testutil.NewRandom()
 }
 
 func main() {
@@ -35,7 +35,7 @@ func timeTrial(n int) float64 {
 	for i := 0; i < n; i++ {
 		a[i] = rand.UniformIntRange(-maxInteger, maxInteger)
 	}
-	timer := util.NewStopwatch()
+	timer := testutil.NewStopwatch()
 
 	xsum.ThreeSumCount(a)
 

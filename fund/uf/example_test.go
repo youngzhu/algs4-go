@@ -4,12 +4,12 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/fund/uf"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleUF() {
 
-	in := util.NewInReadWords("testdata/tinyUF.txt")
+	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
 	unionFind := uf.NewUF(n)
@@ -42,7 +42,7 @@ func ExampleUF() {
 
 func ExampleQuickFindUF() {
 
-	in := util.NewInReadWords("testdata/tinyUF.txt")
+	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
 	unionFind := uf.NewQuickFindUF(n)
@@ -75,7 +75,7 @@ func ExampleQuickFindUF() {
 
 func ExampleQuickUnionUF() {
 
-	in := util.NewInReadWords("testdata/tinyUF.txt")
+	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
 	unionFind := uf.NewQuickUnionUF(n)
@@ -108,7 +108,7 @@ func ExampleQuickUnionUF() {
 
 func ExampleWeightedQuickUnionUF() {
 
-	in := util.NewInReadWords("testdata/tinyUF.txt")
+	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
 	unionFind := uf.NewWeightedQuickUnionUF(n)

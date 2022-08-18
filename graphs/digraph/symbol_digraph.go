@@ -4,13 +4,13 @@ import (
 	"strings"
 
 	"github.com/youngzhu/algs4-go/searching"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 type SymbolDigraph struct {
-	st searching.RedBlackBST // string -> index
-	keys []string // index -> string
-	digraph *Digraph // the underlying digraph
+	st      searching.RedBlackBST // string -> index
+	keys    []string              // index -> string
+	digraph *Digraph              // the underlying digraph
 }
 
 // New a Symbol Digraph from a file using the specified delimiter.
@@ -22,7 +22,7 @@ func NewSymbolDigraph(filepath, delimiter string) SymbolDigraph {
 
 	// first pass builds the index by reading strings to associate
 	// distinct strings with an index
-	in := util.NewInReadLines(filepath)
+	in := testutil.NewInReadLines(filepath)
 	for in.HasNext() {
 		slice := strings.Split(in.ReadLine(), delimiter)
 		for _, v := range slice {
@@ -40,10 +40,10 @@ func NewSymbolDigraph(filepath, delimiter string) SymbolDigraph {
 		keys[i] = string(k.(searching.StringKey))
 	}
 
-	// second pass builds the digraph by connecting first vertex 
+	// second pass builds the digraph by connecting first vertex
 	// on each line to all others
 	digraph := NewDigraphN(st.Size())
-	in = util.NewIn(filepath)
+	in = testutil.NewIn(filepath)
 	for in.HasNext() {
 		slice := strings.Split(in.ReadLine(), delimiter)
 		key := searching.StringKey(slice[0])

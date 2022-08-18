@@ -1,4 +1,4 @@
-package util
+package testutil
 
 import "time"
 
@@ -15,5 +15,5 @@ func NewStopwatch() Stopwatch {
 func (s Stopwatch) ElapsedTime() float64 {
 	now := time.Now()
 	dt := now.Sub(s.start)
-	return float64(dt.Milliseconds())/1000
+	return float64(dt.Milliseconds()) / 1000
 }

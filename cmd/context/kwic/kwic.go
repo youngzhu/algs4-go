@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/youngzhu/algs4-go/context/suffix"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 	"os"
 	"regexp"
 )
@@ -34,7 +34,7 @@ func main() {
 	flag.Parse()
 
 	// read in text
-	in, err := util.NewInWithError(file)
+	in, err := testutil.NewInWithError(file)
 	if err != nil {
 		panic(err)
 	}

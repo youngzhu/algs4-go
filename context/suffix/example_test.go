@@ -3,12 +3,12 @@ package suffix_test
 import (
 	"fmt"
 	"github.com/youngzhu/algs4-go/context/suffix"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 	"regexp"
 )
 
 func ExampleSuffixArray() {
-	in := util.NewIn("testdata/abra.txt")
+	in := testutil.NewIn("testdata/abra.txt")
 	text := in.ReadAll()
 
 	sa := suffix.NewSuffixArray(text)
@@ -76,13 +76,13 @@ func whitespace(s string) string {
 	return t
 }
 func ExampleLongestRepeatedSubstring_file() {
-	in := util.NewIn("testdata/tinyTale.txt")
+	in := testutil.NewIn("testdata/tinyTale.txt")
 	text := in.ReadAll()
 	s := whitespace(text)
 	lrs := suffix.LongestRepeatedSubstring(s)
 	fmt.Println(lrs)
 
-	in = util.NewIn("testdata/mobydick.txt.gz")
+	in = testutil.NewIn("testdata/mobydick.txt.gz")
 	text = in.ReadAll()
 	t := whitespace(text)
 	lrs = suffix.LongestRepeatedSubstring(t)
@@ -94,10 +94,10 @@ func ExampleLongestRepeatedSubstring_file() {
 }
 
 func ExampleLongestCommonSubstring() {
-	in1 := util.NewIn("testdata/tale.txt.gz")
+	in1 := testutil.NewIn("testdata/tale.txt.gz")
 	text1 := in1.ReadAll()
 
-	in2 := util.NewIn("testdata/mobydick.txt.gz")
+	in2 := testutil.NewIn("testdata/mobydick.txt.gz")
 	text2 := in2.ReadAll()
 
 	s, t := whitespace(text1), whitespace(text2)
@@ -109,7 +109,7 @@ func ExampleLongestCommonSubstring() {
 }
 
 func ExampleSuffixArrayX() {
-	in := util.NewIn("testdata/abra.txt")
+	in := testutil.NewIn("testdata/abra.txt")
 	text := in.ReadAll()
 
 	sa := suffix.NewSuffixArrayX(text)

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/strings/trie"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var trieST *trie.TrieST
@@ -13,7 +13,7 @@ func initTrieST() {
 	// build ST from file
 	trieST = trie.NewTrieST()
 
-	in := util.NewInReadWords("testdata/shellsST.txt")
+	in := testutil.NewInReadWords("testdata/shellsST.txt")
 	a := in.ReadAllStrings()
 
 	for i, s := range a {
@@ -110,7 +110,7 @@ func ExampleTrieST_KeysThatMatch() {
 func ExampleTernarySearchTrie() {
 	tst := trie.NewTernarySearchTrie()
 
-	in := util.NewInReadWords("testdata/shellsST.txt")
+	in := testutil.NewInReadWords("testdata/shellsST.txt")
 	a := in.ReadAllStrings()
 
 	for i, s := range a {

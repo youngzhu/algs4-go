@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/youngzhu/algs4-go/sorting"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // Uses the sort() methods int the types named as command-line arguments
@@ -133,7 +133,7 @@ func timeElapsed(alg string, a []float64) float64 {
 
 	sorter, ok := algs[lowcase]
 	if ok {
-		timer := util.NewStopwatch()
+		timer := testutil.NewStopwatch()
 		sorter.SortFloat64s(a)
 		return timer.ElapsedTime()
 	} else {

@@ -1,14 +1,14 @@
-package util
+package testutil
 
 import (
 	"bufio"
 	"compress/gzip"
+	"errors"
 	"io"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
-	"errors"
 )
 
 // Reads in data of various types from standard input, files and URLs.
@@ -52,7 +52,7 @@ func NewInReadWords(uri string) *In {
 	return &In{reader: r, scanner: scanner}
 }
 
-func NewInReadLines(uri string) (*In) {
+func NewInReadLines(uri string) *In {
 	r, err := newReader(uri)
 	if err != nil {
 		panic(err)

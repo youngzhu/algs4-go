@@ -3,9 +3,9 @@ package digraph
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs/graph"
 	"github.com/youngzhu/algs4-go/fund"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/graphs/graph"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // A directed graph (or digraph) is a set of vertices and a collection of directed
@@ -16,13 +16,13 @@ type IDigraph interface {
 	graph.IGraph
 }
 
-// Use the adjacency-lists representation, where maintain a vertex-indexed array 
+// Use the adjacency-lists representation, where maintain a vertex-indexed array
 // of lists of the vertices connected by an edge to each vertex.
 type Digraph struct {
-	v int // number of vertices
-	e int // number of edges
-	adj []*fund.Bag // adj[v]: adjacency list for vertex v
-	indegree []int // indegree[v]: indegree of vertex v
+	v        int         // number of vertices
+	e        int         // number of edges
+	adj      []*fund.Bag // adj[v]: adjacency list for vertex v
+	indegree []int       // indegree[v]: indegree of vertex v
 }
 
 // New an empty digraph with v vertices
@@ -32,7 +32,7 @@ func NewDigraphN(v int) *Digraph {
 	}
 
 	adj := make([]*fund.Bag, v)
-	for i:=0; i < v; i++ {
+	for i := 0; i < v; i++ {
 		adj[i] = fund.NewBag()
 	}
 
@@ -45,7 +45,7 @@ func NewDigraphN(v int) *Digraph {
 // The format is the number of vertices V
 // followed by the number of edges E
 // followed by E pairs of vertices, with each entry separated by whitespace
-func NewDigraph(in *util.In) *Digraph {
+func NewDigraph(in *testutil.In) *Digraph {
 	v := in.ReadInt()
 
 	g := NewDigraphN(v)
@@ -54,7 +54,7 @@ func NewDigraph(in *util.In) *Digraph {
 	if e < 0 {
 		panic("number of edges in a Graph must be non-negative")
 	}
-	for i:=0; i < e; i++ {
+	for i := 0; i < e; i++ {
 		v1 := in.ReadInt()
 		v2 := in.ReadInt()
 		g.AddEdge(v1, v2)

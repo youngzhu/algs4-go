@@ -1,15 +1,15 @@
-package util_test
+package testutil_test
 
 import (
 	"fmt"
 	"math"
 
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleStopwatch() {
 	var n float64 = 1000
-	timer := util.NewStopwatch()
+	timer := testutil.NewStopwatch()
 	sum := 0.0
 	for n > 0 {
 		sum += math.Sqrt(n)

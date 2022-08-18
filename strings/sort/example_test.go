@@ -4,11 +4,11 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/strings/sort"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleLSDSort() {
-	in := util.NewInReadWords("testdata/words3.txt")
+	in := testutil.NewInReadWords("testdata/words3.txt")
 	a := in.ReadAllStrings()
 	sort.LSDSort(a)
 
@@ -27,7 +27,7 @@ func ExampleLSDSortInts() {
 }
 
 func ExampleMSDSort() {
-	in := util.NewInReadWords("testdata/shells.txt")
+	in := testutil.NewInReadWords("testdata/shells.txt")
 	a := in.ReadAllStrings()
 	sort.MSDSort(a)
 
@@ -53,7 +53,7 @@ func ExampleMSDSort() {
 }
 
 func ExampleQuicksort() {
-	in := util.NewInReadWords("testdata/shells.txt")
+	in := testutil.NewInReadWords("testdata/shells.txt")
 	a := in.ReadAllStrings()
 	sort.Quicksort(a)
 

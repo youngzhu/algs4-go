@@ -4,17 +4,17 @@ import (
 	"strings"
 
 	"github.com/youngzhu/algs4-go/searching"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // Symbol graphs.
-// Typical applications involve processing graphs using strings, not integer 
+// Typical applications involve processing graphs using strings, not integer
 // indices, to difine and refer to vertices. To accommodate such applications,
 // we define an input format with the following properties:
 // 1. Vertex names are strings.
 // 2. A specified delimiter separates vertex names (to allow for the possibility
 //    of spaces in names).
-// 3. Each line represents a set of edges, connecting the first vertex name on 
+// 3. Each line represents a set of edges, connecting the first vertex name on
 //    the line to each of the other vertices named on the line
 
 // Three data structures:
@@ -23,9 +23,9 @@ import (
 //    associated with each integer index
 // 3. A graph built using the indices to refer to vertices
 type SymbolGraph struct {
-	st searching.RedBlackBST // string -> index
-	keys []string // index -> string
-	graph Graph // the underlying graph
+	st    searching.RedBlackBST // string -> index
+	keys  []string              // index -> string
+	graph Graph                 // the underlying graph
 }
 
 // New a Symbol Graph from a file using the specified delimiter.
@@ -37,7 +37,7 @@ func NewSymbolGraph(filepath, delimiter string) SymbolGraph {
 
 	// first pass builds the index by reading strings to associate
 	// distinct strings with an index
-	in := util.NewInReadLines(filepath)
+	in := testutil.NewInReadLines(filepath)
 	for in.HasNext() {
 		slice := strings.Split(in.ReadLine(), delimiter)
 		for _, v := range slice {
@@ -55,10 +55,10 @@ func NewSymbolGraph(filepath, delimiter string) SymbolGraph {
 		keys[i] = string(k.(searching.StringKey))
 	}
 
-	// second pass builds the graph by connecting first vertex 
+	// second pass builds the graph by connecting first vertex
 	// on each line to all others
 	graph := NewGraphN(st.Size())
-	in = util.NewIn(filepath)
+	in = testutil.NewIn(filepath)
 	for in.HasNext() {
 		slice := strings.Split(in.ReadLine(), delimiter)
 		key := searching.StringKey(slice[0])
