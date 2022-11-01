@@ -1,6 +1,6 @@
 package uf
 
-// Quick-find algorithm.
+// QuickFindUF Quick-find algorithm.
 // It maintains the invariant that p and q are connected if and only if
 // id[p] = id[q]. In other words, all sites in a component must have the
 // same value in id[]
@@ -9,8 +9,8 @@ type QuickFindUF struct {
 	count int   // number of components
 }
 
-// New an empty union-find data strcture with n elements (0...n-1)
-// Initially, each elements is in its own set.
+// NewQuickFindUF returns an empty union-find data structure with n elements (0...n-1)
+// Initially, each element is in its own set.
 func NewQuickFindUF(n int) *QuickFindUF {
 	id := make([]int, n)
 	for i := 0; i < n; i++ {

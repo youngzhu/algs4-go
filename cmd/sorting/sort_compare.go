@@ -180,7 +180,7 @@ func timeElapsed(alg string, a []float64) float64 {
 // cmd: go run sort_compare.go -a1 Shell -a2 Builtin -n 100 -t 100
 // got: Builtin is 1.8 times faster than Shell
 
-// Merge vs Insetion
+// Merge vs Insertion
 // cmd: go run sort_compare.go -a1 Merge -a2 Insertion -n 100 -t 100 -s
 // got: Insertion is 4.9 times faster than Merge
 // cmd: go run sort_compare.go -a1 Insertion -a2 Merge -n 100 -t 100 -s
