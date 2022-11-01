@@ -1,6 +1,6 @@
 package uf
 
-// Weighted quick-union algorithm (without path compression).
+// WeightedQuickUnionUF Weighted quick-union algorithm (without path compression).
 // Rather than arbitrarily connecting the second tree to the first for Union()
 // in the quick-union algorithm, we keep track of the size of each tree and
 // always connect the smaller tree to the larger.

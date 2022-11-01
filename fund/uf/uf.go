@@ -1,8 +1,8 @@
 package uf
 
-// Weighted quick-union by rank with path compression by halving.
+// UF is a weighted quick-union by rank with path compression by halving.
 // There are a number of easy ways to improve the weighted quick-union algorithm
-// futher. Ideally, we would like every node to link directedly to the root of
+// further. Ideally, we would like every node to link directly to the root of
 // its tree, but we do not want to pay the price of changing a large number of
 // links. We can approach the ideal simply by making all the nodes that we do
 // examine directly link to the root.
@@ -12,8 +12,8 @@ type UF struct {
 	count  int    // number of components
 }
 
-// New an empty union-find data strcture with n elements (0...n-1)
-// Initially, each elements is in its own set.
+// NewUF returns an empty union-find data structure with n elements (0...n-1)
+// Initially, each element is in its own set.
 func NewUF(n int) *UF {
 	if n < 0 {
 		panic("n must be positive")
@@ -29,7 +29,7 @@ func NewUF(n int) *UF {
 	return &UF{parent, rank, n}
 }
 
-// Merges the set containing element p with the set containg element q
+// Union merges the set containing element p with the set contain element q
 func (u *UF) Union(p, q int) {
 	rootP := u.Find(p)
 	rootQ := u.Find(q)
@@ -50,7 +50,7 @@ func (u *UF) Union(p, q int) {
 	u.count--
 }
 
-// Returns the canonical element of the set containing element p
+// Find returns the canonical element of the set containing element p
 func (u *UF) Find(p int) int {
 	u.validate(p)
 	for p != u.parent[p] {
@@ -60,12 +60,12 @@ func (u *UF) Find(p int) int {
 	return p
 }
 
-// Returns the number of sets
+// Count returns the number of sets
 func (u *UF) Count() int {
 	return u.count
 }
 
-// Returns true if the two elements are in the same set
+// Connected returns true if the two elements are in the same set
 func (u *UF) Connected(p, q int) bool {
 	return u.Find(p) == u.Find(q)
 }

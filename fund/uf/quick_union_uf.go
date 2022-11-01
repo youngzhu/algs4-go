@@ -1,8 +1,8 @@
 package uf
 
-// Quick-union algorithm.
+// QuickUnionUF is a Quick-union algorithm.
 // It's based on the same data structure—the site-indexed id[] array—but
-// it uses a dirrerent interpretation of the values that leads to more
+// it uses a different interpretation of the values that leads to more
 // complicated structures. Specifically, the id[] entry for each site will
 // be the name of another site in the same component (possibly itself).
 // To implement Find() we start at the given site, follow its link to
