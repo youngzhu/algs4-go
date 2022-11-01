@@ -4,7 +4,7 @@ import "math/rand"
 
 // Quicksort is popular because it is not difficult to implement, works well for
 // a variety of different kinds of input data, and is substantially faster than
-// an other sorting method in typical applications. It is in-place (uses only a
+// another sorting method in typical applications. It is in-place (uses only a
 // small auxiliary stack), requires time proportional to NlogN on the average
 // to sort N items, and has an extremely short inner loop.
 
@@ -18,7 +18,7 @@ import "math/rand"
 // 2. No entry in a[lo] through a[j-1] is greater than a[j]
 // 3. No entry in a[j+1] through a[hi] is less than a[j]
 // We achieve a complete sort by partitioning, then recursively applying the
-// method to the subarrays. It is a randomized algorithm, because it randomly
+// method to the sub-arrays. It is a randomized algorithm, because it randomly
 // shuffles the array before sorting it.
 
 // Partitioning.
@@ -114,7 +114,7 @@ func (s Quick) SortStrings(x []string) {
 // Implementation details. There are several subtle issues with respect to
 // implementing quicksort that are reflected in this code and worthy of mention.
 
-// 1. Partitioning inplace.
+// 1. Partitioning in-place.
 // If we use an extra array, partitioning is easy to implement, but not so much
 // easier that it is worth the extra cost of copying the partitioned version
 // back into the original.
@@ -122,17 +122,17 @@ func (s Quick) SortStrings(x []string) {
 // 2. Staying in bounds.
 // If the smallest item or the largest item in the array is the partitioning item,
 // we have to take care that the pointers do not run off the left or right ends
-// of the array, respctively.
+// of the array, respectively.
 
 // 3. Preserving randomness.
 // The random shuffle put the array in random order. Since it treats all items in
-// the subarrays uniformly, this implemention has the property that its two
-// subarrays are also in random order. This fact is crucial to the algorithm's
+// the sub-arrays uniformly, this implementation has the property that its two
+// sub-arrays are also in random order. This fact is crucial to the algorithm's
 // predictability. An alternate way to preserve randomness is to choose a random
 // item for partitioning within partition().
 
 // 4. Terminating the loop.
-// Properly testing whether the pointers have crossed is a bit tricker than it
+// Properly testing whether the pointers have crossed is a bit trickier than it
 // might seem at first glance. A common error is to fail to take into account
 // that the array might contain other keys with the same value as the partitioning item.
 
@@ -140,12 +140,12 @@ func (s Quick) SortStrings(x []string) {
 // It is best to stop the left scan of items with keys greater than or equal to
 // the partitioning item's key and the right scan for items less than or equal to
 // the partitioning item's key. Even though this policy might seem to create
-// unnecessary exchanges involving items wiht keys equal to the partitioning
-// item's key, it is crucial to avoiding quadratic running time in certain
+// unnecessary exchanges involving items with keys equal to the partitioning
+// item's key, it is crucial to avoid quadratic running time in certain
 // typical applications.
 
 // 6. Terminating the recursion.
-// A commmon mistake in implementing quicksort involves not ensuring that one
+// A common mistake in implementing quicksort involves not ensuring that one
 // item is always put into position, then falling into an infinite recursive
 // loop when the partitioning item happens to be the largest or smallest item
 // in the array.
