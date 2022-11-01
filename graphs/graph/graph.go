@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/fund"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // A graph is a set of vertices and a collection of edges that each connect a
@@ -32,7 +32,7 @@ type Graph struct {
 // The format is the number of vertices V
 // followed by the number of edges E
 // followed by E pairs of vertices, with each entry separated by whitespace
-func NewGraph(in *util.In) *Graph {
+func NewGraph(in *testutil.In) *Graph {
 	v := in.ReadInt()
 	if v < 0 {
 		panic("number of verties in a Graph must be non-negative")

@@ -4,17 +4,17 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/sorting/pq"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // A client that reads sorted text files,
 // merge them together into a sorted output
 
 func ExampleMinIndexPQ() {
-	streams := []util.In{
-		*util.NewInReadWords("testdata/m1.txt"),
-		*util.NewInReadWords("testdata/m2.txt"),
-		*util.NewInReadWords("testdata/m3.txt"),
+	streams := []testutil.In{
+		*testutil.NewInReadWords("testdata/m1.txt"),
+		*testutil.NewInReadWords("testdata/m2.txt"),
+		*testutil.NewInReadWords("testdata/m3.txt"),
 	}
 
 	merge(pq.NewMinIndexPQ(len(streams)), streams)
@@ -24,7 +24,7 @@ func ExampleMinIndexPQ() {
 }
 
 // merge the sorted input streams
-func merge(ipq pq.IndexPQ, streams []util.In) {
+func merge(ipq pq.IndexPQ, streams []testutil.In) {
 	n := len(streams)
 	for i := 0; i < n; i++ {
 		if streams[i].HasNext() {

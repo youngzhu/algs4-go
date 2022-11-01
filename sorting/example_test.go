@@ -5,7 +5,7 @@ import (
 	"math"
 
 	"github.com/youngzhu/algs4-go/sorting"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
@@ -106,7 +106,7 @@ func ExampleShell_strings() {
 
 // from file
 func ExampleSelection_fromFile() {
-	in := util.NewIn("testdata/words3.txt")
+	in := testutil.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	selectionAlg.SortStrings(s)
 	fmt.Println(s)
@@ -115,7 +115,7 @@ func ExampleSelection_fromFile() {
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
 func ExampleInsertion_fromFile() {
-	in := util.NewIn("testdata/words3.txt")
+	in := testutil.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	insertionAlg.SortStrings(s)
 	fmt.Println(s)
@@ -124,7 +124,7 @@ func ExampleInsertion_fromFile() {
 	// [all bad bed bug dad dim dug egg fee few for gig hut ilk jam jay jot joy men nob now owl rap sky sob tag tap tar tip wad was wee yes yet zoo]
 }
 func ExampleShell_fromFile() {
-	in := util.NewIn("testdata/words3.txt")
+	in := testutil.NewIn("testdata/words3.txt")
 	s := in.ReadAllStrings()
 	shellAlg.SortStrings(s)
 	fmt.Println(s)

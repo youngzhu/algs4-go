@@ -5,7 +5,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/graphs/digraph"
 	"github.com/youngzhu/algs4-go/graphs/sp"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
@@ -13,10 +13,10 @@ var (
 )
 
 func init() {
-	in := util.NewInReadWords("testdata/tinyEWD.txt")
+	in := testutil.NewInReadWords("testdata/tinyEWD.txt")
 	tinyEWD = digraph.NewEdgeWeightedDigraphIn(in)
 
-	in = util.NewInReadWords("testdata/tinyEWDAG.txt")
+	in = testutil.NewInReadWords("testdata/tinyEWDAG.txt")
 	tinyEWDAG = digraph.NewEdgeWeightedDigraphIn(in)
 }
 
@@ -52,7 +52,7 @@ func ExampleDijkstraSP() {
 }
 
 func ExampleDijkstraSP_noPath() {
-	in := util.NewInReadWords("testdata/nopath.txt")
+	in := testutil.NewInReadWords("testdata/nopath.txt")
 	nopath := digraph.NewEdgeWeightedDigraphIn(in)
 
 	s := 7
@@ -137,7 +137,7 @@ func printBellmanFordSP(bf sp.BellmanFordSP, g digraph.EdgeWeightedDigraph, s in
 }
 
 func ExampleBellmanFordSP() {
-	in := util.NewInReadWords("testdata/tinyEWDn.txt")
+	in := testutil.NewInReadWords("testdata/tinyEWDn.txt")
 	tinyEWDn := digraph.NewEdgeWeightedDigraphIn(in)
 
 	s := 0
@@ -157,7 +157,7 @@ func ExampleBellmanFordSP() {
 }
 
 func ExampleBellmanFordSP_negativeCycle() {
-	in := util.NewInReadWords("testdata/tinyEWDnc.txt")
+	in := testutil.NewInReadWords("testdata/tinyEWDnc.txt")
 	tinyEWDnc := digraph.NewEdgeWeightedDigraphIn(in)
 
 	s := 0

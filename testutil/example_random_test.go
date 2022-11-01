@@ -1,13 +1,13 @@
-package util_test
+package testutil_test
 
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleRandom_UniformIntN() {
-	r := util.NewRandom()
+	r := testutil.NewRandom()
 
 	// Seeding with the same value results in the same random
 	// sequence each run.
@@ -24,7 +24,7 @@ func ExampleRandom_UniformIntN() {
 }
 
 func ExampleRandom_UniformIntRange() {
-	r := util.NewRandom()
+	r := testutil.NewRandom()
 
 	// Seeding with the same value results in the same random
 	// sequence each run.

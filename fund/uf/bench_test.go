@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	. "github.com/youngzhu/algs4-go/fund/uf"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // go test -v -run="none" -bench="." -benchtime="3s"
@@ -14,14 +14,14 @@ type pair struct {
 }
 
 type testCase struct {
-	n int
+	n     int
 	pairs []pair
 }
 
 var testdata *testCase
 
 func dataInit() {
-	in := util.NewInReadWords("testdata/mediumUF.txt")
+	in := testutil.NewInReadWords("testdata/mediumUF.txt")
 
 	n := in.ReadInt()
 	pairs := make([]pair, 1)
@@ -40,7 +40,7 @@ func benchUF(unionFind UnionFind, pairs []pair) {
 		if unionFind.Find(pq.p) == unionFind.Find(pq.q) {
 			continue
 		}
-	
+
 		unionFind.Union(pq.p, pq.q)
 	}
 }

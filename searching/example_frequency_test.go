@@ -5,7 +5,7 @@ import (
 	// "log"
 
 	"github.com/youngzhu/algs4-go/searching"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // FrequencyCounter is a symbol-table client that finds the number of occurrences
@@ -16,7 +16,7 @@ import (
 func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *FrequencyResult {
 	// compute frequency counts
 	distinct, words := 0, 0
-	in := util.NewInReadWords(path)
+	in := testutil.NewInReadWords(path)
 
 	// timer := util.NewStopwatch()
 
@@ -28,7 +28,7 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 		words++
 		key := searching.StringKey(word)
 		if st.Contains(key) {
-			value := st.Get(key).(int)+1
+			value := st.Get(key).(int) + 1
 			st.Put(key, value)
 		} else {
 			st.Put(key, 1)
@@ -55,7 +55,7 @@ func FrequencyCounter(st searching.SymbolTable, path string, minLen int) *Freque
 func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLen int) *FrequencyResult {
 	// compute frequency counts
 	distinct, words := 0, 0
-	in := util.NewInReadWords(path)
+	in := testutil.NewInReadWords(path)
 
 	// timer := util.NewStopwatch()
 
@@ -67,7 +67,7 @@ func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLe
 		words++
 		key := searching.StringKey(word)
 		if st.Contains(key) {
-			value := st.Get(key).(int)+1
+			value := st.Get(key).(int) + 1
 			st.Put(key, value)
 		} else {
 			st.Put(key, 1)
@@ -94,7 +94,7 @@ func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLe
 func FrequencyCounterHash(st searching.HashSymbolTable, path string, minLen int) *FrequencyResult {
 	// compute frequency counts
 	distinct, words := 0, 0
-	in := util.NewInReadWords(path)
+	in := testutil.NewInReadWords(path)
 
 	// timer := util.NewStopwatch()
 
@@ -106,7 +106,7 @@ func FrequencyCounterHash(st searching.HashSymbolTable, path string, minLen int)
 		words++
 		key := searching.StringHashKey(word)
 		if st.Contains(key) {
-			value := st.Get(key).(int)+1
+			value := st.Get(key).(int) + 1
 			st.Put(key, value)
 		} else {
 			st.Put(key, 1)
@@ -131,8 +131,8 @@ func FrequencyCounterHash(st searching.HashSymbolTable, path string, minLen int)
 }
 
 type FrequencyResult struct {
-	max searching.STKey
-	frequency searching.STValue
+	max                     searching.STKey
+	frequency               searching.STValue
 	minLen, words, distinct int
 }
 
@@ -140,7 +140,6 @@ func (r FrequencyResult) String() string {
 	const str = "high-frequency word: %v, frequency: %v, minLen: %d, total words: %d, distinct words: %d"
 	return fmt.Sprintf(str, r.max, r.frequency, r.minLen, r.words, r.distinct)
 }
-
 
 const (
 	tinyTalePath = "testdata/tinyTale.txt"

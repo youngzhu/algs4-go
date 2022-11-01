@@ -4,12 +4,12 @@ import (
 	"testing"
 
 	. "github.com/youngzhu/algs4-go/fund/xsum"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // go test -v -run="none" -bench="." -benchtime="3s"
 
-var a = util.NewIn("testdata/1Kints.txt").ReadAllInts()
+var a = testutil.NewIn("testdata/1Kints.txt").ReadAllInts()
 
 func BenchmarkTwoSumCount(b *testing.B) {
 

@@ -1,13 +1,13 @@
-package util_test
+package testutil_test
 
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func ExampleIn_ReadString() {
-	in := util.NewInReadWords("testdata/in.txt")
+	in := testutil.NewInReadWords("testdata/in.txt")
 	for !in.IsEmpty() {
 		fmt.Println(in.ReadString())
 	}
@@ -20,7 +20,7 @@ func ExampleIn_ReadString() {
 }
 
 func ExampleIn_ReadLine() {
-	in := util.NewIn("testdata/in.txt")
+	in := testutil.NewIn("testdata/in.txt")
 	for in.HasNext() {
 		fmt.Println(in.ReadLine())
 	}
@@ -30,7 +30,7 @@ func ExampleIn_ReadLine() {
 }
 
 func ExampleIn_ReadString_gz() {
-	in := util.NewInReadWords("testdata/in.txt.gz")
+	in := testutil.NewInReadWords("testdata/in.txt.gz")
 	for !in.IsEmpty() {
 		fmt.Println(in.ReadString())
 	}
@@ -43,7 +43,7 @@ func ExampleIn_ReadString_gz() {
 }
 
 func ExampleIn_ReadInt() {
-	in := util.NewInReadWords("testdata/ints.txt")
+	in := testutil.NewInReadWords("testdata/ints.txt")
 	for !in.IsEmpty() {
 		fmt.Println(in.ReadInt())
 	}
@@ -56,12 +56,12 @@ func ExampleIn_ReadInt() {
 }
 
 func ExampleIn_ReadInt_part() {
-	in := util.NewInReadWords("testdata/ints.txt")
-	
+	in := testutil.NewInReadWords("testdata/ints.txt")
+
 	fmt.Println(in.ReadInt())
 	fmt.Println(in.ReadInt())
 	fmt.Println(in.ReadInt())
-	
+
 	// Output:
 	// 12
 	// 3
@@ -69,7 +69,7 @@ func ExampleIn_ReadInt_part() {
 }
 
 func ExampleIn_ReadFloat() {
-	in := util.NewInReadWords("testdata/floats.txt")
+	in := testutil.NewInReadWords("testdata/floats.txt")
 	for !in.IsEmpty() {
 		fmt.Printf("%.6f\n", in.ReadFloat())
 	}
@@ -83,7 +83,7 @@ func ExampleIn_ReadFloat() {
 }
 
 func ExampleIn_ReadAllStrings() {
-	in := util.NewInReadWords("testdata/in.txt")
+	in := testutil.NewInReadWords("testdata/in.txt")
 	s := in.ReadAllStrings()
 	fmt.Println(s)
 	// Output:
@@ -91,7 +91,7 @@ func ExampleIn_ReadAllStrings() {
 }
 
 func ExampleIn_ReadAllInts() {
-	in := util.NewInReadWords("testdata/ints.txt")
+	in := testutil.NewInReadWords("testdata/ints.txt")
 	s := in.ReadAllInts()
 	fmt.Println(s)
 	// Output:
@@ -100,7 +100,7 @@ func ExampleIn_ReadAllInts() {
 
 func ExampleIn_ReadAllStrings_http() {
 	const url = "https://algs4.cs.princeton.edu/24pq/tiny.txt"
-	in := util.NewInReadWords(url)
+	in := testutil.NewInReadWords(url)
 	s := in.ReadAllStrings()
 	fmt.Println(s)
 	// Output:
@@ -109,23 +109,23 @@ func ExampleIn_ReadAllStrings_http() {
 
 func ExampleIn_ReadAll_http() {
 	const url = "https://algs4.cs.princeton.edu/21elementary/words3.txt"
-	in := util.NewIn(url)
+	in := testutil.NewIn(url)
 	s := in.ReadAll()
 	fmt.Println(s)
 
 	// Output:
-	
-	// bed bug dad yes zoo 
-	// now for tip ilk dim 
-	// tag jot sob nob sky 
-	// hut men egg few jay 
-	// owl joy rap gig wee 
-	// was wad fee tap tar 
+
+	// bed bug dad yes zoo
+	// now for tip ilk dim
+	// tag jot sob nob sky
+	// hut men egg few jay
+	// owl joy rap gig wee
+	// was wad fee tap tar
 	// dug jam all bad yet
 }
 
 func ExampleIn_ReadAllLines() {
-	in := util.NewIn("testdata/in.txt")
+	in := testutil.NewIn("testdata/in.txt")
 	lines := in.ReadAllLines()
 
 	for _, line := range lines {
@@ -138,9 +138,9 @@ func ExampleIn_ReadAllLines() {
 }
 
 func ExampleIn_error() {
-	_, err := util.NewInWithError("")
+	_, err := testutil.NewInWithError("")
 
-	fmt.Println(err == util.ErrEmpty)
+	fmt.Println(err == testutil.ErrEmpty)
 
 	// Output:
 	// true

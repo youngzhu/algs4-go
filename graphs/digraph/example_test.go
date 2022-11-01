@@ -3,9 +3,9 @@ package digraph_test
 import (
 	"fmt"
 
-	"github.com/youngzhu/algs4-go/graphs/digraph"
-	"github.com/youngzhu/algs4-go/util"
 	"github.com/youngzhu/algs4-go/fund"
+	"github.com/youngzhu/algs4-go/graphs/digraph"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
@@ -13,10 +13,10 @@ var (
 )
 
 func init() {
-	in := util.NewInReadWords("testdata/tinyDG.txt")
+	in := testutil.NewInReadWords("testdata/tinyDG.txt")
 	tinyDigraph = digraph.NewDigraph(in)
 
-	in = util.NewInReadWords("testdata/tinyDAG.txt")
+	in = testutil.NewInReadWords("testdata/tinyDAG.txt")
 	tinyDAG = digraph.NewDigraph(in)
 }
 
@@ -26,19 +26,19 @@ func ExampleDigraph() {
 
 	// Output:
 	// 13 vertices, 22 edges
-	// 0: 5 1 
-	// 1: 
-	// 2: 0 3 
-	// 3: 5 2 
-	// 4: 3 2 
-	// 5: 4 
-	// 6: 9 4 8 0 
+	// 0: 5 1
+	// 1:
+	// 2: 0 3
+	// 3: 5 2
+	// 4: 3 2
+	// 5: 4
+	// 6: 9 4 8 0
 	// 7: 6 9
-	// 8: 6 
-	// 9: 11 10 
-	// 10: 12 
-	// 11: 4 12 
-	// 12: 9 
+	// 8: 6
+	// 9: 11 10
+	// 10: 12
+	// 11: 4 12
+	// 12: 9
 }
 
 func ExampleDepthFirstSearch_singleSource() {
@@ -70,7 +70,6 @@ func ExampleDepthFirstSearch_multipleSource() {
 	// 0 1 2 3 4 5 6 8 9 10 11 12
 }
 
-
 func ExampleDepthFirstDirectedPaths() {
 
 	source := 3
@@ -94,7 +93,7 @@ func ExampleDepthFirstDirectedPaths() {
 		}
 	}
 
-	// Output: 
+	// Output:
 	// 3 to 0: 3-5-4-2-0
 	// 3 to 1: 3-5-4-2-0-1
 	// 3 to 2: 3-5-4-2
@@ -132,7 +131,7 @@ func ExampleBreadthFirstDirectedPaths() {
 		}
 	}
 
-	// Output: 
+	// Output:
 	// 3 to 0 (2): 3->2->0
 	// 3 to 1 (3): 3->2->0->1
 	// 3 to 2 (1): 3->2
@@ -145,7 +144,7 @@ func ExampleBreadthFirstDirectedPaths() {
 	// 3 to 9 (-): not connected
 	// 3 to 10 (-): not connected
 	// 3 to 11 (-): not connected
-	// 3 to 12 (-): not connected	
+	// 3 to 12 (-): not connected
 }
 
 func findDirectedCycle(g digraph.IDigraph) {
@@ -163,11 +162,11 @@ func findDirectedCycle(g digraph.IDigraph) {
 }
 
 func ExampleDirectedCycle() {
-	
+
 	findDirectedCycle(tinyDigraph)
 
 	// Output:
-	// Directed cycle: 3 5 4 3 
+	// Directed cycle: 3 5 4 3
 }
 
 // DAG: Directed Acyclic Graph
@@ -288,7 +287,6 @@ func ExampleTopological() {
 
 }
 
-
 func sccExample(g digraph.Digraph) {
 	scc := digraph.NewKosarajuSharirSCC(g)
 
@@ -319,8 +317,8 @@ func ExampleKosarajuSharirSCC_tinyDG() {
 
 	g := *tinyDigraph
 	sccExample(g)
-	
-	// Output: 
+
+	// Output:
 	// components: 5
 	// id-0: 1
 	// id-1: 0 2 3 4 5
@@ -331,12 +329,12 @@ func ExampleKosarajuSharirSCC_tinyDG() {
 }
 
 func ExampleKosarajuSharirSCC_mediumDG() {
-	in := util.NewInReadWords("testdata/mediumDG.txt")
+	in := testutil.NewInReadWords("testdata/mediumDG.txt")
 	g := digraph.NewDigraph(in)
 
 	sccExample(*g)
-	
-	// Output: 
+
+	// Output:
 	// components: 10
 	// id-0: 21
 	// id-1: 2 5 6 8 9 11 12 13 15 16 18 19 22 23 25 26 28 29 30 31 32 33 34 35 37 38 39 40 42 43 44 46 47 48 49
@@ -351,7 +349,7 @@ func ExampleKosarajuSharirSCC_mediumDG() {
 }
 
 func ExampleEdgeWeightedDigraph() {
-	in := util.NewInReadWords("testdata/tinyEWD.txt")
+	in := testutil.NewInReadWords("testdata/tinyEWD.txt")
 	tinyEWD := digraph.NewEdgeWeightedDigraphIn(in)
 
 	fmt.Print(tinyEWD)

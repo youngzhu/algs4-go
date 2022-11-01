@@ -6,11 +6,11 @@ import (
 	"testing"
 
 	. "github.com/youngzhu/algs4-go/fund/xsum"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 func readInts(path string) []int {
-	in := util.NewInReadWords(path)
+	in := testutil.NewInReadWords(path)
 	return in.ReadAllInts()
 }
 

@@ -5,7 +5,7 @@ import (
 	"math"
 
 	"github.com/youngzhu/algs4-go/graphs/digraph"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // Arbitrage detection.
@@ -27,7 +27,7 @@ import (
 // The routine identifies arbitrage opportunities in a currency-exchange network
 // by solving the corresponding negative cycle detection problem.
 func Arbitrage(path string) {
-	in := util.NewInReadWords(path)
+	in := testutil.NewInReadWords(path)
 
 	n := in.ReadInt()
 	name := make([]string, n)

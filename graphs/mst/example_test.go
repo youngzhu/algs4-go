@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/graphs/mst"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 var (
@@ -12,10 +12,10 @@ var (
 )
 
 func init() {
-	in := util.NewInReadWords("testdata/tinyEWG.txt")
+	in := testutil.NewInReadWords("testdata/tinyEWG.txt")
 	tinyEWG = mst.NewEdgeWeightedGraphIn(in)
 
-	in = util.NewInReadWords("testdata/mediumEWG.txt.gz")
+	in = testutil.NewInReadWords("testdata/mediumEWG.txt.gz")
 	mediumEWG = mst.NewEdgeWeightedGraphIn(in)
 }
 

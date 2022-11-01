@@ -8,7 +8,7 @@ import (
 
 	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/sorting/pq"
-	"github.com/youngzhu/algs4-go/util"
+	"github.com/youngzhu/algs4-go/testutil"
 )
 
 // A priority queue client that reads transations,
@@ -40,7 +40,7 @@ func ExampleMaxPQ_topM() {
 }
 
 func topM(priorityQueue pq.PriorityQueue, order string) {
-	in := util.NewInReadLines("testdata/tinyBatch.txt")
+	in := testutil.NewInReadLines("testdata/tinyBatch.txt")
 
 	for !in.IsEmpty() {
 		line := in.ReadString()
