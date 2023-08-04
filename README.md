@@ -8,10 +8,10 @@ Try to keep the interface and variable name consistent with the original Java so
 **Note:** Most clients are in _example_xxx_test.go_.
 
 ## Index
-See [index.md](index.md)
+See [index.md](index.md).
 
 ## License
-This code is released under GPLv3.
+This code is released under GPLv3. See [LICENSE](LICENSE).
 
 ## Reference 
 - [https://github.com/kevin-wayne/algs4](https://github.com/kevin-wayne/algs4): The official Java source code repository
