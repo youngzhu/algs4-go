@@ -1,16 +1,16 @@
 package fund
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 // Bags.
 // A bag is a collection where removing items is not supported -- its purpose
-// is to provide clients with the ability to collect items and than to iterate
+// is to provide clients with the ability to collect items and then to iterate
 // through the collected items.
 
-// implemented using a singly linked list
+// Bag implemented using a singly linked list
 type Bag struct {
 	first *Node // beginning of bag
 	n     int   // number of elements in bag
@@ -20,7 +20,7 @@ func NewBag() *Bag {
 	return &Bag{}
 }
 
-// Adds the item to this bag
+// Add adds the item to this bag
 func (b *Bag) Add(item Item) {
 	b.first = newNode(item, b.first)
 	b.n++
@@ -36,12 +36,12 @@ func (b *Bag) Iterator() Iterator {
 	return Iterator(items)
 }
 
-// Returns true if this bag is empty
+// IsEmpty returns true if this bag is empty
 func (b *Bag) IsEmpty() bool {
 	return b.first == nil
 }
 
-// Returns the number of items in this bag
+// Size returns the number of items in this bag
 func (b *Bag) Size() int {
 	return b.n
 }
