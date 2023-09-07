@@ -1,8 +1,8 @@
 package fund
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 // Pushdown stack.
@@ -12,23 +12,23 @@ import (
 // but you can always revisit the previous page by clicking the back button
 // (popping it from the stack).
 
-// implemented using a singly linked list
+// Stack implemented using a singly linked list
 type Stack struct {
 	top *Node // top of stack
-	n int // size of the stack
+	n   int   // size of the stack
 }
 
 func NewStack() *Stack {
 	return &Stack{}
 }
 
-// Adds the item to this stack
+// Push adds the item to this stack
 func (s *Stack) Push(item Item) {
 	s.top = newNode(item, s.top)
 	s.n++
 }
 
-// Removes and returns the item most recently added to this stack
+// Pop removes and returns the item most recently added to this stack
 func (s *Stack) Pop() Item {
 	if s.IsEmpty() {
 		panic("stack is empty")
@@ -41,7 +41,7 @@ func (s *Stack) Pop() Item {
 	return item
 }
 
-// Returns (but does not remove) the item most recently added to this stack
+// Peek returns (but does not remove) the item most recently added to this stack
 func (s *Stack) Peek() Item {
 	if s.IsEmpty() {
 		panic("stack is empty")
@@ -50,12 +50,12 @@ func (s *Stack) Peek() Item {
 	return s.top.item
 }
 
-// Returns true if this stack is empty
+// IsEmpty returns true if this stack is empty
 func (s *Stack) IsEmpty() bool {
 	return s.top == nil
 }
 
-// Returns the number of items in this stack
+// Size returns the number of items in this stack
 func (s *Stack) Size() int {
 	return s.n
 }
@@ -71,7 +71,7 @@ func (s *Stack) Iterator() Iterator {
 		i++
 	}
 
-	return Iterator(items)
+	return items
 }
 
 func (s *Stack) String() string {
