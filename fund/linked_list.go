@@ -1,8 +1,8 @@
 package fund
 
 // Linked List.
-// A linked list is a recursive data structure that is either empty (nil) or 
-// a reference to a node having a item and a reference to a linked list.
+// A linked list is a recursive data structure that is either empty (nil) or
+// a reference to a node having an item and a reference to a linked list.
 
 type Item interface{}
 
