@@ -1,6 +1,6 @@
 package uf
 
-// QuickUnionUF is a Quick-union algorithm.
+// QuickUnion is a Quick-union algorithm.
 // It's based on the same data structure—the site-indexed id[] array—but
 // it uses a different interpretation of the values that leads to more
 // complicated structures. Specifically, the id[] entry for each site will
@@ -13,21 +13,21 @@ package uf
 // maintain this invariant, which is easily arranged: we follow links to
 // find the roots associated with each of the given sites, then rename one
 // of the components by linking one of these roots to the other.
-type QuickUnionUF struct {
+type QuickUnion struct {
 	parent []int // parent[i]: parent of i
 	count  int   // number of components
 }
 
-func NewQuickUnionUF(n int) *QuickUnionUF {
+func NewQuickUnion(n int) *QuickUnion {
 	parent := make([]int, n)
 	for i := 0; i < n; i++ {
 		parent[i] = i
 	}
 
-	return &QuickUnionUF{parent, n}
+	return &QuickUnion{parent, n}
 }
 
-func (qu *QuickUnionUF) Union(p, q int) {
+func (qu *QuickUnion) Union(p, q int) {
 	rootP := qu.Find(p)
 	rootQ := qu.Find(q)
 	if rootP == rootQ {
@@ -37,7 +37,7 @@ func (qu *QuickUnionUF) Union(p, q int) {
 	qu.count--
 }
 
-func (qu *QuickUnionUF) Find(p int) int {
+func (qu *QuickUnion) Find(p int) int {
 	qu.validate(p)
 	for p != qu.parent[p] {
 		p = qu.parent[p]
@@ -45,15 +45,15 @@ func (qu *QuickUnionUF) Find(p int) int {
 	return p
 }
 
-func (qu *QuickUnionUF) Count() int {
+func (qu *QuickUnion) Count() int {
 	return qu.count
 }
 
-func (qu *QuickUnionUF) Connected(p, q int) bool {
+func (qu *QuickUnion) Connected(p, q int) bool {
 	return qu.Find(p) == qu.Find(q)
 }
 
-func (qu *QuickUnionUF) validate(p int) {
+func (qu *QuickUnion) validate(p int) {
 	n := len(qu.parent)
 	if p < 0 || p >= n {
 		panic("invalid index")

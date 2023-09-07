@@ -45,7 +45,7 @@ func ExampleQuickFindUF() {
 	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
-	unionFind := uf.NewQuickFindUF(n)
+	unionFind := uf.NewQuickFind(n)
 
 	for !in.IsEmpty() {
 		p := in.ReadInt()
@@ -78,7 +78,7 @@ func ExampleQuickUnionUF() {
 	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
-	unionFind := uf.NewQuickUnionUF(n)
+	unionFind := uf.NewQuickUnion(n)
 
 	for !in.IsEmpty() {
 		p := in.ReadInt()
@@ -111,7 +111,7 @@ func ExampleWeightedQuickUnionUF() {
 	in := testutil.NewInReadWords("testdata/tinyUF.txt")
 
 	n := in.ReadInt()
-	unionFind := uf.NewWeightedQuickUnionUF(n)
+	unionFind := uf.NewWeightedQuickUnion(n)
 
 	for !in.IsEmpty() {
 		p := in.ReadInt()

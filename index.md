@@ -4,9 +4,9 @@
   - [Stack](fund/stack.go)
   - [Bag](fund/bag.go)
   - **Case Study: Union-Find**
-    - [QuickFindUF](fund/uf/quick_find_uf.go)
-    - [QuickUnionUF](fund/uf/quick_union_uf.go)
-    - [WeightedQuickUnionUF](fund/uf/weighted_quick_union_uf.go)
+    - [QuickFind](fund/uf/quick_find.go)
+    - [QuickUnion](fund/uf/quick_union.go)
+    - [WeightedQuickUnion](fund/uf/weighted_quick_union.go)
     - [UF (Weighted quick-union with path compression)](fund/uf/uf.go)
 ## 2 SORTING
   - [Selection](sorting/selection.go)

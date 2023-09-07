@@ -68,7 +68,7 @@ func BenchmarkQuickFindUF(b *testing.B) {
 		b.StartTimer()
 	}
 
-	unionFind := NewQuickFindUF(testdata.n)
+	unionFind := NewQuickFind(testdata.n)
 
 	for i := 0; i < b.N; i++ {
 		benchUF(unionFind, testdata.pairs)
@@ -83,7 +83,7 @@ func BenchmarkQuickUnionUF(b *testing.B) {
 		b.StartTimer()
 	}
 
-	unionFind := NewQuickUnionUF(testdata.n)
+	unionFind := NewQuickUnion(testdata.n)
 
 	for i := 0; i < b.N; i++ {
 		benchUF(unionFind, testdata.pairs)
@@ -98,7 +98,7 @@ func BenchmarkWeightedQuickUnionUF(b *testing.B) {
 		b.StartTimer()
 	}
 
-	unionFind := NewWeightedQuickUnionUF(testdata.n)
+	unionFind := NewWeightedQuickUnion(testdata.n)
 
 	for i := 0; i < b.N; i++ {
 		benchUF(unionFind, testdata.pairs)
@@ -132,7 +132,7 @@ func BenchmarkQuickFindUFParallel(b *testing.B) {
 	}
 
 	b.RunParallel(func(pb *testing.PB) {
-		unionFind := NewQuickFindUF(testdata.n)
+		unionFind := NewQuickFind(testdata.n)
 		for pb.Next() {
 			benchUF(unionFind, testdata.pairs)
 		}
@@ -148,7 +148,7 @@ func BenchmarkQuickUnionUFParallel(b *testing.B) {
 	}
 
 	b.RunParallel(func(pb *testing.PB) {
-		unionFind := NewQuickUnionUF(testdata.n)
+		unionFind := NewQuickUnion(testdata.n)
 		for pb.Next() {
 			benchUF(unionFind, testdata.pairs)
 		}
@@ -164,7 +164,7 @@ func BenchmarkWeightedQuickUnionUFParallel(b *testing.B) {
 	}
 
 	b.RunParallel(func(pb *testing.PB) {
-		unionFind := NewWeightedQuickUnionUF(testdata.n)
+		unionFind := NewWeightedQuickUnion(testdata.n)
 		for pb.Next() {
 			benchUF(unionFind, testdata.pairs)
 		}
