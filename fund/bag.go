@@ -33,7 +33,7 @@ func (b *Bag) Iterator() Iterator {
 		items[i] = cur.item
 	}
 
-	return Iterator(items)
+	return items
 }
 
 // IsEmpty returns true if this bag is empty
