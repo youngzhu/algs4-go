@@ -1,6 +1,6 @@
 package xsum
 
-// Returns the number of distinct pairs (i, j)
+// TwoSumCount returns the number of distinct pairs (i, j)
 // such that a[i]+a[j]=0
 func TwoSumCount(a []int) int {
 	n := len(a)
@@ -11,7 +11,6 @@ func TwoSumCount(a []int) int {
 			if a[i]+a[j] == 0 {
 				count++
 			}
-
 		}
 	}
 

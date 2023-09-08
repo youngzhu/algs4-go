@@ -6,7 +6,7 @@ func NewBinarySearch() BinarySearch {
 	return BinarySearch{}
 }
 
-// Return the index of the specified key in the specified array
+// Index return the index of the specified key in the specified array
 // otherwise return -1
 // (the array must be sorted in ascending order.)
 func (bs BinarySearch) Index(a []int, key int) int {
