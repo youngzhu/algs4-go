@@ -3,11 +3,12 @@ package sorting
 // See Go src sort.Interface
 // An implementation of Sortable can be sorted by the routines in this package.
 // The methods refer to elements of the underlying collection by integer index.
+
 type Sortable interface {
-	// The number of elements in the collection
+	// Len returns the number of elements in the collection
 	Len() int
 
-	// Reports whether the element with index i
+	// Less reports whether the element with index i
 	// must sort before the element with index j
 	Less(i, j int) bool
 
@@ -21,7 +22,7 @@ type Sorter interface {
 	SortStrings(x []string)
 }
 
-// Reports whether data is sorted
+// IsSorted reports whether data is sorted
 func IsSorted(data Sortable) bool {
 	n := data.Len()
 	for i := n - 1; i > 0; i-- {
@@ -38,21 +39,22 @@ func IsSortedInts(data []int) bool {
 // Convenience types for common cases
 
 type (
-	// Attaches the methods of Sortable to []int
+	// IntSortSlice attaches the methods of Sortable to []int
 	// sorting in increasing order
 	IntSortSlice []int
 
-	// Implements Sortable for a []folat64
+	// Float64SortSlice implements Sortable for a []float64
 	// sorting in increasing order
 	// with not-a-number (NaN) values ordered before other values
 	Float64SortSlice []float64
 
-	// Attaches the methods of Sortable to []string
+	// StringSortSlice attaches the methods of Sortable to []string
 	// sorting in increasing order
 	StringSortSlice []string
 )
 
 // IntSortSlice implements
+
 func (x IntSortSlice) Len() int {
 	return len(x)
 }
@@ -60,10 +62,14 @@ func (x IntSortSlice) Less(i, j int) bool {
 	return x[i] < x[j]
 }
 func (x IntSortSlice) Swap(i, j int) {
+	if i == j {
+		return
+	}
 	x[i], x[j] = x[j], x[i]
 }
 
 // Float64SortSlice implements
+
 func (x Float64SortSlice) Len() int {
 	return len(x)
 }
@@ -74,6 +80,7 @@ func (x Float64SortSlice) Len() int {
 //
 // x[i] < x[j] || (math.IsNaN(x[i]) && !math.IsNaN(x[j]))
 //
+
 func (x Float64SortSlice) Less(i, j int) bool {
 	return x[i] < x[j] || (isNaN(x[i]) && !isNaN(x[j]))
 }
@@ -87,6 +94,7 @@ func isNaN(f float64) bool {
 }
 
 // StringSortSlice implements
+
 func (x StringSortSlice) Len() int {
 	return len(x)
 }
