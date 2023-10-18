@@ -11,13 +11,13 @@ package sorting
 func SelectionSort(x Sortable) {
 	n := x.Len()
 	for i := 0; i < n; i++ {
-		min := i
+		ithMin := i // the i-th smallest item's index
 		for j := i + 1; j < n; j++ {
-			if x.Less(j, min) {
-				min = j
+			if x.Less(j, ithMin) {
+				ithMin = j
 			}
 		}
-		x.Swap(i, min)
+		x.Swap(i, ithMin)
 	}
 }
 
