@@ -9,7 +9,7 @@ import "reflect"
 // carefully considered modifications to the implementation.
 
 // 1. Use insertion sort for small subarrays.
-// We can improve most recursive algorithms by handling samll cases
+// We can improve most recursive algorithms by handling small cases
 // differently. Switching to insertion sort for small subarrays will
 // improve the running time of a typical mergesort implementation by
 // 10 to 15 percent.
@@ -29,7 +29,7 @@ import "reflect"
 // array; the other takes its input from the auxiliary array and
 // puts the sorted output in the given array. With this approach, in
 // a bit of mindbending recursive trickery, we can arrange the
-// recursive calls such that the computation switchs the roles of
+// recursive calls such that the computation switches the roles of
 // the input array and the auxiliary at each level.
 
 const CUTOFF int = 14 // cutoff to insertion sort
@@ -103,7 +103,7 @@ func sortFloat64sX(src, dst Float64SortSlice, lo, hi int) {
 	mergeFloat64sX(src, dst, lo, mid, hi)
 }
 func sortStringsX(src, dst StringSortSlice, lo, hi int) {
-	// improvment 1. Use insertion sort for small subarrays.
+	// improvement 1. Use insertion sort for small subarrays.
 	if hi <= lo+CUTOFF {
 		insertionSort(dst, lo, hi)
 		return
@@ -184,7 +184,7 @@ func mergeStringsX(src, dst StringSortSlice, lo, mid, hi int) {
 	}
 }
 
-// insertion srot
+// insertion sort
 func insertionSort(x Sortable, lo, hi int) {
 	for i := lo; i <= hi; i++ {
 		for j := i; j > 0 && x.Less(j, j-1); j-- {
@@ -200,6 +200,7 @@ func NewMergeX() Sorter {
 }
 
 // Implements Sorter
+
 func (s MergeX) SortInts(x []int) {
 	MergesortX(IntSortSlice(x))
 }

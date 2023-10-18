@@ -16,7 +16,7 @@ import "reflect"
 // array; the other takes its input from the auxiliary array and
 // puts the sorted output in the given array. With this approach, in
 // a bit of mindbending recursive trickery, we can arrange the
-// recursive calls such that the computation switchs the roles of
+// recursive calls such that the computation switches the roles of
 // the input array and the auxiliary at each level.
 
 func MergesortX3(x Sortable) {
@@ -146,6 +146,7 @@ func NewMergeX3() Sorter {
 }
 
 // Implements Sorter
+
 func (s MergeX3) SortInts(x []int) {
 	MergesortX3(IntSortSlice(x))
 }

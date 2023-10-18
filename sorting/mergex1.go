@@ -9,7 +9,7 @@ import "reflect"
 // carefully considered modifications to the implementation.
 
 // 1. Use insertion sort for small subarrays.
-// We can improve most recursive algorithms by handling samll cases
+// We can improve most recursive algorithms by handling small cases
 // differently. Switching to insertion sort for small subarrays will
 // improve the running time of a typical mergesort implementation by
 // 10 to 15 percent.
@@ -43,7 +43,7 @@ func MergesortX1(x Sortable) {
 
 // mergesort x[lo..hi] using auxiliary array aux[lo..hi]
 func sortIntsX1(x, aux IntSortSlice, lo, hi int) {
-	// improvment 1. Use insertion sort for small subarrays.
+	// improvement 1. Use insertion sort for small subarrays.
 	if hi <= lo+CUTOFF {
 		insertionSort(x, lo, hi)
 		return
@@ -155,6 +155,7 @@ func NewMergeX1() Sorter {
 }
 
 // Implements Sorter
+
 func (s MergeX1) SortInts(x []int) {
 	MergesortX1(IntSortSlice(x))
 }

@@ -158,6 +158,7 @@ func NewMerge() Sorter {
 }
 
 // Implements Sorter
+
 func (s Merge) SortInts(x []int) {
 	Mergesort(IntSortSlice(x))
 }

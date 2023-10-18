@@ -171,6 +171,7 @@ func NewMergeX2() Sorter {
 }
 
 // Implements Sorter
+
 func (s MergeX2) SortInts(x []int) {
 	MergesortX2(IntSortSlice(x))
 }
