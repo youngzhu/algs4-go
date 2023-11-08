@@ -24,7 +24,7 @@ func ExampleMinIndexPQ() {
 }
 
 // merge the sorted input streams
-func merge(ipq pq.IndexPQ, streams []testutil.In) {
+func merge(ipq pq.IndexPriorityQueue, streams []testutil.In) {
 	n := len(streams)
 	for i := 0; i < n; i++ {
 		if streams[i].HasNext() {
