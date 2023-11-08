@@ -9,7 +9,7 @@ import "math/rand"
 // to sort N items, and has an extremely short inner loop.
 
 // The basic algorithm
-// Quicksort is a divide-and-conquer method for soring. It works by partitioning
+// Quicksort is a divide-and-conquer method for sorting. It works by partitioning
 // an array into two parts, then soring the parts independently.
 
 // The crux of the method is the partitioning process, which rearranges the
@@ -101,6 +101,7 @@ func NewQuick() Sorter {
 }
 
 // Implements Sorter
+
 func (s Quick) SortInts(x []int) {
 	Quicksort(IntSortSlice(x))
 }

@@ -6,7 +6,7 @@ package sorting
 // linearithmic to linear.
 
 // One straightforward idea is to partition the array into three parts, one each
-// for items with keys smaller than, equal to, and larger than the paritioning
+// for items with keys smaller than, equal to, and larger than the partitioning
 // item's key. Accomplishing this partitioning was a classical programming exercise
 // popularized by E.W.Dijkstra as the Dutch National Flag problem, because it is
 // like sorting an array with three possible key values, which might correspond to
@@ -40,7 +40,7 @@ func quicksort3way(x Sortable, lo, hi int) {
 // Starting with i equal to lo+1 we process a[i] using the 3-way compare to handle
 // the three possible cases:
 // a[i] less than v: exchange a[lt] with a[i] and increment both lt and i
-// a[i] greater then v: exchange a[i] with a[gt] and decrement gt
+// a[i] greater than v: exchange a[i] with a[gt] and decrement gt
 // a[i] equal to v: increment i
 func partition3way(x Sortable, lo, hi int) (int, int) {
 	i := lo + 1
@@ -70,6 +70,7 @@ func NewQuick3way() Sorter {
 }
 
 // Implements Sorter
+
 func (s Quick3way) SortInts(x []int) {
 	Quicksort3way(IntSortSlice(x))
 }

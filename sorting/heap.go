@@ -19,8 +19,8 @@ package sorting
 // that the entries to the left of the scanning pointer make up a heap-ordered
 // complete tree, like successive priority queue insertions. A clever method that
 // is much more efficient is to proceed from right to left, using sink() to make
-// subheaps as we go. Every position in the array is the root of a small subheap;
-// sink() works on such subheaps, as well. If the two children of a node are
+// sub-heaps as we go. Every position in the array is the root of a small sub-heap;
+// sink() works on such sub-heaps, as well. If the two children of a node are
 // heaps, then calling sink() on that node makes the subtree rooted there a heap.
 //
 // Sort-down. Most of the work during heapsort is done during the second phase,

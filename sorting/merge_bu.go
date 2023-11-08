@@ -151,6 +151,7 @@ func NewMergeBU() Sorter {
 }
 
 // Implements Sorter
+
 func (s MergeBU) SortInts(x []int) {
 	MergesortBU(IntSortSlice(x))
 }
