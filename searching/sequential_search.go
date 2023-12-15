@@ -6,28 +6,28 @@ package searching
 // using equals() to compare the search key with the key in each node in th list.
 // If we find the match, we return the associated value; if not, we return nil.
 // To implement put(), we also scan through the list, using equals() to compare
-// the client key with the key in each node in the list. If we find the match, 
+// the client key with the key in each node in the list. If we find the match,
 // we update the value associated with that key to be the value given; if not,
-// we create a new node with the given key and value, and insert it at the 
+// we create a new node with the given key and value, and insert it at the
 // beginning of the list. This method is known as sequential search.
 
 type SequentialSearchST struct {
-	n int // number of key-value pairs
+	n     int   // number of key-value pairs
 	first *node // the linked list of key-value pairs
 }
 
 // a helper linked list data type
 type node struct {
-	key STKey
+	key   STKey
 	value STValue
-	next *node
+	next  *node
 }
 
 func NewSequentialSearchST() *SequentialSearchST {
 	return &SequentialSearchST{}
 }
 
-// Returns the value associated with the given key
+// Get returns the value associated with the given key
 // in this symbol table
 func (st *SequentialSearchST) Get(key STKey) STValue {
 	if key == nil {
@@ -41,7 +41,7 @@ func (st *SequentialSearchST) Get(key STKey) STValue {
 	return nil
 }
 
-// Inserts the specified key-value pair into the symbol table,
+// Put inserts the specified key-value pair into the symbol table,
 // overwriting the old value with the new value if the symbol
 // table already contains the specified key.
 // Deletes the specified key (and its associated value) from the
@@ -66,7 +66,7 @@ func (st *SequentialSearchST) Put(key STKey, value STValue) {
 	st.n++
 }
 
-// Remove the specified key and its associated value from the symbol
+// Delete remove the specified key and its associated value from the symbol
 // table (if the key is in the symbol table)
 func (st *SequentialSearchST) Delete(key STKey) {
 	if key == nil {
@@ -89,7 +89,7 @@ func (st *SequentialSearchST) deleteNode(x *node, key STKey) *node {
 	return x
 }
 
-// Return all keys in the symbol table
+// Keys return all keys in the symbol table
 func (st *SequentialSearchST) Keys() []STKey {
 	var keys []STKey
 	for x := st.first; x != nil; x = x.next {
