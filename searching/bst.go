@@ -20,18 +20,18 @@ import "github.com/youngzhu/algs4-go/fund"
 // for items with smaller keys, and the right link points to a BST for items with
 // larger keys. The variable N (size) gives the node count in the subtree rooted
 // at the node. This field facilitates the implementation of various ordered
-// symobl-table operations, as you will see.
+// symbol-table operations, as you will see.
 
 // Search.
 // A recursive algorithm to search for a key in a BST follows immediately from the
 // recursive structure: If the tree is empty, we have a search miss; if the search
-// key is equal to the key at the root, we have a serarch hit. Otherwise, we search
+// key is equal to the key at the root, we have a search hit. Otherwise, we search
 // (recursively) in the appropriate subtree. The recursive get() method implements
 // this algorithm directly. It takes a node (root of a subtree) as first argument
 // and a key as second argument, starting with the root of the tree and the search key.
 
 // Insert.
-// Insert is not much more difficult to implement htan search. Indeed, a search for
+// Insert is not much more difficult to implement than search. Indeed, a search for
 // a key not in the tree ends a null link, and all that we need to do is replace that
 // link with a new node containing the key. The recursive put() method accomplishes
 // this task using logic similar to that we used for recursive search: If the tree is
