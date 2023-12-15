@@ -41,32 +41,30 @@ import "github.com/youngzhu/algs4-go/fund"
 // the key into the right subtree.
 
 type BST struct {
-	root *Node // root of BST
+	root *treeNode // root of BST
 }
 
-// must be `Node`, not `node`
-// otherwise got error: cannot use b.root (type *node) as type *node in argument to get
-type Node struct {
-	key         OSTKey  // sorted by key
-	value       STValue // associated data
-	left, right *Node   // left and right subtrees
-	size        int     // number of nodes in subtree
+type treeNode struct {
+	key         OSTKey    // sorted by key
+	value       STValue   // associated data
+	left, right *treeNode // left and right subtrees
+	size        int       // number of nodes in subtree
 }
 
 func NewBST() *BST {
 	return &BST{}
 }
 
-func newNode(key OSTKey, value STValue) *Node {
-	return &Node{key: key, value: value, size: 1}
+func newTreeNode(key OSTKey, value STValue) *treeNode {
+	return &treeNode{key: key, value: value, size: 1}
 }
 
-// Returns the value associated with the given key
+// Get returns the value associated with the given key
 func (b *BST) Get(key OSTKey) STValue {
 	return get(b.root, key)
 }
 
-func get(x *Node, key OSTKey) STValue {
+func get(x *treeNode, key OSTKey) STValue {
 	if key == nil {
 		panic("calls get() with a nil key")
 	}
@@ -83,7 +81,7 @@ func get(x *Node, key OSTKey) STValue {
 	}
 }
 
-// Inserts the specified key-value pair into the symbol table, overwriting the
+// Put Inserts the specified key-value pair into the symbol table, overwriting the
 // old value with the new value if the symbol table already contains the specified key.
 //
 // Deletes the specified key (and its associated value) from the symbol table if
@@ -99,9 +97,9 @@ func (b *BST) Put(key OSTKey, value STValue) {
 	b.root = put(b.root, key, value)
 }
 
-func put(x *Node, key OSTKey, value STValue) *Node {
+func put(x *treeNode, key OSTKey, value STValue) *treeNode {
 	if x == nil {
-		return newNode(key, value)
+		return newTreeNode(key, value)
 	}
 	cmp := key.CompareTo(x.key)
 	if cmp < 0 {
@@ -118,7 +116,7 @@ func put(x *Node, key OSTKey, value STValue) *Node {
 }
 
 // return number of key-value pairs in BST rooted at x
-func size(x *Node) int {
+func size(x *treeNode) int {
 	if x == nil {
 		return 0
 	} else {
@@ -126,7 +124,7 @@ func size(x *Node) int {
 	}
 }
 
-// Reomoves the specified key and its associated value from the symbol table
+// Delete removes the specified key and its associated value from the symbol table
 // (if the key is in this symbol table)
 func (b *BST) Delete(key OSTKey) {
 	if key == nil {
@@ -135,7 +133,7 @@ func (b *BST) Delete(key OSTKey) {
 	b.root = delete(b.root, key)
 }
 
-func delete(x *Node, key OSTKey) *Node {
+func delete(x *treeNode, key OSTKey) *treeNode {
 	if x == nil {
 		return nil
 	}
@@ -163,7 +161,7 @@ func delete(x *Node, key OSTKey) *Node {
 	return x
 }
 
-func deleteMin(x *Node) *Node {
+func deleteMin(x *treeNode) *treeNode {
 	if x.left == nil {
 		return x.right
 	}
@@ -172,7 +170,7 @@ func deleteMin(x *Node) *Node {
 	return x
 }
 
-func min(x *Node) *Node {
+func min(x *treeNode) *treeNode {
 	if x.left == nil {
 		return x
 	} else {
@@ -180,7 +178,7 @@ func min(x *Node) *Node {
 	}
 }
 
-// Returns all keys in the symbol table
+// Keys returns all keys in the symbol table
 func (b *BST) Keys() []OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
@@ -201,17 +199,15 @@ func (b *BST) rangeKeys(lo, hi OSTKey) []OSTKey {
 	queue := fund.NewQueue()
 	keys(b.root, queue, lo, hi)
 
-	keySliece := make([]OSTKey, queue.Size())
-	i := 0
-	for _, v := range queue.Iterator() {
-		keySliece[i] = v.(OSTKey)
-		i++
+	keySlice := make([]OSTKey, queue.Size())
+	for i, v := range queue.Iterator() {
+		keySlice[i] = v.(OSTKey)
 	}
 
-	return keySliece
+	return keySlice
 }
 
-func keys(x *Node, queue *fund.Queue, lo, hi OSTKey) {
+func keys(x *treeNode, queue *fund.Queue, lo, hi OSTKey) {
 	if x == nil {
 		return
 	}
@@ -229,7 +225,7 @@ func keys(x *Node, queue *fund.Queue, lo, hi OSTKey) {
 	}
 }
 
-// Returns the smallest key in the BST
+// Min returns the smallest key in the BST
 func (b *BST) Min() OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
@@ -238,7 +234,7 @@ func (b *BST) Min() OSTKey {
 	return min(b.root).key
 }
 
-// Returns the largest key in the BST
+// Max returns the largest key in the BST
 func (b *BST) Max() OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
@@ -246,7 +242,7 @@ func (b *BST) Max() OSTKey {
 	return max(b.root).key
 }
 
-func max(x *Node) *Node {
+func max(x *treeNode) *treeNode {
 	if x.right == nil {
 		return x
 	} else {
@@ -254,17 +250,17 @@ func max(x *Node) *Node {
 	}
 }
 
-// Returns true if this symbol table is empty
+// IsEmpty returns true if this symbol table is empty
 func (b *BST) IsEmpty() bool {
 	return b.Size() == 0
 }
 
-// Returns the nubmer of key-value pairs in this symbol table
+// Size returns the number of key-value pairs in this symbol table
 func (b *BST) Size() int {
 	return size(b.root)
 }
 
-// Does this BST contains the given key?
+// Contains reports does this BST contains the given key?
 func (b *BST) Contains(key OSTKey) bool {
 	if key == nil {
 		panic("argument to Contains() is nil")
