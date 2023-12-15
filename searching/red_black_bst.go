@@ -4,7 +4,7 @@ import "github.com/youngzhu/algs4-go/fund"
 
 // 2-3 search tree, is a tree that either is empty or:
 // 1) A 2-node, with one key (and associated value) and two links, a left link
-// to a 2-3 search tree with smaller keys, and a right link to a 2-3 search 
+// to a 2-3 search tree with smaller keys, and a right link to a 2-3 search
 // tree with larger keys
 // 2) A 3-node, with two keys (and associated values) and three links, a left
 // link to a 2-3 search tree with smaller keys, a middle link to a 2-3 search
@@ -16,7 +16,7 @@ import "github.com/youngzhu/algs4-go/fund"
 // The basic idea behind red-black BST is to encode 2-3 trees by starting with
 // standard BST (which are made up of 2-nodes) and adding extra information to
 // encode 3-nodes. We think of the links as being of two different types: red
-// links, which bind together two 2-nodes to represent 3-nodes; black links, 
+// links, which bind together two 2-nodes to represent 3-nodes; black links,
 // which bind together the 2-3 tree. Specifically, we represent 3-nodes as two
 // 2-nodes connected by a single red link that leans left. We refer to BST that
 // represent 2-3 trees in this way as red-black BST.
@@ -24,10 +24,10 @@ import "github.com/youngzhu/algs4-go/fund"
 // get() code for standard BST search without modification.
 
 // A 1-1 correspondence.
-// Given any 2-3 tree, we can immdiately derive a corresponding red-black BST, 
+// Given any 2-3 tree, we can immdiately derive a corresponding red-black BST,
 // just by converting each node as specified. Conversely, if we draw the red
 // links horizontally in a red-black BST, all of the null links are the same
-// distance from the the root, and if we then collapse together the nodes 
+// distance from the the root, and if we then collapse together the nodes
 // connected by red links, the result is a 2-3 tree.
 
 // Color representation.
@@ -43,7 +43,7 @@ import "github.com/youngzhu/algs4-go/fund"
 // switches orientation of red links. First, suppose that we have a right-leaning
 // red link that needs to be rotated to lean to the left. This operation is called
 // a left rotation. Implementing a right rotation that converts a left-leaning red
-// link to a right-leaning one amounts to the same code, with left and right 
+// link to a right-leaning one amounts to the same code, with left and right
 // interchanged.
 
 // Flipping colors.
@@ -52,7 +52,7 @@ import "github.com/youngzhu/algs4-go/fund"
 // black and the color of the black parent to red.
 
 const (
-	RED = true
+	RED   = true
 	BLACK = false
 )
 
@@ -61,25 +61,25 @@ type RedBlackBST struct {
 	root *RBNode // root of the BST
 }
 
-// 
+//
 type RBNode struct {
-	key OrderedSTKey // key
-	value STValue // associated data
+	key         OSTKey  // key
+	value       STValue // associated data
 	left, right *RBNode // links to left and right subtrees
-	color bool // color of parent link
-	size int // subtree count
+	color       bool    // color of parent link
+	size        int     // subtree count
 }
 
 func NewRedBlackBST() *RedBlackBST {
 	return &RedBlackBST{}
 }
 
-func newRBNode(key OrderedSTKey, value STValue, color bool, size int) *RBNode {
+func newRBNode(key OSTKey, value STValue, color bool, size int) *RBNode {
 	return &RBNode{key: key, value: value, color: color, size: size}
 }
 
 // Returns the value associated with the given key
-func (rb *RedBlackBST) Get(key OrderedSTKey) STValue {
+func (rb *RedBlackBST) Get(key OSTKey) STValue {
 	if key == nil {
 		panic("argument to Get() is nil")
 	}
@@ -88,7 +88,7 @@ func (rb *RedBlackBST) Get(key OrderedSTKey) STValue {
 
 // value associated with the given key in subtree rooted at x
 // return nil if no such key
-func getRB(x *RBNode, key OrderedSTKey) STValue {
+func getRB(x *RBNode, key OSTKey) STValue {
 	for x != nil {
 		cmp := key.CompareTo(x.key)
 
@@ -100,14 +100,14 @@ func getRB(x *RBNode, key OrderedSTKey) STValue {
 			return x.value
 		}
 	}
-	return nil 
+	return nil
 }
 
 // Inserts the specified key-value pair into the ST, overwriting the old value
 // with the new one if the ST already contains the specified key.
-// Deletes the specified key (and its associated value) from this ST if the 
+// Deletes the specified key (and its associated value) from this ST if the
 // specified value is nil
-func (rb *RedBlackBST) Put(key OrderedSTKey, value STValue) {
+func (rb *RedBlackBST) Put(key OSTKey, value STValue) {
 	if key == nil {
 		panic("first arg to Put() is nil")
 	}
@@ -120,7 +120,7 @@ func (rb *RedBlackBST) Put(key OrderedSTKey, value STValue) {
 }
 
 // insert the key-value pair into the subtree rooted at h
-func putRB(h *RBNode, key OrderedSTKey, value STValue) *RBNode {
+func putRB(h *RBNode, key OSTKey, value STValue) *RBNode {
 	if h == nil {
 		return newRBNode(key, value, RED, 1)
 	}
@@ -152,7 +152,7 @@ func putRB(h *RBNode, key OrderedSTKey, value STValue) *RBNode {
 
 // Removes the specified key and its associated value from this ST
 // (if the key is in the ST)
-func (rb *RedBlackBST) Delete(key OrderedSTKey) {
+func (rb *RedBlackBST) Delete(key OSTKey) {
 	if key == nil {
 		panic("arg to Delete() is nil")
 	}
@@ -174,7 +174,7 @@ func (rb *RedBlackBST) Delete(key OrderedSTKey) {
 }
 
 // delete the key-value with the given key rooted at h
-func deleteRB(h *RBNode, key OrderedSTKey) *RBNode {
+func deleteRB(h *RBNode, key OSTKey) *RBNode {
 	if key.CompareTo(h.key) < 0 {
 		if !isRed(h.left) && !isRed(h.left.left) {
 			h = moveRedLeft(h)
@@ -204,7 +204,7 @@ func deleteRB(h *RBNode, key OrderedSTKey) *RBNode {
 }
 
 // Returns the smallest key in the ST
-func (rb *RedBlackBST) Min() OrderedSTKey {
+func (rb *RedBlackBST) Min() OSTKey {
 	if rb.IsEmpty() {
 		panic("calls Min() with empty ST")
 	}
@@ -222,7 +222,7 @@ func minRB(x *RBNode) *RBNode {
 }
 
 // Retruns the largest key in the ST
-func (rb *RedBlackBST) Max() OrderedSTKey {
+func (rb *RedBlackBST) Max() OSTKey {
 	if rb.IsEmpty() {
 		panic("calls Max() with empty ST")
 	}
@@ -274,7 +274,7 @@ func deleteMinRB(x *RBNode) *RBNode {
 }
 
 // Return all keys in the ST
-func (rb *RedBlackBST) Keys() []OrderedSTKey {
+func (rb *RedBlackBST) Keys() []OSTKey {
 	if rb.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -282,7 +282,7 @@ func (rb *RedBlackBST) Keys() []OrderedSTKey {
 }
 
 // returns all keys in the symbol table in the given range
-func (rb *RedBlackBST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
+func (rb *RedBlackBST) rangeKeys(lo, hi OSTKey) []OSTKey {
 	if lo == nil {
 		panic("first argument to rangeKeys() is nil")
 	}
@@ -293,19 +293,19 @@ func (rb *RedBlackBST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
 	queue := fund.NewQueue()
 	keysRB(rb.root, queue, lo, hi)
 
-	keySliece := make([]OrderedSTKey, queue.Size())
+	keySliece := make([]OSTKey, queue.Size())
 
 	for i := 0; !queue.IsEmpty(); i++ {
-		keySliece[i] = queue.Dequeue().(OrderedSTKey)
+		keySliece[i] = queue.Dequeue().(OSTKey)
 	}
 
 	return keySliece
 }
 
 // add the keys between lo and hi in the subtree rooted at x to the queue
-func keysRB(x *RBNode, queue *fund.Queue, lo, hi OrderedSTKey) {
+func keysRB(x *RBNode, queue *fund.Queue, lo, hi OSTKey) {
 	if x == nil {
-		return 
+		return
 	}
 
 	cmpLo := lo.CompareTo(x.key)
@@ -404,7 +404,7 @@ func balance(h *RBNode) *RBNode {
 
 // number of node in subtree rooted at x
 func sizeRB(x *RBNode) int {
-	if x == nil  {
+	if x == nil {
 		return 0
 	}
 	return x.size
@@ -421,7 +421,7 @@ func (rb *RedBlackBST) IsEmpty() bool {
 }
 
 // Does this ST contain the given key?
-func (rb *RedBlackBST) Contains(key OrderedSTKey) bool {
+func (rb *RedBlackBST) Contains(key OSTKey) bool {
 	if key == nil {
 		panic("argument to Contains() is nil")
 	}

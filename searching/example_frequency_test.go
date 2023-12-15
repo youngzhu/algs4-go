@@ -76,7 +76,7 @@ func FrequencyCounterOrdered(st searching.OrderedSymbolTable, path string, minLe
 	}
 
 	// find a word with the highest frequency count
-	var max searching.OrderedSTKey = searching.StringKey("")
+	var max searching.OSTKey = searching.StringKey("")
 	st.Put(max, 0)
 	for _, w := range st.Keys() {
 		wInt := st.Get(w).(int)

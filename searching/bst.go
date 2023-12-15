@@ -18,12 +18,12 @@ import "github.com/youngzhu/algs4-go/fund"
 // define a type to define nodes in BST. Each node contains a key, a value,
 // a left link, a right link, and a node count. The left link points to a BST
 // for items with smaller keys, and the right link points to a BST for items with
-// larger keys. The variable N (size) gives the node count in the subtree rooted 
-// at the node. This field facilitates the implementation of various ordered 
+// larger keys. The variable N (size) gives the node count in the subtree rooted
+// at the node. This field facilitates the implementation of various ordered
 // symobl-table operations, as you will see.
 
 // Search.
-// A recursive algorithm to search for a key in a BST follows immediately from the 
+// A recursive algorithm to search for a key in a BST follows immediately from the
 // recursive structure: If the tree is empty, we have a search miss; if the search
 // key is equal to the key at the root, we have a serarch hit. Otherwise, we search
 // (recursively) in the appropriate subtree. The recursive get() method implements
@@ -47,26 +47,26 @@ type BST struct {
 // must be `Node`, not `node`
 // otherwise got error: cannot use b.root (type *node) as type *node in argument to get
 type Node struct {
-	key OrderedSTKey // sorted by key
-	value STValue // associated data
-	left, right *Node // left and right subtrees
-	size int // number of nodes in subtree
+	key         OSTKey  // sorted by key
+	value       STValue // associated data
+	left, right *Node   // left and right subtrees
+	size        int     // number of nodes in subtree
 }
 
 func NewBST() *BST {
 	return &BST{}
 }
 
-func newNode(key OrderedSTKey, value STValue) *Node {
+func newNode(key OSTKey, value STValue) *Node {
 	return &Node{key: key, value: value, size: 1}
 }
 
 // Returns the value associated with the given key
-func (b *BST) Get(key OrderedSTKey) STValue {
+func (b *BST) Get(key OSTKey) STValue {
 	return get(b.root, key)
 }
 
-func get(x *Node, key OrderedSTKey) STValue {
+func get(x *Node, key OSTKey) STValue {
 	if key == nil {
 		panic("calls get() with a nil key")
 	}
@@ -85,10 +85,10 @@ func get(x *Node, key OrderedSTKey) STValue {
 
 // Inserts the specified key-value pair into the symbol table, overwriting the
 // old value with the new value if the symbol table already contains the specified key.
-// 
+//
 // Deletes the specified key (and its associated value) from the symbol table if
 // the specified value is nil
-func (b *BST) Put(key OrderedSTKey, value STValue) {
+func (b *BST) Put(key OSTKey, value STValue) {
 	if key == nil {
 		panic("calls put() with a nil key")
 	}
@@ -99,7 +99,7 @@ func (b *BST) Put(key OrderedSTKey, value STValue) {
 	b.root = put(b.root, key, value)
 }
 
-func put(x *Node, key OrderedSTKey, value STValue) *Node {
+func put(x *Node, key OSTKey, value STValue) *Node {
 	if x == nil {
 		return newNode(key, value)
 	}
@@ -128,14 +128,14 @@ func size(x *Node) int {
 
 // Reomoves the specified key and its associated value from the symbol table
 // (if the key is in this symbol table)
-func (b *BST) Delete(key OrderedSTKey) {
+func (b *BST) Delete(key OSTKey) {
 	if key == nil {
 		panic("calls Delete() with a nil key")
 	}
 	b.root = delete(b.root, key)
 }
 
-func delete(x *Node, key OrderedSTKey) *Node {
+func delete(x *Node, key OSTKey) *Node {
 	if x == nil {
 		return nil
 	}
@@ -181,7 +181,7 @@ func min(x *Node) *Node {
 }
 
 // Returns all keys in the symbol table
-func (b *BST) Keys() []OrderedSTKey {
+func (b *BST) Keys() []OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -190,7 +190,7 @@ func (b *BST) Keys() []OrderedSTKey {
 }
 
 // Returns all keys in the symbol table in the given range
-func (b *BST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
+func (b *BST) rangeKeys(lo, hi OSTKey) []OSTKey {
 	if lo == nil {
 		panic("first argument to rangeKeys() is nil")
 	}
@@ -201,19 +201,19 @@ func (b *BST) rangeKeys(lo, hi OrderedSTKey) []OrderedSTKey {
 	queue := fund.NewQueue()
 	keys(b.root, queue, lo, hi)
 
-	keySliece := make([]OrderedSTKey, queue.Size())
+	keySliece := make([]OSTKey, queue.Size())
 	i := 0
 	for _, v := range queue.Iterator() {
-		keySliece[i] = v.(OrderedSTKey)
+		keySliece[i] = v.(OSTKey)
 		i++
 	}
 
 	return keySliece
 }
 
-func keys(x *Node, queue *fund.Queue, lo, hi OrderedSTKey) {
+func keys(x *Node, queue *fund.Queue, lo, hi OSTKey) {
 	if x == nil {
-		return 
+		return
 	}
 
 	cmpLo := lo.CompareTo(x.key)
@@ -230,7 +230,7 @@ func keys(x *Node, queue *fund.Queue, lo, hi OrderedSTKey) {
 }
 
 // Returns the smallest key in the BST
-func (b *BST) Min() OrderedSTKey {
+func (b *BST) Min() OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -239,7 +239,7 @@ func (b *BST) Min() OrderedSTKey {
 }
 
 // Returns the largest key in the BST
-func (b *BST) Max() OrderedSTKey {
+func (b *BST) Max() OSTKey {
 	if b.IsEmpty() {
 		panic("The BST is empty")
 	}
@@ -249,9 +249,9 @@ func (b *BST) Max() OrderedSTKey {
 func max(x *Node) *Node {
 	if x.right == nil {
 		return x
- 	} else {
-		 return max(x.right)
-	 }
+	} else {
+		return max(x.right)
+	}
 }
 
 // Returns true if this symbol table is empty
@@ -265,7 +265,7 @@ func (b *BST) Size() int {
 }
 
 // Does this BST contains the given key?
-func (b *BST) Contains(key OrderedSTKey) bool {
+func (b *BST) Contains(key OSTKey) bool {
 	if key == nil {
 		panic("argument to Contains() is nil")
 	}

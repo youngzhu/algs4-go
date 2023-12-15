@@ -1,44 +1,40 @@
 package searching
 
+import "strings"
+
 // Ordered symbol tables.
 // In typical applications, keys are Comparable objects, so the option exists of
 // using a.CompareTo(b) to compare two keys a and b. Several symbol-table
-// implementations take advantage of order among the keys thai is implied by
+// implementations take advantage of order among the keys that is implied by
 // Comparable to provide efficient implementations of Put() and Get() operations.
 // More important, in such implementations, we can think of the symbol table as
-// keeping the keys in order and consider a significantly expanded API that 
-// difines numerous and useful operations involving relative key order.
+// keeping the keys in order and consider a significantly expanded API that
+// defines numerous and useful operations involving relative key order.
 
 type OrderedSymbolTable interface {
-	Put(key OrderedSTKey, value STValue)
-	Get(key OrderedSTKey) STValue
-	Delete(key OrderedSTKey)
-	Contains(key OrderedSTKey) bool
-	Keys() []OrderedSTKey
+	Put(key OSTKey, value STValue)
+	Get(key OSTKey) STValue
+	Delete(key OSTKey)
+	Contains(key OSTKey) bool
+	Keys() []OSTKey
 }
 
-// The key in ST
-type OrderedSTKey interface {
-	CompareTo(another STKey) int
-	Equals(another STKey) bool
+// OSTKey The key in ordered symbol tables
+type OSTKey interface {
+	CompareTo(another OSTKey) int
+	Equals(another OSTKey) bool
 }
 
-// key type
-type (
-	StringKey string
-)
+type StringKey string
 
-func (k StringKey) CompareTo(x STKey) int {
-	kk := x.(StringKey)
-	if k < kk {
-		return -1
-	} else if k > kk {
-		return 1
-	} else {
-		return 0
-	}
+func (k StringKey) CompareTo(x OSTKey) int {
+	s1 := string(k)
+	s2 := string(x.(StringKey))
+	return strings.Compare(s1, s2)
 }
 
-func (k StringKey) Equals(x STKey) bool {
-	return k.CompareTo(x) == 0
+func (k StringKey) Equals(x OSTKey) bool {
+	s1 := string(k)
+	s2 := string(x.(StringKey))
+	return s1 == s2
 }
