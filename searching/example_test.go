@@ -14,8 +14,8 @@ func ExampleSequentialSearchST() {
 		st.Put(searching.StringKey(v), i)
 	}
 
-	for _, k := range st.Keys() {
-		fmt.Println(k, st.Get(k))
+	for _, key := range st.Keys() {
+		fmt.Println(key, st.Get(key))
 	}
 
 	// Output:
@@ -37,8 +37,8 @@ func ExampleBinarySearchST() {
 		st.Put(searching.StringKey(v), i)
 	}
 
-	for _, k := range st.Keys() {
-		fmt.Println(k, st.Get(k))
+	for _, key := range st.Keys() {
+		fmt.Println(key, st.Get(key))
 	}
 
 	// Output:
@@ -60,8 +60,8 @@ func ExampleBST() {
 		st.Put(searching.StringKey(v), i)
 	}
 
-	for _, k := range st.Keys() {
-		fmt.Println(k, st.Get(k))
+	for _, key := range st.Keys() {
+		fmt.Println(key, st.Get(key))
 	}
 
 	// Output:
@@ -83,8 +83,8 @@ func ExampleRedBlackBST() {
 		st.Put(searching.StringKey(v), i)
 	}
 
-	for _, k := range st.Keys() {
-		fmt.Println(k, st.Get(k))
+	for _, key := range st.Keys() {
+		fmt.Println(key, st.Get(key))
 	}
 
 	// Output:
