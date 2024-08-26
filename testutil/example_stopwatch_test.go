@@ -11,8 +11,9 @@ func ExampleStopwatch() {
 	timer := testutil.NewStopwatch()
 	time.Sleep(5 * time.Second)
 	elapsedTime := timer.ElapsedTime()
-	fmt.Printf("elapsed %.2f seconds", elapsedTime)
+	fmt.Printf("elapsed %.0f+ seconds", elapsedTime)
 
 	// Output:
+	// elapsed 5+ seconds
 
 }
