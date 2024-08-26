@@ -1,5 +1,5 @@
 
-## 1 FUNDAMENTALS
+## CH01 FUNDAMENTALS
   - [Queue](fund/queue.go)
   - [Stack](fund/stack.go)
   - [Bag](fund/bag.go)
@@ -8,7 +8,7 @@
     - [QuickUnion](fund/uf/quick_union.go)
     - [WeightedQuickUnion](fund/uf/weighted_quick_union.go)
     - [UF (Weighted quick-union with path compression)](fund/uf/uf.go)
-## 2 SORTING
+## CH02 SORTING
   - [Selection](sorting/selection.go)
   - [Insertion](sorting/insertion.go)
   - [Shell](sorting/shell.go)
@@ -27,7 +27,7 @@
     - **Client**
       - [TopM](sorting/pq/example_topm_test.go)
       - [Multiway](sorting/pq/example_index_pq_test.go)
-## 3 SEARCHING
+## CH03 SEARCHING
   - [SequentialSearchST](searching/sequential_search.go)
   - [BinarySearchST](searching/binary_search.go)
   - [Binary Search Tree (BST)](searching/bst.go)
@@ -36,7 +36,7 @@
   - [LinearProbingHashST](searching/linear_probing_hash_st.go)
   - **Client**
     - [FrequencyCounter](searching/example_frequency_test.go)
-## 4 GRAPHS
+## CH04 GRAPHS
   - **Undirected Graphs**
     - [Graph](graphs/graph/graph.go)
     - [DepthFirstSearch](graphs/graph/depth_first_search.go)
@@ -70,7 +70,7 @@
     - **Client**
       - [AcyclicLP Client: Critical Path Method](graphs/sp/cpm.go)
       - [Arbitrage detection](graphs/sp/arbitrage.go)
-## 5 STRINGS
+## CH05 STRINGS
   - **String Sorts**
     - [LSD](strings/sort/lsd.go)
     - [MSD](strings/sort/msd.go)
@@ -85,7 +85,7 @@
     - [Boyer-Moore algorithm](strings/search/boyer_moore.go)
   - **Regular Expressions**
     - [NFA](strings/regexp/nfa.go)
-## 6 CONTEXT
+## CH06 CONTEXT
   - **Suffix Arrays**
     - [SuffixArray](context/suffix/suffix_array.go)
     - [SuffixArrayX](context/suffix/suffix_array_x.go)
