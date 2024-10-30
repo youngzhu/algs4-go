@@ -12,7 +12,7 @@ package searching
 // beginning of the list. This method is known as sequential search.
 
 type SequentialSearchST struct {
-	n     int   // number of key-value pairs
+	size  int   // number of key-value pairs
 	first *node // the linked list of key-value pairs
 }
 
@@ -63,7 +63,7 @@ func (st *SequentialSearchST) Put(key STKey, value STValue) {
 	}
 
 	st.first = &node{key, value, st.first}
-	st.n++
+	st.size++
 }
 
 // Delete remove the specified key and its associated value from the symbol
@@ -82,7 +82,7 @@ func (st *SequentialSearchST) deleteNode(x *node, key STKey) *node {
 		return nil
 	}
 	if key == x.key {
-		st.n--
+		st.size--
 		return x.next
 	}
 	x.next = st.deleteNode(x.next, key)
