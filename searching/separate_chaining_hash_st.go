@@ -17,9 +17,9 @@ package searching
 // key and then using Get() and Put() from SequentialSearchST to complete either job.
 
 type SeparateChainingHashST struct {
-	n  int                   // number of key-value pairs
-	m  int                   // hash table size
-	st []*SequentialSearchST // array of linked-list symbol tables
+	size     int                   // number of key-value pairs
+	capacity int                   // hash table size
+	st       []*SequentialSearchST // array of linked-list symbol tables
 }
 
 func NewSeparateChainingHashST() *SeparateChainingHashST {
@@ -59,13 +59,13 @@ func (h *SeparateChainingHashST) Put(key HashSTKey, value STValue) {
 	}
 
 	// double table size if average length of list >= 10
-	if h.n >= 10*h.m {
-		h.resize(2 * h.m)
+	if h.size >= 10*h.capacity {
+		h.resize(2 * h.capacity)
 	}
 
 	i := h.hash(key)
 	if !h.st[i].Contains(key) {
-		h.n++
+		h.size++
 	}
 	h.st[i].Put(key, value)
 }
@@ -79,13 +79,13 @@ func (h *SeparateChainingHashST) Delete(key HashSTKey) {
 
 	i := h.hash(key)
 	if h.st[i].Contains(key) {
-		h.n--
+		h.size--
 		h.st[i].Delete(key)
 	}
 
 	// halve table size if average length of list <= 2
-	if h.m > initHashCapacity && h.n <= 2*h.m {
-		h.resize(h.m / 2)
+	if h.capacity > initHashCapacity && h.size <= 2*h.capacity {
+		h.resize(h.capacity / 2)
 	}
 }
 
@@ -97,7 +97,7 @@ func (h *SeparateChainingHashST) Keys() []HashSTKey {
 
 	keys := make([]HashSTKey, h.Size())
 
-	for i, n := 0, 0; i < h.m; i++ {
+	for i, n := 0, 0; i < h.capacity; i++ {
 		for _, v := range h.st[i].Keys() {
 			keys[n] = v.(HashSTKey)
 			n++
@@ -117,7 +117,7 @@ func (h *SeparateChainingHashST) Contains(key HashSTKey) bool {
 
 // Returns the number of key-value pairs in this symbol table
 func (h *SeparateChainingHashST) Size() int {
-	return h.n
+	return h.size
 }
 
 // Returns ture if this ST is empty
@@ -130,19 +130,19 @@ func (h *SeparateChainingHashST) IsEmpty() bool {
 func (h *SeparateChainingHashST) resize(chains int) {
 	temp := NewSeparateChainingHashSTN(chains)
 
-	for i := 0; i < h.m; i++ {
+	for i := 0; i < h.capacity; i++ {
 		for _, key := range h.st[i].Keys() {
 			temp.Put(key.(HashSTKey), h.st[i].Get(key))
 		}
 	}
 
-	h.m = temp.m
-	h.n = temp.n
+	h.capacity = temp.capacity
+	h.size = temp.size
 	h.st = temp.st
 }
 
 // hash function for keys
-// returns value between 0 and m-1
+// returns value between 0 and capacity-1
 func (h *SeparateChainingHashST) hash(key HashSTKey) int {
-	return (key.hashCode() & 0x7fffffff) % h.m
+	return (key.hashCode() & 0x7fffffff) % h.capacity
 }
