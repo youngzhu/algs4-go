@@ -1,24 +1,24 @@
 package searching
 
 // Hashing with separate chaining.
-// A hash function converts keys into array indices. The second component of a 
-// hashing algorithm is collision resolution: a strategy for handling the case 
+// A hash function converts keys into array indices. The second component of a
+// hashing algorithm is collision resolution: a strategy for handling the case
 // when two or more keys to be inserted hash to the same index. A straightforward
 // approach to collision resolution is to build, for each of the M array indices,
 // a linked list of the key-value pairs whose keys hash to that index. The basic
-// idea is to choose M to be sufficiently large that the lists are sufficiently 
+// idea is to choose M to be sufficiently large that the lists are sufficiently
 // short to enable efficient search through a two-step process: hash to find the
-// list that could contain the key, then sequentially search through that list 
+// list that could contain the key, then sequentially search through that list
 // for the key.
 
 // SeparateChainingHashST implements a symbol table with a separate-chaining hash
-// table. It maintain an array of SequentialSearchST and implements Get() and Put()
-// by computing a hash function to choose which SequentialSearchST can contain the 
+// table. It maintains an array of SequentialSearchST and implements Get() and Put()
+// by computing a hash function to choose which SequentialSearchST can contain the
 // key and then using Get() and Put() from SequentialSearchST to complete either job.
 
 type SeparateChainingHashST struct {
-	n int // number of key-value pairs
-	m int // hash table size
+	n  int                   // number of key-value pairs
+	m  int                   // hash table size
 	st []*SequentialSearchST // array of linked-list symbol tables
 }
 
@@ -46,7 +46,7 @@ func (h *SeparateChainingHashST) Get(key HashSTKey) STValue {
 
 // Inserts the specified key-value pair into the symbol table, overwriting the
 // old value with the new value if the symbol table already contains the specified key.
-// 
+//
 // Deletes the specified key (and its associated value) from the symbol table if
 // the specified value is nil
 func (h *SeparateChainingHashST) Put(key HashSTKey, value STValue) {
@@ -57,14 +57,14 @@ func (h *SeparateChainingHashST) Put(key HashSTKey, value STValue) {
 		h.Delete(key)
 		return
 	}
-	
+
 	// double table size if average length of list >= 10
 	if h.n >= 10*h.m {
-		h.resize(2*h.m)
+		h.resize(2 * h.m)
 	}
 
 	i := h.hash(key)
-	if ! h.st[i].Contains(key) {
+	if !h.st[i].Contains(key) {
 		h.n++
 	}
 	h.st[i].Put(key, value)
@@ -76,7 +76,7 @@ func (h *SeparateChainingHashST) Delete(key HashSTKey) {
 	if key == nil {
 		panic("calls Delete() with a nil key")
 	}
-	
+
 	i := h.hash(key)
 	if h.st[i].Contains(key) {
 		h.n--
@@ -85,7 +85,7 @@ func (h *SeparateChainingHashST) Delete(key HashSTKey) {
 
 	// halve table size if average length of list <= 2
 	if h.m > initHashCapacity && h.n <= 2*h.m {
-		h.resize(h.m/2)
+		h.resize(h.m / 2)
 	}
 }
 
@@ -96,7 +96,7 @@ func (h *SeparateChainingHashST) Keys() []HashSTKey {
 	}
 
 	keys := make([]HashSTKey, h.Size())
-	
+
 	for i, n := 0, 0; i < h.m; i++ {
 		for _, v := range h.st[i].Keys() {
 			keys[n] = v.(HashSTKey)
