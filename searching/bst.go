@@ -27,7 +27,7 @@ import "github.com/youngzhu/algs4-go/fund"
 // recursive structure: If the tree is empty, we have a search miss; if the search
 // key is equal to the key at the root, we have a search hit. Otherwise, we search
 // (recursively) in the appropriate subtree. The recursive get() method implements
-// this algorithm directly. It takes a node (root of a subtree) as first argument
+// this algorithm directly. It takes a node (root of a subtree) as head argument
 // and a key as second argument, starting with the root of the tree and the search key.
 
 // Insert.
@@ -190,7 +190,7 @@ func (b *BST) Keys() []OSTKey {
 // Returns all keys in the symbol table in the given range
 func (b *BST) rangeKeys(lo, hi OSTKey) []OSTKey {
 	if lo == nil {
-		panic("first argument to rangeKeys() is nil")
+		panic("head argument to rangeKeys() is nil")
 	}
 	if hi == nil {
 		panic("second argument to rangeKeys() is nil")

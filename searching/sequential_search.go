@@ -12,8 +12,8 @@ package searching
 // beginning of the list. This method is known as sequential search.
 
 type SequentialSearchST struct {
-	size  int   // number of key-value pairs
-	first *node // the linked list of key-value pairs
+	size int   // number of key-value pairs
+	head *node // the linked list of key-value pairs
 }
 
 // a helper linked list data type
@@ -33,7 +33,7 @@ func (st *SequentialSearchST) Get(key STKey) STValue {
 	if key == nil {
 		panic("argument to Get() is nil")
 	}
-	for x := st.first; x != nil; x = x.next {
+	for x := st.head; x != nil; x = x.next {
 		if x.key == key {
 			return x.value
 		}
@@ -55,14 +55,14 @@ func (st *SequentialSearchST) Put(key STKey, value STValue) {
 		return
 	}
 
-	for x := st.first; x != nil; x = x.next {
+	for x := st.head; x != nil; x = x.next {
 		if key == x.key {
 			x.value = value
 			return
 		}
 	}
 
-	st.first = &node{key, value, st.first}
+	st.head = &node{key, value, st.head}
 	st.size++
 }
 
@@ -72,7 +72,7 @@ func (st *SequentialSearchST) Delete(key STKey) {
 	if key == nil {
 		panic("argument to Delete() is nil")
 	}
-	st.first = st.deleteNode(st.first, key)
+	st.head = st.deleteNode(st.head, key)
 }
 
 // delete key in linked list beginning at node x
@@ -92,7 +92,7 @@ func (st *SequentialSearchST) deleteNode(x *node, key STKey) *node {
 // Keys return all keys in the symbol table
 func (st *SequentialSearchST) Keys() []STKey {
 	var keys []STKey
-	for x := st.first; x != nil; x = x.next {
+	for x := st.head; x != nil; x = x.next {
 		keys = append(keys, x.key)
 	}
 	return keys

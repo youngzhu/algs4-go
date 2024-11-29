@@ -4,7 +4,7 @@ package searching
 // by interpreting the key as an array index so that we can store the value
 // associated with key i in array position i.
 
-// Search algorithms that use hashing consist of two separate parts. The first
+// Search algorithms that use hashing consist of two separate parts. The head
 // step is to compute a hash function that transforms the search key into an
 // array index. Ideally, different keys would map to different indices. This
 // ideal is generally beyond our reach, so we have to face the possibility that

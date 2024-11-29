@@ -109,7 +109,7 @@ func getRB(x *RBNode, key OSTKey) STValue {
 // specified value is nil
 func (rb *RedBlackBST) Put(key OSTKey, value STValue) {
 	if key == nil {
-		panic("first arg to Put() is nil")
+		panic("head arg to Put() is nil")
 	}
 	if value == nil {
 		rb.Delete(key)
@@ -284,7 +284,7 @@ func (rb *RedBlackBST) Keys() []OSTKey {
 // returns all keys in the symbol table in the given range
 func (rb *RedBlackBST) rangeKeys(lo, hi OSTKey) []OSTKey {
 	if lo == nil {
-		panic("first argument to rangeKeys() is nil")
+		panic("head argument to rangeKeys() is nil")
 	}
 	if hi == nil {
 		panic("second argument to rangeKeys() is nil")

@@ -101,7 +101,7 @@ func (st *BinarySearchST) Get(key OSTKey) STValue {
 // this symbol table if the specified value is nil
 func (st *BinarySearchST) Put(key OSTKey, value STValue) {
 	if key == nil {
-		panic("first argument to Put() is nil")
+		panic("head argument to Put() is nil")
 	}
 
 	if value == nil {
