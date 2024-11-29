@@ -1,18 +1,18 @@
 package sp
 
 import (
+	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/graphs"
 	"github.com/youngzhu/algs4-go/graphs/digraph"
-	"github.com/youngzhu/algs4-go/fund"
 )
 
 // Single-source longest paths problem in edge-weighted DAGs.
-// We can solve the problem by initializing the distTo[] values to negative 
+// We can solve the problem by initializing the distTo[] values to negative
 // infinity and switching the sense of the inequality in relax().
 type AcyclicLP struct {
-	graph digraph.EdgeWeightedDigraph
+	graph  digraph.EdgeWeightedDigraph
 	source int
-	distTo []graphs.Distance // distTo[v]: distance of longest s->v path
+	distTo []graphs.Distance       // distTo[v]: distance of longest s->v path
 	edgeTo []*digraph.DirectedEdge // edgeTo[v]: last edge on longest s->v path
 }
 
@@ -29,7 +29,7 @@ func NewAcyclicLP(g digraph.EdgeWeightedDigraph, s int) *AcyclicLP {
 		distTo[i] = graphs.DistanceNegativeInfinity
 	}
 	distTo[s] = graphs.DistanceZero
-	
+
 	// visit vertices in topological order
 	topo := digraph.NewTopologicalWeighted(g)
 	if !topo.HasOrder() {
@@ -49,7 +49,7 @@ func NewAcyclicLP(g digraph.EdgeWeightedDigraph, s int) *AcyclicLP {
 func (alp *AcyclicLP) relax(e *digraph.DirectedEdge) {
 	v, w := e.From(), e.To()
 	distance := graphs.Distance(e.Weight())
-	if alp.distTo[w] < alp.distTo[v] + distance {
+	if alp.distTo[w] < alp.distTo[v]+distance {
 		alp.distTo[w] = alp.distTo[v] + distance
 		alp.edgeTo[w] = e
 	}
@@ -61,7 +61,7 @@ func (alp AcyclicLP) DistTo(v int) float64 {
 	return float64(alp.distTo[v])
 }
 
-// Rtrurn true if there is a path from the source vertex to vertx v
+// HasPathTo return true if there is a path from the source vertex to vertx v
 func (alp AcyclicLP) HasPathTo(v int) bool {
 	alp.validateVertex(v)
 	return alp.distTo[v] > graphs.DistanceNegativeInfinity

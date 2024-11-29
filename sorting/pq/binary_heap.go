@@ -27,10 +27,10 @@ package pq
 // traveling through the heap, modifying the heap as required to ensure that the
 // heap condition is satisfied everywhere. We refer to this process as heapify.
 
-// Buttom-up heapify (swim).
+// Bottom-up heapify (swim).
 // If the heap order is violated because a node's key becomes larger than that
 // node's parent key, then we can make progress toward fixing the violation by
-// exchanging the node with its parent. After the exchage, the node is larger
+// exchanging the node with its parent. After the exchange, the node is larger
 // than both its children (one is the old parent, and the other is smaller than
 // the old parent because it was a child of that node) but the node may still be
 // larger than its parent. We can fix that violation in the same way, and so forth,
@@ -41,7 +41,7 @@ package pq
 // or both of that node's children's keys, then we can make progress toward fixing
 // the violation by exchanging the node with the larger of its two children. This
 // switch may cause a violation at the child. We fix that violation in the same
-// way, and so forth, moving down the heap until we reach a node with both childre
+// way, and so forth, moving down the heap until we reach a node with both child
 // smaller, or bottom.
 
 type BinaryHeap interface {

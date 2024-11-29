@@ -71,7 +71,7 @@ func (h *SeparateChainingHashST) Put(key HashSTKey, value STValue) {
 	h.st[i].Put(key, value)
 }
 
-// Reomoves the specified key and its associated value from the symbol table
+// Delete removes the specified key and its associated value from the symbol table
 // (if the key is in this symbol table)
 func (h *SeparateChainingHashST) Delete(key HashSTKey) {
 	if key == nil {

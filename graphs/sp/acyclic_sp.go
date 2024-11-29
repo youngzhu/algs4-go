@@ -1,9 +1,9 @@
 package sp
 
 import (
+	"github.com/youngzhu/algs4-go/fund"
 	"github.com/youngzhu/algs4-go/graphs"
 	"github.com/youngzhu/algs4-go/graphs/digraph"
-	"github.com/youngzhu/algs4-go/fund"
 )
 
 // Computes shortest paths in an edge-weighted acyclic digraph
@@ -59,7 +59,7 @@ func (asp AcyclicSP) DistTo(v int) float64 {
 	return float64(asp.distTo[v])
 }
 
-// Rtrurn true if there is a path from the source vertex to vertx v
+// HasPathTo return true if there is a path from the source vertex to vertx v
 func (asp AcyclicSP) HasPathTo(v int) bool {
 	asp.validateVertex(v)
 	return asp.distTo[v] < graphs.DistanceInfinity
