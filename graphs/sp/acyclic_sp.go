@@ -8,9 +8,9 @@ import (
 
 // Computes shortest paths in an edge-weighted acyclic digraph
 type AcyclicSP struct {
-	graph digraph.EdgeWeightedDigraph
+	graph  digraph.EdgeWeightedDigraph
 	source int
-	distTo []graphs.Distance // distTo[v]: distance of shortest s->v path
+	distTo []graphs.Distance       // distTo[v]: distance of shortest s->v path
 	edgeTo []*digraph.DirectedEdge // edgeTo[v]: last edge on shortest s->v path
 }
 
@@ -27,7 +27,7 @@ func NewAcyclicSP(g digraph.EdgeWeightedDigraph, s int) *AcyclicSP {
 		distTo[i] = graphs.DistanceInfinity
 	}
 	distTo[s] = graphs.DistanceZero
-	
+
 	// visit vertices in topological order
 	topo := digraph.NewTopologicalWeighted(g)
 	if !topo.HasOrder() {
@@ -47,7 +47,7 @@ func NewAcyclicSP(g digraph.EdgeWeightedDigraph, s int) *AcyclicSP {
 func (asp *AcyclicSP) relax(e *digraph.DirectedEdge) {
 	v, w := e.From(), e.To()
 	distance := graphs.Distance(e.Weight())
-	if asp.distTo[w] > asp.distTo[v] + distance {
+	if asp.distTo[w] > asp.distTo[v]+distance {
 		asp.distTo[w] = asp.distTo[v] + distance
 		asp.edgeTo[w] = e
 	}
