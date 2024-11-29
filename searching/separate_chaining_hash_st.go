@@ -35,7 +35,7 @@ func NewSeparateChainingHashSTN(m int) *SeparateChainingHashST {
 	return &SeparateChainingHashST{0, m, st}
 }
 
-// Returns the value associated with the given key
+// Get returns the value associated with the given key
 func (h *SeparateChainingHashST) Get(key HashSTKey) STValue {
 	if key == nil {
 		panic("calls get() with a nil key")
@@ -44,6 +44,7 @@ func (h *SeparateChainingHashST) Get(key HashSTKey) STValue {
 	return h.st[i].Get(key)
 }
 
+// Put
 // Inserts the specified key-value pair into the symbol table, overwriting the
 // old value with the new value if the symbol table already contains the specified key.
 //
