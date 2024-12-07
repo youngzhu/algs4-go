@@ -1,6 +1,7 @@
 package testutil_test
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/youngzhu/algs4-go/testutil"
@@ -140,7 +141,7 @@ func ExampleIn_ReadAllLines() {
 func ExampleIn_error() {
 	_, err := testutil.NewInWithError("")
 
-	fmt.Println(err == testutil.ErrEmpty)
+	fmt.Println(errors.Is(err, testutil.ErrEmpty))
 
 	// Output:
 	// true
