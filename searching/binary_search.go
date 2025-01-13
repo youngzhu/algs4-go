@@ -28,7 +28,7 @@ const initCapacity = 2
 type BinarySearchST struct {
 	keys   []OSTKey
 	values []STValue
-	n      int
+	size   int
 }
 
 func NewBinarySearchST() *BinarySearchST {
@@ -43,7 +43,7 @@ func NewBinarySearchSTN(n int) *BinarySearchST {
 }
 
 func (st *BinarySearchST) resize(newCap int) {
-	if newCap < st.n {
+	if newCap < st.size {
 		return
 	}
 
@@ -63,7 +63,7 @@ func (st *BinarySearchST) rank(key OSTKey) int {
 		panic("argument to rank() is nil")
 	}
 
-	lo, hi := 0, st.n-1
+	lo, hi := 0, st.size-1
 	for lo <= hi {
 		mid := lo + (hi-lo)/2
 		cmp := key.CompareTo(st.keys[mid])
@@ -88,7 +88,7 @@ func (st *BinarySearchST) Get(key OSTKey) STValue {
 		return nil
 	}
 	r := st.rank(key)
-	if r < st.n && key.Equals(st.keys[r]) {
+	if r < st.size && key.Equals(st.keys[r]) {
 		return st.values[r]
 	}
 	return nil
@@ -112,22 +112,22 @@ func (st *BinarySearchST) Put(key OSTKey, value STValue) {
 	r := st.rank(key)
 
 	// key is already in the table
-	if r < st.n && key.Equals(st.keys[r]) {
+	if r < st.size && key.Equals(st.keys[r]) {
 		st.values[r] = value
 		return
 	}
 
 	// insert new key-value pair
-	if st.n == len(st.keys) {
-		st.resize(2 * st.n)
+	if st.size == len(st.keys) {
+		st.resize(2 * st.size)
 	}
 
-	for i := st.n; i > r; i-- {
+	for i := st.size; i > r; i-- {
 		st.keys[i] = st.keys[i-1]
 		st.values[i] = st.values[i-1]
 	}
 	st.keys[r], st.values[r] = key, value
-	st.n++
+	st.size++
 }
 
 // Delete removes the specified key and associated value
@@ -144,29 +144,29 @@ func (st *BinarySearchST) Delete(key OSTKey) {
 	r := st.rank(key)
 
 	// key not in table
-	if r == st.n || !key.Equals(st.keys[r]) {
+	if r == st.size || !key.Equals(st.keys[r]) {
 		return
 	}
 
-	for i := r; i < st.n-1; i++ {
+	for i := r; i < st.size-1; i++ {
 		st.keys[i] = st.keys[i+1]
 		st.values[i] = st.values[i+1]
 	}
-	st.n--
+	st.size--
 
 	// resize if 1/4 full
-	if st.n > 0 && st.n == len(st.keys)/4 {
+	if st.size > 0 && st.size == len(st.keys)/4 {
 		st.resize(len(st.keys) / 2)
 	}
 }
 
 // Keys returns all keys in the symbol table
 func (st BinarySearchST) Keys() []OSTKey {
-	return st.keys[:st.n]
+	return st.keys[:st.size]
 }
 
 func (st BinarySearchST) IsEmpty() bool {
-	return st.n == 0
+	return st.size == 0
 }
 
 func (st BinarySearchST) Contains(key OSTKey) bool {
