@@ -1,0 +1,93 @@
+# add more test cases
+
+## CH01 FUNDAMENTALS
+  - [Bag](fund/bag.go)
+  - **Case Study: Union-Find**
+    - [QuickFind](fund/uf/quick_find.go)
+    - [QuickUnion](fund/uf/quick_union.go)
+    - [WeightedQuickUnion](fund/uf/weighted_quick_union.go)
+    - [UF (Weighted quick-union with path compression)](fund/uf/uf.go)
+## CH02 SORTING
+  - [Selection](sorting/selection.go)
+  - [Insertion](sorting/insertion.go)
+  - [Shell](sorting/shell.go)
+  - **Merge**
+    - [Merge: Top-down Mergesort](sorting/merge.go)
+    - [MergeX: Optimized Mergesort](sorting/mergex.go)
+    - [MergeBU: Bottom-up Mergesort](sorting/merge_bu.go)
+  - **Quick**
+    - [Quick](sorting/quick.go)
+    - [Quick3Way](sorting/quick_3way.go)
+  - [Heap](sorting/heap.go)
+  - **Priority Queue**
+    - [MaxPQ](sorting/pq/max_pq.go)
+    - [MinPQ](sorting/pq/min_pq.go)
+    - [IndexMinPQ](sorting/pq/min_index_pq.go)
+    - **Client**
+      - [TopM](sorting/pq/example_topm_test.go)
+      - [Multiway](sorting/pq/example_index_pq_test.go)
+## CH03 SEARCHING
+  - [SequentialSearchST](searching/sequential_search.go)
+  - [BinarySearchST](searching/binary_search.go)
+  - [Binary Search Tree (BST)](searching/bst.go)
+  - [RedBlackBST](searching/red_black_bst.go)
+  - [SeparateChainingHashST](searching/separate_chaining_hash_st.go)
+  - [LinearProbingHashST](searching/linear_probing_hash_st.go)
+  - **Client**
+    - [FrequencyCounter](searching/example_frequency_test.go)
+## CH04 GRAPHS
+  - **Undirected Graphs**
+    - [Graph](graphs/graph/graph.go)
+    - [DepthFirstSearch](graphs/graph/depth_first_search.go)
+    - [DepthFirstPaths](graphs/graph/depth_first_paths.go)
+    - [BreadthFirstPaths](graphs/graph/breadth_first_paths.go)
+    - [ConnectedComponents](graphs/graph/connected_components.go)
+    - [SymbolGraph](graphs/graph/symbol_graph.go)
+  - **Directed Graphs (Digraph)**
+    - [Digraph](graphs/digraph/digraph.go)
+    - [DirectedDFS](graphs/digraph/directed_dfs.go)
+    - [DepthFirstDirectedPaths](graphs/digraph/depth_first_directed_paths.go)
+    - [BreadthFirstDirectedPaths](graphs/digraph/breadth_first_directed_paths.go)
+    - [SymbolDigraph](graphs/digraph/symbol_graph.go)
+    - [DirectedCycle](graphs/digraph/directed_cycle.go)
+    - [DepthFirstOrder](graphs/digraph/depth_first_order.go)
+    - [SymbolDiraph](graphs/digraph/symbol_digraph.go)
+    - [Topological](graphs/digraph/topological.go)
+    - [KosarajuSharirSCC](graphs/digraph/kosaraju_sharir_scc.go)
+    - [EdgeWeightedDigraph](graphs/digraph/edge_weighted_digraph.go)
+    - [EdgeWeightedDirectedCycle](graphs/digraph/edge_weighted_directed_cycle.go)
+  - **Minimum Spanning Tree (MST)**
+    - [EdgeWeightedGraph](graphs/mst/edge_weighted_graph.go)
+    - [LazyPrimMST](graphs/mst/lazy_prim_mst.go)
+    - [PrimMST](graphs/mst/prim_mst.go)
+    - [KruskalMST](graphs/mst/kruskal_mst.go)
+  - **Shortest Paths (SP)**
+    - [DijkstraSP](graphs/sp/dijkstra_sp.go)
+    - [AcyclicSP](graphs/sp/acyclic_sp.go)
+    - [AcyclicLP: Acyclic Longest Paths](graphs/sp/acyclic_lp.go)
+    - [BellmanFordSP](graphs/sp/bellman_ford_sp.go)
+    - **Client**
+      - [AcyclicLP Client: Critical Path Method](graphs/sp/cpm.go)
+      - [Arbitrage detection](graphs/sp/arbitrage.go)
+## CH05 STRINGS
+  - **String Sorts**
+    - [LSD](strings/sort/lsd.go)
+    - [MSD](strings/sort/msd.go)
+    - [Quick3string](strings/sort/quick_3way.go)
+  - **Tries**
+    - [TrieST](strings/trie/trie_st.go)
+    - [Ternary Search Trie (TST)](strings/trie/ternary_search_trie.go)
+  - **Substring Search**
+    - [BruteForce](strings/search/brute_force.go)
+    - [Rabin-Karp algorithm](strings/search/rabin_karp.go)
+    - [Knuth-Morris-Pratt algorithm](strings/search/kmp.go)
+    - [Boyer-Moore algorithm](strings/search/boyer_moore.go)
+  - **Regular Expressions**
+    - [NFA](strings/regexp/nfa.go)
+## CH06 CONTEXT
+  - **Suffix Arrays**
+    - [SuffixArray](context/suffix/suffix_array.go)
+    - [SuffixArrayX](context/suffix/suffix_array_x.go)
+    - **Client**
+      - [LRS: Longest Repeated Substring](context/suffix/suffix.go)
+      - [LCS: Longest Common Substring](context/suffix/suffix.go)
