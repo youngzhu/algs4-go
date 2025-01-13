@@ -16,7 +16,7 @@ import (
 type Queue struct {
 	first *Node // beginning of queue
 	last  *Node // end of queue
-	n     int   // number of elements on queue
+	size  int   // number of elements on queue
 }
 
 func NewQueue() *Queue {
@@ -41,7 +41,7 @@ func (q *Queue) Enqueue(item Item) {
 	} else {
 		oldLast.next = q.last
 	}
-	q.n++
+	q.size++
 }
 
 // Dequeue removes and returns the item on this queue that was least recently added
@@ -51,13 +51,13 @@ func (q *Queue) Dequeue() Item {
 	}
 	item := q.first.item
 	q.first = q.first.next
-	q.n--
+	q.size--
 	return item
 }
 
 // Size returns the number of items in this queue
 func (q *Queue) Size() int {
-	return q.n
+	return q.size
 }
 
 // IsEmpty return true if the queue is empty
@@ -66,11 +66,11 @@ func (q *Queue) IsEmpty() bool {
 }
 
 func (q *Queue) Iterator() Iterator {
-	items := make([]interface{}, q.n)
+	items := make([]interface{}, q.size)
 
 	i := 0
 	cur := q.first
-	for i < q.n {
+	for i < q.size {
 		items[i] = cur.item
 		cur = cur.next
 		i++
