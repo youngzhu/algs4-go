@@ -14,8 +14,8 @@ import (
 
 // Stack implemented using a singly linked list
 type Stack struct {
-	top *Node // top of stack
-	n   int   // size of the stack
+	top  *Node // top of stack
+	size int   // size of the stack
 }
 
 func NewStack() *Stack {
@@ -25,7 +25,7 @@ func NewStack() *Stack {
 // Push adds the item to this stack
 func (s *Stack) Push(item Item) {
 	s.top = newNode(item, s.top)
-	s.n++
+	s.size++
 }
 
 // Pop removes and returns the item most recently added to this stack
@@ -36,7 +36,7 @@ func (s *Stack) Pop() Item {
 
 	item := s.top.item // save item to return
 	s.top = s.top.next // delete first node
-	s.n--
+	s.size--
 
 	return item
 }
@@ -57,15 +57,15 @@ func (s *Stack) IsEmpty() bool {
 
 // Size returns the number of items in this stack
 func (s *Stack) Size() int {
-	return s.n
+	return s.size
 }
 
 func (s *Stack) Iterator() Iterator {
-	items := make([]interface{}, s.n)
+	items := make([]interface{}, s.size)
 
 	i := 0
 	cur := s.top
-	for i < s.n {
+	for i < s.size {
 		items[i] = cur.item
 		cur = cur.next
 		i++

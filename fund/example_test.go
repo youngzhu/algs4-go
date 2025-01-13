@@ -81,8 +81,23 @@ func ExampleStack() {
 	// to be not that or be (2 left on stack)
 }
 
+func ExampleStack_Peek() {
+	stack := fund.NewStack()
+
+	stack.Push(1)
+	stack.Push(2)
+	stack.Push(3)
+
+	fmt.Println(stack.Peek())
+	fmt.Println(stack.Peek())
+
+	// Output:
+	// 3
+	// 3
+}
+
 // Read a sequence of integers and print them in reverse order
-func ExampleStack_reverse() {
+func ExampleStack_Iterator() {
 	stack := fund.NewStack()
 
 	ints := []int{1, 2, 3, 4, 5}
@@ -97,6 +112,19 @@ func ExampleStack_reverse() {
 
 	// Output:
 	// 5 4 3 2 1
+}
+
+func ExampleStack_String() {
+	stack := fund.NewStack()
+
+	stack.Push(1)
+	stack.Push(2)
+	stack.Push(3)
+
+	fmt.Print(stack)
+
+	// Output:
+	// [3, 2, 1]
 }
 
 func ExampleBag() {
