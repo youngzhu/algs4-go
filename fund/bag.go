@@ -13,7 +13,7 @@ import (
 // Bag implemented using a singly linked list
 type Bag struct {
 	first *Node // beginning of bag
-	n     int   // number of elements in bag
+	size  int   // number of elements in bag
 }
 
 func NewBag() *Bag {
@@ -23,13 +23,13 @@ func NewBag() *Bag {
 // Add adds the item to this bag
 func (b *Bag) Add(item Item) {
 	b.first = newNode(item, b.first)
-	b.n++
+	b.size++
 }
 
 func (b *Bag) Iterator() Iterator {
-	items := make([]interface{}, b.n)
+	items := make([]interface{}, b.size)
 
-	for i, cur := 0, b.first; i < b.n; i, cur = i+1, cur.next {
+	for i, cur := 0, b.first; i < b.size; i, cur = i+1, cur.next {
 		items[i] = cur.item
 	}
 
@@ -43,7 +43,7 @@ func (b *Bag) IsEmpty() bool {
 
 // Size returns the number of items in this bag
 func (b *Bag) Size() int {
-	return b.n
+	return b.size
 }
 
 func (b *Bag) String() string {

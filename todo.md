@@ -1,7 +1,6 @@
 # add more test cases
 
 ## CH01 FUNDAMENTALS
-  - [Bag](fund/bag.go)
   - **Case Study: Union-Find**
     - [QuickFind](fund/uf/quick_find.go)
     - [QuickUnion](fund/uf/quick_union.go)

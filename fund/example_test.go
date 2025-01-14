@@ -133,8 +133,7 @@ func ExampleBag() {
 	in := testutil.NewInReadWords("testdata/tobe.txt")
 
 	for !in.IsEmpty() {
-		item := in.ReadString()
-		bag.Add(item)
+		bag.Add(in.ReadString())
 	}
 
 	fmt.Printf("size of bag: %d\n", bag.Size())
@@ -146,6 +145,18 @@ func ExampleBag() {
 	// Output:
 	// size of bag: 14
 	// is - - - that - - be - to not or be to
+}
+
+func ExampleBag_String() {
+	bag := fund.NewBag()
+	bag.Add(1)
+	bag.Add(2)
+	bag.Add(3)
+	bag.Add(4)
+	fmt.Println(bag)
+
+	// Output:
+	// [4, 3, 2, 1]
 }
 
 // Read a sequence of numbers and computes their mean and standard deviation
