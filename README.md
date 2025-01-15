@@ -21,10 +21,10 @@ Try to keep the interface and variable name consistent with the original Java so
 See [index.md](index.md).
 
 ## License
-This code is released under GPLv3.
+This code is released under [GPLv3](LICENSE).
 
 ## Reference 
-- [https://github.com/kevin-wayne/algs4](https://github.com/kevin-wayne/algs4): The official Java source code repository
+- https://github.com/kevin-wayne/algs4: The official Java source code repository
 - [https://github.com/shellfly/algo](https://github.com/shellfly/algo): Go implementation
 - [https://github.com/garyaiki/Scala-Algorithms](https://github.com/garyaiki/Scala-Algorithms): Scala implementation
 - [https://github.com/nguyenqthai/Algs4Net](https://github.com/nguyenqthai/Algs4Net): .Net implementation
